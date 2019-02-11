@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
 */
 (function() {
@@ -7,9 +7,9 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
     window.CKEDITOR || (window.CKEDITOR = function() {
         var a = /(^|.*[\\\/])ckeditor\.js(?:\?.*|;.*)?$/i,
             d = {
-                timestamp: "I63C",
-                version: "4.10.0",
-                revision: "de1371d",
+                timestamp: "J0BE",
+                version: "4.11.2",
+                revision: "7f3189e",
                 rnd: Math.floor(900 * Math.random()) + 100,
                 _: {
                     pending: [],
@@ -20,9 +20,9 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     var b = window.CKEDITOR_BASEPATH || "";
                     if (!b)
                         for (var c = document.getElementsByTagName("script"), d = 0; d < c.length; d++) {
-                            var g = c[d].src.match(a);
-                            if (g) {
-                                b = g[1];
+                            var h = c[d].src.match(a);
+                            if (h) {
+                                b = h[1];
                                 break
                             }
                         } - 1 == b.indexOf(":/") && "//" != b.slice(0, 2) && (b = 0 === b.indexOf("/") ? location.href.match(/^.*?:\/\/[^\/]*/)[0] +
@@ -48,11 +48,11 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     }
                     var c = [];
                     return function(b) {
-                        function n() {
+                        function p() {
                             try {
                                 document.documentElement.doScroll("left")
-                            } catch (e) {
-                                setTimeout(n, 1);
+                            } catch (b) {
+                                setTimeout(p, 1);
                                 return
                             }
                             a()
@@ -68,8 +68,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                             b = !1;
                             try {
                                 b = !window.frameElement
-                            } catch (r) {}
-                            document.documentElement.doScroll && b && n()
+                            } catch (d) {}
+                            document.documentElement.doScroll && b && p()
                         }
                     }
                 }()
@@ -109,43 +109,43 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         };
         return {
             define: function(b, d) {
-                var h = a.call(this, b);
-                CKEDITOR.tools.extend(h, d, !0)
+                var g = a.call(this, b);
+                CKEDITOR.tools.extend(g, d, !0)
             },
-            on: function(b, d, h, k, g) {
-                function n(e, a, y, v) {
-                    e = {
+            on: function(b, d, g, k, h) {
+                function p(a, x, w, e) {
+                    a = {
                         name: b,
                         sender: this,
-                        editor: e,
-                        data: a,
+                        editor: a,
+                        data: x,
                         listenerData: k,
-                        stop: y,
-                        cancel: v,
-                        removeListener: r
+                        stop: w,
+                        cancel: e,
+                        removeListener: q
                     };
-                    return !1 === d.call(h, e) ? !1 : e.data
+                    return !1 === d.call(g, a) ? !1 : a.data
                 }
 
-                function r() {
-                    y.removeListener(b, d)
+                function q() {
+                    x.removeListener(b, d)
                 }
                 var e = a.call(this, b);
                 if (0 > e.getListenerIndex(d)) {
                     e = e.listeners;
-                    h || (h = this);
-                    isNaN(g) && (g = 10);
-                    var y = this;
-                    n.fn = d;
-                    n.priority = g;
-                    for (var v = e.length - 1; 0 <= v; v--)
-                        if (e[v].priority <= g) return e.splice(v + 1, 0, n), {
-                            removeListener: r
+                    g || (g = this);
+                    isNaN(h) && (h = 10);
+                    var x = this;
+                    p.fn = d;
+                    p.priority = h;
+                    for (var w = e.length - 1; 0 <= w; w--)
+                        if (e[w].priority <= h) return e.splice(w + 1, 0, p), {
+                            removeListener: q
                         };
-                    e.unshift(n)
+                    e.unshift(p)
                 }
                 return {
-                    removeListener: r
+                    removeListener: q
                 }
             },
             once: function() {
@@ -168,43 +168,43 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     b = function() {
                         a = 1
                     },
-                    h = 0,
+                    g = 0,
                     k = function() {
-                        h = 1
+                        g = 1
                     };
-                return function(g, n, r) {
-                    var e = d(this)[g];
-                    g = a;
-                    var y = h;
-                    a = h = 0;
+                return function(h, p, q) {
+                    var e = d(this)[h];
+                    h = a;
+                    var x = g;
+                    a = g = 0;
                     if (e) {
-                        var v = e.listeners;
-                        if (v.length)
-                            for (var v = v.slice(0), A, D = 0; D < v.length; D++) {
+                        var w = e.listeners;
+                        if (w.length)
+                            for (var w = w.slice(0), z, F = 0; F < w.length; F++) {
                                 if (e.errorProof) try {
-                                    A =
-                                        v[D].call(this, r, n, b, k)
-                                } catch (x) {} else A = v[D].call(this, r, n, b, k);
-                                !1 === A ? h = 1 : "undefined" != typeof A && (n = A);
-                                if (a || h) break
+                                    z =
+                                        w[F].call(this, q, p, b, k)
+                                } catch (v) {} else z = w[F].call(this, q, p, b, k);
+                                !1 === z ? g = 1 : "undefined" != typeof z && (p = z);
+                                if (a || g) break
                             }
                     }
-                    n = h ? !1 : "undefined" == typeof n ? !0 : n;
-                    a = g;
-                    h = y;
-                    return n
+                    p = g ? !1 : "undefined" == typeof p ? !0 : p;
+                    a = h;
+                    g = x;
+                    return p
                 }
             }(),
-            fireOnce: function(a, b, h) {
-                b = this.fire(a, b, h);
+            fireOnce: function(a, b, g) {
+                b = this.fire(a, b, g);
                 delete d(this)[a];
                 return b
             },
             removeListener: function(a, b) {
-                var h = d(this)[a];
-                if (h) {
-                    var k = h.getListenerIndex(b);
-                    0 <= k && h.listeners.splice(k, 1)
+                var g = d(this)[a];
+                if (g) {
+                    var k = g.getListenerIndex(b);
+                    0 <= k && g.listeners.splice(k, 1)
                 }
             },
             removeAllListeners: function() {
@@ -258,7 +258,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         b.gecko = "Gecko" == navigator.product && !b.webkit && !b.ie;
         b.webkit && (-1 < a.indexOf("chrome") ? b.chrome = !0 : b.safari = !0);
         var c = 0;
-        b.ie && (c = d ? parseFloat(d[1]) : b.quirks || !document.documentMode ? parseFloat((a.match(/msie (\d+)/) || "10.0")[1]) : document.documentMode, b.ie9Compat = 9 == c, b.ie8Compat = 8 == c, b.ie7Compat = 7 == c, b.ie6Compat = 7 > c || b.quirks);
+        b.ie && (c = d ? parseFloat(d[1]) : b.quirks || !document.documentMode ? parseFloat((a.match(/msie (\d+)/) || a.match(/rv:(\d+)/))[1]) : document.documentMode, b.ie9Compat = 9 == c, b.ie8Compat = 8 == c, b.ie7Compat = 7 == c, b.ie6Compat = 7 > c || b.quirks);
         b.gecko && (d = a.match(/rv:([\d\.]+)/)) && (d = d[1].split("."), c = 1E4 * d[0] + 100 * (d[1] || 0) + 1 * (d[2] || 0));
         b.air && (c = parseFloat(a.match(/ adobeair\/(\d+)/)[1]));
         b.webkit && (c = parseFloat(a.match(/ applewebkit\/(\d+)/)[1]));
@@ -327,19 +327,50 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 b = a.data.errorCode;
             if (a = a.data.additionalData) console[d]("[CKEDITOR] Error code: " + b + ".", a);
             else console[d]("[CKEDITOR] Error code: " + b + ".");
-            console[d]("[CKEDITOR] For more information about this error go to https://docs.ckeditor.com/ckeditor4/docs/#!/guide/dev_errors-section-" + b)
+            console[d]("[CKEDITOR] For more information about this error go to https://ckeditor.com/docs/ckeditor4/latest/guide/dev_errors.html#" + b)
         }
     }, null, null, 999);
     CKEDITOR.dom = {};
     (function() {
-        var a = [],
-            d = CKEDITOR.env.gecko ? "-moz-" : CKEDITOR.env.webkit ? "-webkit-" : CKEDITOR.env.ie ? "-ms-" : "",
-            b = /&/g,
-            c = />/g,
-            f = /</g,
+        function a(a, b, e) {
+            this._minInterval = a;
+            this._context = e;
+            this._lastOutput = this._scheduledTimer = 0;
+            this._output = CKEDITOR.tools.bind(b, e || {});
+            var c = this;
+            this.input = function() {
+                function a() {
+                    c._lastOutput = (new Date).getTime();
+                    c._scheduledTimer = 0;
+                    c._call()
+                }
+                if (!c._scheduledTimer || !1 !== c._reschedule()) {
+                    var x = (new Date).getTime() - c._lastOutput;
+                    x < c._minInterval ? c._scheduledTimer = setTimeout(a, c._minInterval - x) : a()
+                }
+            }
+        }
+
+        function d(x, b, e) {
+            a.call(this, x, b, e);
+            this._args = [];
+            var c = this;
+            this.input = CKEDITOR.tools.override(this.input,
+                function(a) {
+                    return function() {
+                        c._args = Array.prototype.slice.call(arguments);
+                        a.call(this)
+                    }
+                })
+        }
+        var b = [],
+            c = CKEDITOR.env.gecko ? "-moz-" : CKEDITOR.env.webkit ? "-webkit-" : CKEDITOR.env.ie ? "-ms-" : "",
+            f = /&/g,
+            g = />/g,
+            k = /</g,
             h = /"/g,
-            k = /&(lt|gt|amp|quot|nbsp|shy|#\d{1,5});/g,
-            g = {
+            p = /&(lt|gt|amp|quot|nbsp|shy|#\d{1,5});/g,
+            q = {
                 lt: "\x3c",
                 gt: "\x3e",
                 amp: "\x26",
@@ -347,101 +378,101 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 nbsp: " ",
                 shy: "­"
             },
-            n = function(a, e) {
-                return "#" == e[0] ? String.fromCharCode(parseInt(e.slice(1), 10)) : g[e]
+            e = function(a, b) {
+                return "#" == b[0] ? String.fromCharCode(parseInt(b.slice(1), 10)) : q[b]
             };
         CKEDITOR.on("reset", function() {
-            a = []
+            b = []
         });
         CKEDITOR.tools = {
-            arrayCompare: function(a, e) {
-                if (!a && !e) return !0;
-                if (!a || !e || a.length != e.length) return !1;
-                for (var b = 0; b < a.length; b++)
-                    if (a[b] != e[b]) return !1;
+            arrayCompare: function(a, b) {
+                if (!a && !b) return !0;
+                if (!a || !b || a.length != b.length) return !1;
+                for (var e = 0; e < a.length; e++)
+                    if (a[e] != b[e]) return !1;
                 return !0
             },
-            getIndex: function(a, e) {
-                for (var b = 0; b < a.length; ++b)
-                    if (e(a[b])) return b;
+            getIndex: function(a, b) {
+                for (var e = 0; e < a.length; ++e)
+                    if (b(a[e])) return e;
                 return -1
             },
             clone: function(a) {
-                var e;
+                var b;
                 if (a && a instanceof Array) {
-                    e = [];
-                    for (var b = 0; b < a.length; b++) e[b] = CKEDITOR.tools.clone(a[b]);
-                    return e
+                    b = [];
+                    for (var e = 0; e < a.length; e++) b[e] = CKEDITOR.tools.clone(a[e]);
+                    return b
                 }
                 if (null === a || "object" != typeof a || a instanceof String || a instanceof Number || a instanceof Boolean || a instanceof Date || a instanceof RegExp || a.nodeType || a.window === a) return a;
-                e = new a.constructor;
-                for (b in a) e[b] = CKEDITOR.tools.clone(a[b]);
-                return e
+                b = new a.constructor;
+                for (e in a) b[e] =
+                    CKEDITOR.tools.clone(a[e]);
+                return b
             },
-            capitalize: function(a, e) {
-                return a.charAt(0).toUpperCase() +
-                    (e ? a.slice(1) : a.slice(1).toLowerCase())
+            capitalize: function(a, b) {
+                return a.charAt(0).toUpperCase() + (b ? a.slice(1) : a.slice(1).toLowerCase())
             },
             extend: function(a) {
-                var e = arguments.length,
-                    b, v;
-                "boolean" == typeof(b = arguments[e - 1]) ? e-- : "boolean" == typeof(b = arguments[e - 2]) && (v = arguments[e - 1], e -= 2);
-                for (var c = 1; c < e; c++) {
-                    var g = arguments[c],
+                var b = arguments.length,
+                    e, c;
+                "boolean" == typeof(e = arguments[b - 1]) ? b-- : "boolean" == typeof(e = arguments[b - 2]) && (c = arguments[b - 1], b -= 2);
+                for (var h = 1; h < b; h++) {
+                    var m = arguments[h],
                         d;
-                    for (d in g)
-                        if (!0 === b || null == a[d])
-                            if (!v || d in v) a[d] = g[d]
+                    for (d in m)
+                        if (!0 === e || null == a[d])
+                            if (!c || d in c) a[d] = m[d]
                 }
                 return a
             },
             prototypedCopy: function(a) {
-                var e = function() {};
-                e.prototype = a;
-                return new e
+                var b = function() {};
+                b.prototype = a;
+                return new b
             },
             copy: function(a) {
-                var e = {},
-                    b;
-                for (b in a) e[b] = a[b];
-                return e
+                var b = {},
+                    e;
+                for (e in a) b[e] =
+                    a[e];
+                return b
             },
             isArray: function(a) {
                 return "[object Array]" == Object.prototype.toString.call(a)
             },
             isEmpty: function(a) {
-                for (var e in a)
-                    if (a.hasOwnProperty(e)) return !1;
+                for (var b in a)
+                    if (a.hasOwnProperty(b)) return !1;
                 return !0
             },
-            cssVendorPrefix: function(a, e, b) {
-                if (b) return d + a + ":" + e + ";" + a + ":" + e;
-                b = {};
-                b[a] = e;
-                b[d + a] = e;
-                return b
+            cssVendorPrefix: function(a, b, e) {
+                if (e) return c + a + ":" + b + ";" + a + ":" + b;
+                e = {};
+                e[a] = b;
+                e[c + a] = b;
+                return e
             },
             cssStyleToDomStyle: function() {
                 var a = document.createElement("div").style,
-                    e = "undefined" != typeof a.cssFloat ? "cssFloat" : "undefined" != typeof a.styleFloat ? "styleFloat" : "float";
+                    b = "undefined" != typeof a.cssFloat ? "cssFloat" : "undefined" != typeof a.styleFloat ? "styleFloat" : "float";
                 return function(a) {
-                    return "float" == a ? e : a.replace(/-./g, function(a) {
+                    return "float" == a ? b : a.replace(/-./g, function(a) {
                         return a.substr(1).toUpperCase()
                     })
                 }
             }(),
             buildStyleHtml: function(a) {
                 a = [].concat(a);
-                for (var e,
-                        b = [], v = 0; v < a.length; v++)
-                    if (e = a[v]) /@import|[{}]/.test(e) ? b.push("\x3cstyle\x3e" + e + "\x3c/style\x3e") : b.push('\x3clink type\x3d"text/css" rel\x3dstylesheet href\x3d"' + e + '"\x3e');
-                return b.join("")
+                for (var b, e = [], c = 0; c < a.length; c++)
+                    if (b = a[c]) /@import|[{}]/.test(b) ? e.push("\x3cstyle\x3e" + b + "\x3c/style\x3e") : e.push('\x3clink type\x3d"text/css" rel\x3dstylesheet href\x3d"' + b + '"\x3e');
+                return e.join("")
             },
             htmlEncode: function(a) {
-                return void 0 === a || null === a ? "" : String(a).replace(b, "\x26amp;").replace(c, "\x26gt;").replace(f, "\x26lt;")
+                return void 0 === a || null === a ? "" : String(a).replace(f, "\x26amp;").replace(g, "\x26gt;").replace(k, "\x26lt;")
             },
             htmlDecode: function(a) {
-                return a.replace(k, n)
+                return a.replace(p, e)
             },
             htmlEncodeAttr: function(a) {
                 return CKEDITOR.tools.htmlEncode(a).replace(h, "\x26quot;")
@@ -449,28 +480,28 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             htmlDecodeAttr: function(a) {
                 return CKEDITOR.tools.htmlDecode(a)
             },
-            transformPlainTextToHtml: function(a, e) {
-                var b = e == CKEDITOR.ENTER_BR,
-                    v = this.htmlEncode(a.replace(/\r\n/g, "\n")),
-                    v = v.replace(/\t/g, "\x26nbsp;\x26nbsp; \x26nbsp;"),
-                    c = e == CKEDITOR.ENTER_P ? "p" : "div";
-                if (!b) {
-                    var g = /\n{2}/g;
-                    if (g.test(v)) var d = "\x3c" + c + "\x3e",
-                        m = "\x3c/" + c + "\x3e",
-                        v = d + v.replace(g, function() {
-                            return m + d
-                        }) + m
+            transformPlainTextToHtml: function(a, b) {
+                var e = b == CKEDITOR.ENTER_BR,
+                    c = this.htmlEncode(a.replace(/\r\n/g, "\n")),
+                    c = c.replace(/\t/g, "\x26nbsp;\x26nbsp; \x26nbsp;"),
+                    h = b == CKEDITOR.ENTER_P ? "p" : "div";
+                if (!e) {
+                    var m = /\n{2}/g;
+                    if (m.test(c)) var d = "\x3c" + h + "\x3e",
+                        p = "\x3c/" + h + "\x3e",
+                        c = d + c.replace(m, function() {
+                            return p + d
+                        }) + p
                 }
-                v = v.replace(/\n/g, "\x3cbr\x3e");
-                b || (v = v.replace(new RegExp("\x3cbr\x3e(?\x3d\x3c/" + c + "\x3e)"), function(a) {
-                    return CKEDITOR.tools.repeat(a, 2)
+                c = c.replace(/\n/g, "\x3cbr\x3e");
+                e || (c = c.replace(new RegExp("\x3cbr\x3e(?\x3d\x3c/" + h + "\x3e)"), function(a) {
+                    return CKEDITOR.tools.repeat(a,
+                        2)
                 }));
-                v = v.replace(/^ | $/g, "\x26nbsp;");
-                return v = v.replace(/(>|\s) /g,
-                    function(a, e) {
-                        return e + "\x26nbsp;"
-                    }).replace(/ (?=<)/g, "\x26nbsp;")
+                c = c.replace(/^ | $/g, "\x26nbsp;");
+                return c = c.replace(/(>|\s) /g, function(a, b) {
+                    return b + "\x26nbsp;"
+                }).replace(/ (?=<)/g, "\x26nbsp;")
             },
             getNextNumber: function() {
                 var a = 0;
@@ -482,150 +513,138 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 return "cke_" + this.getNextNumber()
             },
             getUniqueId: function() {
-                for (var a = "e", e = 0; 8 > e; e++) a += Math.floor(65536 * (1 + Math.random())).toString(16).substring(1);
+                for (var a = "e", b = 0; 8 > b; b++) a += Math.floor(65536 * (1 + Math.random())).toString(16).substring(1);
                 return a
             },
-            override: function(a, e) {
-                var b = e(a);
-                b.prototype = a.prototype;
-                return b
+            override: function(a, b) {
+                var e = b(a);
+                e.prototype = a.prototype;
+                return e
             },
-            setTimeout: function(a, e, b, c, g) {
-                g || (g = window);
-                b || (b = g);
-                return g.setTimeout(function() {
-                        c ? a.apply(b, [].concat(c)) : a.apply(b)
-                    },
-                    e || 0)
+            setTimeout: function(a, b, e, c, h) {
+                h || (h = window);
+                e || (e =
+                    h);
+                return h.setTimeout(function() {
+                    c ? a.apply(e, [].concat(c)) : a.apply(e)
+                }, b || 0)
             },
-            throttle: function(a, e, b) {
-                var c, g = 0;
-                b = b || {};
-                return {
-                    input: function() {
-                        function d() {
-                            g = (new Date).getTime();
-                            c = !1;
-                            e.apply(b, n)
-                        }
-                        var n = Array.prototype.slice.call(arguments);
-                        c && (clearTimeout(c), c = 0);
-                        var m = (new Date).getTime() - g;
-                        m < a ? c = setTimeout(d, a - m) : d()
-                    },
-                    reset: function() {
-                        c && (clearTimeout(c), c = g = 0)
-                    }
-                }
+            throttle: function(a, b, e) {
+                return new this.buffers.throttle(a, b, e)
             },
             trim: function() {
                 var a = /(?:^[ \t\n\r]+)|(?:[ \t\n\r]+$)/g;
-                return function(e) {
-                    return e.replace(a, "")
+                return function(b) {
+                    return b.replace(a, "")
                 }
             }(),
             ltrim: function() {
                 var a = /^[ \t\n\r]+/g;
-                return function(e) {
-                    return e.replace(a, "")
+                return function(b) {
+                    return b.replace(a, "")
                 }
             }(),
             rtrim: function() {
-                var a =
-                    /[ \t\n\r]+$/g;
-                return function(e) {
-                    return e.replace(a, "")
+                var a = /[ \t\n\r]+$/g;
+                return function(b) {
+                    return b.replace(a, "")
                 }
             }(),
-            indexOf: function(a, e) {
-                if ("function" == typeof e)
-                    for (var b = 0, c = a.length; b < c; b++) {
-                        if (e(a[b])) return b
+            indexOf: function(a, b) {
+                if ("function" == typeof b)
+                    for (var e = 0, c = a.length; e < c; e++) {
+                        if (b(a[e])) return e
                     } else {
-                        if (a.indexOf) return a.indexOf(e);
-                        b = 0;
-                        for (c = a.length; b < c; b++)
-                            if (a[b] === e) return b
+                        if (a.indexOf) return a.indexOf(b);
+                        e = 0;
+                        for (c = a.length; e < c; e++)
+                            if (a[e] === b) return e
                     }
                 return -1
             },
-            search: function(a, e) {
-                var b = CKEDITOR.tools.indexOf(a, e);
-                return 0 <= b ? a[b] : null
+            search: function(a, b) {
+                var e = CKEDITOR.tools.indexOf(a, b);
+                return 0 <= e ? a[e] : null
             },
-            bind: function(a, e) {
+            bind: function(a, b) {
                 return function() {
-                    return a.apply(e, arguments)
+                    return a.apply(b, arguments)
                 }
             },
             createClass: function(a) {
-                var e = a.$,
-                    b = a.base,
+                var b = a.$,
+                    e = a.base,
                     c = a.privates || a._,
-                    g = a.proto;
+                    h = a.proto;
                 a = a.statics;
-                !e && (e = function() {
-                    b &&
-                        this.base.apply(this, arguments)
+                !b && (b = function() {
+                    e && this.base.apply(this, arguments)
                 });
-                if (c) var d = e,
-                    e = function() {
+                if (c) var m = b,
+                    b = function() {
                         var a = this._ || (this._ = {}),
-                            e;
-                        for (e in c) {
-                            var b = c[e];
-                            a[e] = "function" == typeof b ? CKEDITOR.tools.bind(b, this) : b
+                            b;
+                        for (b in c) {
+                            var e = c[b];
+                            a[b] = "function" == typeof e ? CKEDITOR.tools.bind(e, this) : e
                         }
-                        d.apply(this, arguments)
+                        m.apply(this, arguments)
                     };
-                b && (e.prototype = this.prototypedCopy(b.prototype), e.prototype.constructor = e, e.base = b, e.baseProto = b.prototype, e.prototype.base = function() {
-                    this.base = b.prototype.base;
-                    b.apply(this, arguments);
-                    this.base = arguments.callee
-                });
-                g && this.extend(e.prototype, g, !0);
-                a && this.extend(e, a, !0);
-                return e
+                e &&
+                    (b.prototype = this.prototypedCopy(e.prototype), b.prototype.constructor = b, b.base = e, b.baseProto = e.prototype, b.prototype.base = function() {
+                        this.base = e.prototype.base;
+                        e.apply(this, arguments);
+                        this.base = arguments.callee
+                    });
+                h && this.extend(b.prototype, h, !0);
+                a && this.extend(b, a, !0);
+                return b
             },
-            addFunction: function(b, e) {
-                return a.push(function() {
-                    return b.apply(e ||
-                        this, arguments)
+            addFunction: function(a, e) {
+                return b.push(function() {
+                    return a.apply(e || this, arguments)
                 }) - 1
             },
-            removeFunction: function(b) {
-                a[b] = null
+            removeFunction: function(a) {
+                b[a] = null
             },
-            callFunction: function(b) {
-                var e = a[b];
-                return e && e.apply(window, Array.prototype.slice.call(arguments, 1))
+            callFunction: function(a) {
+                var e = b[a];
+                return e && e.apply(window, Array.prototype.slice.call(arguments,
+                    1))
             },
             cssLength: function() {
                 var a = /^-?\d+\.?\d*px$/,
-                    e;
-                return function(b) {
-                    e = CKEDITOR.tools.trim(b + "") + "px";
-                    return a.test(e) ? e : b || ""
+                    b;
+                return function(e) {
+                    b = CKEDITOR.tools.trim(e + "") + "px";
+                    return a.test(b) ? b : e || ""
                 }
             }(),
             convertToPx: function() {
                 var a;
-                return function(e) {
-                    a || (a = CKEDITOR.dom.element.createFromHtml('\x3cdiv style\x3d"position:absolute;left:-9999px;top:-9999px;margin:0px;padding:0px;border:0px;"\x3e\x3c/div\x3e', CKEDITOR.document),
-                        CKEDITOR.document.getBody().append(a));
-                    return /%$/.test(e) ? e : (a.setStyle("width", e), a.$.clientWidth)
+                return function(b) {
+                    a || (a = CKEDITOR.dom.element.createFromHtml('\x3cdiv style\x3d"position:absolute;left:-9999px;top:-9999px;margin:0px;padding:0px;border:0px;"\x3e\x3c/div\x3e', CKEDITOR.document), CKEDITOR.document.getBody().append(a));
+                    if (!/%$/.test(b)) {
+                        var e = 0 > parseFloat(b);
+                        e && (b = b.replace("-", ""));
+                        a.setStyle("width", b);
+                        b = a.$.clientWidth;
+                        return e ? -b : b
+                    }
+                    return b
                 }
             }(),
-            repeat: function(a, e) {
-                return Array(e + 1).join(a)
+            repeat: function(a, b) {
+                return Array(b + 1).join(a)
             },
             tryThese: function() {
-                for (var a, e = 0, b = arguments.length; e < b; e++) {
-                    var c = arguments[e];
+                for (var a, b = 0, e = arguments.length; b < e; b++) {
+                    var c = arguments[b];
                     try {
                         a = c();
                         break
-                    } catch (g) {}
+                    } catch (h) {}
                 }
                 return a
             },
@@ -634,166 +653,148 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             },
             defer: function(a) {
                 return function() {
-                    var e = arguments,
-                        b = this;
+                    var b = arguments,
+                        e = this;
                     window.setTimeout(function() {
-                        a.apply(b, e)
+                        a.apply(e, b)
                     }, 0)
                 }
             },
-            normalizeCssText: function(a, e) {
-                var b = [],
-                    c, g = CKEDITOR.tools.parseCssText(a,
-                        !0, e);
-                for (c in g) b.push(c + ":" + g[c]);
-                b.sort();
-                return b.length ? b.join(";") + ";" : ""
+            normalizeCssText: function(a, b) {
+                var e = [],
+                    c, h = CKEDITOR.tools.parseCssText(a, !0, b);
+                for (c in h) e.push(c + ":" + h[c]);
+                e.sort();
+                return e.length ?
+                    e.join(";") + ";" : ""
             },
             convertRgbToHex: function(a) {
-                return a.replace(/(?:rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\))/gi, function(a, b, c, g) {
-                    a = [b, c, g];
+                return a.replace(/(?:rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\))/gi, function(a, b, e, c) {
+                    a = [b, e, c];
                     for (b = 0; 3 > b; b++) a[b] = ("0" + parseInt(a[b], 10).toString(16)).slice(-2);
                     return "#" + a.join("")
                 })
             },
             normalizeHex: function(a) {
-                return a.replace(/#(([0-9a-f]{3}){1,2})($|;|\s+)/gi, function(a, b, c, g) {
+                return a.replace(/#(([0-9a-f]{3}){1,2})($|;|\s+)/gi, function(a, b, e, c) {
                     a = b.toLowerCase();
                     3 == a.length && (a = a.split(""), a = [a[0], a[0], a[1], a[1], a[2], a[2]].join(""));
-                    return "#" + a + g
+                    return "#" + a + c
                 })
             },
-            parseCssText: function(a,
-                e, b) {
+            parseCssText: function(a, b, e) {
                 var c = {};
-                b && (a = (new CKEDITOR.dom.element("span")).setAttribute("style", a).getAttribute("style") || "");
+                e && (a = (new CKEDITOR.dom.element("span")).setAttribute("style",
+                    a).getAttribute("style") || "");
                 a && (a = CKEDITOR.tools.normalizeHex(CKEDITOR.tools.convertRgbToHex(a)));
                 if (!a || ";" == a) return c;
-                a.replace(/&quot;/g, '"').replace(/\s*([^:;\s]+)\s*:\s*([^;]+)\s*(?=;|$)/g, function(a, b, g) {
-                    e && (b = b.toLowerCase(), "font-family" == b && (g = g.replace(/\s*,\s*/g, ",")), g = CKEDITOR.tools.trim(g));
-                    c[b] = g
+                a.replace(/&quot;/g, '"').replace(/\s*([^:;\s]+)\s*:\s*([^;]+)\s*(?=;|$)/g, function(a, e, x) {
+                    b && (e = e.toLowerCase(), "font-family" == e && (x = x.replace(/\s*,\s*/g, ",")), x = CKEDITOR.tools.trim(x));
+                    c[e] = x
                 });
                 return c
             },
-            writeCssText: function(a, e) {
-                var b, c = [];
-                for (b in a) c.push(b + ":" + a[b]);
-                e && c.sort();
+            writeCssText: function(a, b) {
+                var e, c = [];
+                for (e in a) c.push(e + ":" + a[e]);
+                b && c.sort();
                 return c.join("; ")
             },
-            objectCompare: function(a, e, b) {
+            objectCompare: function(a, b, e) {
                 var c;
-                if (!a && !e) return !0;
-                if (!a || !e) return !1;
+                if (!a && !b) return !0;
+                if (!a || !b) return !1;
                 for (c in a)
-                    if (a[c] != e[c]) return !1;
-                if (!b)
-                    for (c in e)
-                        if (a[c] != e[c]) return !1;
+                    if (a[c] != b[c]) return !1;
+                if (!e)
+                    for (c in b)
+                        if (a[c] != b[c]) return !1;
                 return !0
             },
             objectKeys: function(a) {
-                var e = [],
-                    b;
-                for (b in a) e.push(b);
-                return e
-            },
-            convertArrayToObject: function(a, e) {
-                var b = {};
-                1 == arguments.length && (e = !0);
-                for (var c = 0, g = a.length; c < g; ++c) b[a[c]] = e;
+                var b = [],
+                    e;
+                for (e in a) b.push(e);
                 return b
+            },
+            convertArrayToObject: function(a, b) {
+                var e = {};
+                1 == arguments.length && (b = !0);
+                for (var c = 0, h = a.length; c < h; ++c) e[a[c]] = b;
+                return e
             },
             fixDomain: function() {
                 for (var a;;) try {
                     a = window.parent.document.domain;
                     break
-                } catch (e) {
+                } catch (b) {
                     a = a ? a.replace(/.+?(?:\.|$)/, "") : document.domain;
                     if (!a) break;
-                    document.domain =
-                        a
+                    document.domain = a
                 }
                 return !!a
             },
-            eventsBuffer: function(a, e, b) {
-                function c() {
-                    d = (new Date).getTime();
-                    g = !1;
-                    b ? e.call(b) : e()
-                }
-                var g, d = 0;
-                return {
-                    input: function() {
-                        if (!g) {
-                            var e = (new Date).getTime() - d;
-                            e < a ? g = setTimeout(c, a - e) : c()
-                        }
-                    },
-                    reset: function() {
-                        g && clearTimeout(g);
-                        g = d = 0
-                    }
-                }
+            eventsBuffer: function(a, b, e) {
+                return new this.buffers.event(a,
+                    b, e)
             },
-            enableHtml5Elements: function(a, e) {
-                for (var b = "abbr article aside audio bdi canvas data datalist details figcaption figure footer header hgroup main mark meter nav output progress section summary time video".split(" "), c = b.length, g; c--;) g = a.createElement(b[c]),
-                    e && a.appendChild(g)
+            enableHtml5Elements: function(a, b) {
+                for (var e = "abbr article aside audio bdi canvas data datalist details figcaption figure footer header hgroup main mark meter nav output progress section summary time video".split(" "), c = e.length, h; c--;) h = a.createElement(e[c]), b && a.appendChild(h)
             },
-            checkIfAnyArrayItemMatches: function(a, e) {
-                for (var b = 0, c = a.length; b < c; ++b)
-                    if (a[b].match(e)) return !0;
+            checkIfAnyArrayItemMatches: function(a, b) {
+                for (var e = 0, c = a.length; e < c; ++e)
+                    if (a[e].match(b)) return !0;
                 return !1
             },
-            checkIfAnyObjectPropertyMatches: function(a, e) {
-                for (var b in a)
-                    if (b.match(e)) return !0;
+            checkIfAnyObjectPropertyMatches: function(a, b) {
+                for (var e in a)
+                    if (e.match(b)) return !0;
                 return !1
             },
-            keystrokeToString: function(a, e) {
-                var b = this.keystrokeToArray(a, e);
-                b.display = b.display.join("+");
-                b.aria = b.aria.join("+");
-                return b
+            keystrokeToString: function(a,
+                b) {
+                var e = this.keystrokeToArray(a, b);
+                e.display = e.display.join("+");
+                e.aria = e.aria.join("+");
+                return e
             },
-            keystrokeToArray: function(a, e) {
-                var b = e & 16711680,
-                    c = e & 65535,
-                    g = CKEDITOR.env.mac,
-                    d = [],
-                    n = [];
-                b & CKEDITOR.CTRL && (d.push(g ? "⌘" : a[17]), n.push(g ? a[224] : a[17]));
-                b & CKEDITOR.ALT && (d.push(g ? "⌥" : a[18]), n.push(a[18]));
-                b & CKEDITOR.SHIFT && (d.push(g ? "⇧" : a[16]), n.push(a[16]));
-                c && (a[c] ? (d.push(a[c]), n.push(a[c])) : (d.push(String.fromCharCode(c)), n.push(String.fromCharCode(c))));
+            keystrokeToArray: function(a, b) {
+                var e = b & 16711680,
+                    c = b & 65535,
+                    h = CKEDITOR.env.mac,
+                    m = [],
+                    d = [];
+                e & CKEDITOR.CTRL && (m.push(h ? "⌘" : a[17]), d.push(h ? a[224] : a[17]));
+                e & CKEDITOR.ALT && (m.push(h ? "⌥" : a[18]), d.push(a[18]));
+                e & CKEDITOR.SHIFT && (m.push(h ? "⇧" : a[16]), d.push(a[16]));
+                c && (a[c] ? (m.push(a[c]), d.push(a[c])) : (m.push(String.fromCharCode(c)), d.push(String.fromCharCode(c))));
                 return {
-                    display: d,
-                    aria: n
+                    display: m,
+                    aria: d
                 }
             },
             transparentImageData: "data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw\x3d\x3d",
             getCookie: function(a) {
                 a = a.toLowerCase();
-                for (var e = document.cookie.split(";"), b, c, g = 0; g < e.length; g++)
-                    if (b = e[g].split("\x3d"), c = decodeURIComponent(CKEDITOR.tools.trim(b[0]).toLowerCase()),
-                        c === a) return decodeURIComponent(1 < b.length ? b[1] : "");
+                for (var b = document.cookie.split(";"), e, c, h = 0; h < b.length; h++)
+                    if (e = b[h].split("\x3d"), c = decodeURIComponent(CKEDITOR.tools.trim(e[0]).toLowerCase()), c === a) return decodeURIComponent(1 < e.length ? e[1] : "");
                 return null
             },
-            setCookie: function(a, e) {
-                document.cookie = encodeURIComponent(a) + "\x3d" + encodeURIComponent(e) + ";path\x3d/"
+            setCookie: function(a, b) {
+                document.cookie = encodeURIComponent(a) + "\x3d" + encodeURIComponent(b) + ";path\x3d/"
             },
             getCsrfToken: function() {
                 var a = CKEDITOR.tools.getCookie("ckCsrfToken");
                 if (!a || 40 != a.length) {
                     var a = [],
-                        e = "";
-                    if (window.crypto && window.crypto.getRandomValues) a = new Uint8Array(40), window.crypto.getRandomValues(a);
+                        b = "";
+                    if (window.crypto && window.crypto.getRandomValues) a =
+                        new Uint8Array(40), window.crypto.getRandomValues(a);
                     else
-                        for (var b = 0; 40 > b; b++) a.push(Math.floor(256 * Math.random()));
-                    for (b = 0; b < a.length; b++) var c = "abcdefghijklmnopqrstuvwxyz0123456789".charAt(a[b] %
-                            36),
-                        e = e + (.5 < Math.random() ? c.toUpperCase() : c);
-                    a = e;
+                        for (var e = 0; 40 > e; e++) a.push(Math.floor(256 * Math.random()));
+                    for (e = 0; e < a.length; e++) var c = "abcdefghijklmnopqrstuvwxyz0123456789".charAt(a[e] % 36),
+                        b = b + (.5 < Math.random() ? c.toUpperCase() : c);
+                    a = b;
                     CKEDITOR.tools.setCookie("ckCsrfToken", a)
                 }
                 return a
@@ -803,31 +804,33 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             },
             getMouseButton: function(a) {
                 var b = (a = a.data) && a.$;
-                return a && b ? CKEDITOR.env.ie && 9 > CKEDITOR.env.version ? 4 === b.button ? CKEDITOR.MOUSE_BUTTON_MIDDLE : 1 === b.button ? CKEDITOR.MOUSE_BUTTON_LEFT : CKEDITOR.MOUSE_BUTTON_RIGHT : b.button : !1
+                return a &&
+                    b ? CKEDITOR.env.ie && 9 > CKEDITOR.env.version ? 4 === b.button ? CKEDITOR.MOUSE_BUTTON_MIDDLE : 1 === b.button ? CKEDITOR.MOUSE_BUTTON_LEFT : CKEDITOR.MOUSE_BUTTON_RIGHT : b.button : !1
             },
             convertHexStringToBytes: function(a) {
                 var b = [],
-                    c = a.length / 2,
-                    g;
-                for (g = 0; g < c; g++) b.push(parseInt(a.substr(2 * g, 2), 16));
+                    e = a.length / 2,
+                    c;
+                for (c = 0; c < e; c++) b.push(parseInt(a.substr(2 * c, 2), 16));
                 return b
             },
             convertBytesToBase64: function(a) {
                 var b = "",
-                    c = a.length,
-                    g;
-                for (g = 0; g < c; g += 3) {
-                    var d = a.slice(g, g + 3),
-                        n = d.length,
-                        f = [],
-                        m;
-                    if (3 > n)
-                        for (m = n; 3 > m; m++) d[m] = 0;
-                    f[0] = (d[0] & 252) >> 2;
-                    f[1] = (d[0] & 3) << 4 | d[1] >> 4;
-                    f[2] = (d[1] & 15) << 2 | (d[2] & 192) >> 6;
-                    f[3] = d[2] & 63;
-                    for (m = 0; 4 > m; m++) b = m <= n ? b + "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".charAt(f[m]) : b + "\x3d"
+                    e = a.length,
+                    c;
+                for (c = 0; c < e; c += 3) {
+                    var h = a.slice(c, c + 3),
+                        m = h.length,
+                        d = [],
+                        p;
+                    if (3 > m)
+                        for (p = m; 3 > p; p++) h[p] = 0;
+                    d[0] = (h[0] & 252) >> 2;
+                    d[1] = (h[0] & 3) << 4 | h[1] >> 4;
+                    d[2] = (h[1] & 15) << 2 | (h[2] & 192) >>
+                        6;
+                    d[3] = h[2] & 63;
+                    for (p = 0; 4 > p; p++) b = p <= m ? b + "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".charAt(d[p]) : b + "\x3d"
                 }
                 return b
             },
@@ -989,23 +992,24 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     _hslaRegExp: /hsla?\(\s*[0-9.]+\s*,\s*\d+%\s*,\s*\d+%\s*(?:,\s*[0-9.]+\s*)?\)/gi,
                     background: function(a) {
                         var b = {},
-                            c = this._findColor(a);
-                        c.length && (b.color = c[0], CKEDITOR.tools.array.forEach(c, function(b) {
-                            a = a.replace(b, "")
-                        }));
+                            e = this._findColor(a);
+                        e.length && (b.color = e[0], CKEDITOR.tools.array.forEach(e,
+                            function(b) {
+                                a = a.replace(b, "")
+                            }));
                         if (a = CKEDITOR.tools.trim(a)) b.unprocessed = a;
                         return b
                     },
                     margin: function(a) {
                         function b(a) {
-                            c.top = g[a[0]];
-                            c.right = g[a[1]];
-                            c.bottom = g[a[2]];
-                            c.left = g[a[3]]
+                            e.top = c[a[0]];
+                            e.right = c[a[1]];
+                            e.bottom = c[a[2]];
+                            e.left = c[a[3]]
                         }
-                        var c = {},
-                            g = a.match(/(?:\-?[\.\d]+(?:%|\w*)|auto|inherit|initial|unset)/g) || ["0px"];
-                        switch (g.length) {
+                        var e = {},
+                            c = a.match(/(?:\-?[\.\d]+(?:%|\w*)|auto|inherit|initial|unset)/g) || ["0px"];
+                        switch (c.length) {
                             case 1:
                                 b([0, 0, 0, 0]);
                                 break;
@@ -1018,96 +1022,121 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                             case 4:
                                 b([0, 1, 2, 3])
                         }
-                        return c
+                        return e
                     },
                     border: function(a) {
                         var b = {},
-                            c = a.split(/\s+/g);
+                            e = a.split(/\s+/g);
                         a = CKEDITOR.tools.style.parse._findColor(a);
                         a.length && (b.color = a[0]);
-                        CKEDITOR.tools.array.forEach(c, function(a) {
+                        CKEDITOR.tools.array.forEach(e, function(a) {
                             b.style || -1 === CKEDITOR.tools.indexOf(CKEDITOR.tools.style.parse._borderStyle, a) ? !b.width && CKEDITOR.tools.style.parse._widthRegExp.test(a) && (b.width = a) : b.style = a
                         });
                         return b
                     },
                     _findColor: function(a) {
                         var b = [],
-                            c = CKEDITOR.tools.array,
+                            e = CKEDITOR.tools.array,
                             b = b.concat(a.match(this._rgbaRegExp) || []),
                             b = b.concat(a.match(this._hslaRegExp) || []);
-                        return b = b.concat(c.filter(a.split(/\s+/), function(a) {
+                        return b = b.concat(e.filter(a.split(/\s+/), function(a) {
                             return a.match(/^\#[a-f0-9]{3}(?:[a-f0-9]{3})?$/gi) ? !0 : a.toLowerCase() in CKEDITOR.tools.style.parse._colors
                         }))
                     }
                 }
             },
             array: {
-                filter: function(a, b, c) {
-                    var g = [];
-                    this.forEach(a, function(d, n) {
-                        b.call(c, d, n, a) && g.push(d)
+                filter: function(a, b, e) {
+                    var c = [];
+                    this.forEach(a, function(h, d) {
+                        b.call(e, h, d, a) && c.push(h)
                     });
-                    return g
-                },
-                forEach: function(a, b, c) {
-                    var g = a.length,
-                        d;
-                    for (d = 0; d < g; d++) b.call(c, a[d], d, a)
-                },
-                map: function(a, b, c) {
-                    for (var g = [], d = 0; d < a.length; d++) g.push(b.call(c,
-                        a[d], d, a));
-                    return g
-                },
-                reduce: function(a, b, c, g) {
-                    for (var d = 0; d < a.length; d++) c = b.call(g, c, a[d], d, a);
                     return c
                 },
-                every: function(a, b, c) {
+                forEach: function(a, b, e) {
+                    var c = a.length,
+                        h;
+                    for (h = 0; h < c; h++) b.call(e, a[h], h, a)
+                },
+                map: function(a, b, e) {
+                    for (var c = [], h = 0; h < a.length; h++) c.push(b.call(e, a[h], h, a));
+                    return c
+                },
+                reduce: function(a, b, e, c) {
+                    for (var h = 0; h < a.length; h++) e = b.call(c, e, a[h], h, a);
+                    return e
+                },
+                every: function(a, b, e) {
                     if (!a.length) return !0;
-                    b = this.filter(a, b, c);
+                    b = this.filter(a, b, e);
                     return a.length === b.length
                 }
             },
             object: {
                 findKey: function(a, b) {
                     if ("object" !== typeof a) return null;
-                    for (var c in a)
-                        if (a[c] === b) return c;
+                    for (var e in a)
+                        if (a[e] === b) return e;
                     return null
                 },
                 merge: function(a, b) {
-                    var c = CKEDITOR.tools,
-                        g = c.clone(a),
-                        d = c.clone(b);
-                    c.array.forEach(c.objectKeys(d), function(a) {
-                        g[a] = "object" === typeof d[a] && "object" === typeof g[a] ? c.object.merge(g[a], d[a]) :
-                            d[a]
+                    var e = CKEDITOR.tools,
+                        c = e.clone(a),
+                        h = e.clone(b);
+                    e.array.forEach(e.objectKeys(h), function(a) {
+                        c[a] = "object" === typeof h[a] && "object" === typeof c[a] ? e.object.merge(c[a], h[a]) : h[a]
                     });
-                    return g
+                    return c
                 }
             },
             getAbsoluteRectPosition: function(a, b) {
-                function c(a) {
+                function e(a) {
                     if (a) {
                         var b = a.getClientRect();
-                        g.top += b.top;
-                        g.left += b.left;
-                        "x" in g && "y" in g && (g.x += b.x, g.y += b.y);
-                        c(a.getWindow().getFrame())
+                        c.top += b.top;
+                        c.left += b.left;
+                        "x" in c && "y" in c && (c.x += b.x, c.y += b.y);
+                        e(a.getWindow().getFrame())
                     }
                 }
-                var g = CKEDITOR.tools.copy(b);
-                c(a.getFrame());
-                var d = CKEDITOR.document.getWindow().getScrollPosition();
-                g.top += d.y;
-                g.left += d.x;
-                "x" in g && "y" in g && (g.y += d.y, g.x += d.x);
-                g.right = g.left + g.width;
-                g.bottom = g.top + g.height;
-                return g
+                var c = CKEDITOR.tools.copy(b);
+                e(a.getFrame());
+                var h = CKEDITOR.document.getWindow().getScrollPosition();
+                c.top += h.y;
+                c.left += h.x;
+                "x" in c && "y" in c && (c.y += h.y, c.x += h.x);
+                c.right = c.left + c.width;
+                c.bottom = c.top + c.height;
+                return c
             }
         };
+        a.prototype = {
+            reset: function() {
+                this._lastOutput = 0;
+                this._clearTimer()
+            },
+            _reschedule: function() {
+                return !1
+            },
+            _call: function() {
+                this._output()
+            },
+            _clearTimer: function() {
+                this._scheduledTimer && clearTimeout(this._scheduledTimer);
+                this._scheduledTimer = 0
+            }
+        };
+        d.prototype = CKEDITOR.tools.prototypedCopy(a.prototype);
+        d.prototype._reschedule = function() {
+            this._scheduledTimer && this._clearTimer()
+        };
+        d.prototype._call =
+            function() {
+                this._output.apply(this._context, this._args)
+            };
+        CKEDITOR.tools.buffers = {};
+        CKEDITOR.tools.buffers.event = a;
+        CKEDITOR.tools.buffers.throttle = d;
         CKEDITOR.tools.array.indexOf = CKEDITOR.tools.indexOf;
         CKEDITOR.tools.array.isArray = CKEDITOR.tools.isArray;
         CKEDITOR.MOUSE_BUTTON_LEFT = 0;
@@ -1117,8 +1146,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
     CKEDITOR.dtd = function() {
         var a = CKEDITOR.tools.extend,
             d = function(a, b) {
-                for (var c = CKEDITOR.tools.clone(a), g = 1; g < arguments.length; g++) {
-                    b = arguments[g];
+                for (var c = CKEDITOR.tools.clone(a), h = 1; h < arguments.length; h++) {
+                    b = arguments[h];
                     for (var d in b) delete c[d]
                 }
                 return c
@@ -1156,7 +1185,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 table: 1,
                 ul: 1
             },
-            h = {
+            g = {
                 command: 1,
                 link: 1,
                 meta: 1,
@@ -1165,10 +1194,10 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 style: 1
             },
             k = {},
-            g = {
+            h = {
                 "#": 1
             },
-            n = {
+            p = {
                 center: 1,
                 dir: 1,
                 noframes: 1
@@ -1224,7 +1253,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             "var": 1,
             video: 1,
             wbr: 1
-        }, g, {
+        }, h, {
             acronym: 1,
             applet: 1,
             basefont: 1,
@@ -1235,7 +1264,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             style: 1,
             tt: 1
         });
-        a(c, f, b, n);
+        a(c, f, b, p);
         d = {
             a: d(b, {
                 a: 1,
@@ -1305,7 +1334,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             head: a({
                 title: 1,
                 base: 1
-            }, h),
+            }, g),
             header: c,
             hgroup: {
                 h1: 1,
@@ -1319,9 +1348,9 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             html: a({
                 head: 1,
                 body: 1
-            }, c, h),
+            }, c, g),
             i: b,
-            iframe: g,
+            iframe: h,
             img: k,
             input: k,
             ins: b,
@@ -1356,7 +1385,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             optgroup: {
                 option: 1
             },
-            option: g,
+            option: h,
             output: b,
             p: b,
             param: k,
@@ -1373,7 +1402,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             }, b),
             s: b,
             samp: b,
-            script: g,
+            script: h,
             section: c,
             select: {
                 optgroup: 1,
@@ -1383,7 +1412,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             source: k,
             span: b,
             strong: b,
-            style: g,
+            style: h,
             sub: b,
             summary: a({
                 h1: 1,
@@ -1406,7 +1435,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 tr: 1
             },
             td: c,
-            textarea: g,
+            textarea: h,
             tfoot: {
                 tr: 1
             },
@@ -1417,7 +1446,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             time: d(b, {
                 time: 1
             }),
-            title: g,
+            title: h,
             tr: {
                 th: 1,
                 td: 1
@@ -1458,7 +1487,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 figcaption: 1,
                 li: 1,
                 video: 1
-            }, f, n),
+            }, f, p),
             $blockLimit: {
                 article: 1,
                 aside: 1,
@@ -1784,9 +1813,9 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         a.removeCustomData = function(a) {
             var c = this.$["data-cke-expando"],
                 c = c && d[c],
-                f, h;
-            c && (f = c[a], h = a in c, delete c[a]);
-            return h ? f : null
+                f, g;
+            c && (f = c[a], g = a in c, delete c[a]);
+            return g ? f : null
         };
         a.clearCustomData = function() {
             this.removeAllListeners();
@@ -1880,9 +1909,9 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         },
         getIndex: function(a) {
             function d(a, c) {
-                var n = c ? a.nextSibling : a.previousSibling;
-                return n && n.nodeType == CKEDITOR.NODE_TEXT ? b(n) ? d(n,
-                    c) : n : null
+                var p = c ? a.nextSibling : a.previousSibling;
+                return p && p.nodeType == CKEDITOR.NODE_TEXT ? b(p) ? d(p,
+                    c) : p : null
             }
 
             function b(a) {
@@ -1890,9 +1919,9 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             }
             var c = this.$,
                 f = -1,
-                h;
+                g;
             if (!this.$.parentNode || a && c.nodeType == CKEDITOR.NODE_TEXT && b(c) && !d(c) && !d(c, !0)) return -1;
-            do a && c != this.$ && c.nodeType == CKEDITOR.NODE_TEXT && (h || b(c)) || (f++, h = c.nodeType == CKEDITOR.NODE_TEXT); while (c = c.previousSibling);
+            do a && c != this.$ && c.nodeType == CKEDITOR.NODE_TEXT && (g || b(c)) || (f++, g = c.nodeType == CKEDITOR.NODE_TEXT); while (c = c.previousSibling);
             return f
         },
         getNextSourceNode: function(a, d, b) {
@@ -1998,7 +2027,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 if (c(f ? new CKEDITOR.dom.node(b) : b)) return new CKEDITOR.dom.node(b);
                 try {
                     b = b.parentNode
-                } catch (h) {
+                } catch (g) {
                     b = null
                 }
             }
@@ -2170,11 +2199,11 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     this.$.documentElement, c = 0; b && c < a.length; c++) {
                 var f = a[c];
                 if (d)
-                    for (var h = -1, k = 0; k < b.childNodes.length; k++) {
-                        var g = b.childNodes[k];
-                        if (!0 !== d || 3 != g.nodeType || !g.previousSibling || 3 != g.previousSibling.nodeType)
-                            if (h++, h == f) {
-                                b = g;
+                    for (var g = -1, k = 0; k < b.childNodes.length; k++) {
+                        var h = b.childNodes[k];
+                        if (!0 !== d || 3 != h.nodeType || !h.previousSibling || 3 != h.previousSibling.nodeType)
+                            if (g++, g == f) {
+                                b = h;
                                 break
                             }
                     } else b = b.childNodes[f]
@@ -2248,9 +2277,9 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
     };
     CKEDITOR.dom.element.setMarker = function(a, d, b, c) {
         var f = d.getCustomData("list_marker_id") || d.setCustomData("list_marker_id", CKEDITOR.tools.getNextNumber()).getCustomData("list_marker_id"),
-            h = d.getCustomData("list_marker_names") || d.setCustomData("list_marker_names", {}).getCustomData("list_marker_names");
+            g = d.getCustomData("list_marker_names") || d.setCustomData("list_marker_names", {}).getCustomData("list_marker_names");
         a[f] = d;
-        h[b] = 1;
+        g[b] = 1;
         return d.setCustomData(b, c)
     };
     CKEDITOR.dom.element.clearAllMarkers = function(a) {
@@ -2259,14 +2288,14 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
     CKEDITOR.dom.element.clearMarkers = function(a, d, b) {
         var c = d.getCustomData("list_marker_names"),
             f = d.getCustomData("list_marker_id"),
-            h;
-        for (h in c) d.removeCustomData(h);
+            g;
+        for (g in c) d.removeCustomData(g);
         d.removeCustomData("list_marker_names");
         b && (d.removeCustomData("list_marker_id"), delete a[f])
     };
     (function() {
         function a(a, b) {
-            return -1 < (" " + a + " ").replace(h, " ").indexOf(" " + b + " ")
+            return -1 < (" " + a + " ").replace(g, " ").indexOf(" " + b + " ")
         }
 
         function d(a) {
@@ -2289,7 +2318,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         var f = document.createElement("_").classList,
             f = "undefined" !== typeof f &&
             null !== String(f.add).match(/\[Native code\]/gi),
-            h = /[\n\t\r]/g;
+            g = /[\n\t\r]/g;
         CKEDITOR.tools.extend(CKEDITOR.dom.element.prototype, {
             type: CKEDITOR.NODE_ELEMENT,
             addClass: f ? function(a) {
@@ -2616,10 +2645,10 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         for (var d = []; c.data("cke-bookmark") || c.isEmptyInlineRemoveable();)
                             if (d.push(c), c = e ? c.getNext() : c.getPrevious(), !c || c.type != CKEDITOR.NODE_ELEMENT) return;
                         if (b.isIdentical(c)) {
-                            for (var g = e ? b.getLast() : b.getFirst(); d.length;) d.shift().move(b, !e);
+                            for (var h = e ? b.getLast() : b.getFirst(); d.length;) d.shift().move(b, !e);
                             c.moveChildren(b, !e);
                             c.remove();
-                            g && g.type == CKEDITOR.NODE_ELEMENT && g.mergeSiblings()
+                            h && h.type == CKEDITOR.NODE_ELEMENT && h.mergeSiblings()
                         }
                     }
                 }
@@ -2682,8 +2711,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     "border" == a && (e = ["color", "style", "width"]);
                     for (var b = [], d = 0; d < c.length; d++)
                         if (e)
-                            for (var v =
-                                    0; v < e.length; v++) b.push([a, c[d], e[v]].join("-"));
+                            for (var w =
+                                    0; w < e.length; w++) b.push([a, c[d], e[w]].join("-"));
                         else b.push([a, c[d]].join("-"));
                     for (a = 0; a < b.length; a++) this.removeStyle(b[a])
                 }
@@ -2720,29 +2749,29 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     c = 0,
                     e = this.getDocument(),
                     d = e.getBody(),
-                    v = "BackCompat" == e.$.compatMode;
+                    w = "BackCompat" == e.$.compatMode;
                 if (document.documentElement.getBoundingClientRect && (CKEDITOR.env.ie ?
                         8 !== CKEDITOR.env.version : 1)) {
                     var f = this.$.getBoundingClientRect(),
-                        h = e.$.documentElement,
-                        x = h.clientTop || d.$.clientTop || 0,
-                        m = h.clientLeft || d.$.clientLeft || 0,
+                        g = e.$.documentElement,
+                        v = g.clientTop || d.$.clientTop || 0,
+                        m = g.clientLeft || d.$.clientLeft || 0,
                         k = !0;
-                    CKEDITOR.env.ie && (k = e.getDocumentElement().contains(this), e = e.getBody().contains(this), k = v && e || !v && k);
-                    k && (CKEDITOR.env.webkit || CKEDITOR.env.ie && 12 <= CKEDITOR.env.version ? (b = d.$.scrollLeft || h.scrollLeft, c = d.$.scrollTop || h.scrollTop) : (c = v ? d.$ : h, b = c.scrollLeft, c = c.scrollTop), b = f.left + b - m, c = f.top + c - x)
+                    CKEDITOR.env.ie && (k = e.getDocumentElement().contains(this), e = e.getBody().contains(this), k = w && e || !w && k);
+                    k && (CKEDITOR.env.webkit || CKEDITOR.env.ie && 12 <= CKEDITOR.env.version ? (b = d.$.scrollLeft || g.scrollLeft, c = d.$.scrollTop || g.scrollTop) : (c = w ? d.$ : g, b = c.scrollLeft, c = c.scrollTop), b = f.left + b - m, c = f.top + c - v)
                 } else
-                    for (x = this, m = null; x && "body" != x.getName() &&
-                        "html" != x.getName();) {
-                        b += x.$.offsetLeft - x.$.scrollLeft;
-                        c += x.$.offsetTop - x.$.scrollTop;
-                        x.equals(this) || (b += x.$.clientLeft || 0, c += x.$.clientTop || 0);
-                        for (; m && !m.equals(x);) b -= m.$.scrollLeft, c -= m.$.scrollTop, m = m.getParent();
-                        m = x;
-                        x = (f = x.$.offsetParent) ? new CKEDITOR.dom.element(f) : null
+                    for (v = this, m = null; v && "body" != v.getName() &&
+                        "html" != v.getName();) {
+                        b += v.$.offsetLeft - v.$.scrollLeft;
+                        c += v.$.offsetTop - v.$.scrollTop;
+                        v.equals(this) || (b += v.$.clientLeft || 0, c += v.$.clientTop || 0);
+                        for (; m && !m.equals(v);) b -= m.$.scrollLeft, c -= m.$.scrollTop, m = m.getParent();
+                        m = v;
+                        v = (f = v.$.offsetParent) ? new CKEDITOR.dom.element(f) : null
                     }
-                a && (f = this.getWindow(), x = a.getWindow(), !f.equals(x) && f.$.frameElement && (a = (new CKEDITOR.dom.element(f.$.frameElement)).getDocumentPosition(a), b += a.x, c += a.y));
+                a && (f = this.getWindow(), v = a.getWindow(), !f.equals(v) && f.$.frameElement && (a = (new CKEDITOR.dom.element(f.$.frameElement)).getDocumentPosition(a), b += a.x, c += a.y));
                 document.documentElement.getBoundingClientRect || !CKEDITOR.env.gecko ||
-                    v || (b += this.$.clientLeft ? 1 : 0, c += this.$.clientTop ? 1 : 0);
+                    w || (b += this.$.clientLeft ? 1 : 0, c += this.$.clientTop ? 1 : 0);
                 return {
                     x: b,
                     y: c
@@ -2762,14 +2791,14 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 }
             },
             scrollIntoParent: function(a, b, c) {
-                var e, d, v, f;
+                var e, d, w, f;
 
-                function h(b, c) {
+                function g(b, c) {
                     /body|html/.test(a.getName()) ?
                         a.getWindow().$.scrollBy(b, c) : (a.$.scrollLeft += b, a.$.scrollTop += c)
                 }
 
-                function x(a, b) {
+                function v(a, b) {
                     var c = {
                         x: 0,
                         y: 0
@@ -2780,30 +2809,30 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         c.y = e.top
                     }
                     e = a.getWindow();
-                    e.equals(b) || (e = x(CKEDITOR.dom.element.get(e.$.frameElement), b), c.x += e.x, c.y += e.y);
+                    e.equals(b) || (e = v(CKEDITOR.dom.element.get(e.$.frameElement), b), c.x += e.x, c.y += e.y);
                     return c
                 }
 
                 function m(a, b) {
                     return parseInt(a.getComputedStyle("margin-" + b) || 0, 10) || 0
                 }!a && (a = this.getWindow());
-                v = a.getDocument();
-                var k = "BackCompat" == v.$.compatMode;
-                a instanceof CKEDITOR.dom.window && (a = k ? v.getBody() : v.getDocumentElement());
-                CKEDITOR.env.webkit && (v = this.getEditor(!1)) && (v._.previousScrollTop = null);
-                v = a.getWindow();
-                d = x(this, v);
-                var u = x(a, v),
-                    K = this.$.offsetHeight;
+                w = a.getDocument();
+                var k = "BackCompat" == w.$.compatMode;
+                a instanceof CKEDITOR.dom.window && (a = k ? w.getBody() : w.getDocumentElement());
+                CKEDITOR.env.webkit && (w = this.getEditor(!1)) && (w._.previousScrollTop = null);
+                w = a.getWindow();
+                d = v(this, w);
+                var u = v(a, w),
+                    H = this.$.offsetHeight;
                 e = this.$.offsetWidth;
-                var l = a.$.clientHeight,
-                    t = a.$.clientWidth;
-                v = d.x - m(this, "left") - u.x || 0;
+                var n = a.$.clientHeight,
+                    r = a.$.clientWidth;
+                w = d.x - m(this, "left") - u.x || 0;
                 f = d.y - m(this, "top") - u.y || 0;
-                e = d.x + e + m(this, "right") - (u.x + t) || 0;
-                d = d.y + K + m(this, "bottom") - (u.y + l) || 0;
-                (0 > f || 0 < d) && h(0, !0 === b ? f : !1 === b ? d : 0 > f ? f : d);
-                c && (0 > v || 0 < e) && h(0 > v ? v : e, 0)
+                e = d.x + e + m(this, "right") - (u.x + r) || 0;
+                d = d.y + H + m(this, "bottom") - (u.y + n) || 0;
+                (0 > f || 0 < d) && g(0, !0 === b ? f : !1 === b ? d : 0 > f ? f : d);
+                c && (0 > w || 0 < e) && g(0 > w ? w : e, 0)
             },
             setState: function(a, b, c) {
                 b = b || "cke";
@@ -2841,11 +2870,11 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 b = b || {};
                 for (var e = 0; e < c.length; e++) {
                     var d = c[e],
-                        v = d.nodeName.toLowerCase(),
+                        w = d.nodeName.toLowerCase(),
                         f;
-                    if (!(v in b))
-                        if ("checked" == v && (f = this.getAttribute(v))) a.setAttribute(v, f);
-                        else if (!CKEDITOR.env.ie || this.hasAttribute(v)) f = this.getAttribute(v), null === f && (f = d.nodeValue), a.setAttribute(v, f)
+                    if (!(w in b))
+                        if ("checked" == w && (f = this.getAttribute(w))) a.setAttribute(w, f);
+                        else if (!CKEDITOR.env.ie || this.hasAttribute(w)) f = this.getAttribute(w), null === f && (f = d.nodeValue), a.setAttribute(w, f)
                 }
                 "" !== this.$.style.cssText &&
                     (a.$.style.cssText = this.$.style.cssText)
@@ -2990,37 +3019,37 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             var e, d = c.startContainer;
             e = c.endContainer;
             var f = c.startOffset,
-                y = c.endOffset,
-                h, l = this.guard,
-                t = this.type,
-                g = a ? "getPreviousSourceNode" : "getNextSourceNode";
+                x = c.endOffset,
+                g, n = this.guard,
+                r = this.type,
+                C = a ? "getPreviousSourceNode" : "getNextSourceNode";
             if (!a && !this._.guardLTR) {
                 var L = e.type == CKEDITOR.NODE_ELEMENT ? e : e.getParent(),
-                    C = e.type == CKEDITOR.NODE_ELEMENT ? e.getChild(y) : e.getNext();
+                    D = e.type == CKEDITOR.NODE_ELEMENT ? e.getChild(x) : e.getNext();
                 this._.guardLTR = function(a, b) {
-                    return (!b || !L.equals(a)) && (!C ||
-                        !a.equals(C)) && (a.type != CKEDITOR.NODE_ELEMENT || !b || !a.equals(c.root))
+                    return (!b || !L.equals(a)) && (!D ||
+                        !a.equals(D)) && (a.type != CKEDITOR.NODE_ELEMENT || !b || !a.equals(c.root))
                 }
             }
             if (a && !this._.guardRTL) {
-                var k = d.type == CKEDITOR.NODE_ELEMENT ? d : d.getParent(),
-                    q = d.type == CKEDITOR.NODE_ELEMENT ? f ? d.getChild(f - 1) : null : d.getPrevious();
+                var h = d.type == CKEDITOR.NODE_ELEMENT ? d : d.getParent(),
+                    t = d.type == CKEDITOR.NODE_ELEMENT ? f ? d.getChild(f - 1) : null : d.getPrevious();
                 this._.guardRTL = function(a, b) {
-                    return (!b || !k.equals(a)) && (!q || !a.equals(q)) && (a.type != CKEDITOR.NODE_ELEMENT || !b || !a.equals(c.root))
+                    return (!b || !h.equals(a)) && (!t || !a.equals(t)) && (a.type != CKEDITOR.NODE_ELEMENT || !b || !a.equals(c.root))
                 }
             }
             var E = a ? this._.guardRTL : this._.guardLTR;
-            h = l ? function(a, b) {
-                return !1 === E(a, b) ? !1 : l(a, b)
+            g = n ? function(a, b) {
+                return !1 === E(a, b) ? !1 : n(a, b)
             } : E;
-            this.current ? e = this.current[g](!1, t, h) : (a ? e.type == CKEDITOR.NODE_ELEMENT &&
-                (e = 0 < y ? e.getChild(y - 1) : !1 === h(e, !0) ? null : e.getPreviousSourceNode(!0, t, h)) : (e = d, e.type == CKEDITOR.NODE_ELEMENT && ((e = e.getChild(f)) || (e = !1 === h(d, !0) ? null : d.getNextSourceNode(!0, t, h)))), e && !1 === h(e) && (e = null));
+            this.current ? e = this.current[C](!1, r, g) : (a ? e.type == CKEDITOR.NODE_ELEMENT &&
+                (e = 0 < x ? e.getChild(x - 1) : !1 === g(e, !0) ? null : e.getPreviousSourceNode(!0, r, g)) : (e = d, e.type == CKEDITOR.NODE_ELEMENT && ((e = e.getChild(f)) || (e = !1 === g(d, !0) ? null : d.getNextSourceNode(!0, r, g)))), e && !1 === g(e) && (e = null));
             for (; e && !this._.end;) {
                 this.current = e;
                 if (!this.evaluator || !1 !== this.evaluator(e)) {
                     if (!b) return e
                 } else if (b && this.evaluator) return !1;
-                e = e[g](!1, t, h)
+                e = e[C](!1, r, g)
             }
             this.end();
             return this.current = null
@@ -3128,7 +3157,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         };
         CKEDITOR.dom.walker.bogus = function(a) {
             function b(a) {
-                return !h(a) && !k(a)
+                return !g(a) && !k(a)
             }
             return function(c) {
                 var e = CKEDITOR.env.needsBrFiller ? c.is && c.is("br") : c.getText && f.test(c.getText());
@@ -3145,29 +3174,29 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             }
         };
         var f = /^[\t\r\n ]*(?:&nbsp;|\xa0)$/,
-            h = CKEDITOR.dom.walker.whitespaces(),
+            g = CKEDITOR.dom.walker.whitespaces(),
             k = CKEDITOR.dom.walker.bookmark(),
-            g = CKEDITOR.dom.walker.temp(),
-            n = function(a) {
-                return k(a) || h(a) || a.type == CKEDITOR.NODE_ELEMENT && a.is(CKEDITOR.dtd.$inline) && !a.is(CKEDITOR.dtd.$empty)
+            h = CKEDITOR.dom.walker.temp(),
+            p = function(a) {
+                return k(a) || g(a) || a.type == CKEDITOR.NODE_ELEMENT && a.is(CKEDITOR.dtd.$inline) && !a.is(CKEDITOR.dtd.$empty)
             };
         CKEDITOR.dom.walker.ignored =
             function(a) {
                 return function(b) {
-                    b = h(b) || k(b) || g(b);
+                    b = g(b) || k(b) || h(b);
                     return !!(a ^ b)
                 }
             };
-        var r = CKEDITOR.dom.walker.ignored();
+        var q = CKEDITOR.dom.walker.ignored();
         CKEDITOR.dom.walker.empty = function(a) {
             return function(b) {
                 for (var c = 0, e = b.getChildCount(); c < e; ++c)
-                    if (!r(b.getChild(c))) return !!a;
+                    if (!q(b.getChild(c))) return !!a;
                 return !a
             }
         };
         var e = CKEDITOR.dom.walker.empty(),
-            y = CKEDITOR.dom.walker.validEmptyBlockContainers = CKEDITOR.tools.extend(function(a) {
+            x = CKEDITOR.dom.walker.validEmptyBlockContainers = CKEDITOR.tools.extend(function(a) {
                 var b = {},
                     c;
                 for (c in a) CKEDITOR.dtd[c]["#"] && (b[c] = 1);
@@ -3180,13 +3209,13 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         CKEDITOR.dom.walker.editable = function(a) {
             return function(b) {
                 b =
-                    r(b) ? !1 : b.type == CKEDITOR.NODE_TEXT || b.type == CKEDITOR.NODE_ELEMENT && (b.is(CKEDITOR.dtd.$inline) || b.is("hr") || "false" == b.getAttribute("contenteditable") || !CKEDITOR.env.needsBrFiller && b.is(y) && e(b)) ? !0 : !1;
+                    q(b) ? !1 : b.type == CKEDITOR.NODE_TEXT || b.type == CKEDITOR.NODE_ELEMENT && (b.is(CKEDITOR.dtd.$inline) || b.is("hr") || "false" == b.getAttribute("contenteditable") || !CKEDITOR.env.needsBrFiller && b.is(x) && e(b)) ? !0 : !1;
                 return !!(a ^ b)
             }
         };
         CKEDITOR.dom.element.prototype.getBogus = function() {
             var a = this;
-            do a = a.getPreviousSourceNode(); while (n(a));
+            do a = a.getPreviousSourceNode(); while (p(a));
             return a && (CKEDITOR.env.needsBrFiller ? a.is && a.is("br") : a.getText && f.test(a.getText())) ? a : !1
         }
     })();
@@ -3203,64 +3232,64 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         }
 
         function d(a, b, c, d, f) {
-            function h(a, b, c, e) {
-                var d = c ? a.getPrevious() : a.getNext();
-                if (e && k) return d;
-                l || e ? b.append(a.clone(!0, f), c) : (a.remove(), r && b.append(a, c));
-                return d
+            function g(a, b, c, e) {
+                var G = c ? a.getPrevious() : a.getNext();
+                if (e && k) return G;
+                n || e ? b.append(a.clone(!0, f), c) : (a.remove(), q && b.append(a, c));
+                return G
             }
 
             function m() {
-                var a, b, c, e = Math.min(O.length, p.length);
+                var a, b, c, e = Math.min(O.length, l.length);
                 for (a = 0; a < e; a++)
-                    if (b = O[a], c = p[a], !b.equals(c)) return a;
+                    if (b = O[a], c = l[a], !b.equals(c)) return a;
                 return a - 1
             }
 
-            function g() {
-                var b = N - 1,
-                    c = E && z && !t.equals(F);
-                b < w - 1 || b < B - 1 || c ? (c ? a.moveToPosition(F,
-                    CKEDITOR.POSITION_BEFORE_START) : B == b + 1 && q ? a.moveToPosition(p[b], CKEDITOR.POSITION_BEFORE_END) : a.moveToPosition(p[b + 1], CKEDITOR.POSITION_BEFORE_START), d && (b = O[b + 1]) && b.type == CKEDITOR.NODE_ELEMENT && (c = CKEDITOR.dom.element.createFromHtml('\x3cspan data-cke-bookmark\x3d"1" style\x3d"display:none"\x3e\x26nbsp;\x3c/span\x3e', a.document), c.insertAfter(b), b.mergeSiblings(!1), a.moveToBookmark({
+            function h() {
+                var b = K - 1,
+                    c = E && y && !r.equals(C);
+                b < B - 1 || b < A - 1 || c ? (c ? a.moveToPosition(C,
+                    CKEDITOR.POSITION_BEFORE_START) : A == b + 1 && t ? a.moveToPosition(l[b], CKEDITOR.POSITION_BEFORE_END) : a.moveToPosition(l[b + 1], CKEDITOR.POSITION_BEFORE_START), d && (b = O[b + 1]) && b.type == CKEDITOR.NODE_ELEMENT && (c = CKEDITOR.dom.element.createFromHtml('\x3cspan data-cke-bookmark\x3d"1" style\x3d"display:none"\x3e\x26nbsp;\x3c/span\x3e', a.document), c.insertAfter(b), b.mergeSiblings(!1), a.moveToBookmark({
                     startNode: c
                 }))) : a.collapse(!0)
             }
             a.optimizeBookmark();
             var k = 0 === b,
-                r = 1 == b,
-                l = 2 == b;
-            b = l || r;
-            var t = a.startContainer,
-                F = a.endContainer,
+                q = 1 == b,
+                n = 2 == b;
+            b = n || q;
+            var r = a.startContainer,
+                C = a.endContainer,
                 L = a.startOffset,
-                C = a.endOffset,
-                M, q, E, z, H, P;
-            if (l && F.type == CKEDITOR.NODE_TEXT && (t.equals(F) || t.type === CKEDITOR.NODE_ELEMENT && t.getFirst().equals(F))) c.append(a.document.createText(F.substring(L, C)));
+                D = a.endOffset,
+                N, t, E, y, I, P;
+            if (n && C.type == CKEDITOR.NODE_TEXT && (r.equals(C) || r.type === CKEDITOR.NODE_ELEMENT && r.getFirst().equals(C))) c.append(a.document.createText(C.substring(L, D)));
             else {
-                F.type == CKEDITOR.NODE_TEXT ? l ? P = !0 : F = F.split(C) : 0 < F.getChildCount() ? C >= F.getChildCount() ? (F = F.getChild(C - 1), q = !0) : F = F.getChild(C) : z = q = !0;
-                t.type == CKEDITOR.NODE_TEXT ? l ? H = !0 : t.split(L) : 0 < t.getChildCount() ? 0 === L ? (t = t.getChild(L), M = !0) : t = t.getChild(L - 1) : E = M = !0;
-                for (var O = t.getParents(), p = F.getParents(), N = m(),
-                        w = O.length - 1, B = p.length - 1, G = c, I, X, V, da = -1, Q = N; Q <= w; Q++) {
+                C.type == CKEDITOR.NODE_TEXT ? n ? P = !0 : C = C.split(D) : 0 < C.getChildCount() ? D >= C.getChildCount() ? (C = C.getChild(D - 1), t = !0) : C = C.getChild(D) : y = t = !0;
+                r.type == CKEDITOR.NODE_TEXT ? n ? I = !0 : r.split(L) : 0 < r.getChildCount() ? 0 === L ? (r = r.getChild(L), N = !0) : r = r.getChild(L - 1) : E = N = !0;
+                for (var O = r.getParents(), l = C.getParents(), K = m(),
+                        B = O.length - 1, A = l.length - 1, J = c, G, X, V, da = -1, Q = K; Q <= B; Q++) {
                     X = O[Q];
                     V = X.getNext();
-                    for (Q != w || X.equals(p[Q]) && w < B ? b && (I = G.append(X.clone(0, f))) : M ? h(X, G, !1, E) : H && G.append(a.document.createText(X.substring(L))); V;) {
-                        if (V.equals(p[Q])) {
+                    for (Q != B || X.equals(l[Q]) && B < A ? b && (G = J.append(X.clone(0, f))) : N ? g(X, J, !1, E) : I && J.append(a.document.createText(X.substring(L))); V;) {
+                        if (V.equals(l[Q])) {
                             da = Q;
                             break
                         }
-                        V = h(V, G)
+                        V = g(V, J)
                     }
-                    G = I
+                    J = G
                 }
-                G = c;
-                for (Q = N; Q <= B; Q++)
-                    if (c = p[Q], V = c.getPrevious(), c.equals(O[Q])) b && (G = G.getChild(0));
+                J = c;
+                for (Q = K; Q <= A; Q++)
+                    if (c = l[Q], V = c.getPrevious(), c.equals(O[Q])) b && (J = J.getChild(0));
                     else {
-                        Q != B || c.equals(O[Q]) && B < w ? b && (I = G.append(c.clone(0, f))) : q ? h(c, G, !1, z) : P && G.append(a.document.createText(c.substring(0, C)));
+                        Q != A || c.equals(O[Q]) && A < B ? b && (G = J.append(c.clone(0, f))) : t ? g(c, J, !1, y) : P && J.append(a.document.createText(c.substring(0, D)));
                         if (Q > da)
-                            for (; V;) V = h(V, G, !0);
-                        G = I
-                    } l || g()
+                            for (; V;) V = g(V, J, !0);
+                        J = G
+                    } n || h()
             }
         }
 
@@ -3270,7 +3299,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 c = CKEDITOR.dom.walker.bookmark(!0),
                 d = CKEDITOR.dom.walker.bogus();
             return function(f) {
-                return c(f) || b(f) ? !0 : d(f) && !a ? a = !0 : f.type == CKEDITOR.NODE_TEXT && (f.hasAscendant("pre") || CKEDITOR.tools.trim(f.getText()).length) || f.type == CKEDITOR.NODE_ELEMENT && !f.is(h) ? !1 : !0
+                return c(f) || b(f) ? !0 : d(f) && !a ? a = !0 : f.type == CKEDITOR.NODE_TEXT && (f.hasAscendant("pre") || CKEDITOR.tools.trim(f.getText()).length) || f.type == CKEDITOR.NODE_ELEMENT && !f.is(g) ? !1 : !0
             }
         }
 
@@ -3286,12 +3315,12 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             return function() {
                 var b;
                 return this[a ? "getPreviousNode" : "getNextNode"](function(a) {
-                    !b && r(a) && (b = a);
-                    return n(a) && !(k(a) && a.equals(b))
+                    !b && q(a) && (b = a);
+                    return p(a) && !(k(a) && a.equals(b))
                 })
             }
         }
-        var h = {
+        var g = {
                 abbr: 1,
                 acronym: 1,
                 b: 1,
@@ -3320,9 +3349,9 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 "var": 1
             },
             k = CKEDITOR.dom.walker.bogus(),
-            g = /^[\t\r\n ]*(?:&nbsp;|\xa0)$/,
-            n = CKEDITOR.dom.walker.editable(),
-            r = CKEDITOR.dom.walker.ignored(!0);
+            h = /^[\t\r\n ]*(?:&nbsp;|\xa0)$/,
+            p = CKEDITOR.dom.walker.editable(),
+            q = CKEDITOR.dom.walker.ignored(!0);
         CKEDITOR.dom.range.prototype = {
             clone: function() {
                 var a =
@@ -3353,23 +3382,23 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 return c
             },
             createBookmark: function(a) {
-                var b, c, d, f, h = this.collapsed;
+                var b, c, d, f, g = this.collapsed;
                 b = this.document.createElement("span");
                 b.data("cke-bookmark", 1);
                 b.setStyle("display", "none");
                 b.setHtml("\x26nbsp;");
                 a && (d = "cke_bm_" + CKEDITOR.tools.getNextNumber(), b.setAttribute("id",
-                    d + (h ? "C" : "S")));
-                h || (c = b.clone(), c.setHtml("\x26nbsp;"), a && c.setAttribute("id", d + "E"), f = this.clone(), f.collapse(), f.insertNode(c));
+                    d + (g ? "C" : "S")));
+                g || (c = b.clone(), c.setHtml("\x26nbsp;"), a && c.setAttribute("id", d + "E"), f = this.clone(), f.collapse(), f.insertNode(c));
                 f = this.clone();
                 f.collapse(!0);
                 f.insertNode(b);
                 c ? (this.setStartAfter(b), this.setEndBefore(c)) : this.moveToPosition(b, CKEDITOR.POSITION_AFTER_END);
                 return {
-                    startNode: a ? d + (h ? "C" : "S") : b,
+                    startNode: a ? d + (g ? "C" : "S") : b,
                     endNode: a ? d + "E" : c,
                     serializable: a,
-                    collapsed: h
+                    collapsed: g
                 }
             },
             createBookmark2: function() {
@@ -3503,10 +3532,10 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     if (d)
                         if (d >= c.getLength()) d = c.getIndex() + 1, c = c.getParent();
                         else {
-                            var h = c.split(d),
+                            var g = c.split(d),
                                 d = c.getIndex() + 1,
                                 c = c.getParent();
-                            this.startContainer.equals(this.endContainer) ? this.setEnd(h, this.endOffset - this.startOffset) : c.equals(this.endContainer) && (this.endOffset += 1)
+                            this.startContainer.equals(this.endContainer) ? this.setEnd(g, this.endOffset - this.startOffset) : c.equals(this.endContainer) && (this.endOffset += 1)
                         }
                     else d = c.getIndex(), c = c.getParent();
                     this.setStart(c, d);
@@ -3528,162 +3557,162 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     case CKEDITOR.ENLARGE_INLINE:
                         var f = 1;
                     case CKEDITOR.ENLARGE_ELEMENT:
-                        var h = function(a, b) {
-                            var c = new CKEDITOR.dom.range(g);
+                        var g = function(a, b) {
+                            var c = new CKEDITOR.dom.range(h);
                             c.setStart(a, b);
-                            c.setEndAt(g, CKEDITOR.POSITION_BEFORE_END);
+                            c.setEndAt(h, CKEDITOR.POSITION_BEFORE_END);
                             var c = new CKEDITOR.dom.walker(c),
                                 e;
                             for (c.guard = function(a) {
                                     return !(a.type == CKEDITOR.NODE_ELEMENT && a.isBlockBoundary())
                                 }; e = c.next();) {
                                 if (e.type != CKEDITOR.NODE_TEXT) return !1;
-                                M = e != a ? e.getText() : e.substring(b);
-                                if (d.test(M)) return !1
+                                N = e != a ? e.getText() : e.substring(b);
+                                if (d.test(N)) return !1
                             }
                             return !0
                         };
                         if (this.collapsed) break;
                         var m = this.getCommonAncestor(),
-                            g = this.root,
-                            k, r, l, t, F, L = !1,
-                            C, M;
-                        C = this.startContainer;
-                        var q = this.startOffset;
-                        C.type == CKEDITOR.NODE_TEXT ? (q && (C = !CKEDITOR.tools.trim(C.substring(0, q)).length && C, L = !!C), C && ((t = C.getPrevious()) || (l = C.getParent()))) : (q && (t = C.getChild(q - 1) || C.getLast()),
-                            t || (l = C));
-                        for (l = c(l); l || t;) {
-                            if (l && !t) {
-                                !F && l.equals(m) && (F = !0);
-                                if (f ? l.isBlockBoundary() : !g.contains(l)) break;
-                                L && "inline" == l.getComputedStyle("display") || (L = !1, F ? k = l : this.setStartBefore(l));
-                                t = l.getPrevious()
+                            h = this.root,
+                            k, q, n, r, C, L = !1,
+                            D, N;
+                        D = this.startContainer;
+                        var t = this.startOffset;
+                        D.type == CKEDITOR.NODE_TEXT ? (t && (D = !CKEDITOR.tools.trim(D.substring(0, t)).length && D, L = !!D), D && ((r = D.getPrevious()) || (n = D.getParent()))) : (t && (r = D.getChild(t - 1) || D.getLast()),
+                            r || (n = D));
+                        for (n = c(n); n || r;) {
+                            if (n && !r) {
+                                !C && n.equals(m) && (C = !0);
+                                if (f ? n.isBlockBoundary() : !h.contains(n)) break;
+                                L && "inline" == n.getComputedStyle("display") || (L = !1, C ? k = n : this.setStartBefore(n));
+                                r = n.getPrevious()
                             }
-                            for (; t;)
-                                if (C = !1, t.type == CKEDITOR.NODE_COMMENT) t = t.getPrevious();
+                            for (; r;)
+                                if (D = !1, r.type == CKEDITOR.NODE_COMMENT) r = r.getPrevious();
                                 else {
-                                    if (t.type == CKEDITOR.NODE_TEXT) M = t.getText(), d.test(M) && (t = null), C = /[\s\ufeff]$/.test(M);
-                                    else if ((t.$.offsetWidth > (CKEDITOR.env.webkit ? 1 : 0) || b && t.is("br")) && !t.data("cke-bookmark"))
-                                        if (L && CKEDITOR.dtd.$removeEmpty[t.getName()]) {
-                                            M =
-                                                t.getText();
-                                            if (d.test(M)) t = null;
+                                    if (r.type == CKEDITOR.NODE_TEXT) N = r.getText(), d.test(N) && (r = null), D = /[\s\ufeff]$/.test(N);
+                                    else if ((r.$.offsetWidth > (CKEDITOR.env.webkit ? 1 : 0) || b && r.is("br")) && !r.data("cke-bookmark"))
+                                        if (L && CKEDITOR.dtd.$removeEmpty[r.getName()]) {
+                                            N =
+                                                r.getText();
+                                            if (d.test(N)) r = null;
                                             else
-                                                for (var q = t.$.getElementsByTagName("*"), E = 0, z; z = q[E++];)
-                                                    if (!CKEDITOR.dtd.$removeEmpty[z.nodeName.toLowerCase()]) {
-                                                        t = null;
+                                                for (var t = r.$.getElementsByTagName("*"), E = 0, y; y = t[E++];)
+                                                    if (!CKEDITOR.dtd.$removeEmpty[y.nodeName.toLowerCase()]) {
+                                                        r = null;
                                                         break
-                                                    } t && (C = !!M.length)
-                                        } else t = null;
-                                    C && (L ? F ? k = l : l && this.setStartBefore(l) : L = !0);
-                                    if (t) {
-                                        C = t.getPrevious();
-                                        if (!l && !C) {
-                                            l = t;
-                                            t = null;
+                                                    } r && (D = !!N.length)
+                                        } else r = null;
+                                    D && (L ? C ? k = n : n && this.setStartBefore(n) : L = !0);
+                                    if (r) {
+                                        D = r.getPrevious();
+                                        if (!n && !D) {
+                                            n = r;
+                                            r = null;
                                             break
                                         }
-                                        t = C
-                                    } else l = null
-                                } l && (l = c(l.getParent()))
+                                        r = D
+                                    } else n = null
+                                } n && (n = c(n.getParent()))
                         }
-                        C = this.endContainer;
-                        q = this.endOffset;
-                        l = t = null;
-                        F = L = !1;
-                        C.type == CKEDITOR.NODE_TEXT ? CKEDITOR.tools.trim(C.substring(q)).length ? L = !0 : (L = !C.getLength(), q == C.getLength() ? (t = C.getNext()) ||
-                            (l = C.getParent()) : h(C, q) && (l = C.getParent())) : (t = C.getChild(q)) || (l = C);
-                        for (; l || t;) {
-                            if (l && !t) {
-                                !F && l.equals(m) && (F = !0);
-                                if (f ? l.isBlockBoundary() : !g.contains(l)) break;
-                                L && "inline" == l.getComputedStyle("display") || (L = !1, F ? r = l : l && this.setEndAfter(l));
-                                t = l.getNext()
+                        D = this.endContainer;
+                        t = this.endOffset;
+                        n = r = null;
+                        C = L = !1;
+                        D.type == CKEDITOR.NODE_TEXT ? CKEDITOR.tools.trim(D.substring(t)).length ? L = !0 : (L = !D.getLength(), t == D.getLength() ? (r = D.getNext()) ||
+                            (n = D.getParent()) : g(D, t) && (n = D.getParent())) : (r = D.getChild(t)) || (n = D);
+                        for (; n || r;) {
+                            if (n && !r) {
+                                !C && n.equals(m) && (C = !0);
+                                if (f ? n.isBlockBoundary() : !h.contains(n)) break;
+                                L && "inline" == n.getComputedStyle("display") || (L = !1, C ? q = n : n && this.setEndAfter(n));
+                                r = n.getNext()
                             }
-                            for (; t;) {
-                                C = !1;
-                                if (t.type == CKEDITOR.NODE_TEXT) M = t.getText(), h(t, 0) || (t = null), C = /^[\s\ufeff]/.test(M);
-                                else if (t.type == CKEDITOR.NODE_ELEMENT) {
-                                    if ((0 < t.$.offsetWidth || b && t.is("br")) && !t.data("cke-bookmark"))
-                                        if (L && CKEDITOR.dtd.$removeEmpty[t.getName()]) {
-                                            M =
-                                                t.getText();
-                                            if (d.test(M)) t = null;
+                            for (; r;) {
+                                D = !1;
+                                if (r.type == CKEDITOR.NODE_TEXT) N = r.getText(), g(r, 0) || (r = null), D = /^[\s\ufeff]/.test(N);
+                                else if (r.type == CKEDITOR.NODE_ELEMENT) {
+                                    if ((0 < r.$.offsetWidth || b && r.is("br")) && !r.data("cke-bookmark"))
+                                        if (L && CKEDITOR.dtd.$removeEmpty[r.getName()]) {
+                                            N =
+                                                r.getText();
+                                            if (d.test(N)) r = null;
                                             else
-                                                for (q = t.$.getElementsByTagName("*"), E = 0; z = q[E++];)
-                                                    if (!CKEDITOR.dtd.$removeEmpty[z.nodeName.toLowerCase()]) {
-                                                        t = null;
+                                                for (t = r.$.getElementsByTagName("*"), E = 0; y = t[E++];)
+                                                    if (!CKEDITOR.dtd.$removeEmpty[y.nodeName.toLowerCase()]) {
+                                                        r = null;
                                                         break
-                                                    } t && (C = !!M.length)
-                                        } else t = null
-                                } else C = 1;
-                                C && L && (F ? r = l : this.setEndAfter(l));
-                                if (t) {
-                                    C = t.getNext();
-                                    if (!l && !C) {
-                                        l = t;
-                                        t = null;
+                                                    } r && (D = !!N.length)
+                                        } else r = null
+                                } else D = 1;
+                                D && L && (C ? q = n : this.setEndAfter(n));
+                                if (r) {
+                                    D = r.getNext();
+                                    if (!n && !D) {
+                                        n = r;
+                                        r = null;
                                         break
                                     }
-                                    t = C
-                                } else l = null
+                                    r = D
+                                } else n = null
                             }
-                            l && (l = c(l.getParent()))
+                            n && (n = c(n.getParent()))
                         }
-                        k && r && (m = k.contains(r) ? r : k, this.setStartBefore(m), this.setEndAfter(m));
+                        k && q && (m = k.contains(q) ? q : k, this.setStartBefore(m), this.setEndAfter(m));
                         break;
                     case CKEDITOR.ENLARGE_BLOCK_CONTENTS:
                     case CKEDITOR.ENLARGE_LIST_ITEM_CONTENTS:
-                        l = new CKEDITOR.dom.range(this.root);
-                        g = this.root;
-                        l.setStartAt(g, CKEDITOR.POSITION_AFTER_START);
-                        l.setEnd(this.startContainer, this.startOffset);
-                        l = new CKEDITOR.dom.walker(l);
-                        var H, P, O = CKEDITOR.dom.walker.blockBoundary(a == CKEDITOR.ENLARGE_LIST_ITEM_CONTENTS ? {
+                        n = new CKEDITOR.dom.range(this.root);
+                        h = this.root;
+                        n.setStartAt(h, CKEDITOR.POSITION_AFTER_START);
+                        n.setEnd(this.startContainer, this.startOffset);
+                        n = new CKEDITOR.dom.walker(n);
+                        var I, P, O = CKEDITOR.dom.walker.blockBoundary(a == CKEDITOR.ENLARGE_LIST_ITEM_CONTENTS ? {
                                 br: 1
                             } : null),
-                            p = null,
-                            N = function(a) {
+                            l = null,
+                            K = function(a) {
                                 if (a.type == CKEDITOR.NODE_ELEMENT && "false" == a.getAttribute("contenteditable"))
-                                    if (p) {
-                                        if (p.equals(a)) {
-                                            p = null;
+                                    if (l) {
+                                        if (l.equals(a)) {
+                                            l = null;
                                             return
                                         }
-                                    } else p = a;
-                                else if (p) return;
+                                    } else l = a;
+                                else if (l) return;
                                 var b = O(a);
-                                b || (H = a);
+                                b || (I = a);
                                 return b
                             },
                             f = function(a) {
-                                var b = N(a);
+                                var b = K(a);
                                 !b && a.is && a.is("br") && (P = a);
                                 return b
                             };
-                        l.guard = N;
-                        l = l.lastBackward();
-                        H = H || g;
-                        this.setStartAt(H, !H.is("br") && (!l && this.checkStartOfBlock() || l && H.contains(l)) ? CKEDITOR.POSITION_AFTER_START : CKEDITOR.POSITION_AFTER_END);
+                        n.guard = K;
+                        n = n.lastBackward();
+                        I = I || h;
+                        this.setStartAt(I, !I.is("br") && (!n && this.checkStartOfBlock() || n && I.contains(n)) ? CKEDITOR.POSITION_AFTER_START : CKEDITOR.POSITION_AFTER_END);
                         if (a == CKEDITOR.ENLARGE_LIST_ITEM_CONTENTS) {
-                            l = this.clone();
-                            l = new CKEDITOR.dom.walker(l);
-                            var w = CKEDITOR.dom.walker.whitespaces(),
-                                B = CKEDITOR.dom.walker.bookmark();
-                            l.evaluator = function(a) {
-                                return !w(a) && !B(a)
+                            n = this.clone();
+                            n = new CKEDITOR.dom.walker(n);
+                            var B = CKEDITOR.dom.walker.whitespaces(),
+                                A = CKEDITOR.dom.walker.bookmark();
+                            n.evaluator = function(a) {
+                                return !B(a) && !A(a)
                             };
-                            if ((l = l.previous()) && l.type == CKEDITOR.NODE_ELEMENT && l.is("br")) break
+                            if ((n = n.previous()) && n.type == CKEDITOR.NODE_ELEMENT && n.is("br")) break
                         }
-                        l = this.clone();
-                        l.collapse();
-                        l.setEndAt(g, CKEDITOR.POSITION_BEFORE_END);
-                        l = new CKEDITOR.dom.walker(l);
-                        l.guard = a == CKEDITOR.ENLARGE_LIST_ITEM_CONTENTS ? f : N;
-                        H = p = P = null;
-                        l = l.lastForward();
-                        H = H || g;
-                        this.setEndAt(H, !l && this.checkEndOfBlock() || l && H.contains(l) ? CKEDITOR.POSITION_BEFORE_END : CKEDITOR.POSITION_BEFORE_START);
+                        n = this.clone();
+                        n.collapse();
+                        n.setEndAt(h, CKEDITOR.POSITION_BEFORE_END);
+                        n = new CKEDITOR.dom.walker(n);
+                        n.guard = a == CKEDITOR.ENLARGE_LIST_ITEM_CONTENTS ? f : K;
+                        I = l = P = null;
+                        n = n.lastForward();
+                        I = I || h;
+                        this.setEndAt(I, !n && this.checkEndOfBlock() || n && I.contains(n) ? CKEDITOR.POSITION_BEFORE_END : CKEDITOR.POSITION_BEFORE_START);
                         P && this.setEndAfter(P)
                 }
             },
@@ -3692,31 +3721,31 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     f = c && c.skipBogus;
                 if (!this.collapsed) {
                     a = a || CKEDITOR.SHRINK_TEXT;
-                    var h = this.clone(),
+                    var g = this.clone(),
                         m = this.startContainer,
-                        g = this.endContainer,
+                        h = this.endContainer,
                         k = this.startOffset,
-                        r = this.endOffset,
-                        l = c = 1;
-                    m && m.type == CKEDITOR.NODE_TEXT && (k ? k >= m.getLength() ? h.setStartAfter(m) : (h.setStartBefore(m), c = 0) : h.setStartBefore(m));
-                    g && g.type == CKEDITOR.NODE_TEXT && (r ? r >= g.getLength() ? h.setEndAfter(g) : (h.setEndAfter(g), l = 0) : h.setEndBefore(g));
-                    var h = new CKEDITOR.dom.walker(h),
-                        t = CKEDITOR.dom.walker.bookmark(),
-                        F = CKEDITOR.dom.walker.bogus();
-                    h.evaluator = function(b) {
+                        q = this.endOffset,
+                        n = c = 1;
+                    m && m.type == CKEDITOR.NODE_TEXT && (k ? k >= m.getLength() ? g.setStartAfter(m) : (g.setStartBefore(m), c = 0) : g.setStartBefore(m));
+                    h && h.type == CKEDITOR.NODE_TEXT && (q ? q >= h.getLength() ? g.setEndAfter(h) : (g.setEndAfter(h), n = 0) : g.setEndBefore(h));
+                    var g = new CKEDITOR.dom.walker(g),
+                        r = CKEDITOR.dom.walker.bookmark(),
+                        C = CKEDITOR.dom.walker.bogus();
+                    g.evaluator = function(b) {
                         return b.type == (a == CKEDITOR.SHRINK_ELEMENT ? CKEDITOR.NODE_ELEMENT : CKEDITOR.NODE_TEXT)
                     };
                     var L;
-                    h.guard = function(b, c) {
-                        if (f && F(b) || t(b)) return !0;
+                    g.guard = function(b, c) {
+                        if (f && C(b) || r(b)) return !0;
                         if (a == CKEDITOR.SHRINK_ELEMENT && b.type == CKEDITOR.NODE_TEXT || c && b.equals(L) || !1 === d && b.type == CKEDITOR.NODE_ELEMENT && b.isBlockBoundary() || b.type == CKEDITOR.NODE_ELEMENT && b.hasAttribute("contenteditable")) return !1;
                         c || b.type != CKEDITOR.NODE_ELEMENT || (L = b);
                         return !0
                     };
-                    c && (m = h[a == CKEDITOR.SHRINK_ELEMENT ? "lastForward" : "next"]()) && this.setStartAt(m, b ? CKEDITOR.POSITION_AFTER_START : CKEDITOR.POSITION_BEFORE_START);
-                    l && (h.reset(), (h = h[a == CKEDITOR.SHRINK_ELEMENT ? "lastBackward" : "previous"]()) && this.setEndAt(h, b ? CKEDITOR.POSITION_BEFORE_END :
+                    c && (m = g[a == CKEDITOR.SHRINK_ELEMENT ? "lastForward" : "next"]()) && this.setStartAt(m, b ? CKEDITOR.POSITION_AFTER_START : CKEDITOR.POSITION_BEFORE_START);
+                    n && (g.reset(), (g = g[a == CKEDITOR.SHRINK_ELEMENT ? "lastBackward" : "previous"]()) && this.setEndAt(g, b ? CKEDITOR.POSITION_BEFORE_END :
                         CKEDITOR.POSITION_AFTER_END));
-                    return !(!c && !l)
+                    return !(!c && !n)
                 }
             },
             insertNode: function(a) {
@@ -3819,18 +3848,18 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 var c = new CKEDITOR.dom.elementPath(this.startContainer, this.root),
                     d = new CKEDITOR.dom.elementPath(this.endContainer, this.root),
                     f = c.block,
-                    h = d.block,
+                    g = d.block,
                     m = null;
                 if (!c.blockLimit.equals(d.blockLimit)) return null;
-                "br" != a && (f || (f = this.fixBlock(!0, a), h = (new CKEDITOR.dom.elementPath(this.endContainer, this.root)).block), h || (h = this.fixBlock(!1, a)));
+                "br" != a && (f || (f = this.fixBlock(!0, a), g = (new CKEDITOR.dom.elementPath(this.endContainer, this.root)).block), g || (g = this.fixBlock(!1, a)));
                 c = f && this.checkStartOfBlock();
-                d = h && this.checkEndOfBlock();
+                d = g && this.checkEndOfBlock();
                 this.deleteContents();
-                f && f.equals(h) && (d ? (m = new CKEDITOR.dom.elementPath(this.startContainer, this.root), this.moveToPosition(h, CKEDITOR.POSITION_AFTER_END), h = null) : c ? (m = new CKEDITOR.dom.elementPath(this.startContainer, this.root), this.moveToPosition(f, CKEDITOR.POSITION_BEFORE_START), f = null) : (h = this.splitElement(f,
+                f && f.equals(g) && (d ? (m = new CKEDITOR.dom.elementPath(this.startContainer, this.root), this.moveToPosition(g, CKEDITOR.POSITION_AFTER_END), g = null) : c ? (m = new CKEDITOR.dom.elementPath(this.startContainer, this.root), this.moveToPosition(f, CKEDITOR.POSITION_BEFORE_START), f = null) : (g = this.splitElement(f,
                     b || !1), f.is("ul", "ol") || f.appendBogus()));
                 return {
                     previousBlock: f,
-                    nextBlock: h,
+                    nextBlock: g,
                     wasStartOfBlock: c,
                     wasEndOfBlock: d,
                     elementPath: m
@@ -3847,16 +3876,16 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 return d
             },
             removeEmptyBlocksAtEnd: function() {
-                function a(d) {
+                function a(e) {
                     return function(a) {
                         return b(a) || c(a) || a.type == CKEDITOR.NODE_ELEMENT && a.isEmptyInlineRemoveable() ||
-                            d.is("table") && a.is("caption") ? !1 : !0
+                            e.is("table") && a.is("caption") ? !1 : !0
                     }
                 }
                 var b = CKEDITOR.dom.walker.whitespaces(),
                     c = CKEDITOR.dom.walker.bookmark(!1);
                 return function(b) {
-                    for (var c = this.createBookmark(), d = this[b ? "endPath" : "startPath"](), f = d.block || d.blockLimit, h; f && !f.equals(d.root) && !f.getFirst(a(f));) h = f.getParent(), this[b ? "setEndAt" : "setStartAt"](f, CKEDITOR.POSITION_AFTER_END), f.remove(1), f = h;
+                    for (var c = this.createBookmark(), d = this[b ? "endPath" : "startPath"](), m = d.block || d.blockLimit, f; m && !m.equals(d.root) && !m.getFirst(a(m));) f = m.getParent(), this[b ? "setEndAt" : "setStartAt"](m, CKEDITOR.POSITION_AFTER_END), m.remove(1), m = f;
                     this.moveToBookmark(c)
                 }
             }(),
@@ -3879,7 +3908,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             checkStartOfBlock: function() {
                 var a = this.startContainer,
                     c = this.startOffset;
-                CKEDITOR.env.ie && c && a.type == CKEDITOR.NODE_TEXT && (a = CKEDITOR.tools.ltrim(a.substring(0, c)), g.test(a) && this.trim(0, 1));
+                CKEDITOR.env.ie && c && a.type == CKEDITOR.NODE_TEXT && (a = CKEDITOR.tools.ltrim(a.substring(0, c)), h.test(a) && this.trim(0, 1));
                 this.trim();
                 a = new CKEDITOR.dom.elementPath(this.startContainer,
                     this.root);
@@ -3893,7 +3922,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             checkEndOfBlock: function() {
                 var a = this.endContainer,
                     c = this.endOffset;
-                CKEDITOR.env.ie && a.type == CKEDITOR.NODE_TEXT && (a = CKEDITOR.tools.rtrim(a.substring(c)), g.test(a) && this.trim(1, 0));
+                CKEDITOR.env.ie && a.type == CKEDITOR.NODE_TEXT && (a = CKEDITOR.tools.rtrim(a.substring(c)), h.test(a) && this.trim(1, 0));
                 this.trim();
                 a = new CKEDITOR.dom.elementPath(this.endContainer, this.root);
                 c = this.clone();
@@ -3944,7 +3973,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     !0;
                 for (var c = 0; a;) {
                     if (a.type == CKEDITOR.NODE_TEXT) {
-                        b && this.endContainer && this.checkEndOfBlock() && g.test(a.getText()) ? this.moveToPosition(a, CKEDITOR.POSITION_BEFORE_START) : this.moveToPosition(a, b ? CKEDITOR.POSITION_AFTER_END : CKEDITOR.POSITION_BEFORE_START);
+                        b && this.endContainer && this.checkEndOfBlock() && h.test(a.getText()) ? this.moveToPosition(a, CKEDITOR.POSITION_BEFORE_START) : this.moveToPosition(a, b ? CKEDITOR.POSITION_AFTER_END : CKEDITOR.POSITION_BEFORE_START);
                         c = 1;
                         break
                     }
@@ -3954,20 +3983,20 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     else if ("false" == a.getAttribute("contenteditable") && a.is(CKEDITOR.dtd.$block)) return this.setStartBefore(a), this.setEndAfter(a), !0;
                     var d = a,
                         f = c,
-                        h = void 0;
-                    d.type == CKEDITOR.NODE_ELEMENT && d.isEditable(!1) && (h = d[b ? "getLast" : "getFirst"](r));
-                    f || h || (h = d[b ? "getPrevious" : "getNext"](r));
-                    a = h
+                        g = void 0;
+                    d.type == CKEDITOR.NODE_ELEMENT && d.isEditable(!1) && (g = d[b ? "getLast" : "getFirst"](q));
+                    f || g || (g = d[b ? "getPrevious" : "getNext"](q));
+                    a = g
                 }
                 return !!c
             },
             moveToClosestEditablePosition: function(a, b) {
                 var c, d = 0,
-                    f, h, m = [CKEDITOR.POSITION_AFTER_END, CKEDITOR.POSITION_BEFORE_START];
+                    f, g, m = [CKEDITOR.POSITION_AFTER_END, CKEDITOR.POSITION_BEFORE_START];
                 a ? (c = new CKEDITOR.dom.range(this.root), c.moveToPosition(a, m[b ? 0 : 1])) : c = this.clone();
                 if (a &&
                     !a.is(CKEDITOR.dtd.$block)) d = 1;
-                else if (f = c[b ? "getNextEditableNode" : "getPreviousEditableNode"]()) d = 1, (h = f.type == CKEDITOR.NODE_ELEMENT) && f.is(CKEDITOR.dtd.$block) && "false" == f.getAttribute("contenteditable") ? (c.setStartAt(f, CKEDITOR.POSITION_BEFORE_START), c.setEndAt(f, CKEDITOR.POSITION_AFTER_END)) : !CKEDITOR.env.needsBrFiller && h && f.is(CKEDITOR.dom.walker.validEmptyBlockContainers) ? (c.setEnd(f, 0), c.collapse()) : c.moveToPosition(f, m[b ? 1 : 0]);
+                else if (f = c[b ? "getNextEditableNode" : "getPreviousEditableNode"]()) d = 1, (g = f.type == CKEDITOR.NODE_ELEMENT) && f.is(CKEDITOR.dtd.$block) && "false" == f.getAttribute("contenteditable") ? (c.setStartAt(f, CKEDITOR.POSITION_BEFORE_START), c.setEndAt(f, CKEDITOR.POSITION_AFTER_END)) : !CKEDITOR.env.needsBrFiller && g && f.is(CKEDITOR.dom.walker.validEmptyBlockContainers) ? (c.setEnd(f, 0), c.collapse()) : c.moveToPosition(f, m[b ? 1 : 0]);
                 d && this.moveToRange(c);
                 return !!d
             },
@@ -4015,14 +4044,15 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     c = this.endContainer,
                     d = b.getAscendant("table", !0),
                     f = c.getAscendant("table", !0);
-                return CKEDITOR.env.safari && d && c.equals(this.root) ?
-                    b.getAscendant(a, !0) : this.getEnclosedNode() ? this.getEnclosedNode().getAscendant(a, !0) : d && f && (d.equals(f) || d.contains(f) || f.contains(d)) ? b.getAscendant(a, !0) : null
+                return d && !this.root.contains(d) ?
+                    null : CKEDITOR.env.safari && d && c.equals(this.root) ? b.getAscendant(a, !0) : this.getEnclosedNode() ? this.getEnclosedNode().getAscendant(a, !0) : d && f && (d.equals(f) || d.contains(f) || f.contains(d)) ? b.getAscendant(a, !0) : null
             },
             scrollIntoView: function() {
                 var a = new CKEDITOR.dom.element.createFromHtml("\x3cspan\x3e\x26nbsp;\x3c/span\x3e", this.document),
                     b, c, d, f = this.clone();
                 f.optimize();
-                (d = f.startContainer.type == CKEDITOR.NODE_TEXT) ? (c = f.startContainer.getText(), b = f.startContainer.split(f.startOffset), a.insertAfter(f.startContainer)) : f.insertNode(a);
+                (d = f.startContainer.type == CKEDITOR.NODE_TEXT) ? (c = f.startContainer.getText(), b = f.startContainer.split(f.startOffset), a.insertAfter(f.startContainer)) :
+                f.insertNode(a);
                 a.scrollIntoView();
                 d && (f.startContainer.setText(c), b.remove());
                 a.remove()
@@ -4033,12 +4063,12 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                             return a
                         }),
                         e = new CKEDITOR.dom.range(c.root),
-                        f, h, l;
-                    c.startContainer instanceof CKEDITOR.dom.element && (h = 0 === c.startOffset && c.startContainer.hasAttribute("data-widget"));
-                    c.endContainer instanceof CKEDITOR.dom.element && (l = (l = c.endOffset === (c.endContainer.getChildCount ? c.endContainer.getChildCount() : c.endContainer.length)) && c.endContainer.hasAttribute("data-widget"));
-                    h && e.setStart(c.startContainer.getParent(), c.startContainer.getIndex());
-                    l && e.setEnd(c.endContainer.getParent(), c.endContainer.getIndex() + 1);
-                    if (h || l) c = e;
+                        f, g, n;
+                    c.startContainer instanceof CKEDITOR.dom.element && (g = 0 === c.startOffset && c.startContainer.hasAttribute("data-widget"));
+                    c.endContainer instanceof CKEDITOR.dom.element && (n = (n = c.endOffset === (c.endContainer.getChildCount ? c.endContainer.getChildCount() : c.endContainer.length)) && c.endContainer.hasAttribute("data-widget"));
+                    g && e.setStart(c.startContainer.getParent(), c.startContainer.getIndex());
+                    n && e.setEnd(c.endContainer.getParent(), c.endContainer.getIndex() + 1);
+                    if (g || n) c = e;
                     e = c.cloneContents();
                     e = CKEDITOR.dom.document.prototype.find.call(e, "[data-cke-widget-id]").toArray();
                     if (e = CKEDITOR.tools.array.map(e, function(a) {
@@ -4058,9 +4088,9 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     }, c), CKEDITOR.tools.array.forEach(e, function(a) {
                         function b(e) {
                             CKEDITOR.tools.array.forEach(d, function(b, f) {
-                                var l = CKEDITOR.tools.objectCompare(a[e], b);
-                                l || (l = CKEDITOR.tools.objectCompare(a.widgetRect, b));
-                                l && (Array.prototype.splice.call(d, f, a.length - e, a.widgetRect), c = !0)
+                                var n = CKEDITOR.tools.objectCompare(a[e], b);
+                                n || (n = CKEDITOR.tools.objectCompare(a.widgetRect, b));
+                                n && (Array.prototype.splice.call(d, f, a.length - e, a.widgetRect), c = !0)
                             });
                             c || (e < d.length - 1 ? b(e + 1) : d.push(a.widgetRect))
                         }
@@ -4126,11 +4156,11 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 var c = this.getCommonAncestor(),
                     d = this.getBoundaryNodes(),
                     f = [],
-                    h, m, g, k;
+                    g, m, h, k;
                 if (c && c.find)
-                    for (m = c.find(a), h = 0; h < m.count(); h++)
-                        if (c = m.getItem(h), b || !c.isReadOnly()) g = c.getPosition(d.startNode) & CKEDITOR.POSITION_FOLLOWING ||
-                            d.startNode.equals(c), k = c.getPosition(d.endNode) & CKEDITOR.POSITION_PRECEDING + CKEDITOR.POSITION_IS_CONTAINED || d.endNode.equals(c), g && k && f.push(c);
+                    for (m = c.find(a), g = 0; g < m.count(); g++)
+                        if (c = m.getItem(g), b || !c.isReadOnly()) h = c.getPosition(d.startNode) & CKEDITOR.POSITION_FOLLOWING ||
+                            d.startNode.equals(c), k = c.getPosition(d.endNode) & CKEDITOR.POSITION_PRECEDING + CKEDITOR.POSITION_IS_CONTAINED || d.endNode.equals(c), h && k && f.push(c);
                 return f
             }
         };
@@ -4180,24 +4210,24 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             return b
         }
 
-        function b(a, c, f, h) {
+        function b(a, c, f, g) {
             a: {
-                null == h && (h = d(f));
-                for (var g; g = h.shift();)
-                    if (g.getDtd().p) {
-                        h = {
-                            element: g,
-                            remaining: h
+                null == g && (g = d(f));
+                for (var h; h = g.shift();)
+                    if (h.getDtd().p) {
+                        g = {
+                            element: h,
+                            remaining: g
                         };
                         break a
-                    } h = null
+                    } g = null
             }
-            if (!h) return 0;
-            if ((g = CKEDITOR.filter.instances[h.element.data("cke-filter")]) && !g.check(c)) return b(a,
-                c, f, h.remaining);c = new CKEDITOR.dom.range(h.element);c.selectNodeContents(h.element);c = c.createIterator();c.enlargeBr = a.enlargeBr;c.enforceRealBlocks = a.enforceRealBlocks;c.activeFilter = c.filter = g;a._.nestedEditable = {
-                element: h.element,
+            if (!g) return 0;
+            if ((h = CKEDITOR.filter.instances[g.element.data("cke-filter")]) && !h.check(c)) return b(a,
+                c, f, g.remaining);c = new CKEDITOR.dom.range(g.element);c.selectNodeContents(g.element);c = c.createIterator();c.enlargeBr = a.enlargeBr;c.enforceRealBlocks = a.enforceRealBlocks;c.activeFilter = c.filter = h;a._.nestedEditable = {
+                element: g.element,
                 container: f,
-                remaining: h.remaining,
+                remaining: g.remaining,
                 iterator: c
             };
             return 1
@@ -4210,19 +4240,19 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             return a.checkBoundaryOfElement(b, c ? CKEDITOR.START : CKEDITOR.END)
         }
         var f = /^[\r\n\t ]+$/,
-            h = CKEDITOR.dom.walker.bookmark(!1, !0),
+            g = CKEDITOR.dom.walker.bookmark(!1, !0),
             k = CKEDITOR.dom.walker.whitespaces(!0),
-            g = function(a) {
-                return h(a) && k(a)
+            h = function(a) {
+                return g(a) && k(a)
             },
-            n = {
+            p = {
                 dd: 1,
                 dt: 1,
                 li: 1
             };
         a.prototype = {
             getNextParagraph: function(a) {
-                var d, k, v, A, D;
+                var d, k, w, z, F;
                 a = a || "p";
                 if (this._.nestedEditable) {
                     if (d = this._.nestedEditable.iterator.getNextParagraph(a)) return this.activeFilter = this._.nestedEditable.iterator.activeFilter, d;
@@ -4233,94 +4263,94 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 }
                 if (!this.range.root.getDtd()[a]) return null;
                 if (!this._.started) {
-                    var x = this.range.clone();
-                    k = x.startPath();
-                    var m = x.endPath(),
-                        J = !x.collapsed && c(x, k.block),
-                        u = !x.collapsed && c(x, m.block, 1);
-                    x.shrink(CKEDITOR.SHRINK_ELEMENT, !0);
-                    J && x.setStartAt(k.block, CKEDITOR.POSITION_BEFORE_END);
-                    u && x.setEndAt(m.block, CKEDITOR.POSITION_AFTER_START);
-                    k = x.endContainer.hasAscendant("pre", !0) || x.startContainer.hasAscendant("pre", !0);
-                    x.enlarge(this.forceBrBreak && !k || !this.enlargeBr ? CKEDITOR.ENLARGE_LIST_ITEM_CONTENTS : CKEDITOR.ENLARGE_BLOCK_CONTENTS);
-                    x.collapsed || (k = new CKEDITOR.dom.walker(x.clone()), m = CKEDITOR.dom.walker.bookmark(!0, !0), k.evaluator = m, this._.nextNode = k.next(), k = new CKEDITOR.dom.walker(x.clone()), k.evaluator = m, k = k.previous(), this._.lastNode = k.getNextSourceNode(!0, null, x.root), this._.lastNode && this._.lastNode.type == CKEDITOR.NODE_TEXT && !CKEDITOR.tools.trim(this._.lastNode.getText()) && this._.lastNode.getParent().isBlockBoundary() && (m = this.range.clone(), m.moveToPosition(this._.lastNode, CKEDITOR.POSITION_AFTER_END), m.checkEndOfBlock() &&
-                        (m = new CKEDITOR.dom.elementPath(m.endContainer, m.root), this._.lastNode = (m.block || m.blockLimit).getNextSourceNode(!0))), this._.lastNode && x.root.contains(this._.lastNode) || (this._.lastNode = this._.docEndMarker = x.document.createText(""), this._.lastNode.insertAfter(k)), x = null);
+                    var v = this.range.clone();
+                    k = v.startPath();
+                    var m = v.endPath(),
+                        M = !v.collapsed && c(v, k.block),
+                        u = !v.collapsed && c(v, m.block, 1);
+                    v.shrink(CKEDITOR.SHRINK_ELEMENT, !0);
+                    M && v.setStartAt(k.block, CKEDITOR.POSITION_BEFORE_END);
+                    u && v.setEndAt(m.block, CKEDITOR.POSITION_AFTER_START);
+                    k = v.endContainer.hasAscendant("pre", !0) || v.startContainer.hasAscendant("pre", !0);
+                    v.enlarge(this.forceBrBreak && !k || !this.enlargeBr ? CKEDITOR.ENLARGE_LIST_ITEM_CONTENTS : CKEDITOR.ENLARGE_BLOCK_CONTENTS);
+                    v.collapsed || (k = new CKEDITOR.dom.walker(v.clone()), m = CKEDITOR.dom.walker.bookmark(!0, !0), k.evaluator = m, this._.nextNode = k.next(), k = new CKEDITOR.dom.walker(v.clone()), k.evaluator = m, k = k.previous(), this._.lastNode = k.getNextSourceNode(!0, null, v.root), this._.lastNode && this._.lastNode.type == CKEDITOR.NODE_TEXT && !CKEDITOR.tools.trim(this._.lastNode.getText()) && this._.lastNode.getParent().isBlockBoundary() && (m = this.range.clone(), m.moveToPosition(this._.lastNode, CKEDITOR.POSITION_AFTER_END), m.checkEndOfBlock() &&
+                        (m = new CKEDITOR.dom.elementPath(m.endContainer, m.root), this._.lastNode = (m.block || m.blockLimit).getNextSourceNode(!0))), this._.lastNode && v.root.contains(this._.lastNode) || (this._.lastNode = this._.docEndMarker = v.document.createText(""), this._.lastNode.insertAfter(k)), v = null);
                     this._.started = 1;
-                    k = x
+                    k = v
                 }
                 m = this._.nextNode;
-                x = this._.lastNode;
+                v = this._.lastNode;
                 for (this._.nextNode = null; m;) {
-                    var J = 0,
+                    var M = 0,
                         u = m.hasAscendant("pre"),
-                        K = m.type != CKEDITOR.NODE_ELEMENT,
-                        l = 0;
-                    if (K) m.type == CKEDITOR.NODE_TEXT && f.test(m.getText()) && (K = 0);
+                        H = m.type != CKEDITOR.NODE_ELEMENT,
+                        n = 0;
+                    if (H) m.type == CKEDITOR.NODE_TEXT && f.test(m.getText()) && (H = 0);
                     else {
-                        var t = m.getName();
-                        if (CKEDITOR.dtd.$block[t] && "false" == m.getAttribute("contenteditable")) {
+                        var r = m.getName();
+                        if (CKEDITOR.dtd.$block[r] && "false" == m.getAttribute("contenteditable")) {
                             d = m;
                             b(this, a, d);
                             break
                         } else if (m.isBlockBoundary(this.forceBrBreak && !u && {
                                 br: 1
                             })) {
-                            if ("br" == t) K = 1;
-                            else if (!k && !m.getChildCount() && "hr" != t) {
+                            if ("br" == r) H = 1;
+                            else if (!k && !m.getChildCount() && "hr" != r) {
                                 d = m;
-                                v = m.equals(x);
+                                w = m.equals(v);
                                 break
                             }
-                            k && (k.setEndAt(m, CKEDITOR.POSITION_BEFORE_START), "br" != t && (this._.nextNode = m));
-                            J = 1
+                            k && (k.setEndAt(m, CKEDITOR.POSITION_BEFORE_START), "br" != r && (this._.nextNode = m));
+                            M = 1
                         } else {
                             if (m.getFirst()) {
                                 k || (k = this.range.clone(), k.setStartAt(m, CKEDITOR.POSITION_BEFORE_START));
                                 m = m.getFirst();
                                 continue
                             }
-                            K = 1
+                            H = 1
                         }
                     }
-                    K && !k && (k = this.range.clone(), k.setStartAt(m, CKEDITOR.POSITION_BEFORE_START));
-                    v = (!J || K) && m.equals(x);
-                    if (k && !J)
-                        for (; !m.getNext(g) && !v;) {
-                            t = m.getParent();
-                            if (t.isBlockBoundary(this.forceBrBreak && !u && {
+                    H && !k && (k = this.range.clone(), k.setStartAt(m, CKEDITOR.POSITION_BEFORE_START));
+                    w = (!M || H) && m.equals(v);
+                    if (k && !M)
+                        for (; !m.getNext(h) && !w;) {
+                            r = m.getParent();
+                            if (r.isBlockBoundary(this.forceBrBreak && !u && {
                                     br: 1
                                 })) {
-                                J = 1;
-                                K = 0;
-                                v || t.equals(x);
-                                k.setEndAt(t, CKEDITOR.POSITION_BEFORE_END);
+                                M = 1;
+                                H = 0;
+                                w || r.equals(v);
+                                k.setEndAt(r, CKEDITOR.POSITION_BEFORE_END);
                                 break
                             }
-                            m = t;
-                            K = 1;
-                            v = m.equals(x);
-                            l = 1
+                            m = r;
+                            H = 1;
+                            w = m.equals(v);
+                            n = 1
                         }
-                    K && k.setEndAt(m, CKEDITOR.POSITION_AFTER_END);
-                    m = this._getNextSourceNode(m, l, x);
-                    if ((v = !m) || J && k) break
+                    H && k.setEndAt(m, CKEDITOR.POSITION_AFTER_END);
+                    m = this._getNextSourceNode(m, n, v);
+                    if ((w = !m) || M && k) break
                 }
                 if (!d) {
                     if (!k) return this._.docEndMarker && this._.docEndMarker.remove(), this._.nextNode = null;
                     d = new CKEDITOR.dom.elementPath(k.startContainer, k.root);
                     m = d.blockLimit;
-                    J = {
+                    M = {
                         div: 1,
                         th: 1,
                         td: 1
                     };
                     d = d.block;
-                    !d && m && !this.enforceRealBlocks && J[m.getName()] && k.checkStartOfBlock() && k.checkEndOfBlock() && !m.equals(k.root) ? d = m : !d || this.enforceRealBlocks && d.is(n) ? (d = this.range.document.createElement(a), k.extractContents().appendTo(d), d.trim(), k.insertNode(d), A = D = !0) : "li" != d.getName() ? k.checkStartOfBlock() && k.checkEndOfBlock() || (d = d.clone(!1), k.extractContents().appendTo(d), d.trim(), D = k.splitBlock(), A = !D.wasStartOfBlock, D = !D.wasEndOfBlock, k.insertNode(d)) : v || (this._.nextNode = d.equals(x) ? null : this._getNextSourceNode(k.getBoundaryNodes().endNode,
-                        1, x))
+                    !d && m && !this.enforceRealBlocks && M[m.getName()] && k.checkStartOfBlock() && k.checkEndOfBlock() && !m.equals(k.root) ? d = m : !d || this.enforceRealBlocks && d.is(p) ? (d = this.range.document.createElement(a), k.extractContents().appendTo(d), d.trim(), k.insertNode(d), z = F = !0) : "li" != d.getName() ? k.checkStartOfBlock() && k.checkEndOfBlock() || (d = d.clone(!1), k.extractContents().appendTo(d), d.trim(), F = k.splitBlock(), z = !F.wasStartOfBlock, F = !F.wasEndOfBlock, k.insertNode(d)) : w || (this._.nextNode = d.equals(v) ? null : this._getNextSourceNode(k.getBoundaryNodes().endNode,
+                        1, v))
                 }
-                A && (A = d.getPrevious()) && A.type == CKEDITOR.NODE_ELEMENT && ("br" == A.getName() ? A.remove() : A.getLast() && "br" == A.getLast().$.nodeName.toLowerCase() && A.getLast().remove());
-                D && (A = d.getLast()) && A.type == CKEDITOR.NODE_ELEMENT && "br" == A.getName() && (!CKEDITOR.env.needsBrFiller || A.getPrevious(h) || A.getNext(h)) && A.remove();
-                this._.nextNode || (this._.nextNode = v || d.equals(x) || !x ? null : this._getNextSourceNode(d, 1, x));
+                z && (z = d.getPrevious()) && z.type == CKEDITOR.NODE_ELEMENT && ("br" == z.getName() ? z.remove() : z.getLast() && "br" == z.getLast().$.nodeName.toLowerCase() && z.getLast().remove());
+                F && (z = d.getLast()) && z.type == CKEDITOR.NODE_ELEMENT && "br" == z.getName() && (!CKEDITOR.env.needsBrFiller || z.getPrevious(g) || z.getNext(g)) && z.remove();
+                this._.nextNode || (this._.nextNode = w || d.equals(v) || !v ? null : this._getNextSourceNode(d, 1, v));
                 return d
             },
             _getNextSourceNode: function(a, b, c) {
@@ -4329,7 +4359,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 }
                 var f =
                     this.range.root;
-                for (a = a.getNextSourceNode(b, null, d); !h(a);) a = a.getNextSourceNode(b, null, d);
+                for (a = a.getNextSourceNode(b, null, d); !g(a);) a = a.getNextSourceNode(b, null, d);
                 return a
             }
         };
@@ -4415,83 +4445,83 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         blockedKeystrokes: [CKEDITOR.CTRL + 66, CKEDITOR.CTRL + 73, CKEDITOR.CTRL + 85]
     };
     (function() {
-        function a(a, b, c, d, f) {
-            var e, w;
+        function a(a, b, c, d, e) {
+            var f, n;
             a = [];
-            for (e in b) {
-                w = b[e];
-                w = "boolean" == typeof w ? {} : "function" == typeof w ? {
-                    match: w
-                } : E(w);
-                "$" != e.charAt(0) && (w.elements = e);
-                c && (w.featureName = c.toLowerCase());
-                var l = w;
+            for (f in b) {
+                n = b[f];
+                n = "boolean" == typeof n ? {} : "function" == typeof n ? {
+                    match: n
+                } : E(n);
+                "$" != f.charAt(0) && (n.elements = f);
+                c && (n.featureName = c.toLowerCase());
+                var l = n;
                 l.elements = k(l.elements, /\s+/) || null;
                 l.propertiesOnly = l.propertiesOnly || !0 === l.elements;
-                var p = /\s*,\s*/,
-                    m = void 0;
-                for (m in P) {
-                    l[m] = k(l[m], p) || null;
-                    var h = l,
-                        t = O[m],
-                        q = k(l[O[m]], p),
-                        z = l[m],
-                        B = [],
-                        g = !0,
-                        H = void 0;
-                    q ? g = !1 : q = {};
-                    for (H in z) "!" == H.charAt(0) && (H = H.slice(1), B.push(H), q[H] = !0, g = !1);
-                    for (; H = B.pop();) z[H] =
-                        z["!" + H], delete z["!" + H];
-                    h[t] = (g ? !1 : q) || null
+                var m = /\s*,\s*/,
+                    g = void 0;
+                for (g in P) {
+                    l[g] = k(l[g], m) || null;
+                    var r = l,
+                        t = O[g],
+                        y = k(l[O[g]], m),
+                        B = l[g],
+                        h = [],
+                        A = !0,
+                        C = void 0;
+                    y ? A = !1 : y = {};
+                    for (C in B) "!" == C.charAt(0) && (C = C.slice(1), h.push(C), y[C] = !0, A = !1);
+                    for (; C = h.pop();) B[C] =
+                        B["!" + C], delete B["!" + C];
+                    r[t] = (A ? !1 : y) || null
                 }
                 l.match = l.match || null;
-                d.push(w);
-                a.push(w)
+                d.push(n);
+                a.push(n)
             }
-            b = f.elements;
-            f = f.generic;
-            var F;
+            b = e.elements;
+            e = e.generic;
+            var I;
             c = 0;
             for (d = a.length; c < d; ++c) {
-                e = E(a[c]);
-                w = !0 === e.classes || !0 === e.styles || !0 === e.attributes;
-                l = e;
-                m = t = p = void 0;
-                for (p in P) l[p] = J(l[p]);
-                h = !0;
-                for (m in O) {
-                    p = O[m];
-                    t = l[p];
-                    q = [];
-                    z = void 0;
-                    for (z in t) - 1 < z.indexOf("*") ? q.push(new RegExp("^" + z.replace(/\*/g, ".*") + "$")) : q.push(z);
-                    t = q;
-                    t.length && (l[p] = t, h = !1)
+                f = E(a[c]);
+                n = !0 === f.classes || !0 === f.styles || !0 === f.attributes;
+                l = f;
+                g = t = m = void 0;
+                for (m in P) l[m] = M(l[m]);
+                r = !0;
+                for (g in O) {
+                    m = O[g];
+                    t = l[m];
+                    y = [];
+                    B = void 0;
+                    for (B in t) - 1 < B.indexOf("*") ? y.push(new RegExp("^" + B.replace(/\*/g, ".*") + "$")) : y.push(B);
+                    t = y;
+                    t.length && (l[m] = t, r = !1)
                 }
-                l.nothingRequired = h;
+                l.nothingRequired = r;
                 l.noProperties = !(l.attributes || l.classes || l.styles);
-                if (!0 === e.elements ||
-                    null === e.elements) f[w ? "unshift" : "push"](e);
+                if (!0 === f.elements ||
+                    null === f.elements) e[n ? "unshift" : "push"](f);
                 else
-                    for (F in l = e.elements, delete e.elements, l)
-                        if (b[F]) b[F][w ? "unshift" : "push"](e);
-                        else b[F] = [e]
+                    for (I in l = f.elements, delete f.elements, l)
+                        if (b[I]) b[I][n ? "unshift" : "push"](f);
+                        else b[I] = [f]
             }
         }
 
-        function d(a, c, d, f) {
+        function d(a, c, d, e) {
             if (!a.match || a.match(c))
-                if (f || g(a, c))
+                if (e || h(a, c))
                     if (a.propertiesOnly || (d.valid = !0), d.allAttributes || (d.allAttributes = b(a.attributes, c.attributes, d.validAttributes)), d.allStyles || (d.allStyles = b(a.styles, c.styles, d.validStyles)), !d.allClasses) {
                         a = a.classes;
                         c = c.classes;
-                        f = d.validClasses;
+                        e = d.validClasses;
                         if (a)
                             if (!0 === a) a = !0;
                             else {
-                                for (var e = 0, w = c.length, l; e < w; ++e) l = c[e], f[l] ||
-                                    (f[l] = a(l));
+                                for (var f = 0, n = c.length, l; f < n; ++f) l = c[f], e[l] ||
+                                    (e[l] = a(l));
                                 a = !1
                             }
                         else a = !1;
@@ -4527,13 +4557,13 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             if (!a) return !1;
             var c = !1,
                 d = !0 === a,
-                f;
-            for (f in b)
-                if (d || a(f)) delete b[f], c = !0;
+                e;
+            for (e in b)
+                if (d || a(e)) delete b[e], c = !0;
             return c
         }
 
-        function h(a, b, c) {
+        function g(a, b, c) {
             if (a.disabled || a.customConfig && !c || !b) return !1;
             a._.cachedChecks = {};
             return !0
@@ -4542,27 +4572,27 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         function k(a, b) {
             if (!a) return !1;
             if (!0 === a) return a;
-            if ("string" == typeof a) return a = z(a), "*" == a ? !0 : CKEDITOR.tools.convertArrayToObject(a.split(b));
+            if ("string" == typeof a) return a = y(a), "*" == a ? !0 : CKEDITOR.tools.convertArrayToObject(a.split(b));
             if (CKEDITOR.tools.isArray(a)) return a.length ? CKEDITOR.tools.convertArrayToObject(a) : !1;
             var c = {},
                 d = 0,
-                f;
-            for (f in a) c[f] = a[f], d++;
+                e;
+            for (e in a) c[e] = a[e], d++;
             return d ? c : !1
         }
 
-        function g(a, b) {
+        function h(a, b) {
             if (a.nothingRequired) return !0;
-            var c, d, f, e;
-            if (f = a.requiredClasses)
-                for (e = b.classes, c = 0; c < f.length; ++c)
-                    if (d = f[c], "string" == typeof d) {
-                        if (-1 == CKEDITOR.tools.indexOf(e, d)) return !1
-                    } else if (!CKEDITOR.tools.checkIfAnyArrayItemMatches(e, d)) return !1;
-            return n(b.styles, a.requiredStyles) && n(b.attributes, a.requiredAttributes)
+            var c, d, e, f;
+            if (e = a.requiredClasses)
+                for (f = b.classes, c = 0; c < e.length; ++c)
+                    if (d = e[c], "string" == typeof d) {
+                        if (-1 == CKEDITOR.tools.indexOf(f, d)) return !1
+                    } else if (!CKEDITOR.tools.checkIfAnyArrayItemMatches(f, d)) return !1;
+            return p(b.styles, a.requiredStyles) && p(b.attributes, a.requiredAttributes)
         }
 
-        function n(a, b) {
+        function p(a, b) {
             if (!b) return !0;
             for (var c = 0, d; c < b.length; ++c)
                 if (d = b[c], "string" == typeof d) {
@@ -4571,7 +4601,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             return !0
         }
 
-        function r(a) {
+        function q(a) {
             if (!a) return {};
             a = a.split(/\s*,\s*/).sort();
             for (var b = {}; a.length;) b[a.shift()] = "cke-test";
@@ -4579,23 +4609,23 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         }
 
         function e(a) {
-            var b, c, d, f, e = {},
-                l = 1;
-            for (a = z(a); b = a.match(p);)(c = b[2]) ? (d = y(c, "styles"), f = y(c, "attrs"), c = y(c, "classes")) : d = f = c = null, e["$" + l++] = {
+            var b, c, d, e, f = {},
+                n = 1;
+            for (a = y(a); b = a.match(l);)(c = b[2]) ? (d = x(c, "styles"), e = x(c, "attrs"), c = x(c, "classes")) : d = e = c = null, f["$" + n++] = {
                 elements: b[1],
                 classes: c,
                 styles: d,
-                attributes: f
+                attributes: e
             }, a = a.slice(b[0].length);
-            return e
+            return f
         }
 
-        function y(a, b) {
-            var c = a.match(N[b]);
-            return c ? z(c[1]) : null
+        function x(a, b) {
+            var c = a.match(K[b]);
+            return c ? y(c[1]) : null
         }
 
-        function v(a) {
+        function w(a) {
             var b = a.styleBackup = a.attributes.style,
                 c = a.classBackup = a.attributes["class"];
             a.styles || (a.styles = CKEDITOR.tools.parseCssText(b ||
@@ -4603,31 +4633,31 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             a.classes || (a.classes = c ? c.split(/\s+/) : [])
         }
 
-        function A(a, b, f, e) {
+        function z(a, b, e, f) {
             var l = 0,
-                p;
-            e.toHtml && (b.name = b.name.replace(w, "$1"));
-            if (e.doCallbacks && a.elementCallbacks) {
+                n;
+            f.toHtml && (b.name = b.name.replace(B, "$1"));
+            if (f.doCallbacks && a.elementCallbacks) {
                 a: {
-                    p = a.elementCallbacks;
-                    for (var h = 0, q = p.length, E; h < q; ++h)
-                        if (E = p[h](b)) {
-                            p = E;
+                    n = a.elementCallbacks;
+                    for (var g = 0, t = n.length, E; g < t; ++g)
+                        if (E = n[g](b)) {
+                            n = E;
                             break a
-                        } p = void 0
+                        } n = void 0
                 }
-                if (p) return p
+                if (n) return n
             }
-            if (e.doTransform && (p = a._.transformations[b.name])) {
-                v(b);
-                for (h = 0; h < p.length; ++h) t(a, b, p[h]);
-                x(b)
+            if (f.doTransform && (n = a._.transformations[b.name])) {
+                w(b);
+                for (g = 0; g < n.length; ++g) r(a, b, n[g]);
+                v(b)
             }
-            if (e.doFilter) {
+            if (f.doFilter) {
                 a: {
-                    h = b.name;q = a._;a = q.allowedRules.elements[h];p = q.allowedRules.generic;h = q.disallowedRules.elements[h];q = q.disallowedRules.generic;
-                    E = e.skipRequired;
-                    var z = {
+                    g = b.name;t = a._;a = t.allowedRules.elements[g];n = t.allowedRules.generic;g = t.disallowedRules.elements[g];t = t.disallowedRules.generic;
+                    E = f.skipRequired;
+                    var y = {
                             valid: !1,
                             validAttributes: {},
                             validClasses: {},
@@ -4639,61 +4669,61 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                             hadInvalidClass: !1,
                             hadInvalidStyle: !1
                         },
-                        g, k;
-                    if (a || p) {
-                        v(b);
-                        if (h)
-                            for (g = 0, k = h.length; g < k; ++g)
-                                if (!1 === c(h[g], b, z)) {
+                        k, C;
+                    if (a || n) {
+                        w(b);
+                        if (g)
+                            for (k = 0, C = g.length; k < C; ++k)
+                                if (!1 === c(g[k], b, y)) {
                                     a = null;
                                     break a
-                                } if (q)
-                            for (g = 0, k = q.length; g < k; ++g) c(q[g], b, z);
+                                } if (t)
+                            for (k = 0, C = t.length; k < C; ++k) c(t[k], b, y);
                         if (a)
-                            for (g = 0, k = a.length; g < k; ++g) d(a[g], b, z, E);
-                        if (p)
-                            for (g = 0, k = p.length; g < k; ++g) d(p[g], b, z, E);
-                        a = z
+                            for (k = 0, C = a.length; k < C; ++k) d(a[k], b, y, E);
+                        if (n)
+                            for (k = 0, C = n.length; k < C; ++k) d(n[k], b, y, E);
+                        a = y
                     } else a = null
                 }
-                if (!a || !a.valid) return f.push(b),
-                1;k = a.validAttributes;
-                var H = a.validStyles;
-                p = a.validClasses;
-                var h = b.attributes,
-                    F = b.styles,
-                    q = b.classes;E = b.classBackup;
+                if (!a || !a.valid) return e.push(b),
+                1;C = a.validAttributes;
+                var h = a.validStyles;
+                n = a.validClasses;
+                var g = b.attributes,
+                    I = b.styles,
+                    t = b.classes;E = b.classBackup;
                 var L = b.styleBackup,
-                    G, N, C = [],
-                    z = [],
-                    O = /^data-cke-/;g = !1;delete h.style;delete h["class"];delete b.classBackup;delete b.styleBackup;
+                    K, D, O = [],
+                    y = [],
+                    J = /^data-cke-/;k = !1;delete g.style;delete g["class"];delete b.classBackup;delete b.styleBackup;
                 if (!a.allAttributes)
-                    for (G in h) k[G] || (O.test(G) ? G == (N = G.replace(/^data-cke-saved-/, "")) || k[N] || (delete h[G], g = !0) : (delete h[G], g = !0));
+                    for (K in g) C[K] || (J.test(K) ? K == (D = K.replace(/^data-cke-saved-/, "")) || C[D] || (delete g[K], k = !0) : (delete g[K], k = !0));
                 if (!a.allStyles || a.hadInvalidStyle) {
-                    for (G in F) a.allStyles || H[G] ? C.push(G + ":" + F[G]) : g = !0;
-                    C.length && (h.style = C.sort().join("; "))
-                } else L && (h.style = L);
+                    for (K in I) a.allStyles || h[K] ? O.push(K + ":" + I[K]) : k = !0;
+                    O.length && (g.style = O.sort().join("; "))
+                } else L && (g.style = L);
                 if (!a.allClasses ||
                     a.hadInvalidClass) {
-                    for (G = 0; G < q.length; ++G)(a.allClasses || p[q[G]]) && z.push(q[G]);
-                    z.length && (h["class"] = z.sort().join(" "));
-                    E && z.length < E.split(/\s+/).length && (g = !0)
-                } else E && (h["class"] = E);g && (l = 1);
-                if (!e.skipFinalValidation && !m(b)) return f.push(b),
+                    for (K = 0; K < t.length; ++K)(a.allClasses || n[t[K]]) && y.push(t[K]);
+                    y.length && (g["class"] = y.sort().join(" "));
+                    E && y.length < E.split(/\s+/).length && (k = !0)
+                } else E && (g["class"] = E);k && (l = 1);
+                if (!f.skipFinalValidation && !m(b)) return e.push(b),
                 1
             }
-            e.toHtml && (b.name = b.name.replace(B, "cke:$1"));
+            f.toHtml && (b.name = b.name.replace(A, "cke:$1"));
             return l
         }
 
-        function D(a) {
+        function F(a) {
             var b = [],
                 c;
             for (c in a) - 1 < c.indexOf("*") && b.push(c.replace(/\*/g, ".*"));
             return b.length ? new RegExp("^(?:" + b.join("|") + ")$") : null
         }
 
-        function x(a) {
+        function v(a) {
             var b = a.attributes,
                 c;
             delete b.style;
@@ -4713,10 +4743,10 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             return !0
         }
 
-        function J(a) {
+        function M(a) {
             if (!a) return !1;
             if (!0 === a) return !0;
-            var b = D(a);
+            var b = F(a);
             return function(c) {
                 return c in a || b && c.match(b)
             }
@@ -4726,42 +4756,42 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             return new CKEDITOR.htmlParser.element("br")
         }
 
-        function K(a) {
+        function H(a) {
             return a.type == CKEDITOR.NODE_ELEMENT && ("br" ==
-                a.name || q.$block[a.name])
+                a.name || t.$block[a.name])
         }
 
-        function l(a, b, c) {
+        function n(a, b, c) {
             var d = a.name;
-            if (q.$empty[d] || !a.children.length) "hr" == d && "br" == b ? a.replaceWith(u()) : (a.parent && c.push({
+            if (t.$empty[d] || !a.children.length) "hr" == d && "br" == b ? a.replaceWith(u()) : (a.parent && c.push({
                 check: "it",
                 el: a.parent
             }), a.remove());
-            else if (q.$block[d] || "tr" == d)
-                if ("br" == b) a.previous && !K(a.previous) && (b = u(), b.insertBefore(a)), a.next && !K(a.next) && (b = u(), b.insertAfter(a)), a.replaceWithChildren();
+            else if (t.$block[d] || "tr" == d)
+                if ("br" == b) a.previous && !H(a.previous) && (b = u(), b.insertBefore(a)), a.next && !H(a.next) && (b = u(), b.insertAfter(a)), a.replaceWithChildren();
                 else {
                     var d = a.children,
-                        f;
+                        e;
                     b: {
-                        f = q[b];
-                        for (var e = 0, l = d.length, w; e < l; ++e)
-                            if (w = d[e], w.type == CKEDITOR.NODE_ELEMENT && !f[w.name]) {
-                                f = !1;
+                        e = t[b];
+                        for (var f = 0, n = d.length, l; f < n; ++f)
+                            if (l = d[f], l.type == CKEDITOR.NODE_ELEMENT && !e[l.name]) {
+                                e = !1;
                                 break b
-                            } f = !0
+                            } e = !0
                     }
-                    if (f) a.name = b, a.attributes = {}, c.push({
+                    if (e) a.name = b, a.attributes = {}, c.push({
                         check: "parent-down",
                         el: a
                     });
                     else {
-                        f = a.parent;
-                        for (var e = f.type == CKEDITOR.NODE_DOCUMENT_FRAGMENT || "body" == f.name, p, h, l = d.length; 0 < l;) w = d[--l], e && (w.type == CKEDITOR.NODE_TEXT || w.type == CKEDITOR.NODE_ELEMENT && q.$inline[w.name]) ? (p || (p = new CKEDITOR.htmlParser.element(b), p.insertAfter(a), c.push({
+                        e = a.parent;
+                        for (var f = e.type == CKEDITOR.NODE_DOCUMENT_FRAGMENT || "body" == e.name, g, m, n = d.length; 0 < n;) l = d[--n], f && (l.type == CKEDITOR.NODE_TEXT || l.type == CKEDITOR.NODE_ELEMENT && t.$inline[l.name]) ? (g || (g = new CKEDITOR.htmlParser.element(b), g.insertAfter(a), c.push({
                             check: "parent-down",
-                            el: p
-                        })), p.add(w, 0)) : (p = null, h = q[f.name] || q.span, w.insertAfter(a), f.type == CKEDITOR.NODE_DOCUMENT_FRAGMENT || w.type != CKEDITOR.NODE_ELEMENT || h[w.name] || c.push({
+                            el: g
+                        })), g.add(l, 0)) : (g = null, m = t[e.name] || t.span, l.insertAfter(a), e.type == CKEDITOR.NODE_DOCUMENT_FRAGMENT || l.type != CKEDITOR.NODE_ELEMENT || m[l.name] || c.push({
                             check: "el-up",
-                            el: w
+                            el: l
                         }));
                         a.remove()
                     }
@@ -4775,29 +4805,29 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             }), a.replaceWithChildren())
         }
 
-        function t(a, b, c) {
-            var d, f;
+        function r(a, b, c) {
+            var d, e;
             for (d = 0; d < c.length; ++d)
-                if (f = c[d], !(f.check && !a.check(f.check, !1) || f.left && !f.left(b))) {
-                    f.right(b, G);
+                if (e = c[d], !(e.check && !a.check(e.check, !1) || e.left && !e.left(b))) {
+                    e.right(b, J);
                     break
                 }
         }
 
-        function F(a, b) {
+        function C(a, b) {
             var c = b.getDefinition(),
                 d = c.attributes,
-                f = c.styles,
-                e, l, w, p;
+                e = c.styles,
+                f, n, l, g;
             if (a.name != c.element) return !1;
-            for (e in d)
-                if ("class" == e)
-                    for (c = d[e].split(/\s+/), w = a.classes.join("|"); p = c.pop();) {
-                        if (-1 == w.indexOf(p)) return !1
-                    } else if (a.attributes[e] != d[e]) return !1;
-            for (l in f)
-                if (a.styles[l] !=
-                    f[l]) return !1;
+            for (f in d)
+                if ("class" == f)
+                    for (c = d[f].split(/\s+/), l = a.classes.join("|"); g = c.pop();) {
+                        if (-1 == l.indexOf(g)) return !1
+                    } else if (a.attributes[f] != d[f]) return !1;
+            for (n in e)
+                if (a.styles[n] !=
+                    e[n]) return !1;
             return !0
         }
 
@@ -4813,23 +4843,23 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             }]
         }
 
-        function C(a) {
+        function D(a) {
             return function(b) {
-                return F(b, a)
+                return C(b, a)
             }
         }
 
-        function M(a) {
+        function N(a) {
             return function(b, c) {
                 c[a](b)
             }
         }
-        var q = CKEDITOR.dtd,
+        var t = CKEDITOR.dtd,
             E = CKEDITOR.tools.copy,
-            z = CKEDITOR.tools.trim,
-            H = ["", "p", "br", "div"];
+            y = CKEDITOR.tools.trim,
+            I = ["", "p", "br", "div"];
         CKEDITOR.FILTER_SKIP_TREE = 2;
-        CKEDITOR.filter = function(a) {
+        CKEDITOR.filter = function(a, b) {
             this.allowedContent = [];
             this.disallowedContent = [];
             this.elementCallbacks = null;
@@ -4850,19 +4880,19 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 cachedChecks: {}
             };
             CKEDITOR.filter.instances[this.id] = this;
-            if (a instanceof CKEDITOR.editor) {
-                a = this.editor = a;
+            var c = this.editor = a instanceof CKEDITOR.editor ? a : null;
+            if (c && !b) {
                 this.customConfig = !0;
-                var b = a.config.allowedContent;
-                !0 === b ? this.disabled = !0 : (b || (this.customConfig = !1), this.allow(b, "config", 1), this.allow(a.config.extraAllowedContent, "extra", 1), this.allow(H[a.enterMode] + " " + H[a.shiftEnterMode],
-                    "default", 1), this.disallow(a.config.disallowedContent))
-            } else this.customConfig = !1, this.allow(a, "default", 1)
+                var d = c.config.allowedContent;
+                !0 === d ? this.disabled = !0 : (d || (this.customConfig = !1), this.allow(d, "config", 1), this.allow(c.config.extraAllowedContent, "extra", 1), this.allow(I[c.enterMode] +
+                    " " + I[c.shiftEnterMode], "default", 1), this.disallow(c.config.disallowedContent))
+            } else this.customConfig = !1, this.allow(b || a, "default", 1)
         };
         CKEDITOR.filter.instances = {};
         CKEDITOR.filter.prototype = {
             allow: function(b, c, d) {
-                if (!h(this, b, d)) return !1;
-                var f, l;
+                if (!g(this, b, d)) return !1;
+                var f, n;
                 if ("string" == typeof b) b = e(b);
                 else if (b instanceof CKEDITOR.style) {
                     if (b.toAllowedContentRules) return this.allow(b.toAllowedContentRules(this.editor), c, d);
@@ -4875,19 +4905,19 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     };
                     d && (d = E(d), f.classes = d["class"] ? d["class"].split(/\s+/) : null, f.requiredClasses = f.classes, delete d["class"], f.attributes = d, f.requiredAttributes = d && CKEDITOR.tools.objectKeys(d))
                 } else if (CKEDITOR.tools.isArray(b)) {
-                    for (f = 0; f < b.length; ++f) l = this.allow(b[f], c, d);
-                    return l
+                    for (f = 0; f < b.length; ++f) n = this.allow(b[f], c, d);
+                    return n
                 }
                 a(this, b, c, this.allowedContent, this._.allowedRules);
                 return !0
             },
             applyTo: function(a, b, c, d) {
                 if (this.disabled) return !1;
-                var f = this,
-                    e = [],
-                    w = this.editor && this.editor.config.protectedSource,
-                    p, h = !1,
-                    t = {
+                var e = this,
+                    f = [],
+                    l = this.editor && this.editor.config.protectedSource,
+                    g, r = !1,
+                    E = {
                         doFilter: !c,
                         doTransform: !0,
                         doCallbacks: !0,
@@ -4897,41 +4927,41 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     if (a.type == CKEDITOR.NODE_ELEMENT) {
                         if ("off" == a.attributes["data-cke-filter"]) return !1;
                         if (!b || "span" != a.name || !~CKEDITOR.tools.objectKeys(a.attributes).join("|").indexOf("data-cke-"))
-                            if (p = A(f, a, e, t), p & 1) h = !0;
-                            else if (p & 2) return !1
+                            if (g = z(e, a, f, E), g & 1) r = !0;
+                            else if (g & 2) return !1
                     } else if (a.type == CKEDITOR.NODE_COMMENT && a.value.match(/^\{cke_protected\}(?!\{C\})/)) {
                         var c;
                         a: {
                             var d = decodeURIComponent(a.value.replace(/^\{cke_protected\}/, ""));c = [];
-                            var l, m, q;
-                            if (w)
-                                for (m = 0; m < w.length; ++m)
-                                    if ((q = d.match(w[m])) && q[0].length == d.length) {
+                            var n, G, m;
+                            if (l)
+                                for (G = 0; G < l.length; ++G)
+                                    if ((m = d.match(l[G])) && m[0].length == d.length) {
                                         c = !0;
                                         break a
-                                    } d = CKEDITOR.htmlParser.fragment.fromHtml(d);1 == d.children.length && (l = d.children[0]).type == CKEDITOR.NODE_ELEMENT && A(f, l, c, t);c = !c.length
+                                    } d = CKEDITOR.htmlParser.fragment.fromHtml(d);1 == d.children.length && (n = d.children[0]).type == CKEDITOR.NODE_ELEMENT && z(e, n, c, E);c = !c.length
                         }
-                        c || e.push(a)
+                        c || f.push(a)
                     }
                 }, null, !0);
-                e.length && (h = !0);
-                var E;
+                f.length && (r = !0);
+                var y;
                 a = [];
-                d = H[d || (this.editor ? this.editor.enterMode : CKEDITOR.ENTER_P)];
-                for (var z; c = e.pop();) c.type == CKEDITOR.NODE_ELEMENT ? l(c, d, a) : c.remove();
-                for (; E = a.pop();)
-                    if (c = E.el, c.parent) switch (z = q[c.parent.name] || q.span, E.check) {
+                d = I[d || (this.editor ? this.editor.enterMode : CKEDITOR.ENTER_P)];
+                for (var k; c = f.pop();) c.type == CKEDITOR.NODE_ELEMENT ? n(c, d, a) : c.remove();
+                for (; y = a.pop();)
+                    if (c = y.el, c.parent) switch (k = t[c.parent.name] || t.span, y.check) {
                         case "it":
-                            q.$removeEmpty[c.name] && !c.children.length ? l(c, d, a) : m(c) || l(c, d, a);
+                            t.$removeEmpty[c.name] && !c.children.length ? n(c, d, a) : m(c) || n(c, d, a);
                             break;
                         case "el-up":
                             c.parent.type ==
-                                CKEDITOR.NODE_DOCUMENT_FRAGMENT || z[c.name] || l(c, d, a);
+                                CKEDITOR.NODE_DOCUMENT_FRAGMENT || k[c.name] || n(c, d, a);
                             break;
                         case "parent-down":
-                            c.parent.type == CKEDITOR.NODE_DOCUMENT_FRAGMENT || z[c.name] || l(c.parent, d, a)
+                            c.parent.type == CKEDITOR.NODE_DOCUMENT_FRAGMENT || k[c.name] || n(c.parent, d, a)
                     }
-                return h
+                return r
             },
             checkFeature: function(a) {
                 if (this.disabled || !a) return !0;
@@ -4942,7 +4972,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 this.disabled = !0
             },
             disallow: function(b) {
-                if (!h(this, b, !0)) return !1;
+                if (!g(this, b, !0)) return !1;
                 "string" == typeof b && (b = e(b));
                 a(this, b, null, this.disallowedContent, this._.disallowedRules);
                 return !0
@@ -4950,10 +4980,10 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             addContentForms: function(a) {
                 if (!this.disabled && a) {
                     var b, c, d = [],
-                        f;
-                    for (b = 0; b < a.length && !f; ++b) c = a[b], ("string" == typeof c || c instanceof CKEDITOR.style) && this.check(c) && (f = c);
-                    if (f) {
-                        for (b = 0; b < a.length; ++b) d.push(L(a[b], f));
+                        e;
+                    for (b = 0; b < a.length && !e; ++b) c = a[b], ("string" == typeof c || c instanceof CKEDITOR.style) && this.check(c) && (e = c);
+                    if (e) {
+                        for (b = 0; b < a.length; ++b) d.push(L(a[b], e));
                         this.addTransformations(d)
                     }
                 }
@@ -4974,23 +5004,23 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 var b, c;
                 if (!this.disabled && a) {
                     var d = this._.transformations,
-                        f;
-                    for (f = 0; f < a.length; ++f) {
-                        b = a[f];
-                        var e = void 0,
+                        e;
+                    for (e = 0; e < a.length; ++e) {
+                        b = a[e];
+                        var f = void 0,
+                            n = void 0,
                             l = void 0,
-                            w = void 0,
-                            p = void 0,
-                            h = void 0,
-                            m = void 0;
+                            g = void 0,
+                            m = void 0,
+                            t = void 0;
                         c = [];
-                        for (l = 0; l < b.length; ++l) w = b[l], "string" == typeof w ? (w = w.split(/\s*:\s*/), p = w[0], h = null, m = w[1]) : (p = w.check, h = w.left, m = w.right), e || (e = w, e = e.element ? e.element : p ? p.match(/^([a-z0-9]+)/i)[0] :
-                            e.left.getDefinition().element), h instanceof CKEDITOR.style && (h = C(h)), c.push({
-                            check: p == e ? null : p,
-                            left: h,
-                            right: "string" == typeof m ? M(m) : m
+                        for (n = 0; n < b.length; ++n) l = b[n], "string" == typeof l ? (l = l.split(/\s*:\s*/), g = l[0], m = null, t = l[1]) : (g = l.check, m = l.left, t = l.right), f || (f = l, f = f.element ? f.element : g ? g.match(/^([a-z0-9]+)/i)[0] :
+                            f.left.getDefinition().element), m instanceof CKEDITOR.style && (m = D(m)), c.push({
+                            check: g == f ? null : g,
+                            left: m,
+                            right: "string" == typeof t ? N(t) : t
                         });
-                        b = e;
+                        b = f;
                         d[b] || (d[b] = []);
                         d[b].push(c)
                     }
@@ -5003,45 +5033,44 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         if (this.check(a[d], b, c)) return !0;
                     return !1
                 }
-                var f, w;
+                var f, n;
                 if ("string" == typeof a) {
-                    w = a + "\x3c" + (!1 === b ? "0" : "1") + (c ? "1" : "0") + "\x3e";
-                    if (w in this._.cachedChecks) return this._.cachedChecks[w];
-                    d = e(a).$1;
-                    f = d.styles;
-                    var l = d.classes;
-                    d.name = d.elements;
-                    d.classes = l = l ? l.split(/\s*,\s*/) : [];
-                    d.styles = r(f);
-                    d.attributes = r(d.attributes);
-                    d.children = [];
-                    l.length && (d.attributes["class"] = l.join(" "));
-                    f && (d.attributes.style = CKEDITOR.tools.writeCssText(d.styles));
-                    f = d
-                } else d = a.getDefinition(), f = d.styles, l = d.attributes || {}, f && !CKEDITOR.tools.isEmpty(f) ? (f = E(f), l.style = CKEDITOR.tools.writeCssText(f, !0)) : f = {}, f = {
-                    name: d.element,
-                    attributes: l,
-                    classes: l["class"] ? l["class"].split(/\s+/) : [],
-                    styles: f,
+                    n = a + "\x3c" + (!1 === b ? "0" : "1") + (c ? "1" : "0") + "\x3e";
+                    if (n in this._.cachedChecks) return this._.cachedChecks[n];
+                    f = e(a).$1;
+                    var l = f.styles,
+                        d = f.classes;
+                    f.name = f.elements;
+                    f.classes = d = d ? d.split(/\s*,\s*/) : [];
+                    f.styles = q(l);
+                    f.attributes = q(f.attributes);
+                    f.children = [];
+                    d.length && (f.attributes["class"] = d.join(" "));
+                    l && (f.attributes.style = CKEDITOR.tools.writeCssText(f.styles))
+                } else f = a.getDefinition(), l = f.styles, d = f.attributes || {}, l && !CKEDITOR.tools.isEmpty(l) ? (l = E(l), d.style = CKEDITOR.tools.writeCssText(l, !0)) : l = {}, f = {
+                    name: f.element,
+                    attributes: d,
+                    classes: d["class"] ? d["class"].split(/\s+/) : [],
+                    styles: l,
                     children: []
                 };
                 var l = CKEDITOR.tools.clone(f),
-                    p = [],
-                    h;
-                if (!1 !== b && (h = this._.transformations[f.name])) {
+                    g = [],
+                    m;
+                if (!1 !== b && (m = this._.transformations[f.name])) {
                     for (d =
-                        0; d < h.length; ++d) t(this, f, h[d]);
-                    x(f)
+                        0; d < m.length; ++d) r(this, f, m[d]);
+                    v(f)
                 }
-                A(this, l, p, {
+                z(this, l, g, {
                     doFilter: !0,
                     doTransform: !1 !== b,
                     skipRequired: !c,
                     skipFinalValidation: !c
                 });
-                b = 0 < p.length ? !1 : CKEDITOR.tools.objectCompare(f.attributes, l.attributes, !0) ? !0 : !1;
-                "string" == typeof a && (this._.cachedChecks[w] = b);
-                return b
+                0 < g.length ? c = !1 : ((b = f.attributes["class"]) && (f.attributes["class"] = f.attributes["class"].split(" ").sort().join(" ")), c = CKEDITOR.tools.objectCompare(f.attributes, l.attributes, !0), b && (f.attributes["class"] = b));
+                "string" == typeof a && (this._.cachedChecks[n] = c);
+                return c
             },
             getAllowedEnterMode: function() {
                 var a = ["p", "div", "br"],
@@ -5053,7 +5082,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 return function(c, d) {
                     var f = a.slice(),
                         e;
-                    if (this.check(H[c])) return c;
+                    if (this.check(I[c])) return c;
                     for (d || (f = f.reverse()); e = f.pop();)
                         if (this.check(e)) return b[e];
                     return CKEDITOR.ENTER_BR
@@ -5088,23 +5117,23 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 attributes: "requiredAttributes",
                 classes: "requiredClasses"
             },
-            p = /^([a-z0-9\-*\s]+)((?:\s*\{[!\w\-,\s\*]+\}\s*|\s*\[[!\w\-,\s\*]+\]\s*|\s*\([!\w\-,\s\*]+\)\s*){0,3})(?:;\s*|$)/i,
-            N = {
+            l = /^([a-z0-9\-*\s]+)((?:\s*\{[!\w\-,\s\*]+\}\s*|\s*\[[!\w\-,\s\*]+\]\s*|\s*\([!\w\-,\s\*]+\)\s*){0,3})(?:;\s*|$)/i,
+            K = {
                 styles: /{([^}]+)}/,
                 attrs: /\[([^\]]+)\]/,
                 classes: /\(([^\)]+)\)/
             },
-            w = /^cke:(object|embed|param)$/,
-            B = /^(object|embed|param)$/,
-            G;
-        G = CKEDITOR.filter.transformationsTools = {
+            B = /^cke:(object|embed|param)$/,
+            A = /^(object|embed|param)$/,
+            J;
+        J = CKEDITOR.filter.transformationsTools = {
             sizeToStyle: function(a) {
-                this.lengthToStyle(a, "width");
+                this.lengthToStyle(a,
+                    "width");
                 this.lengthToStyle(a, "height")
             },
             sizeToAttribute: function(a) {
-                this.lengthToAttribute(a,
-                    "width");
+                this.lengthToAttribute(a, "width");
                 this.lengthToAttribute(a, "height")
             },
             lengthToStyle: function(a, b, c) {
@@ -5125,10 +5154,10 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 delete a.styles[b]
             },
             alignmentToStyle: function(a) {
-                if (!("float" in a.styles)) {
+                if (!("float" in
+                        a.styles)) {
                     var b = a.attributes.align;
-                    if ("left" == b || "right" ==
-                        b) a.styles["float"] = b
+                    if ("left" == b || "right" == b) a.styles["float"] = b
                 }
                 delete a.attributes.align
             },
@@ -5151,8 +5180,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             listTypeToStyle: function(a) {
                 if (a.attributes.type) switch (a.attributes.type) {
                     case "a":
-                        a.styles["list-style-type"] =
-                            "lower-alpha";
+                        a.styles["list-style-type"] = "lower-alpha";
                         break;
                     case "A":
                         a.styles["list-style-type"] = "upper-alpha";
@@ -5172,14 +5200,14 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             },
             splitMarginShorthand: function(a) {
                 function b(d) {
-                    a.styles["margin-top"] = c[d[0]];
+                    a.styles["margin-top"] =
+                        c[d[0]];
                     a.styles["margin-right"] = c[d[1]];
                     a.styles["margin-bottom"] = c[d[2]];
                     a.styles["margin-left"] = c[d[3]]
                 }
                 if (a.styles.margin) {
-                    var c =
-                        a.styles.margin.match(/(\-?[\.\d]+\w+)/g) || ["0px"];
+                    var c = a.styles.margin.match(/(\-?[\.\d]+\w+)/g) || ["0px"];
                     switch (c.length) {
                         case 1:
                             b([0, 0, 0, 0]);
@@ -5196,21 +5224,21 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     delete a.styles.margin
                 }
             },
-            matchesStyle: F,
+            matchesStyle: C,
             transform: function(a, b) {
                 if ("string" == typeof b) a.name = b;
                 else {
                     var c = b.getDefinition(),
                         d = c.styles,
                         f = c.attributes,
-                        e, l, w, p;
+                        e, l, n, g;
                     a.name = c.element;
                     for (e in f)
                         if ("class" == e)
-                            for (c = a.classes.join("|"), w = f[e].split(/\s+/); p = w.pop();) - 1 == c.indexOf(p) && a.classes.push(p);
+                            for (c =
+                                a.classes.join("|"), n = f[e].split(/\s+/); g = n.pop();) - 1 == c.indexOf(g) && a.classes.push(g);
                         else a.attributes[e] = f[e];
-                    for (l in d) a.styles[l] =
-                        d[l]
+                    for (l in d) a.styles[l] = d[l]
                 }
             }
         }
@@ -5304,13 +5332,13 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         var a, d = function(b) {
                 b = b.data;
                 var d = b.getKeystroke(),
-                    h = this.keystrokes[d],
+                    g = this.keystrokes[d],
                     k = this._.editor;
                 a = !1 === k.fire("key", {
                     keyCode: d,
                     domEvent: b
                 });
-                a || (h && (a = !1 !== k.execCommand(h, {
+                a || (g && (a = !1 !== k.execCommand(g, {
                     from: "keystrokeHandler"
                 })), a || (a = !!this.blockedKeystrokes[d]));
                 a && b.preventDefault(!0);
@@ -5437,33 +5465,33 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         var a = {},
             d = {};
         return {
-            load: function(b, c, f, h) {
+            load: function(b, c, f, g) {
                 var k = "string" == typeof b;
                 k && (b = [b]);
                 f || (f = CKEDITOR);
-                var g = b.length,
-                    n = [],
-                    r = [],
+                var h = b.length,
+                    p = [],
+                    q = [],
                     e = function(a) {
-                        c && (k ? c.call(f, a) : c.call(f, n, r))
+                        c && (k ? c.call(f, a) : c.call(f, p, q))
                     };
-                if (0 === g) e(!0);
+                if (0 === h) e(!0);
                 else {
-                    var y = function(a, b) {
-                            (b ? n : r).push(a);
-                            0 >= --g && (h && CKEDITOR.document.getDocumentElement().removeStyle("cursor"), e(b))
+                    var x = function(a, b) {
+                            (b ? p : q).push(a);
+                            0 >= --h && (g && CKEDITOR.document.getDocumentElement().removeStyle("cursor"), e(b))
                         },
-                        v = function(b, c) {
+                        w = function(b, c) {
                             a[b] = 1;
                             var f = d[b];
                             delete d[b];
                             for (var e = 0; e < f.length; e++) f[e](b, c)
                         },
-                        A = function(b) {
-                            if (a[b]) y(b, !0);
+                        z = function(b) {
+                            if (a[b]) x(b, !0);
                             else {
                                 var f = d[b] || (d[b] = []);
-                                f.push(y);
+                                f.push(x);
                                 if (!(1 < f.length)) {
                                     var e =
                                         new CKEDITOR.dom.element("script");
@@ -5472,20 +5500,20 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                                         src: b
                                     });
                                     c && (CKEDITOR.env.ie && (8 >= CKEDITOR.env.version || CKEDITOR.env.ie9Compat) ? e.$.onreadystatechange = function() {
-                                        if ("loaded" == e.$.readyState || "complete" == e.$.readyState) e.$.onreadystatechange = null, v(b, !0)
+                                        if ("loaded" == e.$.readyState || "complete" == e.$.readyState) e.$.onreadystatechange = null, w(b, !0)
                                     } : (e.$.onload = function() {
                                         setTimeout(function() {
-                                            v(b, !0)
+                                            w(b, !0)
                                         }, 0)
                                     }, e.$.onerror = function() {
-                                        v(b, !1)
+                                        w(b, !1)
                                     }));
                                     e.appendTo(CKEDITOR.document.getHead())
                                 }
                             }
                         };
-                    h && CKEDITOR.document.getDocumentElement().setStyle("cursor", "wait");
-                    for (var D = 0; D < g; D++) A(b[D])
+                    g && CKEDITOR.document.getDocumentElement().setStyle("cursor", "wait");
+                    for (var F = 0; F < h; F++) z(b[F])
                 }
             },
             queue: function() {
@@ -5494,12 +5522,12 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     (b = c[0]) && this.load(b.scriptUrl, b.callback, CKEDITOR, 0)
                 }
                 var c = [];
-                return function(d, h) {
+                return function(d, g) {
                     var k = this;
                     c.push({
                         scriptUrl: d,
                         callback: function() {
-                            h && h.apply(this, arguments);
+                            g && g.apply(this, arguments);
                             c.shift();
                             a.call(k)
                         }
@@ -5555,26 +5583,26 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         },
         load: function(a, d, b) {
             CKEDITOR.tools.isArray(a) || (a = a ? [a] : []);
-            for (var c = this.loaded, f = this.registered, h = [], k = {}, g = {}, n = 0; n < a.length; n++) {
-                var r = a[n];
-                if (r)
-                    if (c[r] || f[r]) g[r] = this.get(r);
+            for (var c = this.loaded, f = this.registered, g = [], k = {}, h = {}, p = 0; p < a.length; p++) {
+                var q = a[p];
+                if (q)
+                    if (c[q] || f[q]) h[q] = this.get(q);
                     else {
-                        var e = this.getFilePath(r);
-                        h.push(e);
+                        var e = this.getFilePath(q);
+                        g.push(e);
                         e in k || (k[e] = []);
-                        k[e].push(r)
+                        k[e].push(q)
                     }
             }
-            CKEDITOR.scriptLoader.load(h, function(a, f) {
-                if (f.length) throw Error('[CKEDITOR.resourceManager.load] Resource name "' + k[f[0]].join(",") + '" was not found at "' + f[0] + '".');
-                for (var e = 0; e < a.length; e++)
-                    for (var h = k[a[e]], n = 0; n < h.length; n++) {
-                        var m = h[n];
-                        g[m] = this.get(m);
+            CKEDITOR.scriptLoader.load(g, function(a, e) {
+                if (e.length) throw Error('[CKEDITOR.resourceManager.load] Resource name "' + k[e[0]].join(",") + '" was not found at "' + e[0] + '".');
+                for (var f = 0; f < a.length; f++)
+                    for (var g = k[a[f]], p = 0; p < g.length; p++) {
+                        var m = g[p];
+                        h[m] = this.get(m);
                         c[m] = 1
                     }
-                d.call(b, g)
+                d.call(b, h)
             }, this)
         }
     };
@@ -5582,28 +5610,28 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
     CKEDITOR.plugins.load = CKEDITOR.tools.override(CKEDITOR.plugins.load, function(a) {
         var d = {};
         return function(b, c, f) {
-            var h = {},
+            var g = {},
                 k = function(b) {
                     a.call(this, b, function(a) {
-                        CKEDITOR.tools.extend(h, a);
+                        CKEDITOR.tools.extend(g, a);
                         var b = [],
                             e;
                         for (e in a) {
-                            var g = a[e],
-                                v = g && g.requires;
+                            var h = a[e],
+                                w = h && h.requires;
                             if (!d[e]) {
-                                if (g.icons)
-                                    for (var A = g.icons.split(","), D = A.length; D--;) CKEDITOR.skin.addIcon(A[D], g.path + "icons/" + (CKEDITOR.env.hidpi && g.hidpi ? "hidpi/" : "") + A[D] + ".png");
+                                if (h.icons)
+                                    for (var z = h.icons.split(","), F = z.length; F--;) CKEDITOR.skin.addIcon(z[F], h.path + "icons/" + (CKEDITOR.env.hidpi && h.hidpi ? "hidpi/" : "") + z[F] + ".png");
                                 d[e] = 1
                             }
-                            if (v)
-                                for (v.split && (v = v.split(",")), g = 0; g < v.length; g++) h[v[g]] || b.push(v[g])
+                            if (w)
+                                for (w.split && (w = w.split(",")), h = 0; h < w.length; h++) g[w[h]] || b.push(w[h])
                         }
                         if (b.length) k.call(this,
                             b);
                         else {
-                            for (e in h) g = h[e], g.onLoad && !g.onLoad._called && (!1 === g.onLoad() && delete h[e], g.onLoad._called = 1);
-                            c && c.call(f || window, h)
+                            for (e in g) h = g[e], h.onLoad && !h.onLoad._called && (!1 === h.onLoad() && delete g[e], h.onLoad._called = 1);
+                            c && c.call(f || window, g)
                         }
                     }, this)
                 };
@@ -5663,17 +5691,17 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
     };
     CKEDITOR.event.implementOn(CKEDITOR.ui);
     (function() {
-        function a(a, f, e) {
+        function a(a, e, f) {
             CKEDITOR.event.call(this);
             a = a && CKEDITOR.tools.clone(a);
-            if (void 0 !== f) {
-                if (!(f instanceof CKEDITOR.dom.element)) throw Error("Expect element of type CKEDITOR.dom.element.");
-                if (!e) throw Error("One of the element modes must be specified.");
-                if (CKEDITOR.env.ie && CKEDITOR.env.quirks && e == CKEDITOR.ELEMENT_MODE_INLINE) throw Error("Inline element mode is not supported on IE quirks.");
-                if (!b(f, e)) throw Error('The specified element mode is not supported on element: "' + f.getName() + '".');
-                this.element = f;
-                this.elementMode = e;
-                this.name = this.elementMode != CKEDITOR.ELEMENT_MODE_APPENDTO && (f.getId() || f.getNameAtt())
+            if (void 0 !== e) {
+                if (!(e instanceof CKEDITOR.dom.element)) throw Error("Expect element of type CKEDITOR.dom.element.");
+                if (!f) throw Error("One of the element modes must be specified.");
+                if (CKEDITOR.env.ie && CKEDITOR.env.quirks && f == CKEDITOR.ELEMENT_MODE_INLINE) throw Error("Inline element mode is not supported on IE quirks.");
+                if (!b(e, f)) throw Error('The specified element mode is not supported on element: "' + e.getName() + '".');
+                this.element = e;
+                this.elementMode = f;
+                this.name = this.elementMode != CKEDITOR.ELEMENT_MODE_APPENDTO && (e.getId() || e.getNameAtt())
             } else this.elementMode = CKEDITOR.ELEMENT_MODE_NONE;
             this._ = {};
             this.commands = {};
@@ -5688,10 +5716,10 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             this.on("readOnly",
                 c);
             this.on("selectionChange", function(a) {
-                h(this, a.data.path)
+                g(this, a.data.path)
             });
             this.on("activeFilterChange", function() {
-                h(this, this.elementPath(), !0)
+                g(this, this.elementPath(), !0)
             });
             this.on("mode", c);
             this.on("instanceReady", function() {
@@ -5710,12 +5738,12 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             CKEDITOR.add(this);
             CKEDITOR.tools.setTimeout(function() {
                 "destroyed" !==
-                this.status ? g(this, a) : CKEDITOR.warn("editor-incorrect-destroy")
+                this.status ? h(this, a) : CKEDITOR.warn("editor-incorrect-destroy")
             }, 0, this)
         }
 
         function d() {
-            do var a = "editor" + ++D; while (CKEDITOR.instances[a]);
+            do var a = "editor" + ++F; while (CKEDITOR.instances[a]);
             return a
         }
 
@@ -5733,11 +5761,11 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             b[b.startDisabled ? "disable" : a.readOnly && !b.readOnly ? "disable" : b.modes[a.mode] ? "enable" : "disable"]()
         }
 
-        function h(a,
+        function g(a,
             b, c) {
             if (b) {
-                var d, f, e = a.commands;
-                for (f in e) d = e[f], (c || d.contextSensitive) && d.refresh(a, b)
+                var d, e, f = a.commands;
+                for (e in f) d = f[e], (c || d.contextSensitive) && d.refresh(a, b)
             }
         }
 
@@ -5745,7 +5773,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             var b = a.config.customConfig;
             if (!b) return !1;
             var b = CKEDITOR.getUrl(b),
-                c = x[b] || (x[b] = {});
+                c = v[b] || (v[b] = {});
             c.fn ? (c.fn.call(a, a.config), CKEDITOR.getUrl(a.config.customConfig) != b && k(a) || a.fireOnce("customConfigLoaded")) : CKEDITOR.scriptLoader.queue(b, function() {
                 c.fn = CKEDITOR.editorConfig ? CKEDITOR.editorConfig : function() {};
                 k(a)
@@ -5753,7 +5781,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             return !0
         }
 
-        function g(a, b) {
+        function h(a, b) {
             a.on("customConfigLoaded", function() {
                 if (b) {
                     if (b.on)
@@ -5773,19 +5801,19 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 a.fireOnce("configLoaded");
                 a.dataProcessor = new CKEDITOR.htmlDataProcessor(a);
                 a.filter = a.activeFilter = new CKEDITOR.filter(a);
-                n(a)
+                p(a)
             });
             b && null != b.customConfig && (a.config.customConfig = b.customConfig);
             k(a) || a.fireOnce("customConfigLoaded")
         }
 
-        function n(a) {
+        function p(a) {
             CKEDITOR.skin.loadPart("editor", function() {
-                r(a)
+                q(a)
             })
         }
 
-        function r(a) {
+        function q(a) {
             CKEDITOR.lang.load(a.config.language, a.config.defaultLanguage, function(b, c) {
                 var d = a.config.title;
                 a.langCode = b;
@@ -5805,11 +5833,11 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                             styles: b
                         })
                     }, null, null, 1);
-                y(a)
+                x(a)
             })
         }
 
-        function y(a) {
+        function x(a) {
             function b(a) {
                 if (!a) return "";
                 CKEDITOR.tools.isArray(a) && (a = a.join(","));
@@ -5817,43 +5845,43 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             }
             var c = a.config,
                 d = b(c.plugins),
-                f = b(c.extraPlugins),
-                e = b(c.removePlugins);
-            if (f) var h = new RegExp("(?:^|,)(?:" + f.replace(/,/g, "|") + ")(?\x3d,|$)", "g"),
-                d = d.replace(h, ""),
-                d = d + ("," + f);
+                e = b(c.extraPlugins),
+                f = b(c.removePlugins);
             if (e) var g = new RegExp("(?:^|,)(?:" + e.replace(/,/g, "|") + ")(?\x3d,|$)", "g"),
-                d = d.replace(g, "");
+                d = d.replace(g, ""),
+                d = d + ("," + e);
+            if (f) var k = new RegExp("(?:^|,)(?:" + f.replace(/,/g, "|") + ")(?\x3d,|$)", "g"),
+                d = d.replace(k, "");
             CKEDITOR.env.air && (d += ",adobeair");
             CKEDITOR.plugins.load(d.split(","),
                 function(b) {
                     var d = [],
-                        f = [],
-                        e = [];
-                    a.plugins = b;
-                    for (var l in b) {
-                        var h = b[l],
-                            t = h.lang,
-                            k = null,
-                            p = h.requires,
-                            F;
-                        CKEDITOR.tools.isArray(p) && (p = p.join(","));
-                        if (p && (F = p.match(g)))
-                            for (; p = F.pop();) CKEDITOR.error("editor-plugin-required", {
-                                plugin: p.replace(",", ""),
-                                requiredBy: l
+                        e = [],
+                        f = [];
+                    a.plugins = CKEDITOR.tools.extend({}, a.plugins, b);
+                    for (var n in b) {
+                        var g = b[n],
+                            r = g.lang,
+                            h = null,
+                            l = g.requires,
+                            C;
+                        CKEDITOR.tools.isArray(l) && (l = l.join(","));
+                        if (l && (C = l.match(k)))
+                            for (; l = C.pop();) CKEDITOR.error("editor-plugin-required", {
+                                plugin: l.replace(",", ""),
+                                requiredBy: n
                             });
-                        t && !a.lang[l] && (t.split && (t = t.split(",")), 0 <= CKEDITOR.tools.indexOf(t, a.langCode) ? k = a.langCode : (k = a.langCode.replace(/-.*/, ""), k = k != a.langCode && 0 <= CKEDITOR.tools.indexOf(t, k) ? k : 0 <= CKEDITOR.tools.indexOf(t, "en") ? "en" : t[0]), h.langEntries && h.langEntries[k] ?
-                            (a.lang[l] = h.langEntries[k], k = null) : e.push(CKEDITOR.getUrl(h.path + "lang/" + k + ".js")));
-                        f.push(k);
-                        d.push(h)
+                        r && !a.lang[n] && (r.split && (r = r.split(",")), 0 <= CKEDITOR.tools.indexOf(r, a.langCode) ? h = a.langCode : (h = a.langCode.replace(/-.*/, ""), h = h != a.langCode && 0 <= CKEDITOR.tools.indexOf(r, h) ? h : 0 <= CKEDITOR.tools.indexOf(r,
+                            "en") ? "en" : r[0]), g.langEntries && g.langEntries[h] ? (a.lang[n] = g.langEntries[h], h = null) : f.push(CKEDITOR.getUrl(g.path + "lang/" + h + ".js")));
+                        e.push(h);
+                        d.push(g)
                     }
-                    CKEDITOR.scriptLoader.load(e, function() {
-                        for (var b = ["beforeInit", "init", "afterInit"], e = 0; e < b.length; e++)
+                    CKEDITOR.scriptLoader.load(f, function() {
+                        for (var b = ["beforeInit", "init", "afterInit"], f = 0; f < b.length; f++)
                             for (var l = 0; l < d.length; l++) {
-                                var p = d[l];
-                                0 === e && f[l] && p.lang && p.langEntries && (a.lang[p.name] = p.langEntries[f[l]]);
-                                if (p[b[e]]) p[b[e]](a)
+                                var n = d[l];
+                                0 === f && e[l] && n.lang && n.langEntries && (a.lang[n.name] = n.langEntries[e[l]]);
+                                if (n[b[f]]) n[b[f]](a)
                             }
                         a.fireOnce("pluginsLoaded");
                         c.keystrokes && a.setKeystroke(a.config.keystrokes);
@@ -5866,7 +5894,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 })
         }
 
-        function v() {
+        function w() {
             var a = this.element;
             if (a && this.elementMode != CKEDITOR.ELEMENT_MODE_APPENDTO) {
                 var b = this.getData();
@@ -5877,7 +5905,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             return !1
         }
 
-        function A(a, b) {
+        function z(a, b) {
             function c(a) {
                 var b = a.startContainer,
                     d = a.endContainer;
@@ -5888,23 +5916,35 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 var b = a.startContainer;
                 return b.is("tr") ? a.cloneContents() : b.clone(!0)
             }
-            for (var f = new CKEDITOR.dom.documentFragment, e, h, g, k = 0; k < a.length; k++) {
-                var M = a[k],
-                    q = M.startContainer.getAscendant("tr", !0);
-                c(M) ? (e || (e = q.getAscendant("table").clone(), e.append(q.getAscendant({
+            for (var e = new CKEDITOR.dom.documentFragment, f, g, k, h = 0; h < a.length; h++) {
+                var N = a[h],
+                    t = N.startContainer.getAscendant("tr", !0);
+                c(N) ? (f || (f = t.getAscendant("table").clone(), f.append(t.getAscendant({
                     thead: 1,
                     tbody: 1,
                     tfoot: 1
-                }).clone()), f.append(e), e = e.findOne("thead, tbody, tfoot")), h && h.equals(q) || (h = q, g = q.clone(), e.append(g)), g.append(d(M))) : f.append(M.cloneContents())
+                }).clone()), e.append(f), f = f.findOne("thead, tbody, tfoot")), g && g.equals(t) || (g = t, k = t.clone(), f.append(k)), k.append(d(N))) : e.append(N.cloneContents())
             }
-            return e ? f : b.getHtmlFromRange(a[0])
+            return f ? e : b.getHtmlFromRange(a[0])
         }
         a.prototype = CKEDITOR.editor.prototype;
         CKEDITOR.editor =
             a;
-        var D = 0,
-            x = {};
+        var F = 0,
+            v = {};
         CKEDITOR.tools.extend(CKEDITOR.editor.prototype, {
+            plugins: {
+                detectConflict: function(a, b) {
+                    for (var c = 0; c < b.length; c++) {
+                        var d = b[c];
+                        if (this[d]) return CKEDITOR.warn("editor-plugin-conflict", {
+                            plugin: a,
+                            replacedWith: d
+                        }), !0
+                    }
+                    return !1
+                }
+            },
             addCommand: function(a, b) {
                 b.name = a.toLowerCase();
                 var c = b instanceof CKEDITOR.command ? b : new CKEDITOR.command(this, b);
@@ -5914,7 +5954,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             _attachToForm: function() {
                 function a(b) {
                     c.updateElement();
-                    c._.required && !d.getValue() && !1 === c.fire("required") && b.data.preventDefault()
+                    c._.required && !d.getValue() && !1 === c.fire("required") &&
+                        b.data.preventDefault()
                 }
 
                 function b(a) {
@@ -5923,8 +5964,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 var c = this,
                     d = c.element,
                     f = new CKEDITOR.dom.element(d.$.form);
-                d.is("textarea") && f && (f.on("submit",
-                    a), b(f.$.submit) && (f.$.submit = CKEDITOR.tools.override(f.$.submit, function(b) {
+                d.is("textarea") && f && (f.on("submit", a), b(f.$.submit) && (f.$.submit = CKEDITOR.tools.override(f.$.submit, function(b) {
                     return function() {
                         a();
                         b.apply ? b.apply(this) : b()
@@ -5934,10 +5974,16 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 }))
             },
             destroy: function(a) {
+                var b = CKEDITOR.filter.instances,
+                    c = this;
                 this.fire("beforeDestroy");
-                !a && v.call(this);
+                !a && w.call(this);
                 this.editable(null);
-                this.filter && (this.filter.destroy(), delete this.filter);
+                this.filter && delete this.filter;
+                CKEDITOR.tools.array.forEach(CKEDITOR.tools.objectKeys(b), function(a) {
+                    a = b[a];
+                    c === a.editor && a.destroy()
+                });
                 delete this.activeFilter;
                 this.status = "destroyed";
                 this.fire("destroy");
@@ -5947,8 +5993,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             },
             elementPath: function(a) {
                 if (!a) {
-                    a =
-                        this.getSelection();
+                    a = this.getSelection();
                     if (!a) return null;
                     a = a.getStartElement()
                 }
@@ -5956,7 +6001,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             },
             createRange: function() {
                 var a = this.editable();
-                return a ? new CKEDITOR.dom.range(a) : null
+                return a ? new CKEDITOR.dom.range(a) :
+                    null
             },
             execCommand: function(a, b) {
                 var c = this.getCommand(a),
@@ -5973,7 +6019,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             getData: function(a) {
                 !a && this.fire("beforeGetData");
                 var b = this._.data;
-                "string" != typeof b && (b = (b = this.element) && this.elementMode == CKEDITOR.ELEMENT_MODE_REPLACE ? b.is("textarea") ? b.getValue() : b.getHtml() : "");
+                "string" != typeof b && (b = (b = this.element) && this.elementMode == CKEDITOR.ELEMENT_MODE_REPLACE ? b.is("textarea") ?
+                    b.getValue() : b.getHtml() : "");
                 b = {
                     dataValue: b
                 };
@@ -5986,18 +6033,18 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 return a
             },
             loadSnapshot: function(a) {
-                this.fire("loadSnapshot",
-                    a)
+                this.fire("loadSnapshot", a)
             },
             setData: function(a, b, c) {
                 var d = !0,
                     f = b;
                 b && "object" == typeof b && (c = b.internal, f = b.callback, d = !b.noSnapshot);
                 !c && d && this.fire("saveSnapshot");
-                if (f || !c) this.once("dataReady", function(a) {
-                    !c && d && this.fire("saveSnapshot");
-                    f && f.call(a.editor)
-                });
+                if (f || !c) this.once("dataReady",
+                    function(a) {
+                        !c && d && this.fire("saveSnapshot");
+                        f && f.call(a.editor)
+                    });
                 a = {
                     dataValue: a
                 };
@@ -6020,14 +6067,15 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 this.fire("insertText", a)
             },
             insertElement: function(a) {
-                this.fire("insertElement", a)
+                this.fire("insertElement",
+                    a)
             },
             getSelectedHtml: function(a) {
                 var b = this.editable(),
                     c = this.getSelection(),
                     c = c && c.getRanges();
                 if (!b || !c || 0 === c.length) return null;
-                b = A(c, b);
+                b = z(c, b);
                 return a ? b.getHtml() : b
             },
             extractSelectedHtml: function(a, b) {
@@ -6044,38 +6092,40 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 this.fire("beforeFocus")
             },
             checkDirty: function() {
-                return "ready" == this.status && this._.previousValue !== this.getSnapshot()
+                return "ready" ==
+                    this.status && this._.previousValue !== this.getSnapshot()
             },
             resetDirty: function() {
                 this._.previousValue = this.getSnapshot()
             },
             updateElement: function() {
-                return v.call(this)
+                return w.call(this)
             },
             setKeystroke: function() {
                 for (var a = this.keystrokeHandler.keystrokes, b = CKEDITOR.tools.isArray(arguments[0]) ? arguments[0] : [
-                        [].slice.call(arguments,
-                            0)
+                        [].slice.call(arguments, 0)
                     ], c, d, f = b.length; f--;) c = b[f], d = 0, CKEDITOR.tools.isArray(c) && (d = c[1], c = c[0]), d ? a[c] = d : delete a[c]
             },
-            getCommandKeystroke: function(a) {
-                if (a = "string" === typeof a ? this.getCommand(a) : a) {
-                    var b = CKEDITOR.tools.object.findKey(this.commands, a),
-                        c = this.keystrokeHandler.keystrokes,
-                        d;
-                    if (a.fakeKeystroke) return a.fakeKeystroke;
-                    for (d in c)
-                        if (c.hasOwnProperty(d) && c[d] == b) return d
+            getCommandKeystroke: function(a, b) {
+                var c = "string" === typeof a ? this.getCommand(a) : a,
+                    d = [];
+                if (c) {
+                    var f =
+                        CKEDITOR.tools.object.findKey(this.commands, c),
+                        e = this.keystrokeHandler.keystrokes;
+                    if (c.fakeKeystroke) d.push(c.fakeKeystroke);
+                    else
+                        for (var g in e) e[g] === f && d.push(g)
                 }
-                return null
+                return b ? d : d[0] || null
             },
             addFeature: function(a) {
                 return this.filter.addFeature(a)
             },
             setActiveFilter: function(a) {
                 a || (a = this.filter);
-                this.activeFilter !== a &&
-                    (this.activeFilter = a, this.fire("activeFilterChange"), a === this.filter ? this.setActiveEnterMode(null, null) : this.setActiveEnterMode(a.getAllowedEnterMode(this.enterMode), a.getAllowedEnterMode(this.shiftEnterMode, !0)))
+                this.activeFilter !== a && (this.activeFilter = a, this.fire("activeFilterChange"), a === this.filter ? this.setActiveEnterMode(null, null) : this.setActiveEnterMode(a.getAllowedEnterMode(this.enterMode), a.getAllowedEnterMode(this.shiftEnterMode,
+                    !0)))
             },
             setActiveEnterMode: function(a, b) {
                 a = a ? this.blockless ? CKEDITOR.ENTER_BR : a : this.enterMode;
@@ -6120,12 +6170,12 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             onCDATA: function() {},
             onComment: function() {},
             parse: function(b) {
-                for (var c, f, h = 0, k; c = this._.htmlPartsRegex.exec(b);) {
+                for (var c, f, g = 0, k; c = this._.htmlPartsRegex.exec(b);) {
                     f = c.index;
-                    if (f > h)
-                        if (h = b.substring(h, f), k) k.push(h);
-                        else this.onText(h);
-                    h = this._.htmlPartsRegex.lastIndex;
+                    if (f > g)
+                        if (g = b.substring(g, f), k) k.push(g);
+                        else this.onText(g);
+                    g = this._.htmlPartsRegex.lastIndex;
                     if (f = c[1])
                         if (f = f.toLowerCase(), k && CKEDITOR.dtd.$cdata[f] && (this.onCDATA(k.join("")), k = null), !k) {
                             this.onTagClose(f);
@@ -6133,21 +6183,21 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         } if (k) k.push(c[0]);
                     else if (f = c[3]) {
                         if (f = f.toLowerCase(), !/="/.test(f)) {
-                            var g = {},
-                                n, r = c[4];
+                            var h = {},
+                                p, q = c[4];
                             c = !!c[5];
-                            if (r)
-                                for (; n = a.exec(r);) {
-                                    var e = n[1].toLowerCase();
-                                    n = n[2] || n[3] || n[4] || "";
-                                    g[e] = !n && d[e] ? e : CKEDITOR.tools.htmlDecodeAttr(n)
+                            if (q)
+                                for (; p = a.exec(q);) {
+                                    var e = p[1].toLowerCase();
+                                    p = p[2] || p[3] || p[4] || "";
+                                    h[e] = !p && d[e] ? e : CKEDITOR.tools.htmlDecodeAttr(p)
                                 }
-                            this.onTagOpen(f, g, c);
+                            this.onTagOpen(f, h, c);
                             !k && CKEDITOR.dtd.$cdata[f] && (k = [])
                         }
                     } else if (f = c[2]) this.onComment(f)
                 }
-                if (b.length > h) this.onText(b.substring(h,
+                if (b.length > g) this.onText(b.substring(g,
                     b.length))
             }
         }
@@ -6358,21 +6408,21 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 tr: "td"
             };
         CKEDITOR.htmlParser.fragment.fromHtml =
-            function(h, k, g) {
-                function n(a) {
+            function(g, k, h) {
+                function p(a) {
                     var b;
                     if (0 < m.length)
                         for (var c = 0; c < m.length; c++) {
                             var d = m[c],
                                 f = d.name,
                                 e = CKEDITOR.dtd[f],
-                                l = u.name && CKEDITOR.dtd[u.name];
-                            l && !l[f] || a && e && !e[a] && CKEDITOR.dtd[a] ? f == u.name && (y(u, u.parent, 1), c--) : (b || (r(), b = 1), d = d.clone(), d.parent = u, u = d, m.splice(c, 1), c--)
+                                n = u.name && CKEDITOR.dtd[u.name];
+                            n && !n[f] || a && e && !e[a] && CKEDITOR.dtd[a] ? f == u.name && (x(u, u.parent, 1), c--) : (b || (q(), b = 1), d = d.clone(), d.parent = u, u = d, m.splice(c, 1), c--)
                         }
                 }
 
-                function r() {
-                    for (; J.length;) y(J.shift(), u)
+                function q() {
+                    for (; M.length;) x(M.shift(), u)
                 }
 
                 function e(a) {
@@ -6385,112 +6435,112 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     }
                 }
 
-                function y(b, c, d) {
-                    c = c || u || x;
+                function x(b, c, d) {
+                    c = c || u || v;
                     var f = u;
-                    void 0 === b.previous && (v(c, b) && (u = c, D.onTagOpen(g, {}), b.returnPoint = c = u), e(b), a(b) && !b.children.length || c.add(b), "pre" == b.name && (l = !1), "textarea" == b.name && (K = !1));
+                    void 0 === b.previous && (w(c, b) && (u = c, F.onTagOpen(h, {}), b.returnPoint = c = u), e(b), a(b) && !b.children.length || c.add(b), "pre" == b.name && (n = !1), "textarea" == b.name && (H = !1));
                     b.returnPoint ? (u = b.returnPoint, delete b.returnPoint) : u = d ? c : f
                 }
 
-                function v(a, b) {
-                    if ((a == x || "body" == a.name) && g && (!a.name || CKEDITOR.dtd[a.name][g])) {
+                function w(a, b) {
+                    if ((a == v || "body" == a.name) && h && (!a.name || CKEDITOR.dtd[a.name][h])) {
                         var c, d;
                         return (c = b.attributes && (d = b.attributes["data-cke-real-element-type"]) ? d : b.name) && c in CKEDITOR.dtd.$inline && !(c in CKEDITOR.dtd.head) &&
                             !b.isOrphan || b.type == CKEDITOR.NODE_TEXT
                     }
                 }
 
-                function A(a, b) {
+                function z(a, b) {
                     return a in CKEDITOR.dtd.$listItem || a in CKEDITOR.dtd.$tableContent ? a == b || "dt" == a && "dd" == b || "dd" == a && "dt" == b : !1
                 }
-                var D = new CKEDITOR.htmlParser,
-                    x = k instanceof CKEDITOR.htmlParser.element ? k : "string" == typeof k ? new CKEDITOR.htmlParser.element(k) : new CKEDITOR.htmlParser.fragment,
+                var F = new CKEDITOR.htmlParser,
+                    v = k instanceof CKEDITOR.htmlParser.element ? k : "string" == typeof k ? new CKEDITOR.htmlParser.element(k) : new CKEDITOR.htmlParser.fragment,
                     m = [],
-                    J = [],
-                    u = x,
-                    K = "textarea" == x.name,
-                    l = "pre" == x.name;
-                D.onTagOpen = function(f, e, h, g) {
+                    M = [],
+                    u = v,
+                    H = "textarea" == v.name,
+                    n = "pre" == v.name;
+                F.onTagOpen = function(f, e, g, k) {
                     e = new CKEDITOR.htmlParser.element(f, e);
-                    e.isUnknown && h && (e.isEmpty = !0);
-                    e.isOptionalClose = g;
+                    e.isUnknown && g && (e.isEmpty = !0);
+                    e.isOptionalClose = k;
                     if (a(e)) m.push(e);
                     else {
-                        if ("pre" == f) l = !0;
+                        if ("pre" == f) n = !0;
                         else {
-                            if ("br" == f && l) {
+                            if ("br" == f && n) {
                                 u.add(new CKEDITOR.htmlParser.text("\n"));
                                 return
                             }
-                            "textarea" == f && (K = !0)
+                            "textarea" == f && (H = !0)
                         }
-                        if ("br" == f) J.push(e);
+                        if ("br" == f) M.push(e);
                         else {
-                            for (; !(g = (h = u.name) ? CKEDITOR.dtd[h] || (u._.isBlockLike ? CKEDITOR.dtd.div : CKEDITOR.dtd.span) : c, e.isUnknown || u.isUnknown || g[f]);)
-                                if (u.isOptionalClose) D.onTagClose(h);
-                                else if (f in b && h in b) h = u.children, (h = h[h.length - 1]) && "li" == h.name || y(h = new CKEDITOR.htmlParser.element("li"), u), !e.returnPoint && (e.returnPoint = u), u = h;
+                            for (; !(k = (g = u.name) ? CKEDITOR.dtd[g] || (u._.isBlockLike ? CKEDITOR.dtd.div : CKEDITOR.dtd.span) : c, e.isUnknown || u.isUnknown || k[f]);)
+                                if (u.isOptionalClose) F.onTagClose(g);
+                                else if (f in b && g in b) g = u.children, (g = g[g.length - 1]) && "li" == g.name || x(g = new CKEDITOR.htmlParser.element("li"), u), !e.returnPoint && (e.returnPoint = u), u = g;
                             else if (f in CKEDITOR.dtd.$listItem &&
-                                !A(f, h)) D.onTagOpen("li" == f ? "ul" : "dl", {}, 0, 1);
-                            else if (h in d && !A(f, h)) !e.returnPoint && (e.returnPoint = u), u = u.parent;
-                            else if (h in CKEDITOR.dtd.$inline && m.unshift(u), u.parent) y(u, u.parent, 1);
+                                !z(f, g)) F.onTagOpen("li" == f ? "ul" : "dl", {}, 0, 1);
+                            else if (g in d && !z(f, g)) !e.returnPoint && (e.returnPoint = u), u = u.parent;
+                            else if (g in CKEDITOR.dtd.$inline && m.unshift(u), u.parent) x(u, u.parent, 1);
                             else {
                                 e.isOrphan = 1;
                                 break
                             }
-                            n(f);
-                            r();
+                            p(f);
+                            q();
                             e.parent = u;
-                            e.isEmpty ? y(e) : u = e
+                            e.isEmpty ? x(e) : u = e
                         }
                     }
                 };
-                D.onTagClose = function(a) {
+                F.onTagClose = function(a) {
                     for (var b = m.length - 1; 0 <= b; b--)
                         if (a == m[b].name) {
                             m.splice(b, 1);
                             return
-                        } for (var c = [], d = [], f = u; f != x && f.name != a;) f._.isBlockLike || d.unshift(f), c.push(f), f = f.returnPoint || f.parent;
-                    if (f != x) {
+                        } for (var c = [], d = [], f = u; f != v && f.name != a;) f._.isBlockLike || d.unshift(f), c.push(f), f = f.returnPoint || f.parent;
+                    if (f != v) {
                         for (b = 0; b < c.length; b++) {
                             var e = c[b];
-                            y(e, e.parent)
+                            x(e, e.parent)
                         }
                         u =
                             f;
-                        f._.isBlockLike && r();
-                        y(f, f.parent);
+                        f._.isBlockLike && q();
+                        x(f, f.parent);
                         f == u && (u = u.parent);
                         m = m.concat(d)
                     }
-                    "body" == a && (g = !1)
+                    "body" == a && (h = !1)
                 };
-                D.onText = function(a) {
-                    if (!(u._.hasInlineStarted && !J.length || l || K) && (a = CKEDITOR.tools.ltrim(a), 0 === a.length)) return;
+                F.onText = function(a) {
+                    if (!(u._.hasInlineStarted && !M.length || n || H) && (a = CKEDITOR.tools.ltrim(a), 0 === a.length)) return;
                     var b = u.name,
                         e = b ? CKEDITOR.dtd[b] || (u._.isBlockLike ? CKEDITOR.dtd.div : CKEDITOR.dtd.span) : c;
-                    if (!K && !e["#"] && b in d) D.onTagOpen(f[b] || ""), D.onText(a);
+                    if (!H && !e["#"] && b in d) F.onTagOpen(f[b] || ""), F.onText(a);
                     else {
-                        r();
-                        n();
-                        l || K || (a = a.replace(/[\t\r\n ]{2,}|[\t\r\n]/g, " "));
+                        q();
+                        p();
+                        n || H || (a = a.replace(/[\t\r\n ]{2,}|[\t\r\n]/g, " "));
                         a = new CKEDITOR.htmlParser.text(a);
-                        if (v(u, a)) this.onTagOpen(g, {}, 0, 1);
+                        if (w(u, a)) this.onTagOpen(h, {}, 0, 1);
                         u.add(a)
                     }
                 };
-                D.onCDATA =
+                F.onCDATA =
                     function(a) {
                         u.add(new CKEDITOR.htmlParser.cdata(a))
                     };
-                D.onComment = function(a) {
-                    r();
-                    n();
+                F.onComment = function(a) {
+                    q();
+                    p();
                     u.add(new CKEDITOR.htmlParser.comment(a))
                 };
-                D.parse(h);
-                for (r(); u != x;) y(u, u.parent, 1);
-                e(x);
-                return x
+                F.parse(g);
+                for (q(); u != v;) x(u, u.parent, 1);
+                e(v);
+                return v
             };
         CKEDITOR.htmlParser.fragment.prototype = {
             type: CKEDITOR.NODE_DOCUMENT_FRAGMENT,
@@ -6555,9 +6605,9 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             this.rules = []
         }
 
-        function d(b, c, d, h) {
-            var k, g;
-            for (k in c)(g = b[k]) || (g = b[k] = new a), g.add(c[k], d, h)
+        function d(b, c, d, g) {
+            var k, h;
+            for (k in c)(h = b[k]) || (h = b[k] = new a), h.add(c[k], d, g)
         }
         CKEDITOR.htmlParser.filter = CKEDITOR.tools.createClass({
             $: function(b) {
@@ -6606,11 +6656,11 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     return this.rootRules.exec(a, c)
                 },
                 onElement: function(a, c) {
-                    for (var d = [this.elementsRules["^"], this.elementsRules[c.name], this.elementsRules.$], h, k = 0; 3 > k; k++)
-                        if (h = d[k]) {
-                            h = h.exec(a, c, this);
-                            if (!1 === h) return null;
-                            if (h && h != c) return this.onNode(a, h);
+                    for (var d = [this.elementsRules["^"], this.elementsRules[c.name], this.elementsRules.$], g, k = 0; 3 > k; k++)
+                        if (g = d[k]) {
+                            g = g.exec(a, c, this);
+                            if (!1 === g) return null;
+                            if (g && g != c) return this.onNode(a, g);
                             if (c.parent && !c.name) break
                         } return c
                 },
@@ -6618,8 +6668,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     var d = c.type;
                     return d == CKEDITOR.NODE_ELEMENT ? this.onElement(a, c) : d == CKEDITOR.NODE_TEXT ? new CKEDITOR.htmlParser.text(this.onText(a, c.value)) : d == CKEDITOR.NODE_COMMENT ? new CKEDITOR.htmlParser.comment(this.onComment(a, c.value)) : null
                 },
-                onAttribute: function(a, c, d, h) {
-                    return (d = this.attributesRules[d]) ? d.exec(a, h, c, this) : h
+                onAttribute: function(a, c, d, g) {
+                    return (d = this.attributesRules[d]) ? d.exec(a, g, c, this) : g
                 }
             }
         });
@@ -6634,12 +6684,12 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             },
             addMany: function(a,
                 c, d) {
-                for (var h = [this.findIndex(c), 0], k = 0, g = a.length; k < g; k++) h.push({
+                for (var g = [this.findIndex(c), 0], k = 0, h = a.length; k < h; k++) g.push({
                     value: a[k],
                     priority: c,
                     options: d
                 });
-                this.rules.splice.apply(this.rules, h)
+                this.rules.splice.apply(this.rules, g)
             },
             findIndex: function(a) {
                 for (var c = this.rules, d = c.length - 1; 0 <= d && a < c[d].priority;) d--;
@@ -6647,20 +6697,20 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             },
             exec: function(a, c) {
                 var d = c instanceof CKEDITOR.htmlParser.node || c instanceof CKEDITOR.htmlParser.fragment,
-                    h = Array.prototype.slice.call(arguments, 1),
+                    g = Array.prototype.slice.call(arguments, 1),
                     k = this.rules,
-                    g = k.length,
-                    n, r, e, y;
-                for (y = 0; y < g; y++)
-                    if (d && (n = c.type, r = c.name), e = k[y], !(a.nonEditable && !e.options.applyToAll ||
+                    h = k.length,
+                    p, q, e, x;
+                for (x = 0; x < h; x++)
+                    if (d && (p = c.type, q = c.name), e = k[x], !(a.nonEditable && !e.options.applyToAll ||
                             a.nestedEditable && e.options.excludeNestedEditable)) {
-                        e = e.value.apply(null, h);
-                        if (!1 === e || d && e && (e.name != r || e.type != n)) return e;
-                        null != e && (h[0] = c = e)
+                        e = e.value.apply(null, g);
+                        if (!1 === e || d && e && (e.name != q || e.type != p)) return e;
+                        null != e && (g[0] = c = e)
                     } return c
             },
             execOnName: function(a, c) {
-                for (var d = 0, h = this.rules, k = h.length, g; c && d < k; d++) g = h[d], a.nonEditable && !g.options.applyToAll || a.nestedEditable && g.options.excludeNestedEditable || (c = c.replace(g.value[0], g.value[1]));
+                for (var d = 0, g = this.rules, k = g.length, h; c && d < k; d++) h = g[d], a.nonEditable && !h.options.applyToAll || a.nestedEditable && h.options.excludeNestedEditable || (c = c.replace(h.value[0], h.value[1]));
                 return c
             }
         }
@@ -6673,37 +6723,37 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 })
             }
 
-            function p(a, d) {
+            function l(a, d) {
                 return function(f) {
                     if (f.type != CKEDITOR.NODE_DOCUMENT_FRAGMENT) {
                         var l = [],
-                            w = b(f),
-                            p, E;
-                        if (w)
-                            for (q(w, 1) && l.push(w); w;) h(w) && (p = c(w)) && q(p) && ((E = c(p)) && !h(E) ? l.push(p) : (e(z).insertAfter(p), p.remove())), w = w.previous;
-                        for (w = 0; w < l.length; w++) l[w].remove();
-                        if (l = !a || !1 !== ("function" == typeof d ? d(f) : d)) z || CKEDITOR.env.needsBrFiller ||
-                            f.type != CKEDITOR.NODE_DOCUMENT_FRAGMENT ? z || CKEDITOR.env.needsBrFiller || !(7 < document.documentMode || f.name in CKEDITOR.dtd.tr || f.name in CKEDITOR.dtd.$listItem) ? (l = b(f), l = !l || "form" == f.name && "input" == l.name) : l = !1 : l = !1;
+                            n = b(f),
+                            E, G;
+                        if (n)
+                            for (t(n, 1) && l.push(n); n;) g(n) && (E = c(n)) && t(E) && ((G = c(E)) && !g(G) ? l.push(E) : (e(y).insertAfter(E), E.remove())), n = n.previous;
+                        for (n = 0; n < l.length; n++) l[n].remove();
+                        if (l = !a || !1 !== ("function" == typeof d ? d(f) : d)) y || CKEDITOR.env.needsBrFiller ||
+                            f.type != CKEDITOR.NODE_DOCUMENT_FRAGMENT ? y || CKEDITOR.env.needsBrFiller || !(7 < document.documentMode || f.name in CKEDITOR.dtd.tr || f.name in CKEDITOR.dtd.$listItem) ? (l = b(f), l = !l || "form" == f.name && "input" == l.name) : l = !1 : l = !1;
                         l && f.add(e(a))
                     }
                 }
             }
 
-            function q(a, b) {
-                if ((!z || CKEDITOR.env.needsBrFiller) && a.type == CKEDITOR.NODE_ELEMENT && "br" == a.name && !a.attributes["data-cke-eol"]) return !0;
+            function t(a, b) {
+                if ((!y || CKEDITOR.env.needsBrFiller) && a.type == CKEDITOR.NODE_ELEMENT && "br" == a.name && !a.attributes["data-cke-eol"]) return !0;
                 var c;
-                return a.type == CKEDITOR.NODE_TEXT && (c = a.value.match(m)) && (c.index && ((new CKEDITOR.htmlParser.text(a.value.substring(0, c.index))).insertBefore(a),
-                    a.value = c[0]), !CKEDITOR.env.needsBrFiller && z && (!b || a.parent.name in g) || !z && ((c = a.previous) && "br" == c.name || !c || h(c))) ? !0 : !1
+                return a.type == CKEDITOR.NODE_TEXT && (c = a.value.match(u)) && (c.index && ((new CKEDITOR.htmlParser.text(a.value.substring(0, c.index))).insertBefore(a),
+                    a.value = c[0]), !CKEDITOR.env.needsBrFiller && y && (!b || a.parent.name in B) || !y && ((c = a.previous) && "br" == c.name || !c || g(c))) ? !0 : !1
             }
             var E = {
                     elements: {}
                 },
-                z = "html" == d,
-                g = CKEDITOR.tools.extend({}, l),
-                t;
-            for (t in g) "#" in u[t] || delete g[t];
-            for (t in g) E.elements[t] = p(z, a.config.fillEmptyBlocks);
-            E.root = p(z, !1);
+                y = "html" == d,
+                B = CKEDITOR.tools.extend({}, C),
+                h;
+            for (h in B) "#" in n[h] || delete B[h];
+            for (h in B) E.elements[h] = l(y, a.config.fillEmptyBlocks);
+            E.root = l(y, !1);
             E.elements.br = function(a) {
                 return function(b) {
                     if (b.parent.type != CKEDITOR.NODE_DOCUMENT_FRAGMENT) {
@@ -6713,11 +6763,11 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                             for (d = b.next; d && f(d);) d =
                                 d.next;
                             var l = c(b);
-                            !d && h(b.parent) ? k(b.parent, e(a)) : h(d) && l && !h(l) && e(a).insertBefore(d)
+                            !d && g(b.parent) ? k(b.parent, e(a)) : g(d) && l && !g(l) && e(a).insertBefore(d)
                         }
                     }
                 }
-            }(z);
+            }(y);
             return E
         }
 
@@ -6739,9 +6789,9 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             return a.type == CKEDITOR.NODE_TEXT && !CKEDITOR.tools.trim(a.value) || a.type == CKEDITOR.NODE_ELEMENT && a.attributes["data-cke-bookmark"]
         }
 
-        function h(a) {
+        function g(a) {
             return a &&
-                (a.type == CKEDITOR.NODE_ELEMENT && a.name in l || a.type == CKEDITOR.NODE_DOCUMENT_FRAGMENT)
+                (a.type == CKEDITOR.NODE_ELEMENT && a.name in C || a.type == CKEDITOR.NODE_DOCUMENT_FRAGMENT)
         }
 
         function k(a, b) {
@@ -6751,13 +6801,13 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             c && (c.next = b, b.previous = c)
         }
 
-        function g(a) {
+        function h(a) {
             a = a.attributes;
             "false" != a.contenteditable && (a["data-cke-editable"] = a.contenteditable ? "true" : 1);
             a.contenteditable = "false"
         }
 
-        function n(a) {
+        function p(a) {
             a = a.attributes;
             switch (a["data-cke-editable"]) {
                 case "true":
@@ -6768,42 +6818,70 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             }
         }
 
-        function r(a) {
-            return a.replace(M,
+        function q(a) {
+            return a.replace(E,
                 function(a, b, c) {
-                    return "\x3c" + b + c.replace(q, function(a, b) {
-                        return E.test(b) && -1 == c.indexOf("data-cke-saved-" + b) ? " data-cke-saved-" + a + " data-cke-" + CKEDITOR.rnd + "-" + a : a
+                    return "\x3c" + b + c.replace(y, function(a, b) {
+                        return I.test(b) && -1 == c.indexOf("data-cke-saved-" + b) ? " data-cke-saved-" + a + " data-cke-" + CKEDITOR.rnd + "-" + a : a
                     }) + "\x3e"
                 })
         }
 
         function e(a, b) {
             return a.replace(b, function(a, b, c) {
-                0 === a.indexOf("\x3ctextarea") && (a = b + A(c).replace(/</g, "\x26lt;").replace(/>/g, "\x26gt;") + "\x3c/textarea\x3e");
+                0 === a.indexOf("\x3ctextarea") && (a = b + v(c).replace(/</g, "\x26lt;").replace(/>/g, "\x26gt;") + "\x3c/textarea\x3e");
                 return "\x3ccke:encoded\x3e" + encodeURIComponent(a) + "\x3c/cke:encoded\x3e"
             })
         }
 
-        function y(a) {
-            return a.replace(P, function(a, b) {
+        function x(a) {
+            return a.replace(l, function(a, b) {
                 return decodeURIComponent(b)
             })
         }
 
-        function v(a) {
+        function w(a) {
             return a.replace(/\x3c!--(?!{cke_protected})[\s\S]+?--\x3e/g,
                 function(a) {
-                    return "\x3c!--" + J + "{C}" + encodeURIComponent(a).replace(/--/g, "%2D%2D") + "--\x3e"
+                    return "\x3c!--" + H + "{C}" + encodeURIComponent(a).replace(/--/g, "%2D%2D") + "--\x3e"
                 })
         }
 
-        function A(a) {
-            return a.replace(/\x3c!--\{cke_protected\}\{C\}([\s\S]+?)--\x3e/g, function(a, b) {
-                return decodeURIComponent(b)
-            })
+        function z(a) {
+            return CKEDITOR.tools.array.reduce(a.split(""), function(a, b) {
+                var c = b.toLowerCase(),
+                    d = b.toUpperCase(),
+                    e = F(c);
+                c !== d && (e += "|" + F(d));
+                return a + ("(" + e + ")")
+            }, "")
         }
 
-        function D(a, b) {
+        function F(a) {
+            var b;
+            b = a.charCodeAt(0);
+            var c = b.toString(16);
+            b = {
+                htmlCode: "\x26#" + b + ";?",
+                hex: "\x26#x0*" + c + ";?",
+                entity: {
+                    "\x3c": "\x26lt;",
+                    "\x3e": "\x26gt;",
+                    ":": "\x26colon;"
+                } [a]
+            };
+            for (var d in b) b[d] && (a += "|" + b[d]);
+            return a
+        }
+
+        function v(a) {
+            return a.replace(/\x3c!--\{cke_protected\}\{C\}([\s\S]+?)--\x3e/g,
+                function(a, b) {
+                    return decodeURIComponent(b)
+                })
+        }
+
+        function m(a, b) {
             var c = b._.dataStore;
             return a.replace(/\x3c!--\{cke_protected\}([\s\S]+?)--\x3e/g, function(a, b) {
                 return decodeURIComponent(b)
@@ -6812,86 +6890,88 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             })
         }
 
-        function x(a, b) {
+        function M(a, b) {
             var c = [],
                 d = b.config.protectedSource,
-                f = b._.dataStore || (b._.dataStore = {
+                e = b._.dataStore || (b._.dataStore = {
                     id: 1
                 }),
-                e = /<\!--\{cke_temp(comment)?\}(\d*?)--\x3e/g,
+                f = /<\!--\{cke_temp(comment)?\}(\d*?)--\x3e/g,
                 d = [/<script[\s\S]*?(<\/script>|$)/gi, /<noscript[\s\S]*?<\/noscript>/gi, /<meta[\s\S]*?\/?>/gi].concat(d);
-            a = a.replace(/\x3c!--[\s\S]*?--\x3e/g, function(a) {
-                return "\x3c!--{cke_tempcomment}" + (c.push(a) - 1) + "--\x3e"
-            });
+            a = a.replace(/\x3c!--[\s\S]*?--\x3e/g,
+                function(a) {
+                    return "\x3c!--{cke_tempcomment}" + (c.push(a) - 1) + "--\x3e"
+                });
             for (var l = 0; l < d.length; l++) a = a.replace(d[l], function(a) {
-                a = a.replace(e, function(a, b, d) {
+                a = a.replace(f, function(a, b, d) {
                     return c[d]
                 });
                 return /cke_temp(comment)?/.test(a) ? a : "\x3c!--{cke_temp}" + (c.push(a) - 1) + "--\x3e"
             });
-            a = a.replace(e, function(a, b, d) {
-                return "\x3c!--" + J + (b ? "{C}" :
-                    "") + encodeURIComponent(c[d]).replace(/--/g, "%2D%2D") + "--\x3e"
+            a = a.replace(f, function(a, b, d) {
+                return "\x3c!--" + H + (b ? "{C}" : "") + encodeURIComponent(c[d]).replace(/--/g, "%2D%2D") + "--\x3e"
             });
             a = a.replace(/<\w+(?:\s+(?:(?:[^\s=>]+\s*=\s*(?:[^'"\s>]+|'[^']*'|"[^"]*"))|[^\s=\/>]+))+\s*\/?>/g, function(a) {
-                return a.replace(/\x3c!--\{cke_protected\}([^>]*)--\x3e/g, function(a, b) {
-                    f[f.id] = decodeURIComponent(b);
-                    return "{cke_protected_" + f.id++ + "}"
-                })
+                return a.replace(/\x3c!--\{cke_protected\}([^>]*)--\x3e/g,
+                    function(a, b) {
+                        e[e.id] = decodeURIComponent(b);
+                        return "{cke_protected_" + e.id++ + "}"
+                    })
             });
-            return a = a.replace(/<(title|iframe|textarea)([^>]*)>([\s\S]*?)<\/\1>/g, function(a, c, d, f) {
-                return "\x3c" + c + d + "\x3e" + D(A(f), b) + "\x3c/" + c + "\x3e"
+            return a = a.replace(/<(title|iframe|textarea)([^>]*)>([\s\S]*?)<\/\1>/g, function(a, c, d, e) {
+                return "\x3c" + c + d + "\x3e" + m(v(e), b) + "\x3c/" + c + "\x3e"
             })
         }
         CKEDITOR.htmlDataProcessor = function(b) {
-            var c,
-                f, l = this;
+            var c, f, l = this;
             this.editor = b;
             this.dataFilter = c = new CKEDITOR.htmlParser.filter;
             this.htmlFilter = f = new CKEDITOR.htmlParser.filter;
             this.writer = new CKEDITOR.htmlParser.basicWriter;
-            c.addRules(t);
-            c.addRules(F, {
+            c.addRules(L);
+            c.addRules(D, {
                 applyToAll: !0
             });
             c.addRules(a(b, "data"), {
                 applyToAll: !0
             });
-            f.addRules(L);
-            f.addRules(C, {
+            f.addRules(N);
+            f.addRules(t, {
                 applyToAll: !0
             });
             f.addRules(a(b, "html"), {
                 applyToAll: !0
             });
             b.on("toHtml", function(a) {
-                a = a.data;
-                var c = a.dataValue,
-                    f, c = x(c, b),
-                    c = e(c, H),
-                    c = r(c),
-                    c = e(c, z),
-                    c = c.replace(O, "$1cke:$2"),
-                    c = c.replace(N, "\x3ccke:$1$2\x3e\x3c/cke:$1\x3e"),
-                    c = c.replace(/(<pre\b[^>]*>)(\r\n|\n)/g, "$1$2$2"),
-                    c = c.replace(/([^a-z0-9<\-])(on\w{3,})(?!>)/gi, "$1data-cke-" + CKEDITOR.rnd + "-$2");
-                f = a.context || b.editable().getName();
-                var l;
-                CKEDITOR.env.ie && 9 > CKEDITOR.env.version && "pre" == f && (f = "div", c = "\x3cpre\x3e" + c + "\x3c/pre\x3e", l = 1);
-                f = b.document.createElement(f);
-                f.setHtml("a" + c);
-                c = f.getHtml().substr(1);
-                c = c.replace(new RegExp("data-cke-" + CKEDITOR.rnd + "-", "ig"), "");
-                l && (c = c.replace(/^<pre>|<\/pre>$/gi, ""));
-                c = c.replace(p, "$1$2");
-                c = y(c);
-                c = A(c);
-                f = !1 === a.fixForBody ? !1 :
-                    d(a.enterMode, b.config.autoParagraph);
-                c = CKEDITOR.htmlParser.fragment.fromHtml(c, a.context, f);
-                f && (l = c, !l.children.length && CKEDITOR.dtd[l.name][f] && (f = new CKEDITOR.htmlParser.element(f), l.add(f)));
-                a.dataValue = c
-            }, null, null, 5);
+                    a = a.data;
+                    var c = a.dataValue,
+                        f, c = c.replace(K, ""),
+                        c = M(c, b),
+                        c = e(c, O),
+                        c = q(c),
+                        c = e(c, P),
+                        c = c.replace(B, "$1cke:$2"),
+                        c = c.replace(J, "\x3ccke:$1$2\x3e\x3c/cke:$1\x3e"),
+                        c = c.replace(/(<pre\b[^>]*>)(\r\n|\n)/g, "$1$2$2"),
+                        c = c.replace(/([^a-z0-9<\-])(on\w{3,})(?!>)/gi, "$1data-cke-" + CKEDITOR.rnd + "-$2");
+                    f = a.context || b.editable().getName();
+                    var l;
+                    CKEDITOR.env.ie && 9 > CKEDITOR.env.version && "pre" ==
+                        f && (f = "div", c = "\x3cpre\x3e" + c + "\x3c/pre\x3e", l = 1);
+                    f = b.document.createElement(f);
+                    f.setHtml("a" + c);
+                    c = f.getHtml().substr(1);
+                    c = c.replace(new RegExp("data-cke-" + CKEDITOR.rnd + "-", "ig"), "");
+                    l && (c = c.replace(/^<pre>|<\/pre>$/gi, ""));
+                    c = c.replace(A, "$1$2");
+                    c = x(c);
+                    c = v(c);
+                    f = !1 === a.fixForBody ? !1 : d(a.enterMode, b.config.autoParagraph);
+                    c = CKEDITOR.htmlParser.fragment.fromHtml(c, a.context, f);
+                    f && (l = c, !l.children.length && CKEDITOR.dtd[l.name][f] && (f = new CKEDITOR.htmlParser.element(f), l.add(f)));
+                    a.dataValue = c
+                }, null, null,
+                5);
             b.on("toHtml", function(a) {
                 a.data.filter.applyTo(a.data.dataValue, !0, a.data.dontFilter, a.data.enterMode) && b.fire("dataFiltered")
             }, null, null, 6);
@@ -6904,19 +6984,19 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     c = new CKEDITOR.htmlParser.basicWriter;
                 b.writeChildrenHtml(c);
                 b = c.getHtml(!0);
-                a.dataValue = v(b)
+                a.dataValue = w(b)
             }, null, null, 15);
             b.on("toDataFormat", function(a) {
                 var c = a.data.dataValue;
-                a.data.enterMode != CKEDITOR.ENTER_BR && (c = c.replace(/^<br *\/?>/i, ""));
+                a.data.enterMode != CKEDITOR.ENTER_BR && (c = c.replace(/^<br *\/?>/i,
+                    ""));
                 a.data.dataValue = CKEDITOR.htmlParser.fragment.fromHtml(c, a.data.context, d(a.data.enterMode, b.config.autoParagraph))
             }, null, null, 5);
             b.on("toDataFormat", function(a) {
                 a.data.dataValue.filterChildren(l.htmlFilter, !0)
             }, null, null, 10);
             b.on("toDataFormat", function(a) {
-                a.data.filter.applyTo(a.data.dataValue,
-                    !1, !0)
+                a.data.filter.applyTo(a.data.dataValue, !1, !0)
             }, null, null, 11);
             b.on("toDataFormat", function(a) {
                 var c = a.data.dataValue,
@@ -6924,16 +7004,16 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 d.reset();
                 c.writeChildrenHtml(d);
                 c = d.getHtml(!0);
-                c = A(c);
-                c = D(c, b);
+                c = v(c);
+                c = m(c, b);
                 a.data.dataValue = c
             }, null, null, 15)
         };
         CKEDITOR.htmlDataProcessor.prototype = {
             toHtml: function(a, b, c, d) {
                 var f = this.editor,
-                    e, l, p, h;
-                b && "object" == typeof b ? (e = b.context, c = b.fixForBody, d = b.dontFilter, l = b.filter, p = b.enterMode, h = b.protectedWhitespaces) : e = b;
+                    e, l, n, g;
+                b && "object" == typeof b ? (e = b.context, c = b.fixForBody, d = b.dontFilter, l = b.filter, n = b.enterMode, g = b.protectedWhitespaces) : e = b;
                 e || null === e || (e = f.editable().getName());
                 return f.fire("toHtml", {
                     dataValue: a,
@@ -6941,8 +7021,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     fixForBody: c,
                     dontFilter: d,
                     filter: l || f.filter,
-                    enterMode: p || f.enterMode,
-                    protectedWhitespaces: h
+                    enterMode: n || f.enterMode,
+                    protectedWhitespaces: g
                 }).dataValue
             },
             toDataFormat: function(a, b) {
@@ -6957,19 +7037,18 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 }).dataValue
             }
         };
-        var m = /(?:&nbsp;|\xa0)$/,
-            J = "{cke_protected}",
-            u = CKEDITOR.dtd,
-            K = "caption colgroup col thead tfoot tbody".split(" "),
-            l = CKEDITOR.tools.extend({}, u.$blockLimit,
-                u.$block),
-            t = {
+        var u = /(?:&nbsp;|\xa0)$/,
+            H = "{cke_protected}",
+            n = CKEDITOR.dtd,
+            r = "caption colgroup col thead tfoot tbody".split(" "),
+            C = CKEDITOR.tools.extend({}, n.$blockLimit, n.$block),
+            L = {
                 elements: {
-                    input: g,
-                    textarea: g
+                    input: h,
+                    textarea: h
                 }
             },
-            F = {
+            D = {
                 attributeNames: [
                     [/^on/, "data-cke-pa-on"],
                     [/^srcdoc/, "data-cke-pa-srcdoc"],
@@ -6978,13 +7057,14 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 elements: {
                     iframe: function(a) {
                         if (a.attributes && a.attributes.src) {
-                            var b = a.attributes.src.toLowerCase().replace(/[^a-z]/gi, "");
+                            var b = a.attributes.src.toLowerCase().replace(/[^a-z]/gi,
+                                "");
                             if (0 === b.indexOf("javascript") || 0 === b.indexOf("data")) a.attributes["data-cke-pa-src"] = a.attributes.src, delete a.attributes.src
                         }
                     }
                 }
             },
-            L = {
+            N = {
                 elements: {
                     embed: function(a) {
                         var b = a.parent;
@@ -7001,13 +7081,15 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     }
                 }
             },
-            C = {
+            t = {
                 elementNames: [
                     [/^cke:/, ""],
                     [/^\?xml:namespace$/, ""]
                 ],
                 attributeNames: [
-                    [/^data-cke-(saved|pa)-/, ""],
+                    [/^data-cke-(saved|pa)-/,
+                        ""
+                    ],
                     [/^data-cke-.*/, ""],
                     ["hidefocus", ""]
                 ],
@@ -7023,8 +7105,9 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     table: function(a) {
                         a.children.slice(0).sort(function(a, b) {
                             var c, d;
-                            a.type == CKEDITOR.NODE_ELEMENT && b.type == a.type && (c = CKEDITOR.tools.indexOf(K, a.name), d = CKEDITOR.tools.indexOf(K, b.name)); - 1 < c && -1 < d && c != d || (c = a.parent ? a.getIndex() : -1, d = b.parent ? b.getIndex() : -1);
-                            return c > d ? 1 : -1
+                            a.type == CKEDITOR.NODE_ELEMENT && b.type == a.type && (c = CKEDITOR.tools.indexOf(r, a.name), d = CKEDITOR.tools.indexOf(r, b.name)); - 1 < c && -1 < d && c != d || (c = a.parent ? a.getIndex() : -1, d = b.parent ? b.getIndex() : -1);
+                            return c > d ?
+                                1 : -1
                         })
                     },
                     param: function(a) {
@@ -7053,8 +7136,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         !b && k(a, b = new CKEDITOR.htmlParser.text);
                         b.value = a.attributes["data-cke-title"] || ""
                     },
-                    input: n,
-                    textarea: n
+                    input: p,
+                    textarea: p
                 },
                 attributes: {
                     "class": function(a) {
@@ -7062,21 +7145,21 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     }
                 }
             };
-        CKEDITOR.env.ie && (C.attributes.style = function(a) {
-            return a.replace(/(^|;)([^\:]+)/g,
-                function(a) {
-                    return a.toLowerCase()
-                })
+        CKEDITOR.env.ie && (t.attributes.style = function(a) {
+            return a.replace(/(^|;)([^\:]+)/g, function(a) {
+                return a.toLowerCase()
+            })
         });
-        var M = /<(a|area|img|input|source)\b([^>]*)>/gi,
-            q = /([\w-:]+)\s*=\s*(?:(?:"[^"]*")|(?:'[^']*')|(?:[^ "'>]+))/gi,
-            E = /^(href|src|name)$/i,
-            z = /(?:<style(?=[ >])[^>]*>[\s\S]*?<\/style>)|(?:<(:?link|meta|base)[^>]*>)/gi,
-            H = /(<textarea(?=[ >])[^>]*>)([\s\S]*?)(?:<\/textarea>)/gi,
-            P = /<cke:encoded>([^<]*)<\/cke:encoded>/gi,
-            O = /(<\/?)((?:object|embed|param|html|body|head|title)[^>]*>)/gi,
-            p = /(<\/?)cke:((?:html|body|head|title)[^>]*>)/gi,
-            N = /<cke:(param|embed)([^>]*?)\/?>(?!\s*<\/cke:\1)/gi
+        var E = /<(a|area|img|input|source)\b([^>]*)>/gi,
+            y = /([\w-:]+)\s*=\s*(?:(?:"[^"]*")|(?:'[^']*')|(?:[^ "'>]+))/gi,
+            I = /^(href|src|name)$/i,
+            P = /(?:<style(?=[ >])[^>]*>[\s\S]*?<\/style>)|(?:<(:?link|meta|base)[^>]*>)/gi,
+            O = /(<textarea(?=[ >])[^>]*>)([\s\S]*?)(?:<\/textarea>)/gi,
+            l = /<cke:encoded>([^<]*)<\/cke:encoded>/gi,
+            K = new RegExp("(" + z("\x3ccke:encoded\x3e") + "(.*?)" + z("\x3c/cke:encoded\x3e") + ")|(" + z("\x3c") + z("/") + "?" + z("cke:encoded\x3e") + ")", "gi"),
+            B = /(<\/?)((?:object|embed|param|html|body|head|title)([\s][^>]*)?>)/gi,
+            A = /(<\/?)cke:((?:html|body|head|title)[^>]*>)/gi,
+            J = /<cke:(param|embed)([^>]*?)\/?>(?!\s*<\/cke:\1)/gi
     })();
     "use strict";
     CKEDITOR.htmlParser.element = function(a, d) {
@@ -7134,14 +7217,14 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             },
             filter: function(a, b) {
                 var d = this,
-                    k, g;
+                    k, h;
                 b = d.getFilterContext(b);
-                if (b.off) return !0;
-                if (!d.parent) a.onRoot(b, d);
+                if (!d.parent) a.onRoot(b,
+                    d);
                 for (;;) {
                     k = d.name;
-                    if (!(g = a.onElementName(b, k))) return this.remove(), !1;
-                    d.name = g;
+                    if (!(h = a.onElementName(b, k))) return this.remove(), !1;
+                    d.name = h;
                     if (!(d = a.onElement(b, d))) return this.remove(), !1;
                     if (d !== this) return this.replaceWith(d), !1;
                     if (d.name == k) break;
@@ -7149,37 +7232,37 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     if (!d.name) return this.replaceWithChildren(), !1
                 }
                 k = d.attributes;
-                var n, r;
-                for (n in k) {
-                    for (g = k[n];;)
-                        if (r = a.onAttributeName(b, n))
-                            if (r != n) delete k[n], n = r;
+                var p, q;
+                for (p in k) {
+                    for (h = k[p];;)
+                        if (q = a.onAttributeName(b, p))
+                            if (q != p) delete k[p], p = q;
                             else break;
                     else {
-                        delete k[n];
+                        delete k[p];
                         break
                     }
-                    r && (!1 === (g = a.onAttribute(b, d, r, g)) ? delete k[r] :
-                        k[r] = g)
+                    q && (!1 === (h = a.onAttribute(b, d, q, h)) ? delete k[q] : k[q] = h)
                 }
-                d.isEmpty || this.filterChildren(a, !1, b);
+                d.isEmpty ||
+                    this.filterChildren(a, !1, b);
                 return !0
             },
             filterChildren: b.filterChildren,
             writeHtml: function(a, b) {
                 b && this.filter(b);
-                var h = this.name,
+                var g = this.name,
                     k = [],
-                    g = this.attributes,
-                    n, r;
-                a.openTag(h, g);
-                for (n in g) k.push([n, g[n]]);
+                    h = this.attributes,
+                    p, q;
+                a.openTag(g, h);
+                for (p in h) k.push([p, h[p]]);
                 a.sortAttributes && k.sort(d);
-                n = 0;
-                for (r = k.length; n < r; n++) g = k[n], a.attribute(g[0], g[1]);
-                a.openTagClose(h, this.isEmpty);
+                p = 0;
+                for (q = k.length; p < q; p++) h = k[p], a.attribute(h[0], h[1]);
+                a.openTagClose(g, this.isEmpty);
                 this.writeChildrenHtml(a);
-                this.isEmpty || a.closeTag(h)
+                this.isEmpty || a.closeTag(g)
             },
             writeChildrenHtml: b.writeChildrenHtml,
             replaceWithChildren: function() {
@@ -7190,7 +7273,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             getFirst: function(b) {
                 if (!b) return this.children.length ? this.children[0] : null;
                 "function" != typeof b && (b = a(b));
-                for (var d = 0, h = this.children.length; d < h; ++d)
+                for (var d = 0, g = this.children.length; d < g; ++d)
                     if (b(this.children[d])) return this.children[d];
                 return null
             },
@@ -7222,9 +7305,9 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 var d = [],
                     k;
                 for (k = 0; k < this.children.length; k++) {
-                    var g = this.children[k];
-                    "function" == typeof a && a(g) ? d.push(g) : "string" == typeof a && g.name === a && d.push(g);
-                    b && g.find && (d = d.concat(g.find(a, b)))
+                    var h = this.children[k];
+                    "function" == typeof a && a(h) ? d.push(h) : "string" == typeof a && h.name === a && d.push(h);
+                    b && h.find && (d = d.concat(h.find(a, b)))
                 }
                 return d
             },
@@ -7245,11 +7328,9 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             getFilterContext: function(a) {
                 var b = [];
                 a || (a = {
-                    off: !1,
                     nonEditable: !1,
                     nestedEditable: !1
                 });
-                a.off || "off" != this.attributes["data-cke-processor"] || b.push("off", !0);
                 a.nonEditable || "false" != this.attributes.contenteditable ? a.nonEditable && !a.nestedEditable && "true" == this.attributes.contenteditable && b.push("nestedEditable", !0) : b.push("nonEditable", !0);
                 if (b.length) {
                     a = CKEDITOR.tools.copy(a);
@@ -7351,7 +7432,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         CKEDITOR.inlineAll = function() {
             var a, d, b;
             for (b in CKEDITOR.dtd.$editable)
-                for (var c = CKEDITOR.document.getElementsByTag(b), f = 0, h = c.count(); f < h; f++) a = c.getItem(f), "true" == a.getAttribute("contenteditable") && (d = {
+                for (var c = CKEDITOR.document.getElementsByTag(b), f = 0, g = c.count(); f < g; f++) a = c.getItem(f), "true" == a.getAttribute("contenteditable") && (d = {
                     element: a,
                     config: {}
                 }, !1 !== CKEDITOR.fire("inline", d) && CKEDITOR.inline(a, d.config))
@@ -7362,26 +7443,26 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
     })();
     CKEDITOR.replaceClass = "ckeditor";
     (function() {
-        function a(a, f, h, k) {
+        function a(a, f, g, k) {
             if (!CKEDITOR.env.isCompatible) return null;
             a = CKEDITOR.dom.element.get(a);
             if (a.getEditor()) throw 'The editor instance "' + a.getEditor().name + '" is already attached to the provided element.';
-            var g = new CKEDITOR.editor(f, a, k);
-            k == CKEDITOR.ELEMENT_MODE_REPLACE && (a.setStyle("visibility", "hidden"), g._.required = a.hasAttribute("required"), a.removeAttribute("required"));
-            h && g.setData(h, null, !0);
-            g.on("loaded", function() {
-                b(g);
-                k == CKEDITOR.ELEMENT_MODE_REPLACE && g.config.autoUpdateElement &&
-                    a.$.form && g._attachToForm();
-                g.setMode(g.config.startupMode, function() {
-                    g.resetDirty();
-                    g.status = "ready";
-                    g.fireOnce("instanceReady");
-                    CKEDITOR.fire("instanceReady", null, g)
+            var h = new CKEDITOR.editor(f, a, k);
+            k == CKEDITOR.ELEMENT_MODE_REPLACE && (a.setStyle("visibility", "hidden"), h._.required = a.hasAttribute("required"), a.removeAttribute("required"));
+            g && h.setData(g, null, !0);
+            h.on("loaded", function() {
+                b(h);
+                k == CKEDITOR.ELEMENT_MODE_REPLACE && h.config.autoUpdateElement &&
+                    a.$.form && h._attachToForm();
+                h.setMode(h.config.startupMode, function() {
+                    h.resetDirty();
+                    h.status = "ready";
+                    h.fireOnce("instanceReady");
+                    CKEDITOR.fire("instanceReady", null, h)
                 })
             });
-            g.on("destroy", d);
-            return g
+            h.on("destroy", d);
+            return h
         }
 
         function d() {
@@ -7395,33 +7476,33 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             var b = a.name,
                 d = a.element,
                 k = a.elementMode,
-                g =
+                h =
                 a.fire("uiSpace", {
                     space: "top",
                     html: ""
                 }).html,
-                n = a.fire("uiSpace", {
+                p = a.fire("uiSpace", {
                     space: "bottom",
                     html: ""
                 }).html,
-                r = new CKEDITOR.template('\x3c{outerEl} id\x3d"cke_{name}" class\x3d"{id} cke cke_reset cke_chrome cke_editor_{name} cke_{langDir} ' + CKEDITOR.env.cssClass + '"  dir\x3d"{langDir}" lang\x3d"{langCode}" role\x3d"application"' + (a.title ? ' aria-labelledby\x3d"cke_{name}_arialbl"' : "") + "\x3e" + (a.title ? '\x3cspan id\x3d"cke_{name}_arialbl" class\x3d"cke_voice_label"\x3e{voiceLabel}\x3c/span\x3e' : "") + '\x3c{outerEl} class\x3d"cke_inner cke_reset" role\x3d"presentation"\x3e{topHtml}\x3c{outerEl} id\x3d"{contentId}" class\x3d"cke_contents cke_reset" role\x3d"presentation"\x3e\x3c/{outerEl}\x3e{bottomHtml}\x3c/{outerEl}\x3e\x3c/{outerEl}\x3e'),
-                b = CKEDITOR.dom.element.createFromHtml(r.output({
+                q = new CKEDITOR.template('\x3c{outerEl} id\x3d"cke_{name}" class\x3d"{id} cke cke_reset cke_chrome cke_editor_{name} cke_{langDir} ' + CKEDITOR.env.cssClass + '"  dir\x3d"{langDir}" lang\x3d"{langCode}" role\x3d"application"' + (a.title ? ' aria-labelledby\x3d"cke_{name}_arialbl"' : "") + "\x3e" + (a.title ? '\x3cspan id\x3d"cke_{name}_arialbl" class\x3d"cke_voice_label"\x3e{voiceLabel}\x3c/span\x3e' : "") + '\x3c{outerEl} class\x3d"cke_inner cke_reset" role\x3d"presentation"\x3e{topHtml}\x3c{outerEl} id\x3d"{contentId}" class\x3d"cke_contents cke_reset" role\x3d"presentation"\x3e\x3c/{outerEl}\x3e{bottomHtml}\x3c/{outerEl}\x3e\x3c/{outerEl}\x3e'),
+                b = CKEDITOR.dom.element.createFromHtml(q.output({
                     id: a.id,
                     name: b,
                     langDir: a.lang.dir,
                     langCode: a.langCode,
                     voiceLabel: a.title,
-                    topHtml: g ? '\x3cspan id\x3d"' + a.ui.spaceId("top") + '" class\x3d"cke_top cke_reset_all" role\x3d"presentation" style\x3d"height:auto"\x3e' + g + "\x3c/span\x3e" : "",
+                    topHtml: h ? '\x3cspan id\x3d"' + a.ui.spaceId("top") + '" class\x3d"cke_top cke_reset_all" role\x3d"presentation" style\x3d"height:auto"\x3e' + h + "\x3c/span\x3e" : "",
                     contentId: a.ui.spaceId("contents"),
-                    bottomHtml: n ? '\x3cspan id\x3d"' + a.ui.spaceId("bottom") + '" class\x3d"cke_bottom cke_reset_all" role\x3d"presentation"\x3e' + n + "\x3c/span\x3e" : "",
+                    bottomHtml: p ? '\x3cspan id\x3d"' + a.ui.spaceId("bottom") + '" class\x3d"cke_bottom cke_reset_all" role\x3d"presentation"\x3e' + p + "\x3c/span\x3e" : "",
                     outerEl: CKEDITOR.env.ie ? "span" : "div"
                 }));
             k == CKEDITOR.ELEMENT_MODE_REPLACE ?
                 (d.hide(), b.insertAfter(d)) : d.append(b);
             a.container = b;
             a.ui.contentsElement = a.ui.space("contents");
-            g && a.ui.space("top").unselectable();
-            n && a.ui.space("bottom").unselectable();
+            h && a.ui.space("top").unselectable();
+            p && a.ui.space("bottom").unselectable();
             d = a.config.width;
             k = a.config.height;
             d && b.setStyle("width", CKEDITOR.tools.cssLength(d));
@@ -7435,8 +7516,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         CKEDITOR.replace = function(b, d) {
             return a(b, d, null, CKEDITOR.ELEMENT_MODE_REPLACE)
         };
-        CKEDITOR.appendTo = function(b, d, h) {
-            return a(b, d, h, CKEDITOR.ELEMENT_MODE_APPENDTO)
+        CKEDITOR.appendTo = function(b, d, g) {
+            return a(b, d, g, CKEDITOR.ELEMENT_MODE_APPENDTO)
         };
         CKEDITOR.replaceAll = function() {
             for (var a = document.getElementsByTagName("textarea"), b = 0; b < a.length; b++) {
@@ -7459,24 +7540,24 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             if (a != d.mode && k && k[a]) {
                 d.fire("beforeSetMode", a);
                 if (d.mode) {
-                    var g = d.checkDirty(),
+                    var h = d.checkDirty(),
                         k = d._.previousModeData,
-                        n, r = 0;
+                        p, q = 0;
                     d.fire("beforeModeUnload");
                     d.editable(0);
                     d._.previousMode = d.mode;
-                    d._.previousModeData = n = d.getData(1);
-                    "source" == d.mode && k == n && (d.fire("lockSnapshot", {
+                    d._.previousModeData = p = d.getData(1);
+                    "source" == d.mode && k == p && (d.fire("lockSnapshot", {
                         forceUpdate: !0
-                    }), r = 1);
+                    }), q = 1);
                     d.ui.space("contents").setHtml("");
                     d.mode = ""
                 } else d._.previousModeData = d.getData(1);
                 this._.modes[a](function() {
                     d.mode = a;
-                    void 0 !== g && !g &&
+                    void 0 !== h && !h &&
                         d.resetDirty();
-                    r ? d.fire("unlockSnapshot") : "wysiwyg" == a && d.fire("saveSnapshot");
+                    q ? d.fire("unlockSnapshot") : "wysiwyg" == a && d.fire("saveSnapshot");
                     setTimeout(function() {
                         d.fire("mode");
                         b && b.call(d)
@@ -7485,23 +7566,23 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             }
         };
         CKEDITOR.editor.prototype.resize = function(a, b, d, k) {
-            var g = this.container,
-                n = this.ui.space("contents"),
-                r = CKEDITOR.env.webkit && this.document && this.document.getWindow().$.frameElement;
+            var h = this.container,
+                p = this.ui.space("contents"),
+                q = CKEDITOR.env.webkit && this.document && this.document.getWindow().$.frameElement;
             k = k ? this.container.getFirst(function(a) {
                 return a.type == CKEDITOR.NODE_ELEMENT && a.hasClass("cke_inner")
-            }) : g;
+            }) : h;
             k.setSize("width", a, !0);
-            r && (r.style.width = "1%");
-            var e = (k.$.offsetHeight || 0) - (n.$.clientHeight ||
+            q && (q.style.width = "1%");
+            var e = (k.$.offsetHeight || 0) - (p.$.clientHeight ||
                     0),
-                g = Math.max(b - (d ? 0 : e), 0);
+                h = Math.max(b - (d ? 0 : e), 0);
             b = d ? b + e : b;
-            n.setStyle("height", g + "px");
-            r && (r.style.width = "100%");
+            p.setStyle("height", h + "px");
+            q && (q.style.width = "100%");
             this.fire("resize", {
                 outerHeight: b,
-                contentsHeight: g,
+                contentsHeight: h,
                 outerWidth: a || k.getSize("width")
             })
         };
@@ -7520,14 +7601,14 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 f = e.blockLimit,
                 g = a.data.selection,
                 h = g.getRanges()[0],
-                q;
+                t;
             if (CKEDITOR.env.gecko || CKEDITOR.env.ie && CKEDITOR.env.needsBrFiller)
-                if (g = d(g, e)) g.appendBogus(), q = CKEDITOR.env.ie;
+                if (g = d(g, e)) g.appendBogus(), t = CKEDITOR.env.ie;
             k(b, e.block, f) && h.collapsed && !h.getCommonAncestor().isReadOnly() && (e = h.clone(), e.enlarge(CKEDITOR.ENLARGE_BLOCK_CONTENTS), f = new CKEDITOR.dom.walker(e), f.guard = function(a) {
                     return !c(a) || a.type == CKEDITOR.NODE_COMMENT || a.isReadOnly()
                 }, !f.checkForward() || e.checkStartOfBlock() && e.checkEndOfBlock()) &&
-                (b = h.fixBlock(!0, b.activeEnterMode == CKEDITOR.ENTER_DIV ? "div" : "p"), CKEDITOR.env.needsBrFiller || (b = b.getFirst(c)) && b.type == CKEDITOR.NODE_TEXT && CKEDITOR.tools.trim(b.getText()).match(/^(?:&nbsp;|\xa0)$/) && b.remove(), q = 1, a.cancel());
-            q && h.select()
+                (b = h.fixBlock(!0, b.activeEnterMode == CKEDITOR.ENTER_DIV ? "div" : "p"), CKEDITOR.env.needsBrFiller || (b = b.getFirst(c)) && b.type == CKEDITOR.NODE_TEXT && CKEDITOR.tools.trim(b.getText()).match(/^(?:&nbsp;|\xa0)$/) && b.remove(), t = 1, a.cancel());
+            t && h.select()
         }
 
         function d(a, b) {
@@ -7544,7 +7625,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         }
 
         function c(a) {
-            return e(a) && y(a)
+            return e(a) && x(a)
         }
 
         function f(a, b) {
@@ -7554,11 +7635,11 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             }
         }
 
-        function h(a) {
+        function g(a) {
             function b(a) {
                 return function(b, e) {
                     e && b.type == CKEDITOR.NODE_ELEMENT && b.is(f) && (d = b);
-                    if (!(e || !c(b) || a && A(b))) return !1
+                    if (!(e || !c(b) || a && z(b))) return !1
                 }
             }
             var d, e = a.getRanges()[0];
@@ -7585,11 +7666,11 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             return !1 !== a.config.autoParagraph && a.activeEnterMode != CKEDITOR.ENTER_BR && (a.editable().equals(c) && !b || b && "true" == b.getAttribute("contenteditable"))
         }
 
-        function g(a) {
+        function h(a) {
             return a.activeEnterMode != CKEDITOR.ENTER_BR && !1 !== a.config.autoParagraph ? a.activeEnterMode == CKEDITOR.ENTER_DIV ? "div" : "p" : !1
         }
 
-        function n(a) {
+        function p(a) {
             var b = a.editor;
             b.getSelection().scrollIntoView();
             setTimeout(function() {
@@ -7597,13 +7678,13 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             }, 0)
         }
 
-        function r(a, b, c) {
+        function q(a, b, c) {
             var d = a.getCommonAncestor(b);
             for (b = a = c ? b : a;
                 (a = a.getParent()) && !d.equals(a) && 1 == a.getChildCount();) b = a;
             b.remove()
         }
-        var e, y, v, A, D, x, m, J, u, K;
+        var e, x, w, z, F, v, m, M, u, H;
         CKEDITOR.editable = CKEDITOR.tools.createClass({
             base: CKEDITOR.dom.element,
             $: function(a, b) {
@@ -7683,13 +7764,13 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     d.focus();
                     d.fire("saveSnapshot");
                     c || (c = d.getSelection().getRanges()[0]);
-                    x(this, b || "html", a, c);
+                    v(this, b || "html", a, c);
                     c.select();
-                    n(this);
+                    p(this);
                     this.editor.fire("afterInsertHtml", {})
                 },
                 insertHtmlIntoRange: function(a, b, c) {
-                    x(this, c || "html", a, b);
+                    v(this, c || "html", a, b);
                     this.editor.fire("afterInsertHtml", {
                         intoRange: b
                     })
@@ -7705,10 +7786,10 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     b || (b = d.getRanges()[0]);
                     this.insertElementIntoRange(a,
                         b) && (b.moveToPosition(a, CKEDITOR.POSITION_AFTER_END), f && ((f = a.getNext(function(a) {
-                        return c(a) && !A(a)
+                        return c(a) && !z(a)
                     })) && f.type == CKEDITOR.NODE_ELEMENT && f.is(CKEDITOR.dtd.$block) ? f.getDtd()["#"] ? b.moveToElementEditStart(f) : b.moveToElementEditEnd(a) : f || e == CKEDITOR.ENTER_BR || (f = b.fixBlock(!0, e == CKEDITOR.ENTER_DIV ? "div" : "p"), b.moveToElementEditStart(f))));
                     d.selectRanges([b]);
-                    n(this)
+                    p(this)
                 },
                 insertElementIntoSelection: function(a) {
                     this.insertElement(a)
@@ -7726,11 +7807,11 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         tbody: 1,
                         thead: 1,
                         tfoot: 1
-                    }) ? m(b) : b.startContainer.is(CKEDITOR.dtd.$list) && J(b));
-                    var q, g;
+                    }) ? m(b) : b.startContainer.is(CKEDITOR.dtd.$list) && M(b));
+                    var t, g;
                     if (f)
                         for (;
-                            (q = b.getCommonAncestor(0, 1)) && (g = CKEDITOR.dtd[q.getName()]) && (!g || !g[e]);) q.getName() in CKEDITOR.dtd.span ? b.splitElement(q) : b.checkStartOfBlock() && b.checkEndOfBlock() ? (b.setStartBefore(q), b.collapse(!0), q.remove()) : b.splitBlock(d == CKEDITOR.ENTER_DIV ?
+                            (t = b.getCommonAncestor(0, 1)) && (g = CKEDITOR.dtd[t.getName()]) && (!g || !g[e]);) t.getName() in CKEDITOR.dtd.span ? b.splitElement(t) : b.checkStartOfBlock() && b.checkEndOfBlock() ? (b.setStartBefore(t), b.collapse(!0), t.remove()) : b.splitBlock(d == CKEDITOR.ENTER_DIV ?
                             "div" : "p", c.editable());
                     b.insertNode(a);
                     return !0
@@ -7806,7 +7887,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     return new CKEDITOR.dom.documentFragment(a.fragment.$)
                 },
                 extractHtmlFromRange: function(a, b) {
-                    var c = K,
+                    var c = H,
                         d = {
                             range: a,
                             doc: a.document
@@ -7837,10 +7918,10 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                             a: {
                                 var d = c.block.getElementsByTag("span"),
                                     f = 0,
-                                    q;
+                                    t;
                                 if (d)
-                                    for (; q = d.getItem(f++);)
-                                        if (!y(q)) {
+                                    for (; t = d.getItem(f++);)
+                                        if (!x(t)) {
                                             d = !0;
                                             break a
                                         } d = !1
@@ -7848,7 +7929,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                             d = !d
                         }
                         d && (a.moveToPosition(c.block, CKEDITOR.POSITION_BEFORE_START), c.block.remove())
-                    } else c.autoParagraph(this.editor, a), v(a.startContainer) && a.startContainer.appendBogus();
+                    } else c.autoParagraph(this.editor, a), w(a.startContainer) && a.startContainer.appendBogus();
                     a.startContainer.mergeSiblings();
                     return e
                 },
@@ -7856,7 +7937,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     var a = this.editor;
                     this.attachListener(a, "beforeGetData", function() {
                         var b = this.getData();
-                        this.is("textarea") || !1 !== a.config.ignoreEmptyParagraph && (b = b.replace(D, function(a, b) {
+                        this.is("textarea") || !1 !== a.config.ignoreEmptyParagraph && (b = b.replace(F, function(a, b) {
                             return b
                         }));
                         a.setData(b, null, 1)
@@ -7920,24 +8001,24 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         a.window = this.getWindow();
                         var f = a.document;
                         this.changeAttr("spellcheck", !a.config.disableNativeSpellChecker);
-                        var g = a.config.contentsLangDirection;
-                        this.getDirection(1) != g && this.changeAttr("dir", g);
+                        var h = a.config.contentsLangDirection;
+                        this.getDirection(1) != h && this.changeAttr("dir", h);
                         var k = CKEDITOR.getCss();
                         if (k) {
-                            var g = f.getHead(),
-                                m = g.getCustomData("stylesheet");
-                            m ? k != m.getText() && (CKEDITOR.env.ie && 9 > CKEDITOR.env.version ? m.$.styleSheet.cssText = k : m.setText(k)) : (k = f.appendStyleText(k), k = new CKEDITOR.dom.element(k.ownerNode || k.owningElement), g.setCustomData("stylesheet",
+                            var h = f.getHead(),
+                                m = h.getCustomData("stylesheet");
+                            m ? k != m.getText() && (CKEDITOR.env.ie && 9 > CKEDITOR.env.version ? m.$.styleSheet.cssText = k : m.setText(k)) : (k = f.appendStyleText(k), k = new CKEDITOR.dom.element(k.ownerNode || k.owningElement), h.setCustomData("stylesheet",
                                 k), k.data("cke-temp", 1))
                         }
-                        g = f.getCustomData("stylesheet_ref") || 0;
-                        f.setCustomData("stylesheet_ref", g + 1);
+                        h = f.getCustomData("stylesheet_ref") || 0;
+                        f.setCustomData("stylesheet_ref", h + 1);
                         this.setCustomData("cke_includeReadonly", !a.config.disableReadonlyStyling);
                         this.attachListener(this, "click", function(a) {
                             a = a.data;
                             var b = (new CKEDITOR.dom.elementPath(a.getTarget(), this)).contains("a");
                             b && 2 != a.$.button && b.isReadOnly() && a.preventDefault()
                         });
-                        var q = {
+                        var t = {
                             8: 1,
                             46: 1
                         };
@@ -7948,18 +8029,18 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                             b = a.getSelection();
                             if (0 !== b.getRanges().length) {
                                 if (c in
-                                    q) {
-                                    var f, g = b.getRanges()[0],
-                                        p = g.startPath(),
-                                        k, w, B, c = 8 == c;
-                                    CKEDITOR.env.ie && 11 > CKEDITOR.env.version && (f = b.getSelectedElement()) || (f = h(b)) ? (a.fire("saveSnapshot"), g.moveToPosition(f, CKEDITOR.POSITION_BEFORE_START), f.remove(), g.select(), a.fire("saveSnapshot"), d = 1) : g.collapsed && ((k = p.block) && (B = k[c ? "getPrevious" : "getNext"](e)) && B.type == CKEDITOR.NODE_ELEMENT && B.is("table") && g[c ? "checkStartOfBlock" : "checkEndOfBlock"]() ? (a.fire("saveSnapshot"), g[c ? "checkEndOfBlock" : "checkStartOfBlock"]() && k.remove(), g["moveToElementEdit" +
-                                        (c ? "End" : "Start")](B), g.select(), a.fire("saveSnapshot"), d = 1) : p.blockLimit && p.blockLimit.is("td") && (w = p.blockLimit.getAscendant("table")) && g.checkBoundaryOfElement(w, c ? CKEDITOR.START : CKEDITOR.END) && (B = w[c ? "getPrevious" : "getNext"](e)) ? (a.fire("saveSnapshot"), g["moveToElementEdit" + (c ? "End" : "Start")](B), g.checkStartOfBlock() && g.checkEndOfBlock() ? B.remove() : g.select(), a.fire("saveSnapshot"), d = 1) : (w = p.contains(["td", "th", "caption"])) && g.checkBoundaryOfElement(w, c ? CKEDITOR.START : CKEDITOR.END) && (d = 1))
+                                    t) {
+                                    var f, k = b.getRanges()[0],
+                                        l = k.startPath(),
+                                        h, B, A, c = 8 == c;
+                                    CKEDITOR.env.ie && 11 > CKEDITOR.env.version && (f = b.getSelectedElement()) || (f = g(b)) ? (a.fire("saveSnapshot"), k.moveToPosition(f, CKEDITOR.POSITION_BEFORE_START), f.remove(), k.select(), a.fire("saveSnapshot"), d = 1) : k.collapsed && ((h = l.block) && (A = h[c ? "getPrevious" : "getNext"](e)) && A.type == CKEDITOR.NODE_ELEMENT && A.is("table") && k[c ? "checkStartOfBlock" : "checkEndOfBlock"]() ? (a.fire("saveSnapshot"), k[c ? "checkEndOfBlock" : "checkStartOfBlock"]() && h.remove(), k["moveToElementEdit" +
+                                        (c ? "End" : "Start")](A), k.select(), a.fire("saveSnapshot"), d = 1) : l.blockLimit && l.blockLimit.is("td") && (B = l.blockLimit.getAscendant("table")) && k.checkBoundaryOfElement(B, c ? CKEDITOR.START : CKEDITOR.END) && (A = B[c ? "getPrevious" : "getNext"](e)) ? (a.fire("saveSnapshot"), k["moveToElementEdit" + (c ? "End" : "Start")](A), k.checkStartOfBlock() && k.checkEndOfBlock() ? A.remove() : k.select(), a.fire("saveSnapshot"), d = 1) : (B = l.contains(["td", "th", "caption"])) && k.checkBoundaryOfElement(B, c ? CKEDITOR.START : CKEDITOR.END) && (d = 1))
                                 }
                                 return !d
                             }
                         });
                         a.blockless && CKEDITOR.env.ie && CKEDITOR.env.needsBrFiller && this.attachListener(this, "keyup", function(b) {
-                            b.data.getKeystroke() in q && !this.getFirst(c) && (this.appendBogus(), b = a.createRange(), b.moveToPosition(this, CKEDITOR.POSITION_AFTER_START), b.select())
+                            b.data.getKeystroke() in t && !this.getFirst(c) && (this.appendBogus(), b = a.createRange(), b.moveToPosition(this, CKEDITOR.POSITION_AFTER_START), b.select())
                         });
                         this.attachListener(this, "dblclick", function(b) {
                             if (a.readOnly) return !1;
@@ -7978,9 +8059,9 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                             (b = b.data.getTarget()) && b.is("img") && !b.isReadOnly() && a.getSelection().selectElement(b)
                         });
                         CKEDITOR.env.gecko && this.attachListener(this, "mouseup", function(b) {
-                            if (2 == b.data.$.button && (b = b.data.getTarget(), !b.getOuterHtml().replace(D, ""))) {
-                                var c =
-                                    a.createRange();
+                            if (2 == b.data.$.button && (b = b.data.getTarget(), !b.getAscendant("table") && !b.getOuterHtml().replace(F,
+                                    ""))) {
+                                var c = a.createRange();
                                 c.moveToElementEditStart(b);
                                 c.select(!0)
                             }
@@ -7993,8 +8074,9 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         CKEDITOR.env.webkit && this.attachListener(a, "key", function(b) {
                             if (a.readOnly) return !0;
                             var c = b.data.domEvent.getKey();
-                            if (c in q && (b = a.getSelection(), 0 !== b.getRanges().length)) {
-                                var c = 8 == c,
+                            if (c in t && (b = a.getSelection(), 0 !== b.getRanges().length)) {
+                                var c =
+                                    8 == c,
                                     d = b.getRanges()[0];
                                 b = d.startPath();
                                 if (d.collapsed) a: {
@@ -8013,19 +8095,20 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                                         if (!d || d && d.contains(e)) b = void 0;
                                         else {
                                             a.fire("saveSnapshot");
-                                            var p;
-                                            (p = (c ? d : e).getBogus()) && p.remove();
-                                            p = a.getSelection();
-                                            f = p.createBookmarks();
+                                            var l;
+                                            (l = (c ? d : e).getBogus()) && l.remove();
+                                            l = a.getSelection();
+                                            f = l.createBookmarks();
                                             (c ? e : d).moveChildren(c ? d : e, !1);
                                             b.lastElement.mergeSiblings();
-                                            r(e, d, !c);
-                                            p.selectBookmarks(f);
+                                            q(e, d, !c);
+                                            l.selectBookmarks(f);
                                             b = !0
                                         }
                                     } else b = !1
                                 }
-                                else c = d, p = b.block, d = c.endPath().block, p && d && !p.equals(d) ? (a.fire("saveSnapshot"), (e = p.getBogus()) && e.remove(), c.enlarge(CKEDITOR.ENLARGE_INLINE), c.deleteContents(), d.getParent() && (d.moveChildren(p, !1), b.lastElement.mergeSiblings(), r(p, d, !0)), c = a.getSelection().getRanges()[0], c.collapse(1), c.optimize(), "" === c.startContainer.getHtml() && c.startContainer.appendBogus(), c.select(), b = !0) : b = !1;
+                                else c = d, l = b.block, d = c.endPath().block, l && d && !l.equals(d) ? (a.fire("saveSnapshot"), (e = l.getBogus()) && e.remove(), c.enlarge(CKEDITOR.ENLARGE_INLINE), c.deleteContents(), d.getParent() && (d.moveChildren(l, !1), b.lastElement.mergeSiblings(), q(l, d, !0)), c = a.getSelection().getRanges()[0], c.collapse(1), c.optimize(), "" === c.startContainer.getHtml() && c.startContainer.appendBogus(),
+                                    c.select(), b = !0) : b = !1;
                                 if (!b) return;
                                 a.getSelection().scrollIntoView();
                                 a.fire("saveSnapshot");
@@ -8048,7 +8131,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         var b = a.getHead();
                         if (b.getCustomData("stylesheet")) {
                             var c = a.getCustomData("stylesheet_ref");
-                            --c ? a.setCustomData("stylesheet_ref", c) : (a.removeCustomData("stylesheet_ref"), b.removeCustomData("stylesheet").remove())
+                            --c ? a.setCustomData("stylesheet_ref", c) : (a.removeCustomData("stylesheet_ref"),
+                                b.removeCustomData("stylesheet").remove())
                         }
                     }
                     this.editor.fire("contentDomUnload");
@@ -8066,8 +8150,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             var c = b.editor;
             c.on("insertElement", function(a) {
                 a = a.data;
-                a.type == CKEDITOR.NODE_ELEMENT && (a.is("input") || a.is("textarea")) && ("false" != a.getAttribute("contentEditable") && a.data("cke-editable", a.hasAttribute("contenteditable") ?
-                    "true" : "1"), a.setAttribute("contentEditable", !1))
+                a.type == CKEDITOR.NODE_ELEMENT && (a.is("input") || a.is("textarea")) && ("false" != a.getAttribute("contentEditable") &&
+                    a.data("cke-editable", a.hasAttribute("contenteditable") ? "true" : "1"), a.setAttribute("contentEditable", !1))
             });
             c.on("selectionChange", function(b) {
                 if (!c.readOnly) {
@@ -8084,10 +8168,10 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     var c = b.title;
                     a.changeAttr("role", "textbox");
                     a.changeAttr("aria-multiline", "true");
-                    a.changeAttr("aria-label", c);
+                    a.changeAttr("aria-label",
+                        c);
                     c && a.changeAttr("title", c);
-                    var d =
-                        b.fire("ariaEditorHelpLabel", {}).label;
+                    var d = b.fire("ariaEditorHelpLabel", {}).label;
                     if (d && (c = this.ui.space(this.elementMode == CKEDITOR.ELEMENT_MODE_INLINE ? "top" : "contents"))) {
                         var e = CKEDITOR.tools.getNextId(),
                             d = CKEDITOR.dom.element.createFromHtml('\x3cspan id\x3d"' + e + '" class\x3d"cke_voice_label"\x3e' + d + "\x3c/span\x3e");
@@ -8099,46 +8183,45 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         });
         CKEDITOR.addCss(".cke_editable{cursor:text}.cke_editable img,.cke_editable input,.cke_editable textarea{cursor:default}");
         e = CKEDITOR.dom.walker.whitespaces(!0);
-        y = CKEDITOR.dom.walker.bookmark(!1,
-            !0);
-        v = CKEDITOR.dom.walker.empty();
-        A = CKEDITOR.dom.walker.bogus();
-        D = /(^|<body\b[^>]*>)\s*<(p|div|address|h\d|center|pre)[^>]*>\s*(?:<br[^>]*>|&nbsp;|\u00A0|&#160;)?\s*(:?<\/\2>)?\s*(?=$|<\/body>)/gi;
-        x = function() {
+        x = CKEDITOR.dom.walker.bookmark(!1, !0);
+        w = CKEDITOR.dom.walker.empty();
+        z = CKEDITOR.dom.walker.bogus();
+        F = /(^|<body\b[^>]*>)\s*<(p|div|address|h\d|center|pre)[^>]*>\s*(?:<br[^>]*>|&nbsp;|\u00A0|&#160;)?\s*(:?<\/\2>)?\s*(?=$|<\/body>)/gi;
+        v = function() {
             function a(b) {
                 return b.type == CKEDITOR.NODE_ELEMENT
             }
 
             function b(c, d) {
-                var e, f, g, q, h = [],
-                    z = d.range.startContainer;
+                var e, f, g, t, k = [],
+                    y = d.range.startContainer;
                 e = d.range.startPath();
-                for (var z = E[z.getName()], k = 0, H = c.getChildren(), m = H.count(), n = -1, r = -1, C = 0, P = e.contains(E.$list); k < m; ++k) e = H.getItem(k), a(e) ? (g = e.getName(), P && g in CKEDITOR.dtd.$list ?
-                    h = h.concat(b(e, d)) : (q = !!z[g], "br" != g || !e.data("cke-eol") || k && k != m - 1 || (C = (f = k ? h[k - 1].node : H.getItem(k + 1)) && (!a(f) || !f.is("br")), f = f && a(f) && E.$block[f.getName()]), -1 != n || q || (n = k), q || (r = k), h.push({
+                for (var y = E[y.getName()], h = 0, I = c.getChildren(), m = I.count(), q = -1, p = -1, P = 0, D = e.contains(E.$list); h < m; ++h) e = I.getItem(h), a(e) ? (g =
+                    e.getName(), D && g in CKEDITOR.dtd.$list ? k = k.concat(b(e, d)) : (t = !!y[g], "br" != g || !e.data("cke-eol") || h && h != m - 1 || (P = (f = h ? k[h - 1].node : I.getItem(h + 1)) && (!a(f) || !f.is("br")), f = f && a(f) && E.$block[f.getName()]), -1 != q || t || (q = h), t || (p = h), k.push({
                         isElement: 1,
-                        isLineBreak: C,
+                        isLineBreak: P,
                         isBlock: e.isBlockBoundary(),
                         hasBlockSibling: f,
                         node: e,
                         name: g,
-                        allowed: q
-                    }), f = C = 0)) : h.push({
+                        allowed: t
+                    }), f = P = 0)) : k.push({
                     isElement: 0,
                     node: e,
                     allowed: 1
-                }); - 1 < n && (h[n].firstNotAllowed = 1); - 1 < r && (h[r].lastNotAllowed = 1);
-                return h
+                }); - 1 < q && (k[q].firstNotAllowed = 1); - 1 < p && (k[p].lastNotAllowed = 1);
+                return k
             }
 
             function d(b, c) {
                 var e = [],
                     f = b.getChildren(),
                     g = f.count(),
-                    q, h = 0,
-                    z = E[c],
-                    k = !b.is(E.$inline) || b.is("br");
-                for (k && e.push(" "); h < g; h++) q = f.getItem(h), a(q) && !q.is(z) ? e = e.concat(d(q, c)) : e.push(q);
-                k && e.push(" ");
+                    t, k = 0,
+                    y = E[c],
+                    h = !b.is(E.$inline) || b.is("br");
+                for (h && e.push(" "); k < g; k++) t = f.getItem(k), a(t) && !t.is(y) ? e = e.concat(d(t, c)) : e.push(t);
+                h && e.push(" ");
                 return e
             }
 
@@ -8150,15 +8233,15 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 return b && a(b) && (b.is(E.$removeEmpty) || b.is("a") && !b.isBlockBoundary())
             }
 
-            function h(b, c, d, e) {
+            function g(b, c, d, e) {
                 var f = b.clone(),
-                    g, q;
+                    t, k;
                 f.setEndAt(c, CKEDITOR.POSITION_BEFORE_END);
-                (g = (new CKEDITOR.dom.walker(f)).next()) && a(g) && z[g.getName()] && (q = g.getPrevious()) && a(q) && !q.getParent().equals(b.startContainer) && d.contains(q) &&
-                    e.contains(g) && g.isIdentical(q) && (g.moveChildren(q), g.remove(), h(b, c, d, e))
+                (t = (new CKEDITOR.dom.walker(f)).next()) && a(t) && y[t.getName()] && (k = t.getPrevious()) && a(k) && !k.getParent().equals(b.startContainer) &&
+                    d.contains(k) && e.contains(t) && t.isIdentical(k) && (t.moveChildren(k), t.remove(), g(b, c, d, e))
             }
 
-            function q(b, c) {
+            function t(b, c) {
                 function d(b, c) {
                     if (c.isBlock && c.isElement && !c.node.is("br") && a(b) && b.is("br")) return b.remove(), 1
                 }
@@ -8168,7 +8251,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 f && d(f, b[0]) && (c.setEnd(c.endContainer, c.endOffset - 1), c.collapse())
             }
             var E = CKEDITOR.dtd,
-                z = {
+                y = {
                     p: 1,
                     div: 1,
                     h1: 1,
@@ -8184,7 +8267,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     dl: 1,
                     blockquote: 1
                 },
-                H = {
+                I = {
                     p: 1,
                     div: 1,
                     h1: 1,
@@ -8196,182 +8279,182 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 },
                 m = CKEDITOR.tools.extend({}, E.$inline);
             delete m.br;
-            return function(z, p, N, w) {
-                var B = z.editor,
-                    G = !1;
-                "unfiltered_html" == p && (p = "html", G = !0);
-                if (!w.checkReadOnly()) {
-                    var I = (new CKEDITOR.dom.elementPath(w.startContainer, w.root)).blockLimit || w.root;
-                    z = {
-                        type: p,
-                        dontFilter: G,
-                        editable: z,
-                        editor: B,
-                        range: w,
-                        blockLimit: I,
+            return function(y, l, K, B) {
+                var A = y.editor,
+                    J = !1;
+                "unfiltered_html" == l && (l = "html", J = !0);
+                if (!B.checkReadOnly()) {
+                    var G = (new CKEDITOR.dom.elementPath(B.startContainer, B.root)).blockLimit || B.root;
+                    y = {
+                        type: l,
+                        dontFilter: J,
+                        editable: y,
+                        editor: A,
+                        range: B,
+                        blockLimit: G,
                         mergeCandidates: [],
                         zombies: []
                     };
-                    p = z.range;
-                    w = z.mergeCandidates;
-                    var n, r;
-                    "text" == z.type && p.shrink(CKEDITOR.SHRINK_ELEMENT, !0, !1) && (n = CKEDITOR.dom.element.createFromHtml("\x3cspan\x3e\x26nbsp;\x3c/span\x3e",
-                        p.document), p.insertNode(n), p.setStartAfter(n));
-                    G = new CKEDITOR.dom.elementPath(p.startContainer);
-                    z.endPath = I = new CKEDITOR.dom.elementPath(p.endContainer);
-                    if (!p.collapsed) {
-                        var B = I.block || I.blockLimit,
-                            v = p.getCommonAncestor();
-                        B && !B.equals(v) && !B.contains(v) && p.checkEndOfBlock() && z.zombies.push(B);
-                        p.deleteContents()
+                    l = y.range;
+                    B = y.mergeCandidates;
+                    var q, p;
+                    "text" == y.type && l.shrink(CKEDITOR.SHRINK_ELEMENT, !0, !1) && (q = CKEDITOR.dom.element.createFromHtml("\x3cspan\x3e\x26nbsp;\x3c/span\x3e",
+                        l.document), l.insertNode(q), l.setStartAfter(q));
+                    J = new CKEDITOR.dom.elementPath(l.startContainer);
+                    y.endPath = G = new CKEDITOR.dom.elementPath(l.endContainer);
+                    if (!l.collapsed) {
+                        var A = G.block || G.blockLimit,
+                            w = l.getCommonAncestor();
+                        A && !A.equals(w) && !A.contains(w) && l.checkEndOfBlock() && y.zombies.push(A);
+                        l.deleteContents()
                     }
                     for (;
-                        (r = e(p)) && a(r) && r.isBlockBoundary() && G.contains(r);) p.moveToPosition(r, CKEDITOR.POSITION_BEFORE_END);
-                    h(p, z.blockLimit, G, I);
-                    n && (p.setEndBefore(n), p.collapse(), n.remove());
-                    n = p.startPath();
-                    if (B = n.contains(f, !1, 1)) p.splitElement(B), z.inlineStylesRoot = B, z.inlineStylesPeak = n.lastElement;
-                    n = p.createBookmark();
-                    (B = n.startNode.getPrevious(c)) && a(B) && f(B) && w.push(B);
-                    (B = n.startNode.getNext(c)) && a(B) && f(B) && w.push(B);
-                    for (B = n.startNode;
-                        (B = B.getParent()) && f(B);) w.push(B);
-                    p.moveToBookmark(n);
-                    if (n = N) {
-                        n = z.range;
-                        if ("text" == z.type && z.inlineStylesRoot) {
-                            r = z.inlineStylesPeak;
-                            p = r.getDocument().createText("{cke-peak}");
-                            for (w = z.inlineStylesRoot.getParent(); !r.equals(w);) p = p.appendTo(r.clone()), r = r.getParent();
-                            N = p.getOuterHtml().split("{cke-peak}").join(N)
+                        (p = e(l)) && a(p) && p.isBlockBoundary() && J.contains(p);) l.moveToPosition(p, CKEDITOR.POSITION_BEFORE_END);
+                    g(l, y.blockLimit, J, G);
+                    q && (l.setEndBefore(q), l.collapse(), q.remove());
+                    q = l.startPath();
+                    if (A = q.contains(f, !1, 1)) l.splitElement(A), y.inlineStylesRoot = A, y.inlineStylesPeak = q.lastElement;
+                    q = l.createBookmark();
+                    (A = q.startNode.getPrevious(c)) && a(A) && f(A) && B.push(A);
+                    (A = q.startNode.getNext(c)) && a(A) && f(A) && B.push(A);
+                    for (A = q.startNode;
+                        (A = A.getParent()) && f(A);) B.push(A);
+                    l.moveToBookmark(q);
+                    if (q = K) {
+                        q = y.range;
+                        if ("text" == y.type && y.inlineStylesRoot) {
+                            p = y.inlineStylesPeak;
+                            l = p.getDocument().createText("{cke-peak}");
+                            for (B = y.inlineStylesRoot.getParent(); !p.equals(B);) l = l.appendTo(p.clone()), p = p.getParent();
+                            K = l.getOuterHtml().split("{cke-peak}").join(K)
                         }
-                        r = z.blockLimit.getName();
-                        if (/^\s+|\s+$/.test(N) && "span" in CKEDITOR.dtd[r]) {
-                            var x = '\x3cspan data-cke-marker\x3d"1"\x3e\x26nbsp;\x3c/span\x3e';
-                            N = x + N + x
+                        p = y.blockLimit.getName();
+                        if (/^\s+|\s+$/.test(K) && "span" in CKEDITOR.dtd[p]) {
+                            var v = '\x3cspan data-cke-marker\x3d"1"\x3e\x26nbsp;\x3c/span\x3e';
+                            K = v + K + v
                         }
-                        N = z.editor.dataProcessor.toHtml(N, {
+                        K = y.editor.dataProcessor.toHtml(K, {
                             context: null,
                             fixForBody: !1,
-                            protectedWhitespaces: !!x,
-                            dontFilter: z.dontFilter,
-                            filter: z.editor.activeFilter,
-                            enterMode: z.editor.activeEnterMode
+                            protectedWhitespaces: !!v,
+                            dontFilter: y.dontFilter,
+                            filter: y.editor.activeFilter,
+                            enterMode: y.editor.activeEnterMode
                         });
-                        r = n.document.createElement("body");
-                        r.setHtml(N);
-                        x && (r.getFirst().remove(), r.getLast().remove());
-                        if ((x = n.startPath().block) && (1 !=
-                                x.getChildCount() || !x.getBogus())) a: {
-                            var y;
-                            if (1 == r.getChildCount() && a(y = r.getFirst()) && y.is(H) && !y.hasAttribute("contenteditable")) {
-                                x = y.getElementsByTag("*");
-                                n = 0;
-                                for (w = x.count(); n < w; n++)
-                                    if (p = x.getItem(n), !p.is(m)) break a;
-                                y.moveChildren(y.getParent(1));
-                                y.remove()
+                        p = q.document.createElement("body");
+                        p.setHtml(K);
+                        v && (p.getFirst().remove(), p.getLast().remove());
+                        if ((v = q.startPath().block) && (1 !=
+                                v.getChildCount() || !v.getBogus())) a: {
+                            var x;
+                            if (1 == p.getChildCount() && a(x = p.getFirst()) && x.is(I) && !x.hasAttribute("contenteditable")) {
+                                v = x.getElementsByTag("*");
+                                q = 0;
+                                for (B = v.count(); q < B; q++)
+                                    if (l = v.getItem(q), !l.is(m)) break a;
+                                x.moveChildren(x.getParent(1));
+                                x.remove()
                             }
                         }
-                        z.dataWrapper = r;
-                        n = N
+                        y.dataWrapper = p;
+                        q = K
                     }
-                    if (n) {
-                        y = z.range;
-                        n = y.document;
+                    if (q) {
+                        x = y.range;
+                        q = x.document;
                         var u;
-                        r = z.blockLimit;
-                        w = 0;
-                        var A, x = [],
-                            D, T;
-                        N = B = 0;
-                        var J, K;
-                        p = y.startContainer;
-                        var G = z.endPath.elements[0],
-                            W, I = G.getPosition(p),
-                            v = !!G.getCommonAncestor(p) && I != CKEDITOR.POSITION_IDENTICAL && !(I & CKEDITOR.POSITION_CONTAINS +
+                        p = y.blockLimit;
+                        B = 0;
+                        var z, v = [],
+                            F, T;
+                        K = A = 0;
+                        var H, M;
+                        l = x.startContainer;
+                        var J = y.endPath.elements[0],
+                            W, G = J.getPosition(l),
+                            w = !!J.getCommonAncestor(l) && G != CKEDITOR.POSITION_IDENTICAL && !(G & CKEDITOR.POSITION_CONTAINS +
                                 CKEDITOR.POSITION_IS_CONTAINED);
-                        p = b(z.dataWrapper, z);
-                        for (q(p, y); w < p.length; w++) {
-                            I = p[w];
-                            if (u = I.isLineBreak) {
-                                u = y;
-                                J = r;
+                        l = b(y.dataWrapper, y);
+                        for (t(l, x); B < l.length; B++) {
+                            G = l[B];
+                            if (u = G.isLineBreak) {
+                                u = x;
+                                H = p;
                                 var S = void 0,
                                     Y = void 0;
-                                I.hasBlockSibling ? u = 1 : (S = u.startContainer.getAscendant(E.$block, 1)) && S.is({
+                                G.hasBlockSibling ? u = 1 : (S = u.startContainer.getAscendant(E.$block, 1)) && S.is({
                                     div: 1,
                                     p: 1
-                                }) ? (Y = S.getPosition(J), Y == CKEDITOR.POSITION_IDENTICAL || Y == CKEDITOR.POSITION_CONTAINS ? u = 0 : (J = u.splitElement(S), u.moveToPosition(J, CKEDITOR.POSITION_AFTER_START), u = 1)) : u = 0
+                                }) ? (Y = S.getPosition(H), Y == CKEDITOR.POSITION_IDENTICAL || Y == CKEDITOR.POSITION_CONTAINS ? u = 0 : (H = u.splitElement(S), u.moveToPosition(H, CKEDITOR.POSITION_AFTER_START), u = 1)) : u = 0
                             }
-                            if (u) N = 0 < w;
+                            if (u) K = 0 < B;
                             else {
-                                u = y.startPath();
-                                !I.isBlock && k(z.editor, u.block, u.blockLimit) && (T = g(z.editor)) && (T = n.createElement(T),
-                                    T.appendBogus(), y.insertNode(T), CKEDITOR.env.needsBrFiller && (A = T.getBogus()) && A.remove(), y.moveToPosition(T, CKEDITOR.POSITION_BEFORE_END));
-                                if ((u = y.startPath().block) && !u.equals(D)) {
-                                    if (A = u.getBogus()) A.remove(), x.push(u);
-                                    D = u
+                                u = x.startPath();
+                                !G.isBlock && k(y.editor, u.block, u.blockLimit) && (T = h(y.editor)) && (T = q.createElement(T),
+                                    T.appendBogus(), x.insertNode(T), CKEDITOR.env.needsBrFiller && (z = T.getBogus()) && z.remove(), x.moveToPosition(T, CKEDITOR.POSITION_BEFORE_END));
+                                if ((u = x.startPath().block) && !u.equals(F)) {
+                                    if (z = u.getBogus()) z.remove(), v.push(u);
+                                    F = u
                                 }
-                                I.firstNotAllowed && (B = 1);
-                                if (B && I.isElement) {
-                                    u = y.startContainer;
-                                    for (J = null; u && !E[u.getName()][I.name];) {
-                                        if (u.equals(r)) {
+                                G.firstNotAllowed && (A = 1);
+                                if (A && G.isElement) {
+                                    u = x.startContainer;
+                                    for (H = null; u && !E[u.getName()][G.name];) {
+                                        if (u.equals(p)) {
                                             u = null;
                                             break
                                         }
-                                        J = u;
+                                        H = u;
                                         u = u.getParent()
                                     }
-                                    if (u) J && (K = y.splitElement(J), z.zombies.push(K), z.zombies.push(J));
+                                    if (u) H && (M = x.splitElement(H), y.zombies.push(M), y.zombies.push(H));
                                     else {
-                                        J = r.getName();
-                                        W = !w;
-                                        u = w == p.length - 1;
-                                        J = d(I.node, J);
-                                        for (var S = [], Y = J.length, Z = 0, ba = void 0, ca = 0, U = -1; Z < Y; Z++) ba = J[Z], " " == ba ? (ca || W && !Z || (S.push(new CKEDITOR.dom.text(" ")), U = S.length), ca = 1) : (S.push(ba), ca = 0);
+                                        H = p.getName();
+                                        W = !B;
+                                        u = B == l.length - 1;
+                                        H = d(G.node, H);
+                                        for (var S = [], Y = H.length, Z = 0, ba = void 0, ca = 0, U = -1; Z < Y; Z++) ba = H[Z], " " == ba ? (ca || W && !Z || (S.push(new CKEDITOR.dom.text(" ")), U = S.length), ca = 1) : (S.push(ba), ca = 0);
                                         u && U == S.length && S.pop();
                                         W = S
                                     }
                                 }
                                 if (W) {
-                                    for (; u = W.pop();) y.insertNode(u);
+                                    for (; u = W.pop();) x.insertNode(u);
                                     W = 0
-                                } else y.insertNode(I.node);
-                                I.lastNotAllowed && w < p.length - 1 && ((K = v ? G : K) && y.setEndAt(K, CKEDITOR.POSITION_AFTER_START), B = 0);
-                                y.collapse()
+                                } else x.insertNode(G.node);
+                                G.lastNotAllowed && B < l.length - 1 && ((M = w ? J : M) && x.setEndAt(M, CKEDITOR.POSITION_AFTER_START), A = 0);
+                                x.collapse()
                             }
                         }
-                        1 != p.length ? A = !1 : (A = p[0], A = A.isElement && "false" == A.node.getAttribute("contenteditable"));
-                        A && (N = !0, u = p[0].node, y.setStartAt(u, CKEDITOR.POSITION_BEFORE_START),
-                            y.setEndAt(u, CKEDITOR.POSITION_AFTER_END));
-                        z.dontMoveCaret = N;
-                        z.bogusNeededBlocks = x
+                        1 != l.length ? z = !1 : (z = l[0], z = z.isElement && "false" == z.node.getAttribute("contenteditable"));
+                        z && (K = !0, u = l[0].node, x.setStartAt(u, CKEDITOR.POSITION_BEFORE_START),
+                            x.setEndAt(u, CKEDITOR.POSITION_AFTER_END));
+                        y.dontMoveCaret = K;
+                        y.bogusNeededBlocks = v
                     }
-                    A = z.range;
+                    z = y.range;
                     var R;
-                    K = z.bogusNeededBlocks;
-                    for (W = A.createBookmark(); D = z.zombies.pop();) D.getParent() && (T = A.clone(), T.moveToElementEditStart(D), T.removeEmptyBlocksAtEnd());
-                    if (K)
-                        for (; D = K.pop();) CKEDITOR.env.needsBrFiller ? D.appendBogus() : D.append(A.document.createText(" "));
-                    for (; D = z.mergeCandidates.pop();) D.mergeSiblings();
-                    A.moveToBookmark(W);
-                    if (!z.dontMoveCaret) {
-                        for (D = e(A); D && a(D) && !D.is(E.$empty);) {
-                            if (D.isBlockBoundary()) A.moveToPosition(D,
+                    M = y.bogusNeededBlocks;
+                    for (W = z.createBookmark(); F = y.zombies.pop();) F.getParent() && (T = z.clone(), T.moveToElementEditStart(F), T.removeEmptyBlocksAtEnd());
+                    if (M)
+                        for (; F = M.pop();) CKEDITOR.env.needsBrFiller ? F.appendBogus() : F.append(z.document.createText(" "));
+                    for (; F = y.mergeCandidates.pop();) F.mergeSiblings();
+                    z.moveToBookmark(W);
+                    if (!y.dontMoveCaret) {
+                        for (F = e(z); F && a(F) && !F.is(E.$empty);) {
+                            if (F.isBlockBoundary()) z.moveToPosition(F,
                                 CKEDITOR.POSITION_BEFORE_END);
                             else {
-                                if (f(D) && D.getHtml().match(/(\s|&nbsp;)$/g)) {
+                                if (f(F) && F.getHtml().match(/(\s|&nbsp;)$/g)) {
                                     R = null;
                                     break
                                 }
-                                R = A.clone();
-                                R.moveToPosition(D, CKEDITOR.POSITION_BEFORE_END)
+                                R = z.clone();
+                                R.moveToPosition(F, CKEDITOR.POSITION_BEFORE_END)
                             }
-                            D = D.getLast(c)
+                            F = F.getLast(c)
                         }
-                        R && A.moveToRange(R)
+                        R && z.moveToRange(R)
                     }
                 }
             }
@@ -8403,23 +8486,23 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             return function(d) {
                 var e = d.startContainer,
                     f = e.getAscendant("table", 1),
-                    g = !1;
+                    t = !1;
                 c(f.getElementsByTag("td"));
                 c(f.getElementsByTag("th"));
                 f = d.clone();
                 f.setStart(e, 0);
                 f = a(f).lastBackward();
-                f || (f = d.clone(), f.setEndAt(e, CKEDITOR.POSITION_BEFORE_END), f = a(f).lastForward(), g = !0);
+                f || (f = d.clone(), f.setEndAt(e, CKEDITOR.POSITION_BEFORE_END), f = a(f).lastForward(), t = !0);
                 f || (f = e);
                 f.is("table") ? (d.setStartAt(f, CKEDITOR.POSITION_BEFORE_START),
                     d.collapse(!0), f.remove()) : (f.is({
                     tbody: 1,
                     thead: 1,
                     tfoot: 1
-                }) && (f = b(f, "tr", g)), f.is("tr") && (f = b(f, f.getParent().is("thead") ? "th" : "td", g)), (e = f.getBogus()) && e.remove(), d.moveToPosition(f, g ? CKEDITOR.POSITION_AFTER_START : CKEDITOR.POSITION_BEFORE_END))
+                }) && (f = b(f, "tr", t)), f.is("tr") && (f = b(f, f.getParent().is("thead") ? "th" : "td", t)), (e = f.getBogus()) && e.remove(), d.moveToPosition(f, t ? CKEDITOR.POSITION_AFTER_START : CKEDITOR.POSITION_BEFORE_END))
             }
         }();
-        J = function() {
+        M = function() {
             function a(b) {
                 b = new CKEDITOR.dom.walker(b);
                 b.guard = function(a, b) {
@@ -8451,11 +8534,11 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         d = c.clone(),
                         e = c.clone(),
                         f = new CKEDITOR.dom.elementPath(c.startContainer, b),
-                        g = new CKEDITOR.dom.elementPath(c.endContainer, b);
+                        t = new CKEDITOR.dom.elementPath(c.endContainer, b);
                     d.collapse(1);
                     e.collapse();
                     f.block && d.checkBoundaryOfElement(f.block, CKEDITOR.END) && (c.setStartAfter(f.block), a.prependEolBr = 1);
-                    g.block && e.checkBoundaryOfElement(g.block, CKEDITOR.START) && (c.setEndBefore(g.block), a.appendEolBr = 1)
+                    t.block && e.checkBoundaryOfElement(t.block, CKEDITOR.START) && (c.setEndBefore(t.block), a.appendEolBr = 1)
                 },
                 fix: function(a, b) {
                     var c = b.getDocument(),
@@ -8477,7 +8560,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     var b = a.range.getBoundaryNodes(),
                         c = b.startNode,
                         b = b.endNode;
-                    !b || !A(b) || c && c.equals(b) || a.range.setEndBefore(b)
+                    !b || !z(b) || c && c.equals(b) || a.range.setEndBefore(b)
                 }
             },
             tree: {
@@ -8487,26 +8570,26 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         e = new CKEDITOR.dom.elementPath(d, b),
                         f = new CKEDITOR.dom.elementPath(c.startContainer, b),
                         c = new CKEDITOR.dom.elementPath(c.endContainer, b),
-                        g;
+                        t;
                     d.type == CKEDITOR.NODE_TEXT && (d = d.getParent());
                     if (e.blockLimit.is({
                             tr: 1,
                             table: 1
                         })) {
-                        var h = e.contains("table").getParent();
-                        g = function(a) {
-                            return !a.equals(h)
+                        var g = e.contains("table").getParent();
+                        t = function(a) {
+                            return !a.equals(g)
                         }
                     } else if (e.block && e.block.is(CKEDITOR.dtd.$listItem) && (f = f.contains(CKEDITOR.dtd.$list), c = c.contains(CKEDITOR.dtd.$list), !f.equals(c))) {
-                        var z = e.contains(CKEDITOR.dtd.$list).getParent();
-                        g = function(a) {
-                            return !a.equals(z)
+                        var y = e.contains(CKEDITOR.dtd.$list).getParent();
+                        t = function(a) {
+                            return !a.equals(y)
                         }
                     }
-                    g || (g = function(a) {
+                    t || (t = function(a) {
                         return !a.equals(e.block) && !a.equals(e.blockLimit)
                     });
-                    this.rebuildFragment(a, b, d, g)
+                    this.rebuildFragment(a, b, d, t)
                 },
                 rebuildFragment: function(a, b, c, d) {
                     for (var e; c && !c.equals(b) && d(c);) e = c.clone(0, 1), a.fragment.appendTo(e),
@@ -8524,7 +8607,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 }
             }
         };
-        K = function() {
+        H = function() {
             function a(b, c) {
                 var d = b.getParent();
                 if (d.is(CKEDITOR.dtd.$inline)) b[c ? "insertBefore" : "insertAfter"](d)
@@ -8534,7 +8617,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 a(d);
                 a(e, 1);
                 for (var f; f = e.getNext();) f.insertAfter(d), d = f;
-                v(c) && c.remove()
+                w(c) && c.remove()
             }
 
             function c(a, b) {
@@ -8550,8 +8633,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                             e = d.startPath(),
                             f = d.endPath(),
                             g = e.contains(CKEDITOR.dtd.$list),
-                            h = f.contains(CKEDITOR.dtd.$list);
-                        a.mergeList = g && h && g.getParent().equals(h.getParent()) && !g.equals(h);
+                            k = f.contains(CKEDITOR.dtd.$list);
+                        a.mergeList = g && k && g.getParent().equals(k.getParent()) && !g.equals(k);
                         a.mergeListItems = e.block && f.block && e.block.is(CKEDITOR.dtd.$listItem) && f.block.is(CKEDITOR.dtd.$listItem);
                         if (a.mergeList || a.mergeListItems) d = d.clone(), d.setStartBefore(a.bookmark.startNode), d.setEndAfter(a.bookmark.endNode), a.mergeListBookmark =
                             d.createBookmark()
@@ -8563,9 +8646,9 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                                 f = new CKEDITOR.dom.elementPath(d, c),
                                 g = new CKEDITOR.dom.elementPath(e, c);
                             if (a.mergeList) {
-                                var h = f.contains(CKEDITOR.dtd.$list),
-                                    k = g.contains(CKEDITOR.dtd.$list);
-                                h.equals(k) || (k.moveChildren(h), k.remove())
+                                var k = f.contains(CKEDITOR.dtd.$list),
+                                    h = g.contains(CKEDITOR.dtd.$list);
+                                k.equals(h) || (h.moveChildren(k), h.remove())
                             }
                             a.mergeListItems && (f = f.contains(CKEDITOR.dtd.$listItem), g = g.contains(CKEDITOR.dtd.$listItem), f.equals(g) || b(g, d, e));
                             d.remove();
@@ -8601,31 +8684,31 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     function a(c) {
                         var e = [],
                             f, g = new CKEDITOR.dom.walker(c),
-                            h = c.startPath().contains(d),
-                            k = c.endPath().contains(d),
-                            p = {};
+                            k = c.startPath().contains(d),
+                            h = c.endPath().contains(d),
+                            l = {};
                         g.guard = function(a, g) {
                             if (a.type == CKEDITOR.NODE_ELEMENT) {
-                                var B = "visited_" + (g ? "out" : "in");
-                                if (a.getCustomData(B)) return;
-                                CKEDITOR.dom.element.setMarker(p, a, B, 1)
+                                var A = "visited_" + (g ? "out" : "in");
+                                if (a.getCustomData(A)) return;
+                                CKEDITOR.dom.element.setMarker(l, a, A, 1)
                             }
-                            if (g && h && a.equals(h)) f = c.clone(), f.setEndAt(h, CKEDITOR.POSITION_BEFORE_END), e.push(f);
-                            else if (!g && k && a.equals(k)) f = c.clone(), f.setStartAt(k, CKEDITOR.POSITION_AFTER_START), e.push(f);
+                            if (g && k && a.equals(k)) f = c.clone(), f.setEndAt(k, CKEDITOR.POSITION_BEFORE_END), e.push(f);
+                            else if (!g && h && a.equals(h)) f = c.clone(), f.setStartAt(h, CKEDITOR.POSITION_AFTER_START), e.push(f);
                             else {
-                                if (B = !g) B = a.type == CKEDITOR.NODE_ELEMENT && a.is(d) && (!h || b(a, h)) && (!k ||
-                                    b(a, k));
-                                if (!B && (B = g))
-                                    if (a.is(d)) var B = h && h.getAscendant("table", !0),
-                                        l = k && k.getAscendant("table", !0),
-                                        H = a.getAscendant("table", !0),
-                                        B = B && B.contains(H) || l && l.contains(H);
-                                    else B = void 0;
-                                B && (f = c.clone(), f.selectNodeContents(a), e.push(f))
+                                if (A = !g) A = a.type == CKEDITOR.NODE_ELEMENT && a.is(d) && (!k || b(a, k)) && (!h ||
+                                    b(a, h));
+                                if (!A && (A = g))
+                                    if (a.is(d)) var A = k && k.getAscendant("table", !0),
+                                        I = h && h.getAscendant("table", !0),
+                                        m = a.getAscendant("table", !0),
+                                        A = A && A.contains(m) || I && I.contains(m);
+                                    else A = void 0;
+                                A && (f = c.clone(), f.selectNodeContents(a), e.push(f))
                             }
                         };
                         g.lastForward();
-                        CKEDITOR.dom.element.clearAllMarkers(p);
+                        CKEDITOR.dom.element.clearAllMarkers(l);
                         return e
                     }
 
@@ -8659,19 +8742,19 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         },
                         detectRanges: function(e, f) {
                             var g = c(f, e.bookmark),
-                                h = g.clone(),
-                                k, l, p = g.getCommonAncestor();
-                            p.is(CKEDITOR.dtd.$tableContent) && !p.is(d) && (p = p.getAscendant("table", !0));
-                            l = p;
-                            p = new CKEDITOR.dom.elementPath(g.startContainer, l);
-                            l = new CKEDITOR.dom.elementPath(g.endContainer, l);
-                            p = p.contains("table");
+                                k = g.clone(),
+                                h, m, l = g.getCommonAncestor();
+                            l.is(CKEDITOR.dtd.$tableContent) && !l.is(d) && (l = l.getAscendant("table", !0));
+                            m = l;
+                            l = new CKEDITOR.dom.elementPath(g.startContainer, m);
+                            m = new CKEDITOR.dom.elementPath(g.endContainer, m);
                             l = l.contains("table");
-                            if (p || l) p && l && b(p, l) ? (e.tableSurroundingRange = h, h.setStartAt(p, CKEDITOR.POSITION_AFTER_END), h.setEndAt(l, CKEDITOR.POSITION_BEFORE_START), h = g.clone(), h.setEndAt(p, CKEDITOR.POSITION_AFTER_END), k = g.clone(), k.setStartAt(l, CKEDITOR.POSITION_BEFORE_START),
-                                k = a(h).concat(a(k))) : p ? l || (e.tableSurroundingRange = h, h.setStartAt(p, CKEDITOR.POSITION_AFTER_END), g.setEndAt(p, CKEDITOR.POSITION_AFTER_END)) : (e.tableSurroundingRange = h, h.setEndAt(l, CKEDITOR.POSITION_BEFORE_START), g.setStartAt(l, CKEDITOR.POSITION_AFTER_START)), e.tableContentsRanges = k ? k : a(g)
+                            m = m.contains("table");
+                            if (l || m) l && m && b(l, m) ? (e.tableSurroundingRange = k, k.setStartAt(l, CKEDITOR.POSITION_AFTER_END), k.setEndAt(m, CKEDITOR.POSITION_BEFORE_START), k = g.clone(), k.setEndAt(l, CKEDITOR.POSITION_AFTER_END), h = g.clone(), h.setStartAt(m, CKEDITOR.POSITION_BEFORE_START),
+                                h = a(k).concat(a(h))) : l ? m || (e.tableSurroundingRange = k, k.setStartAt(l, CKEDITOR.POSITION_AFTER_END), g.setEndAt(l, CKEDITOR.POSITION_AFTER_END)) : (e.tableSurroundingRange = k, k.setEndAt(m, CKEDITOR.POSITION_BEFORE_START), g.setStartAt(m, CKEDITOR.POSITION_AFTER_START)), e.tableContentsRanges = h ? h : a(g)
                         },
                         deleteRanges: function(a) {
-                            for (var b; b = a.tableContentsRanges.pop();) b.extractContents(), v(b.startContainer) && b.startContainer.appendBogus();
+                            for (var b; b = a.tableContentsRanges.pop();) b.extractContents(), w(b.startContainer) && b.startContainer.appendBogus();
                             a.tableSurroundingRange && a.tableSurroundingRange.extractContents()
                         },
                         purge: function(a) {
@@ -8698,7 +8781,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     var c =
                         b.startPath(),
                         d;
-                    k(a, c.block, c.blockLimit) && (d = g(a)) && (d = b.document.createElement(d), d.appendBogus(), b.insertNode(d), b.moveToPosition(d, CKEDITOR.POSITION_AFTER_START))
+                    k(a, c.block, c.blockLimit) && (d = h(a)) && (d = b.document.createElement(d), d.appendBogus(), b.insertNode(d), b.moveToPosition(d, CKEDITOR.POSITION_AFTER_START))
                 }
             }
         }()
@@ -8760,7 +8843,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             var b = this.root.editor,
                 d = b.getSelection(1);
             this.reset();
-            l = !0;
+            n = !0;
             d.root.once("selectionchange", function(a) {
                 a.cancel()
             }, null, null, 0);
@@ -8772,13 +8855,13 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             d.selectedText = c(a);
             d.nativeSel = null;
             this.isFake = 1;
-            this.rev = J++;
+            this.rev = M++;
             b._.fakeSelection = this;
-            l = !1;
+            n = !1;
             this.root.fire("selectionchange")
         }
 
-        function h() {
+        function g() {
             var b = this._.fakeSelection,
                 c;
             if (b) {
@@ -8788,17 +8871,17 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     e = b;
                     var f = c.getRanges(),
                         g = e.getRanges(),
-                        h = f.length && f[0]._getTableElement() && f[0]._getTableElement().getAscendant("table", !0),
-                        p = g.length && g[0]._getTableElement() && g[0]._getTableElement().getAscendant("table", !0),
-                        k = 1 === f.length && f[0]._getTableElement() && f[0]._getTableElement().is("table"),
-                        w = 1 === g.length && g[0]._getTableElement() && g[0]._getTableElement().is("table");
+                        k = f.length && f[0]._getTableElement() && f[0]._getTableElement().getAscendant("table", !0),
+                        l = g.length && g[0]._getTableElement() && g[0]._getTableElement().getAscendant("table", !0),
+                        h = 1 === f.length && f[0]._getTableElement() && f[0]._getTableElement().is("table"),
+                        B = 1 === g.length && g[0]._getTableElement() && g[0]._getTableElement().is("table");
                     if (a(e.getSelectedElement())) e = !1;
                     else {
-                        var l = 1 === f.length && f[0].collapsed,
+                        var A = 1 === f.length && f[0].collapsed,
                             g = d(f, !!CKEDITOR.env.webkit) &&
                             d(g);
-                        h = h && p ? h.equals(p) || p.contains(h) : !1;
-                        h && (l || g) ? (k && !w && e.selectRanges(f), e = !0) : e = !1
+                        k = k && l ? k.equals(l) || l.contains(k) : !1;
+                        k && (A || g) ? (h && !B && e.selectRanges(f), e = !0) : e = !1
                     }
                     e = !e
                 }
@@ -8807,46 +8890,47 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             if (!b && (b = c || this.getSelection(1), !b || b.getType() == CKEDITOR.SELECTION_NONE)) return;
             this.fire("selectionCheck", b);
             c = this.elementPath();
-            c.compare(this._.selectionPreviousPath) || (e = this._.selectionPreviousPath && this._.selectionPreviousPath.blockLimit.equals(c.blockLimit), CKEDITOR.env.webkit && !e && (this._.previousActive = this.document.getActive()), this._.selectionPreviousPath = c, this.fire("selectionChange", {
-                selection: b,
-                path: c
-            }))
+            c.compare(this._.selectionPreviousPath) || (e = this._.selectionPreviousPath && this._.selectionPreviousPath.blockLimit.equals(c.blockLimit), !CKEDITOR.env.webkit && !CKEDITOR.env.gecko || e || (this._.previousActive = this.document.getActive()), this._.selectionPreviousPath =
+                c, this.fire("selectionChange", {
+                    selection: b,
+                    path: c
+                }))
         }
 
         function k() {
-            F = !0;
-            t || (g.call(this), t = CKEDITOR.tools.setTimeout(g, 200, this))
+            C = !0;
+            r || (h.call(this), r = CKEDITOR.tools.setTimeout(h, 200, this))
         }
 
-        function g() {
-            t = null;
-            F && (CKEDITOR.tools.setTimeout(h, 0, this), F = !1)
+        function h() {
+            r = null;
+            C && (CKEDITOR.tools.setTimeout(g, 0, this), C = !1)
         }
 
-        function n(a) {
+        function p(a) {
             return L(a) || a.type == CKEDITOR.NODE_ELEMENT && !a.is(CKEDITOR.dtd.$empty) ? !0 : !1
         }
 
-        function r(a) {
+        function q(a) {
             function b(c, d) {
                 return c && c.type != CKEDITOR.NODE_TEXT ? a.clone()["moveToElementEdit" + (d ? "End" : "Start")](c) : !1
             }
             if (!(a.root instanceof CKEDITOR.editable)) return !1;
             var c = a.startContainer,
-                d = a.getPreviousNode(n, null, c),
-                e = a.getNextNode(n, null,
-                    c);
+                d = a.getPreviousNode(p,
+                    null, c),
+                e = a.getNextNode(p, null, c);
             return b(d) || b(e, 1) || !(d || e || c.type == CKEDITOR.NODE_ELEMENT && c.isBlockBoundary() && c.getBogus()) ? !0 : !1
         }
 
         function e(a) {
-            y(a, !1);
+            x(a, !1);
             var b = a.getDocument().createText(u);
             a.setCustomData("cke-fillingChar", b);
             return b
         }
 
-        function y(a, b) {
+        function x(a, b) {
             var c = a && a.removeCustomData("cke-fillingChar");
             if (c) {
                 if (!1 !== b) {
@@ -8854,32 +8938,33 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         e = d && "None" != d.type && d.getRangeAt(0),
                         f = u.length;
                     if (c.getLength() > f && e && e.intersectsNode(c.$)) {
-                        var g = [{
-                            node: d.anchorNode,
-                            offset: d.anchorOffset
-                        }, {
-                            node: d.focusNode,
-                            offset: d.focusOffset
-                        }];
-                        d.anchorNode == c.$ && d.anchorOffset > f && (g[0].offset -= f);
-                        d.focusNode == c.$ && d.focusOffset > f && (g[1].offset -= f)
+                        var l = [{
+                                node: d.anchorNode,
+                                offset: d.anchorOffset
+                            },
+                            {
+                                node: d.focusNode,
+                                offset: d.focusOffset
+                            }
+                        ];
+                        d.anchorNode == c.$ && d.anchorOffset > f && (l[0].offset -= f);
+                        d.focusNode == c.$ && d.focusOffset > f && (l[1].offset -= f)
                     }
                 }
-                c.setText(v(c.getText(), 1));
-                g && (c = a.getDocument().$, d = c.getSelection(), c = c.createRange(), c.setStart(g[0].node, g[0].offset), c.collapse(!0), d.removeAllRanges(), d.addRange(c), d.extend(g[1].node, g[1].offset))
+                c.setText(w(c.getText(), 1));
+                l && (c = a.getDocument().$, d = c.getSelection(), c = c.createRange(), c.setStart(l[0].node, l[0].offset), c.collapse(!0), d.removeAllRanges(), d.addRange(c), d.extend(l[1].node, l[1].offset))
             }
         }
 
-        function v(a, b) {
-            return b ? a.replace(K, function(a, b) {
+        function w(a, b) {
+            return b ? a.replace(H, function(a, b) {
                 return b ? " " : ""
             }) : a.replace(u, "")
         }
 
-        function A(a, b) {
+        function z(a, b) {
             var c = b && CKEDITOR.tools.htmlEncode(b) || "\x26nbsp;",
-                c = CKEDITOR.dom.element.createFromHtml('\x3cdiv data-cke-hidden-sel\x3d"1" data-cke-temp\x3d"1" style\x3d"' +
-                    (CKEDITOR.env.ie && 14 > CKEDITOR.env.version ? "display:none" : "position:fixed;top:0;left:-1000px") + '"\x3e' + c + "\x3c/div\x3e", a.document);
+                c = CKEDITOR.dom.element.createFromHtml('\x3cdiv data-cke-hidden-sel\x3d"1" data-cke-temp\x3d"1" style\x3d"' + (CKEDITOR.env.ie && 14 > CKEDITOR.env.version ? "display:none" : "position:fixed;top:0;left:-1000px;width:0;height:0;overflow:hidden;") + '"\x3e' + c + "\x3c/div\x3e", a.document);
             a.fire("lockSnapshot");
             a.editable().append(c);
             var d = a.getSelection(1),
@@ -8895,7 +8980,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             a._.hiddenSelectionContainer = c
         }
 
-        function D(a) {
+        function F(a) {
             var b = {
                 37: 1,
                 39: 1,
@@ -8912,29 +8997,29 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             }
         }
 
-        function x(a) {
+        function v(a) {
             for (var b = 0; b < a.length; b++) {
-                var c = a[b];
+                var c =
+                    a[b];
                 c.getCommonAncestor().isReadOnly() && a.splice(b, 1);
                 if (!c.collapsed) {
                     if (c.startContainer.isReadOnly())
-                        for (var d = c.startContainer,
-                                e; d && !((e = d.type == CKEDITOR.NODE_ELEMENT) && d.is("body") || !d.isReadOnly());) e && "false" == d.getAttribute("contentEditable") && c.setStartAfter(d), d = d.getParent();
+                        for (var d = c.startContainer, e; d && !((e = d.type == CKEDITOR.NODE_ELEMENT) && d.is("body") || !d.isReadOnly());) e && "false" == d.getAttribute("contentEditable") && c.setStartAfter(d), d = d.getParent();
                     d = c.startContainer;
                     e = c.endContainer;
                     var f = c.startOffset,
-                        g = c.endOffset,
-                        h = c.clone();
-                    d && d.type == CKEDITOR.NODE_TEXT && (f >= d.getLength() ? h.setStartAfter(d) : h.setStartBefore(d));
-                    e && e.type == CKEDITOR.NODE_TEXT && (g ? h.setEndAfter(e) : h.setEndBefore(e));
-                    d = new CKEDITOR.dom.walker(h);
+                        l = c.endOffset,
+                        g = c.clone();
+                    d && d.type == CKEDITOR.NODE_TEXT && (f >= d.getLength() ? g.setStartAfter(d) : g.setStartBefore(d));
+                    e && e.type == CKEDITOR.NODE_TEXT && (l ? g.setEndAfter(e) :
+                        g.setEndBefore(e));
+                    d = new CKEDITOR.dom.walker(g);
                     d.evaluator = function(d) {
                         if (d.type == CKEDITOR.NODE_ELEMENT && d.isReadOnly()) {
-                            var e =
-                                c.clone();
+                            var e = c.clone();
                             c.setEndBefore(d);
                             c.collapsed && a.splice(b--, 1);
-                            d.getPosition(h.endContainer) & CKEDITOR.POSITION_CONTAINS || (e.setStartAfter(d), e.collapsed || a.splice(b + 1, 0, e));
+                            d.getPosition(g.endContainer) & CKEDITOR.POSITION_CONTAINS || (e.setStartAfter(d), e.collapsed || a.splice(b + 1, 0, e));
                             return !0
                         }
                         return !1
@@ -8945,14 +9030,15 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             return a
         }
         var m = "function" != typeof window.getSelection,
-            J = 1,
+            M = 1,
             u = CKEDITOR.tools.repeat("​", 7),
-            K = new RegExp(u + "( )?", "g"),
-            l, t, F, L = CKEDITOR.dom.walker.invisible(1),
-            C = function() {
+            H = new RegExp(u + "( )?", "g"),
+            n, r, C, L = CKEDITOR.dom.walker.invisible(1),
+            D = function() {
                 function a(b) {
                     return function(a) {
-                        var c = a.editor.createRange();
+                        var c =
+                            a.editor.createRange();
                         c.moveToClosestEditablePosition(a.selected, b) && a.editor.getSelection().selectRanges([c]);
                         return !1
                     }
@@ -8963,7 +9049,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         var c = b.editor,
                             d = c.createRange(),
                             e;
-                        if (!c.readOnly) return (e = d.moveToClosestEditablePosition(b.selected, a)) || (e = d.moveToClosestEditablePosition(b.selected, !a)), e && c.getSelection().selectRanges([d]), c.fire("saveSnapshot"), b.selected.remove(), e || (d.moveToElementEditablePosition(c.editable()), c.getSelection().selectRanges([d])), c.fire("saveSnapshot"), !1
+                        if (!c.readOnly) return (e = d.moveToClosestEditablePosition(b.selected, a)) || (e = d.moveToClosestEditablePosition(b.selected, !a)), e && c.getSelection().selectRanges([d]), c.fire("saveSnapshot"), b.selected.remove(), e || (d.moveToElementEditablePosition(c.editable()), c.getSelection().selectRanges([d])), c.fire("saveSnapshot"),
+                            !1
                     }
                 }
                 var c = a(),
@@ -8979,137 +9066,139 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             }();
         CKEDITOR.on("instanceCreated", function(a) {
             function b() {
-                var a =
-                    c.getSelection();
+                var a = c.getSelection();
                 a && a.removeAllRanges()
             }
             var c = a.editor;
             c.on("contentDom", function() {
                 function a() {
-                    r = new CKEDITOR.dom.selection(c.getSelection());
-                    r.lock()
+                    p = new CKEDITOR.dom.selection(c.getSelection());
+                    p.lock()
                 }
 
                 function b() {
                     f.removeListener("mouseup", b);
-                    q.removeListener("mouseup", b);
+                    n.removeListener("mouseup", b);
                     var a = CKEDITOR.document.$.selection,
                         c = a.createRange();
                     "None" != a.type && c.parentElement() && c.parentElement().ownerDocument == e.$ && c.select()
                 }
 
                 function d(a) {
-                    if (CKEDITOR.env.ie) {
-                        var b = (a = a.getRanges()[0]) ? a.startContainer.getAscendant(function(a) {
-                            return a.type == CKEDITOR.NODE_ELEMENT &&
-                                ("false" == a.getAttribute("contenteditable") || "true" == a.getAttribute("contenteditable"))
-                        }, !0) : null;
-                        return a && "false" == b.getAttribute("contenteditable") && b
-                    }
+                    a =
+                        a.getRanges()[0];
+                    return a ? (a = a.startContainer.getAscendant(function(a) {
+                        return a.type == CKEDITOR.NODE_ELEMENT && a.hasAttribute("contenteditable")
+                    }, !0)) && "false" === a.getAttribute("contenteditable") ? a : null : null
                 }
                 var e = c.document,
                     f = CKEDITOR.document,
-                    g = c.editable(),
-                    l = e.getBody(),
-                    q = e.getDocumentElement(),
-                    E = g.isInline(),
-                    n, r;
-                CKEDITOR.env.gecko && g.attachListener(g, "focus", function(a) {
+                    h = c.editable(),
+                    t = e.getBody(),
+                    n = e.getDocumentElement(),
+                    E = h.isInline(),
+                    q, p;
+                CKEDITOR.env.gecko && h.attachListener(h, "focus", function(a) {
                     a.removeListener();
-                    0 !== n && (a = c.getSelection().getNative()) && a.isCollapsed && a.anchorNode == g.$ && (a = c.createRange(), a.moveToElementEditStart(g), a.select())
+                    0 !== q && (a = c.getSelection().getNative()) && a.isCollapsed && a.anchorNode == h.$ && (a = c.createRange(), a.moveToElementEditStart(h),
+                        a.select())
                 }, null, null, -2);
-                g.attachListener(g,
-                    CKEDITOR.env.webkit ? "DOMFocusIn" : "focus",
-                    function() {
-                        n && CKEDITOR.env.webkit && (n = c._.previousActive && c._.previousActive.equals(e.getActive())) && null != c._.previousScrollTop && c._.previousScrollTop != g.$.scrollTop && (g.$.scrollTop = c._.previousScrollTop);
-                        c.unlockSelection(n);
-                        n = 0
-                    }, null, null, -1);
-                g.attachListener(g, "mousedown", function() {
-                    n = 0
+                h.attachListener(h, CKEDITOR.env.webkit || CKEDITOR.env.gecko ? "focusin" : "focus", function() {
+                    if (q && (CKEDITOR.env.webkit || CKEDITOR.env.gecko)) {
+                        q = c._.previousActive && c._.previousActive.equals(e.getActive());
+                        var a = null != c._.previousScrollTop && c._.previousScrollTop != h.$.scrollTop;
+                        CKEDITOR.env.webkit && q && a && (h.$.scrollTop = c._.previousScrollTop)
+                    }
+                    c.unlockSelection(q);
+                    q = 0
+                }, null, null, -1);
+                h.attachListener(h, "mousedown", function() {
+                    q = 0
                 });
-                if (CKEDITOR.env.ie || E) m ? g.attachListener(g, "beforedeactivate", a, null, null, -1) : g.attachListener(c, "selectionCheck", a, null, null, -1), g.attachListener(g, CKEDITOR.env.webkit ?
-                    "DOMFocusOut" : "blur",
-                    function() {
-                        c.lockSelection(r);
-                        n = 1
-                    }, null, null, -1), g.attachListener(g, "mousedown", function() {
-                    n = 0
+                if (CKEDITOR.env.ie || E) m ? h.attachListener(h, "beforedeactivate",
+                    a, null, null, -1) : h.attachListener(c, "selectionCheck", a, null, null, -1), h.attachListener(h, CKEDITOR.env.webkit || CKEDITOR.env.gecko ? "focusout" : "blur", function() {
+                    c.lockSelection(p);
+                    q = 1
+                }, null, null, -1), h.attachListener(h, "mousedown", function() {
+                    q = 0
                 });
                 if (CKEDITOR.env.ie && !E) {
-                    var v;
-                    g.attachListener(g, "mousedown", function(a) {
-                        2 == a.data.$.button && ((a = c.document.getSelection()) && a.getType() != CKEDITOR.SELECTION_NONE || (v = c.window.getScrollPosition()))
+                    var w;
+                    h.attachListener(h, "mousedown", function(a) {
+                        2 == a.data.$.button && ((a = c.document.getSelection()) && a.getType() != CKEDITOR.SELECTION_NONE || (w = c.window.getScrollPosition()))
                     });
-                    g.attachListener(g, "mouseup", function(a) {
-                        2 == a.data.$.button && v && (c.document.$.documentElement.scrollLeft = v.x, c.document.$.documentElement.scrollTop = v.y);
-                        v = null
+                    h.attachListener(h, "mouseup", function(a) {
+                        2 == a.data.$.button &&
+                            w && (c.document.$.documentElement.scrollLeft = w.x, c.document.$.documentElement.scrollTop = w.y);
+                        w = null
                     });
                     if ("BackCompat" != e.$.compatMode) {
-                        if (CKEDITOR.env.ie7Compat ||
-                            CKEDITOR.env.ie6Compat) {
-                            var t, u;
-                            q.on("mousedown", function(a) {
+                        if (CKEDITOR.env.ie7Compat || CKEDITOR.env.ie6Compat) {
+                            var r, u;
+                            n.on("mousedown", function(a) {
                                 function b(a) {
                                     a = a.data.$;
-                                    if (t) {
-                                        var c = l.$.createTextRange();
+                                    if (r) {
+                                        var c = t.$.createTextRange();
                                         try {
                                             c.moveToPoint(a.clientX, a.clientY)
                                         } catch (d) {}
-                                        t.setEndPoint(0 > u.compareEndPoints("StartToStart", c) ? "EndToEnd" : "StartToStart", c);
-                                        t.select()
+                                        r.setEndPoint(0 > u.compareEndPoints("StartToStart", c) ? "EndToEnd" : "StartToStart", c);
+                                        r.select()
                                     }
                                 }
 
                                 function c() {
-                                    q.removeListener("mousemove", b);
+                                    n.removeListener("mousemove", b);
                                     f.removeListener("mouseup", c);
-                                    q.removeListener("mouseup", c);
-                                    t.select()
+                                    n.removeListener("mouseup",
+                                        c);
+                                    r.select()
                                 }
                                 a = a.data;
-                                if (a.getTarget().is("html") && a.$.y < q.$.clientHeight && a.$.x < q.$.clientWidth) {
-                                    t = l.$.createTextRange();
+                                if (a.getTarget().is("html") && a.$.y < n.$.clientHeight && a.$.x < n.$.clientWidth) {
+                                    r = t.$.createTextRange();
                                     try {
-                                        t.moveToPoint(a.$.clientX,
-                                            a.$.clientY)
+                                        r.moveToPoint(a.$.clientX, a.$.clientY)
                                     } catch (d) {}
-                                    u = t.duplicate();
-                                    q.on("mousemove", b);
+                                    u = r.duplicate();
+                                    n.on("mousemove", b);
                                     f.on("mouseup", c);
-                                    q.on("mouseup", c)
+                                    n.on("mouseup", c)
                                 }
                             })
                         }
-                        if (7 < CKEDITOR.env.version && 11 > CKEDITOR.env.version) q.on("mousedown", function(a) {
-                            a.data.getTarget().is("html") && (f.on("mouseup", b), q.on("mouseup", b))
+                        if (7 < CKEDITOR.env.version && 11 > CKEDITOR.env.version) n.on("mousedown", function(a) {
+                            a.data.getTarget().is("html") && (f.on("mouseup", b), n.on("mouseup", b))
                         })
                     }
                 }
-                g.attachListener(g, "selectionchange", h, c);
-                g.attachListener(g, "keyup", k, c);
-                g.attachListener(g, "keydown", function(a) {
-                    var b = this.getSelection(1);
-                    d(b) && (b.selectElement(d(b)), a.data.preventDefault())
+                h.attachListener(h, "selectionchange", g, c);
+                h.attachListener(h, "keyup", k, c);
+                h.attachListener(h, "touchstart",
+                    k, c);
+                h.attachListener(h, "touchend", k, c);
+                CKEDITOR.env.ie && h.attachListener(h, "keydown", function(a) {
+                    var b = this.getSelection(1),
+                        c = d(b);
+                    c && !c.equals(h) && (b.selectElement(c), a.data.preventDefault())
                 }, c);
-                g.attachListener(g, CKEDITOR.env.webkit ? "DOMFocusIn" :
-                    "focus",
-                    function() {
-                        c.forceNextSelectionCheck();
-                        c.selectionChange(1)
-                    });
+                h.attachListener(h, CKEDITOR.env.webkit || CKEDITOR.env.gecko ? "focusin" : "focus", function() {
+                    c.forceNextSelectionCheck();
+                    c.selectionChange(1)
+                });
                 if (E && (CKEDITOR.env.webkit || CKEDITOR.env.gecko)) {
-                    var x;
-                    g.attachListener(g, "mousedown", function() {
-                        x = 1
+                    var v;
+                    h.attachListener(h, "mousedown", function() {
+                        v = 1
                     });
-                    g.attachListener(e.getDocumentElement(), "mouseup", function() {
-                        x && k.call(c);
-                        x = 0
+                    h.attachListener(e.getDocumentElement(), "mouseup", function() {
+                        v &&
+                            k.call(c);
+                        v = 0
                     })
-                } else g.attachListener(CKEDITOR.env.ie ? g : e.getDocumentElement(), "mouseup", k, c);
-                CKEDITOR.env.webkit && g.attachListener(e, "keydown", function(a) {
+                } else h.attachListener(CKEDITOR.env.ie ? h : e.getDocumentElement(), "mouseup", k, c);
+                CKEDITOR.env.webkit && h.attachListener(e, "keydown", function(a) {
                     switch (a.data.getKey()) {
                         case 13:
                         case 33:
@@ -9121,11 +9210,10 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         case 8:
                         case 45:
                         case 46:
-                            g.hasFocus &&
-                                y(g)
+                            h.hasFocus && x(h)
                     }
                 }, null, null, -1);
-                g.attachListener(g, "keydown", D(c), null, null, -1)
+                h.attachListener(h, "keydown", F(c), null, null, -1)
             });
             c.on("setData", function() {
                 c.unlockSelection();
@@ -9134,7 +9222,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             c.on("contentDomUnload", function() {
                 c.unlockSelection()
             });
-            if (CKEDITOR.env.ie9Compat) c.on("beforeDestroy", b, null, null, 9);
+            if (CKEDITOR.env.ie9Compat) c.on("beforeDestroy",
+                b, null, null, 9);
             c.on("dataReady", function() {
                 delete c._.fakeSelection;
                 delete c._.hiddenSelectionContainer;
@@ -9143,14 +9232,14 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             c.on("loadSnapshot", function() {
                 var a = CKEDITOR.dom.walker.nodeType(CKEDITOR.NODE_ELEMENT),
                     b = c.editable().getLast(a);
-                b && b.hasAttribute("data-cke-hidden-sel") &&
-                    (b.remove(), CKEDITOR.env.gecko && (a = c.editable().getFirst(a)) && a.is("br") && a.getAttribute("_moz_editor_bogus_node") && a.remove())
+                b && b.hasAttribute("data-cke-hidden-sel") && (b.remove(), CKEDITOR.env.gecko && (a = c.editable().getFirst(a)) && a.is("br") && a.getAttribute("_moz_editor_bogus_node") && a.remove())
             }, null, null, 100);
             c.on("key", function(a) {
                 if ("wysiwyg" == c.mode) {
                     var b = c.getSelection();
                     if (b.isFake) {
-                        var d = C[a.data.keyCode];
+                        var d =
+                            D[a.data.keyCode];
                         if (d) return d({
                             editor: c,
                             selected: b.getSelectedElement(),
@@ -9166,28 +9255,29 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             b.on("selectionChange", function() {
                 var a = b.editable(),
                     c = a.getCustomData("cke-fillingChar");
-                c && (c.getCustomData("ready") ? (y(a), a.editor.fire("selectionCheck")) : c.setCustomData("ready", 1))
+                c && (c.getCustomData("ready") ? (x(a), a.editor.fire("selectionCheck")) : c.setCustomData("ready", 1))
             }, null, null, -1);
             b.on("beforeSetMode", function() {
-                y(b.editable())
+                x(b.editable())
             }, null, null, -1);
             b.on("getSnapshot", function(a) {
-                a.data && (a.data = v(a.data))
-            }, b, null, 20);
+                    a.data && (a.data = w(a.data))
+                },
+                b, null, 20);
             b.on("toDataFormat", function(a) {
-                a.data.dataValue = v(a.data.dataValue)
+                a.data.dataValue = w(a.data.dataValue)
             }, null, null, 0)
         });
         CKEDITOR.editor.prototype.selectionChange = function(a) {
-            (a ? h : k).call(this)
+            (a ? g : k).call(this)
         };
         CKEDITOR.editor.prototype.getSelection = function(a) {
-            return !this._.savedSelection && !this._.fakeSelection ||
-                a ? (a = this.editable()) && "wysiwyg" == this.mode ? new CKEDITOR.dom.selection(a) : null : this._.savedSelection || this._.fakeSelection
+            return !this._.savedSelection && !this._.fakeSelection || a ? (a = this.editable()) && "wysiwyg" == this.mode ? new CKEDITOR.dom.selection(a) : null : this._.savedSelection || this._.fakeSelection
         };
         CKEDITOR.editor.prototype.lockSelection = function(a) {
             a = a || this.getSelection(1);
-            return a.getType() != CKEDITOR.SELECTION_NONE ? (!a.isLocked && a.lock(), this._.savedSelection = a, !0) : !1
+            return a.getType() != CKEDITOR.SELECTION_NONE ?
+                (!a.isLocked && a.lock(), this._.savedSelection = a, !0) : !1
         };
         CKEDITOR.editor.prototype.unlockSelection = function(a) {
             var b = this._.savedSelection;
@@ -9200,7 +9290,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             return new CKEDITOR.dom.selection(this)
         };
         CKEDITOR.dom.range.prototype.select = function() {
-            var a = this.root instanceof CKEDITOR.editable ? this.root.editor.getSelection() : new CKEDITOR.dom.selection(this.root);
+            var a = this.root instanceof CKEDITOR.editable ? this.root.editor.getSelection() :
+                new CKEDITOR.dom.selection(this.root);
             a.selectRanges([this]);
             return a
         };
@@ -9213,14 +9304,15 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 a = a.root
             }
             var c = a instanceof CKEDITOR.dom.element;
-            this.rev = b ? b.rev : J++;
+            this.rev = b ? b.rev : M++;
             this.document = a instanceof CKEDITOR.dom.document ? a : a.getDocument();
             this.root = c ? a : this.document.getBody();
             this.isLocked = 0;
             this._ = {
                 cache: {}
             };
-            if (b) return CKEDITOR.tools.extend(this._.cache, b._.cache), this.isFake = b.isFake, this.isLocked = b.isLocked, this;
+            if (b) return CKEDITOR.tools.extend(this._.cache, b._.cache),
+                this.isFake = b.isFake, this.isLocked = b.isLocked, this;
             a = this.getNative();
             var d, e;
             if (a)
@@ -9230,11 +9322,11 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         e = a.createRange()
                     } catch (f) {}
                     d = e && CKEDITOR.dom.element.get(e.item && e.item(0) || e.parentElement())
-                } if (!d ||
-                d.type != CKEDITOR.NODE_ELEMENT && d.type != CKEDITOR.NODE_TEXT || !this.root.equals(d) && !this.root.contains(d)) this._.cache.type = CKEDITOR.SELECTION_NONE, this._.cache.startElement = null, this._.cache.selectedElement = null, this._.cache.selectedText = "", this._.cache.ranges = new CKEDITOR.dom.rangeList;
+                } if (!d || d.type != CKEDITOR.NODE_ELEMENT && d.type != CKEDITOR.NODE_TEXT || !this.root.equals(d) && !this.root.contains(d)) this._.cache.type = CKEDITOR.SELECTION_NONE, this._.cache.startElement = null, this._.cache.selectedElement =
+                null, this._.cache.selectedText = "", this._.cache.ranges = new CKEDITOR.dom.rangeList;
             return this
         };
-        var M = {
+        var N = {
             img: 1,
             hr: 1,
             li: 1,
@@ -9257,13 +9349,14 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             tfoot: 1
         };
         CKEDITOR.tools.extend(CKEDITOR.dom.selection, {
-            _removeFillingCharSequenceString: v,
+            _removeFillingCharSequenceString: w,
             _createFillingCharSequenceNode: e,
             FILLING_CHAR_SEQUENCE: u
         });
         CKEDITOR.dom.selection.prototype = {
             getNative: function() {
-                return void 0 !== this._.cache.nativeSel ? this._.cache.nativeSel : this._.cache.nativeSel = m ? this.document.$.selection : this.document.getWindow().$.getSelection()
+                return void 0 !== this._.cache.nativeSel ? this._.cache.nativeSel : this._.cache.nativeSel =
+                    m ? this.document.$.selection : this.document.getWindow().$.getSelection()
             },
             getType: m ? function() {
                 var a = this._.cache;
@@ -9274,8 +9367,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         d = c.type;
                     "Text" == d && (b = CKEDITOR.SELECTION_TEXT);
                     "Control" == d && (b = CKEDITOR.SELECTION_ELEMENT);
-                    c.createRange().parentElement() &&
-                        (b = CKEDITOR.SELECTION_TEXT)
+                    c.createRange().parentElement() && (b = CKEDITOR.SELECTION_TEXT)
                 } catch (e) {}
                 return a.type = b
             } : function() {
@@ -9287,7 +9379,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 else if (1 == c.rangeCount) {
                     var c = c.getRangeAt(0),
                         d = c.startContainer;
-                    d == c.endContainer && 1 == d.nodeType && 1 == c.endOffset - c.startOffset && M[d.childNodes[c.startOffset].nodeName.toLowerCase()] && (b = CKEDITOR.SELECTION_ELEMENT)
+                    d == c.endContainer && 1 == d.nodeType && 1 == c.endOffset - c.startOffset && N[d.childNodes[c.startOffset].nodeName.toLowerCase()] && (b = CKEDITOR.SELECTION_ELEMENT)
                 }
                 return a.type = b
             },
@@ -9304,63 +9396,64 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                             container: d,
                             offset: 0
                         };
-                        for (var e = d.children, f, g, h = b.duplicate(), k = 0, l = e.length - 1, q = -1, m, n; k <= l;)
-                            if (q = Math.floor((k + l) / 2), f = e[q], h.moveToElementText(f), m = h.compareEndPoints("StartToStart", b), 0 < m) l = q - 1;
-                            else if (0 > m) k = q + 1;
+                        for (var e = d.children, f, g, h = b.duplicate(), k = 0,
+                                m = e.length - 1, n = -1, t, q; k <= m;)
+                            if (n = Math.floor((k + m) / 2), f = e[n], h.moveToElementText(f), t = h.compareEndPoints("StartToStart", b), 0 < t) m = n - 1;
+                            else if (0 > t) k = n + 1;
                         else return {
                             container: d,
                             offset: a(f)
                         };
-                        if (-1 == q || q == e.length - 1 && 0 > m) {
+                        if (-1 == n || n == e.length - 1 && 0 > t) {
                             h.moveToElementText(d);
                             h.setEndPoint("StartToStart", b);
                             h = h.text.replace(/(\r\n|\r)/g, "\n").length;
                             e = d.childNodes;
-                            if (!h) return f =
-                                e[e.length - 1], f.nodeType != CKEDITOR.NODE_TEXT ? {
-                                    container: d,
-                                    offset: e.length
-                                } : {
-                                    container: f,
-                                    offset: f.nodeValue.length
-                                };
-                            for (d = e.length; 0 < h && 0 < d;) g = e[--d], g.nodeType == CKEDITOR.NODE_TEXT && (n = g, h -= g.nodeValue.length);
+                            if (!h) return f = e[e.length - 1], f.nodeType != CKEDITOR.NODE_TEXT ? {
+                                container: d,
+                                offset: e.length
+                            } : {
+                                container: f,
+                                offset: f.nodeValue.length
+                            };
+                            for (d = e.length; 0 < h && 0 < d;) g = e[--d], g.nodeType ==
+                                CKEDITOR.NODE_TEXT && (q = g, h -= g.nodeValue.length);
                             return {
-                                container: n,
+                                container: q,
                                 offset: -h
                             }
                         }
-                        h.collapse(0 < m ? !0 : !1);
-                        h.setEndPoint(0 < m ? "StartToStart" : "EndToStart", b);
+                        h.collapse(0 < t ? !0 : !1);
+                        h.setEndPoint(0 < t ? "StartToStart" : "EndToStart", b);
                         h = h.text.replace(/(\r\n|\r)/g, "\n").length;
                         if (!h) return {
                             container: d,
-                            offset: a(f) + (0 < m ? 0 : 1)
+                            offset: a(f) + (0 < t ? 0 : 1)
                         };
                         for (; 0 < h;) try {
-                            g = f[0 < m ? "previousSibling" : "nextSibling"], g.nodeType == CKEDITOR.NODE_TEXT && (h -= g.nodeValue.length,
-                                n = g), f = g
-                        } catch (r) {
+                            g = f[0 < t ? "previousSibling" : "nextSibling"], g.nodeType == CKEDITOR.NODE_TEXT && (h -= g.nodeValue.length, q = g), f = g
+                        } catch (p) {
                             return {
                                 container: d,
                                 offset: a(f)
                             }
                         }
                         return {
-                            container: n,
-                            offset: 0 < m ? -h : n.nodeValue.length + h
+                            container: q,
+                            offset: 0 < t ? -h : q.nodeValue.length + h
                         }
                     };
                     return function() {
                         var a = this.getNative(),
-                            c = a && a.createRange(),
+                            c = a &&
+                            a.createRange(),
                             d = this.getType();
                         if (!a) return [];
-                        if (d == CKEDITOR.SELECTION_TEXT) return a = new CKEDITOR.dom.range(this.root), d = b(c, !0), a.setStart(new CKEDITOR.dom.node(d.container), d.offset), d = b(c), a.setEnd(new CKEDITOR.dom.node(d.container), d.offset), a.endContainer.getPosition(a.startContainer) & CKEDITOR.POSITION_PRECEDING && a.endOffset <= a.startContainer.getIndex() &&
-                            a.collapse(), [a];
+                        if (d == CKEDITOR.SELECTION_TEXT) return a = new CKEDITOR.dom.range(this.root), d = b(c, !0), a.setStart(new CKEDITOR.dom.node(d.container), d.offset), d = b(c), a.setEnd(new CKEDITOR.dom.node(d.container), d.offset), a.endContainer.getPosition(a.startContainer) & CKEDITOR.POSITION_PRECEDING && a.endOffset <= a.startContainer.getIndex() && a.collapse(), [a];
                         if (d == CKEDITOR.SELECTION_ELEMENT) {
                             for (var d = [], e = 0; e < c.length; e++) {
-                                for (var f = c.item(e), g = f.parentNode, h = 0, a = new CKEDITOR.dom.range(this.root); h < g.childNodes.length && g.childNodes[h] != f; h++);
+                                for (var f = c.item(e), g = f.parentNode, h = 0, a = new CKEDITOR.dom.range(this.root); h <
+                                    g.childNodes.length && g.childNodes[h] != f; h++);
                                 a.setStart(new CKEDITOR.dom.node(g), h);
                                 a.setEnd(new CKEDITOR.dom.node(g), h + 1);
                                 d.push(a)
@@ -9376,8 +9469,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     for (var d = 0; d < c.rangeCount; d++) {
                         var e = c.getRangeAt(d);
                         b = new CKEDITOR.dom.range(this.root);
-                        b.setStart(new CKEDITOR.dom.node(e.startContainer),
-                            e.startOffset);
+                        b.setStart(new CKEDITOR.dom.node(e.startContainer), e.startOffset);
                         b.setEnd(new CKEDITOR.dom.node(e.endContainer), e.endOffset);
                         a.push(b)
                     }
@@ -9386,8 +9478,9 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 return function(b) {
                     var c = this._.cache,
                         d = c.ranges;
-                    d || (c.ranges = d = new CKEDITOR.dom.rangeList(a.call(this)));
-                    return b ? x(new CKEDITOR.dom.rangeList(d.slice())) : d
+                    d || (c.ranges =
+                        d = new CKEDITOR.dom.rangeList(a.call(this)));
+                    return b ? v(new CKEDITOR.dom.rangeList(d.slice())) : d
                 }
             }(),
             getStartElement: function() {
@@ -9402,7 +9495,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         if (c) {
                             if (c.collapsed) b = c.startContainer, b.type != CKEDITOR.NODE_ELEMENT && (b = b.getParent());
                             else {
-                                for (c.optimize(); b = c.startContainer, c.startOffset == (b.getChildCount ? b.getChildCount() : b.getLength()) && !b.isBlockBoundary();) c.setStartAfter(b);
+                                for (c.optimize(); b = c.startContainer, c.startOffset == (b.getChildCount ?
+                                        b.getChildCount() : b.getLength()) && !b.isBlockBoundary();) c.setStartAfter(b);
                                 b = c.startContainer;
                                 if (b.type != CKEDITOR.NODE_ELEMENT) return b.getParent();
                                 if ((b = b.getChild(c.startOffset)) && b.type == CKEDITOR.NODE_ELEMENT)
@@ -9412,24 +9506,23 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                             b = b.$
                         }
                 }
-                return a.startElement = b ?
-                    new CKEDITOR.dom.element(b) : null
+                return a.startElement = b ? new CKEDITOR.dom.element(b) : null
             },
             getSelectedElement: function() {
                 var a = this._.cache;
                 if (void 0 !== a.selectedElement) return a.selectedElement;
                 var b = this,
                     c = CKEDITOR.tools.tryThese(function() {
-                        return b.getNative().createRange().item(0)
-                    }, function() {
-                        for (var a = b.getRanges()[0].clone(), c, d, e = 2; e && !((c = a.getEnclosedNode()) && c.type == CKEDITOR.NODE_ELEMENT && M[c.getName()] && (d = c)); e--) a.shrink(CKEDITOR.SHRINK_ELEMENT);
-                        return d && d.$
-                    });
+                            return b.getNative().createRange().item(0)
+                        },
+                        function() {
+                            for (var a = b.getRanges()[0].clone(), c, d, e = 2; e && !((c = a.getEnclosedNode()) && c.type == CKEDITOR.NODE_ELEMENT && N[c.getName()] && (d = c)); e--) a.shrink(CKEDITOR.SHRINK_ELEMENT);
+                            return d && d.$
+                        });
                 return a.selectedElement = c ? new CKEDITOR.dom.element(c) : null
             },
             getSelectedText: function() {
-                var a =
-                    this._.cache;
+                var a = this._.cache;
                 if (void 0 !== a.selectedText) return a.selectedText;
                 var b = this.getNative(),
                     b = m ? "Control" == b.type ? "" : b.createRange().text : b.toString();
@@ -9450,8 +9543,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         e = this.isFake;
                     this.isLocked = 0;
                     this.reset();
-                    a && (a = b || c[0] && c[0].getCommonAncestor()) && a.getAscendant("body",
-                        1) && (d(c) ? f.call(this, c) : e ? this.fake(b) : b ? this.selectElement(b) : this.selectRanges(c))
+                    a && (a = b || c[0] && c[0].getCommonAncestor()) && a.getAscendant("body", 1) && (d(c) ? f.call(this, c) : e ? this.fake(b) : b ? this.selectElement(b) : this.selectRanges(c))
                 }
             },
             reset: function() {
@@ -9471,11 +9563,10 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         }
                         delete a._.hiddenSelectionContainer
                     } else CKEDITOR.warn("selection-fake-reset");
-                this.rev = J++
+                this.rev = M++
             },
             selectElement: function(a) {
-                var b =
-                    new CKEDITOR.dom.range(this.root);
+                var b = new CKEDITOR.dom.range(this.root);
                 b.setStartBefore(a);
                 b.setEndAfter(a);
                 this.selectRanges([b])
@@ -9485,7 +9576,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     c = b && b._.hiddenSelectionContainer;
                 this.reset();
                 if (c)
-                    for (var c = this.root, g, h = 0; h < a.length; ++h) g = a[h], g.endContainer.equals(c) && (g.endOffset = Math.min(g.endOffset, c.getChildCount()));
+                    for (var c = this.root, g, h = 0; h < a.length; ++h) g =
+                        a[h], g.endContainer.equals(c) && (g.endOffset = Math.min(g.endOffset, c.getChildCount()));
                 if (a.length)
                     if (this.isLocked) {
                         var k = CKEDITOR.document.getActive();
@@ -9494,68 +9586,69 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         this.lock();
                         k && !k.equals(this.root) && k.focus()
                     } else {
-                        var p;
+                        var l;
                         a: {
-                            var n, w;
-                            if (1 == a.length &&
-                                !(w = a[0]).collapsed && (p = w.getEnclosedNode()) && p.type == CKEDITOR.NODE_ELEMENT && (w = w.clone(), w.shrink(CKEDITOR.SHRINK_ELEMENT, !0), (n = w.getEnclosedNode()) && n.type == CKEDITOR.NODE_ELEMENT && (p = n), "false" == p.getAttribute("contenteditable"))) break a;p = void 0
+                            var p, B;
+                            if (1 == a.length && !(B = a[0]).collapsed && (l = B.getEnclosedNode()) && l.type == CKEDITOR.NODE_ELEMENT && (B = B.clone(), B.shrink(CKEDITOR.SHRINK_ELEMENT, !0), (p = B.getEnclosedNode()) && p.type == CKEDITOR.NODE_ELEMENT && (l = p), "false" == l.getAttribute("contenteditable"))) break a;
+                            l = void 0
                         }
-                        if (p) this.fake(p);
-                        else if (b && b.plugins.tableselection && CKEDITOR.plugins.tableselection.isSupportedEnvironment && d(a) && !l) f.call(this, a);
+                        if (l) this.fake(l);
+                        else if (b && b.plugins.tableselection && CKEDITOR.plugins.tableselection.isSupportedEnvironment && d(a) && !n) f.call(this, a);
                         else {
                             if (m) {
-                                n = CKEDITOR.dom.walker.whitespaces(!0);
-                                p = /\ufeff|\u00a0/;
-                                w = {
+                                p = CKEDITOR.dom.walker.whitespaces(!0);
+                                l = /\ufeff|\u00a0/;
+                                B = {
                                     table: 1,
                                     tbody: 1,
                                     tr: 1
                                 };
-                                1 < a.length && (b = a[a.length -
-                                    1], a[0].setEnd(b.endContainer, b.endOffset));
+                                1 < a.length && (b = a[a.length - 1], a[0].setEnd(b.endContainer, b.endOffset));
                                 b = a[0];
                                 a = b.collapsed;
-                                var B, G, I;
-                                if ((c = b.getEnclosedNode()) && c.type == CKEDITOR.NODE_ELEMENT && c.getName() in M && (!c.is("a") || !c.getText())) try {
-                                    I = c.$.createControlRange();
-                                    I.addElement(c.$);
-                                    I.select();
+                                var A, J, G;
+                                if ((c = b.getEnclosedNode()) && c.type == CKEDITOR.NODE_ELEMENT && c.getName() in N && (!c.is("a") || !c.getText())) try {
+                                    G = c.$.createControlRange();
+                                    G.addElement(c.$);
+                                    G.select();
                                     return
-                                } catch (v) {}
-                                if (b.startContainer.type == CKEDITOR.NODE_ELEMENT && b.startContainer.getName() in w || b.endContainer.type == CKEDITOR.NODE_ELEMENT && b.endContainer.getName() in w) b.shrink(CKEDITOR.NODE_ELEMENT, !0), a = b.collapsed;
-                                I = b.createBookmark();
-                                w = I.startNode;
-                                a || (k = I.endNode);
-                                I = b.document.$.body.createTextRange();
-                                I.moveToElementText(w.$);
-                                I.moveStart("character", 1);
-                                k ? (p = b.document.$.body.createTextRange(), p.moveToElementText(k.$), I.setEndPoint("EndToEnd", p), I.moveEnd("character", -1)) : (B = w.getNext(n), G = w.hasAscendant("pre"), B = !(B && B.getText && B.getText().match(p)) && (G || !w.hasPrevious() || w.getPrevious().is && w.getPrevious().is("br")), G = b.document.createElement("span"), G.setHtml("\x26#65279;"), G.insertBefore(w), B && b.document.createText("﻿").insertBefore(w));
-                                b.setStartBefore(w);
-                                w.remove();
-                                a ? (B ? (I.moveStart("character", -1), I.select(), b.document.$.selection.clear()) : I.select(), b.moveToPosition(G, CKEDITOR.POSITION_BEFORE_START), G.remove()) : (b.setEndBefore(k), k.remove(), I.select())
+                                } catch (w) {}
+                                if (b.startContainer.type ==
+                                    CKEDITOR.NODE_ELEMENT && b.startContainer.getName() in B || b.endContainer.type == CKEDITOR.NODE_ELEMENT && b.endContainer.getName() in B) b.shrink(CKEDITOR.NODE_ELEMENT, !0), a = b.collapsed;
+                                G = b.createBookmark();
+                                B = G.startNode;
+                                a || (k = G.endNode);
+                                G = b.document.$.body.createTextRange();
+                                G.moveToElementText(B.$);
+                                G.moveStart("character", 1);
+                                k ? (l = b.document.$.body.createTextRange(), l.moveToElementText(k.$), G.setEndPoint("EndToEnd", l), G.moveEnd("character", -1)) : (A = B.getNext(p), J = B.hasAscendant("pre"), A = !(A && A.getText && A.getText().match(l)) &&
+                                    (J || !B.hasPrevious() || B.getPrevious().is && B.getPrevious().is("br")), J = b.document.createElement("span"), J.setHtml("\x26#65279;"), J.insertBefore(B), A && b.document.createText("﻿").insertBefore(B));
+                                b.setStartBefore(B);
+                                B.remove();
+                                a ? (A ? (G.moveStart("character", -1), G.select(), b.document.$.selection.clear()) : G.select(), b.moveToPosition(J, CKEDITOR.POSITION_BEFORE_START), J.remove()) : (b.setEndBefore(k), k.remove(), G.select())
                             } else {
                                 k = this.getNative();
                                 if (!k) return;
                                 this.removeAllRanges();
-                                for (I = 0; I < a.length; I++) {
-                                    if (I < a.length - 1 && (B = a[I], G = a[I + 1], p = B.clone(), p.setStart(B.endContainer, B.endOffset), p.setEnd(G.startContainer, G.startOffset), !p.collapsed && (p.shrink(CKEDITOR.NODE_ELEMENT, !0), b = p.getCommonAncestor(), p = p.getEnclosedNode(),
-                                            b.isReadOnly() || p && p.isReadOnly()))) {
-                                        G.setStart(B.startContainer, B.startOffset);
-                                        a.splice(I--, 1);
+                                for (G = 0; G < a.length; G++) {
+                                    if (G <
+                                        a.length - 1 && (A = a[G], J = a[G + 1], l = A.clone(), l.setStart(A.endContainer, A.endOffset), l.setEnd(J.startContainer, J.startOffset), !l.collapsed && (l.shrink(CKEDITOR.NODE_ELEMENT, !0), b = l.getCommonAncestor(), l = l.getEnclosedNode(), b.isReadOnly() || l && l.isReadOnly()))) {
+                                        J.setStart(A.startContainer, A.startOffset);
+                                        a.splice(G--, 1);
                                         continue
                                     }
-                                    b = a[I];
-                                    G = this.document.$.createRange();
-                                    b.collapsed && CKEDITOR.env.webkit && r(b) && (p = e(this.root), b.insertNode(p), (B = p.getNext()) && !p.getPrevious() && B.type == CKEDITOR.NODE_ELEMENT && "br" == B.getName() ? (y(this.root), b.moveToPosition(B, CKEDITOR.POSITION_BEFORE_START)) : b.moveToPosition(p, CKEDITOR.POSITION_AFTER_END));
-                                    G.setStart(b.startContainer.$, b.startOffset);
+                                    b = a[G];
+                                    J = this.document.$.createRange();
+                                    b.collapsed && CKEDITOR.env.webkit && q(b) && (l = e(this.root), b.insertNode(l), (A = l.getNext()) && !l.getPrevious() && A.type == CKEDITOR.NODE_ELEMENT && "br" ==
+                                        A.getName() ? (x(this.root), b.moveToPosition(A, CKEDITOR.POSITION_BEFORE_START)) : b.moveToPosition(l, CKEDITOR.POSITION_AFTER_END));
+                                    J.setStart(b.startContainer.$, b.startOffset);
                                     try {
-                                        G.setEnd(b.endContainer.$, b.endOffset)
-                                    } catch (t) {
-                                        if (0 <=
-                                            t.toString().indexOf("NS_ERROR_ILLEGAL_VALUE")) b.collapse(1), G.setEnd(b.endContainer.$, b.endOffset);
-                                        else throw t;
+                                        J.setEnd(b.endContainer.$, b.endOffset)
+                                    } catch (r) {
+                                        if (0 <= r.toString().indexOf("NS_ERROR_ILLEGAL_VALUE")) b.collapse(1), J.setEnd(b.endContainer.$, b.endOffset);
+                                        else throw r;
                                     }
-                                    k.addRange(G)
+                                    k.addRange(J)
                                 }
                             }
                             this.reset();
@@ -9567,7 +9660,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 var c = this.root.editor;
                 void 0 === b && a.hasAttribute("aria-label") && (b = a.getAttribute("aria-label"));
                 this.reset();
-                A(c, b);
+                z(c, b);
                 var d = this._.cache,
                     e = new CKEDITOR.dom.range(this.root);
                 e.setStartBefore(a);
@@ -9577,7 +9670,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 d.type = CKEDITOR.SELECTION_ELEMENT;
                 d.selectedText = d.nativeSel = null;
                 this.isFake = 1;
-                this.rev = J++;
+                this.rev = M++;
                 c._.fakeSelection = this;
                 this.root.fire("selectionchange")
             },
@@ -9587,7 +9680,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 return !(!a || !a.data("cke-hidden-sel"))
             },
             isInTable: function(a) {
-                return d(this.getRanges(), a)
+                return d(this.getRanges(),
+                    a)
             },
             isCollapsed: function() {
                 var a = this.getRanges();
@@ -9599,8 +9693,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 return a
             },
             createBookmarks2: function(a) {
-                a =
-                    this.getRanges().createBookmarks2(a);
+                a = this.getRanges().createBookmarks2(a);
                 this.isFake && (a.isFake = 1);
                 return a
             },
@@ -9610,14 +9703,14 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     f.moveToBookmark(a[e]);
                     b.push(f)
                 }
-                a.isFake && (c = d(b) ? b[0]._getTableElement() : b[0].getEnclosedNode(), c && c.type == CKEDITOR.NODE_ELEMENT || (CKEDITOR.warn("selection-not-fake"), a.isFake = 0));
+                a.isFake && (c = d(b) ? b[0]._getTableElement() : b[0].getEnclosedNode(), c && c.type ==
+                    CKEDITOR.NODE_ELEMENT || (CKEDITOR.warn("selection-not-fake"), a.isFake = 0));
                 a.isFake && !d(b) ? this.fake(c) : this.selectRanges(b);
                 return this
             },
             getCommonAncestor: function() {
                 var a = this.getRanges();
-                return a.length ? a[0].startContainer.getCommonAncestor(a[a.length -
-                    1].endContainer) : null
+                return a.length ? a[0].startContainer.getCommonAncestor(a[a.length - 1].endContainer) : null
             },
             scrollIntoView: function() {
                 this.type != CKEDITOR.SELECTION_NONE && this.getRanges()[0].scrollIntoView()
@@ -9655,79 +9748,79 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
 
         function b(c) {
             var e = c.document;
-            if (c.collapsed) e = J(this, e), c.insertNode(e), c.moveToPosition(e, CKEDITOR.POSITION_BEFORE_END);
+            if (c.collapsed) e = M(this, e), c.insertNode(e), c.moveToPosition(e, CKEDITOR.POSITION_BEFORE_END);
             else {
                 var g = this.element,
                     h = this._.definition,
-                    k, l = h.ignoreReadonly,
-                    m = l || h.includeReadonly;
+                    k, m = h.ignoreReadonly,
+                    n = m || h.includeReadonly;
                 null ==
-                    m && (m = c.root.getCustomData("cke_includeReadonly"));
-                var n = CKEDITOR.dtd[g];
-                n || (k = !0, n = CKEDITOR.dtd.span);
+                    n && (n = c.root.getCustomData("cke_includeReadonly"));
+                var q = CKEDITOR.dtd[g];
+                q || (k = !0, q = CKEDITOR.dtd.span);
                 c.enlarge(CKEDITOR.ENLARGE_INLINE, 1);
                 c.trim();
-                var r = c.createBookmark(),
-                    v = r.startNode,
-                    t = r.endNode,
-                    q = v,
-                    u;
-                if (!l) {
-                    var x = c.getCommonAncestor(),
-                        l = a(v, x),
-                        x = a(t, x);
-                    l && (q = l.getNextSourceNode(!0));
-                    x && (t = x)
+                var p = c.createBookmark(),
+                    t = p.startNode,
+                    w = p.endNode,
+                    r = t,
+                    x;
+                if (!m) {
+                    var u = c.getCommonAncestor(),
+                        m = a(t, u),
+                        u = a(w, u);
+                    m && (r = m.getNextSourceNode(!0));
+                    u && (w = u)
                 }
-                for (q.getPosition(t) == CKEDITOR.POSITION_FOLLOWING && (q = 0); q;) {
-                    l = !1;
-                    if (q.equals(t)) q = null, l = !0;
+                for (r.getPosition(w) == CKEDITOR.POSITION_FOLLOWING && (r = 0); r;) {
+                    m = !1;
+                    if (r.equals(w)) r = null, m = !0;
                     else {
-                        var y = q.type == CKEDITOR.NODE_ELEMENT ? q.getName() : null,
-                            x = y && "false" == q.getAttribute("contentEditable"),
-                            A = y &&
-                            q.getAttribute("data-nostyle");
-                        if (y && q.data("cke-bookmark")) {
-                            q = q.getNextSourceNode(!0);
+                        var v = r.type == CKEDITOR.NODE_ELEMENT ? r.getName() : null,
+                            u = v && "false" == r.getAttribute("contentEditable"),
+                            z = v &&
+                            r.getAttribute("data-nostyle");
+                        if (v && r.data("cke-bookmark") || r.type === CKEDITOR.NODE_COMMENT) {
+                            r = r.getNextSourceNode(!0);
                             continue
                         }
-                        if (x && m && CKEDITOR.dtd.$block[y])
-                            for (var C = q, E = f(C), F = void 0, H = E.length, K = 0, C = H && new CKEDITOR.dom.range(C.getDocument()); K < H; ++K) {
-                                var F = E[K],
-                                    L = CKEDITOR.filter.instances[F.data("cke-filter")];
-                                if (L ? L.check(this) : 1) C.selectNodeContents(F), b.call(this, C)
+                        if (u && n && CKEDITOR.dtd.$block[v])
+                            for (var C = r, D = f(C), E = void 0, H = D.length, I = 0, C = H && new CKEDITOR.dom.range(C.getDocument()); I < H; ++I) {
+                                var E = D[I],
+                                    L = CKEDITOR.filter.instances[E.data("cke-filter")];
+                                if (L ? L.check(this) : 1) C.selectNodeContents(E), b.call(this, C)
                             }
-                        E = y ? !n[y] || A ? 0 : x && !m ? 0 : d(q, t, h, P) : 1;
-                        if (E)
-                            if (F = q.getParent(), E = h, H = g, K = k, !F || !(F.getDtd() || CKEDITOR.dtd.span)[H] && !K || E.parentRule && !E.parentRule(F)) l = !0;
+                        D = v ? !q[v] || z ? 0 : u && !n ? 0 : d(r, w, h, P) : 1;
+                        if (D)
+                            if (E = r.getParent(), D = h, H = g, I = k, !E || !(E.getDtd() || CKEDITOR.dtd.span)[H] && !I || D.parentRule &&
+                                !D.parentRule(E)) m = !0;
                             else {
-                                if (u ||
-                                    y && CKEDITOR.dtd.$removeEmpty[y] && (q.getPosition(t) | P) != P || (u = c.clone(), u.setStartBefore(q)), y = q.type, y == CKEDITOR.NODE_TEXT || x || y == CKEDITOR.NODE_ELEMENT && !q.getChildCount()) {
-                                    for (var y = q, M;
-                                        (l = !y.getNext(z)) && (M = y.getParent(), n[M.getName()]) && d(M, v, h, O);) y = M;
-                                    u.setEndAfter(y)
+                                if (x || v && CKEDITOR.dtd.$removeEmpty[v] && (r.getPosition(w) | P) != P || (x = c.clone(), x.setStartBefore(r)), v = r.type, v == CKEDITOR.NODE_TEXT || u || v == CKEDITOR.NODE_ELEMENT && !r.getChildCount()) {
+                                    for (var v = r, N;
+                                        (m = !v.getNext(y)) && (N = v.getParent(), q[N.getName()]) && d(N, t, h, O);) v = N;
+                                    x.setEndAfter(v)
                                 }
                             }
-                        else l = !0;
-                        q = q.getNextSourceNode(A || x)
+                        else m = !0;
+                        r = r.getNextSourceNode(z || u)
                     }
-                    if (l && u && !u.collapsed) {
-                        for (var l = J(this, e), x = l.hasAttributes(), A = u.getCommonAncestor(), y = {}, E = {}, F = {}, H = {}, U, R, aa; l && A;) {
-                            if (A.getName() == g) {
-                                for (U in h.attributes) !H[U] && (aa = A.getAttribute(R)) &&
-                                    (l.getAttribute(U) == aa ? E[U] = 1 : H[U] = 1);
-                                for (R in h.styles) !F[R] && (aa = A.getStyle(R)) && (l.getStyle(R) == aa ? y[R] = 1 : F[R] = 1)
+                    if (m && x && !x.collapsed) {
+                        for (var m = M(this, e), u = m.hasAttributes(), z = x.getCommonAncestor(), v = {}, D = {}, E = {}, H = {}, U, R, aa; m && z;) {
+                            if (z.getName() == g) {
+                                for (U in h.attributes) !H[U] &&
+                                    (aa = z.getAttribute(R)) && (m.getAttribute(U) == aa ? D[U] = 1 : H[U] = 1);
+                                for (R in h.styles) !E[R] && (aa = z.getStyle(R)) && (m.getStyle(R) == aa ? v[R] = 1 : E[R] = 1)
                             }
-                            A = A.getParent()
+                            z = z.getParent()
                         }
-                        for (U in E) l.removeAttribute(U);
-                        for (R in y) l.removeStyle(R);
-                        x && !l.hasAttributes() && (l = null);
-                        l ? (u.extractContents().appendTo(l), u.insertNode(l), D.call(this, l), l.mergeSiblings(), CKEDITOR.env.ie || l.$.normalize()) : (l = new CKEDITOR.dom.element("span"), u.extractContents().appendTo(l), u.insertNode(l), D.call(this, l), l.remove(!0));
-                        u = null
+                        for (U in D) m.removeAttribute(U);
+                        for (R in v) m.removeStyle(R);
+                        u && !m.hasAttributes() && (m = null);
+                        m ? (x.extractContents().appendTo(m), x.insertNode(m), F.call(this, m), m.mergeSiblings(), CKEDITOR.env.ie || m.$.normalize()) : (m = new CKEDITOR.dom.element("span"), x.extractContents().appendTo(m), x.insertNode(m), F.call(this, m), m.remove(!0));
+                        x = null
                     }
                 }
-                c.moveToBookmark(r);
+                c.moveToBookmark(p);
                 c.shrink(CKEDITOR.SHRINK_TEXT);
                 c.shrink(CKEDITOR.NODE_ELEMENT, !0)
             }
@@ -9735,33 +9828,33 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
 
         function c(a) {
             function b() {
-                for (var a = new CKEDITOR.dom.elementPath(d.getParent()), c = new CKEDITOR.dom.elementPath(n.getParent()), e = null, f = null, g = 0; g < a.elements.length; g++) {
-                    var h = a.elements[g];
-                    if (h == a.block || h == a.blockLimit) break;
-                    r.checkElementRemovable(h, !0) && (e = h)
+                for (var a = new CKEDITOR.dom.elementPath(d.getParent()), c = new CKEDITOR.dom.elementPath(q.getParent()), e = null, f = null, g = 0; g < a.elements.length; g++) {
+                    var l = a.elements[g];
+                    if (l == a.block || l == a.blockLimit) break;
+                    p.checkElementRemovable(l, !0) && (e = l)
                 }
                 for (g = 0; g < c.elements.length; g++) {
-                    h = c.elements[g];
-                    if (h == c.block || h == c.blockLimit) break;
-                    r.checkElementRemovable(h, !0) && (f = h)
+                    l = c.elements[g];
+                    if (l == c.block || l == c.blockLimit) break;
+                    p.checkElementRemovable(l, !0) && (f = l)
                 }
-                f && n.breakParent(f);
+                f && q.breakParent(f);
                 e && d.breakParent(e)
             }
-            a.enlarge(CKEDITOR.ENLARGE_INLINE, 1);
-            var c =
-                a.createBookmark(),
+            a.enlarge(CKEDITOR.ENLARGE_INLINE,
+                1);
+            var c = a.createBookmark(),
                 d = c.startNode,
                 e = this._.definition.alwaysRemoveElement;
             if (a.collapsed) {
                 for (var f = new CKEDITOR.dom.elementPath(d.getParent(), a.root), g, h = 0, k; h < f.elements.length && (k = f.elements[h]) && k != f.block && k != f.blockLimit; h++)
                     if (this.checkElementRemovable(k)) {
                         var m;
-                        !e && a.collapsed && (a.checkBoundaryOfElement(k, CKEDITOR.END) || (m = a.checkBoundaryOfElement(k, CKEDITOR.START))) ? (g = k, g.match = m ? "start" : "end") : (k.mergeSiblings(), k.is(this.element) ? A.call(this, k) : x(k, l(this)[k.getName()]))
+                        !e && a.collapsed && (a.checkBoundaryOfElement(k, CKEDITOR.END) || (m = a.checkBoundaryOfElement(k, CKEDITOR.START))) ? (g = k, g.match = m ? "start" : "end") : (k.mergeSiblings(), k.is(this.element) ? z.call(this, k) : v(k, n(this)[k.getName()]))
                     } if (g) {
-                    e = d;
-                    for (h =
-                        0;; h++) {
+                    e =
+                        d;
+                    for (h = 0;; h++) {
                         k = f.elements[h];
                         if (k.equals(g)) break;
                         else if (k.match) continue;
@@ -9772,10 +9865,10 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     e["start" == g.match ? "insertBefore" : "insertAfter"](g)
                 }
             } else {
-                var n = c.endNode,
-                    r = this;
+                var q = c.endNode,
+                    p = this;
                 b();
-                for (f = d; !f.equals(n);) g = f.getNextSourceNode(), f.type == CKEDITOR.NODE_ELEMENT && this.checkElementRemovable(f) && (f.getName() == this.element ? A.call(this, f) : x(f, l(this)[f.getName()]), g.type == CKEDITOR.NODE_ELEMENT && g.contains(d) && (b(), g = d.getNext())), f = g
+                for (f = d; !f.equals(q);) g = f.getNextSourceNode(), f.type == CKEDITOR.NODE_ELEMENT && this.checkElementRemovable(f) && (f.getName() == this.element ? z.call(this, f) : v(f, n(this)[f.getName()]), g.type == CKEDITOR.NODE_ELEMENT && g.contains(d) && (b(), g = d.getNext())), f = g
             }
             a.moveToBookmark(c);
             a.shrink(CKEDITOR.NODE_ELEMENT, !0)
@@ -9789,7 +9882,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             return b
         }
 
-        function h(a) {
+        function g(a) {
             var b = a.getEnclosedNode() || a.getCommonAncestor(!1, !0);
             (a = (new CKEDITOR.dom.elementPath(b, a.root)).contains(this.element, 1)) && !a.isReadOnly() && u(a, this)
         }
@@ -9807,26 +9900,26 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             }
         }
 
-        function g(a) {
+        function h(a) {
             var b = a.createBookmark(!0),
                 c = a.createIterator();
             c.enforceRealBlocks = !0;
             this._.enterMode && (c.enlargeBr = this._.enterMode != CKEDITOR.ENTER_BR);
-            for (var d, e = a.document, f; d = c.getNextParagraph();) !d.isReadOnly() && (c.activeFilter ? c.activeFilter.check(this) : 1) && (f = J(this, e, d), r(d, f));
+            for (var d, e = a.document, f; d = c.getNextParagraph();) !d.isReadOnly() && (c.activeFilter ? c.activeFilter.check(this) : 1) && (f = M(this, e, d), q(d, f));
             a.moveToBookmark(b)
         }
 
-        function n(a) {
+        function p(a) {
             var b = a.createBookmark(1),
                 c = a.createIterator();
             c.enforceRealBlocks = !0;
             c.enlargeBr = this._.enterMode != CKEDITOR.ENTER_BR;
             for (var d, e; d = c.getNextParagraph();) this.checkElementRemovable(d) &&
-                (d.is("pre") ? ((e = this._.enterMode == CKEDITOR.ENTER_BR ? null : a.document.createElement(this._.enterMode == CKEDITOR.ENTER_P ? "p" : "div")) && d.copyAttributes(e), r(d, e)) : A.call(this, d));
+                (d.is("pre") ? ((e = this._.enterMode == CKEDITOR.ENTER_BR ? null : a.document.createElement(this._.enterMode == CKEDITOR.ENTER_P ? "p" : "div")) && d.copyAttributes(e), q(d, e)) : z.call(this, d));
             a.moveToBookmark(b)
         }
 
-        function r(a, b) {
+        function q(a, b) {
             var c = !b;
             c && (b = a.getDocument().createElement("div"), a.copyAttributes(b));
             var d = b && b.is("pre"),
@@ -9836,7 +9929,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 f = b;
                 (g = a.getBogus()) && g.remove();
                 g = a.getHtml();
-                g = y(g, /(?:^[ \t\n\r]+)|(?:[ \t\n\r]+$)/g, "");
+                g = x(g, /(?:^[ \t\n\r]+)|(?:[ \t\n\r]+$)/g, "");
                 g = g.replace(/[ \t\r\n]*(<br[^>]*>)[ \t\r\n]*/gi, "$1");
                 g = g.replace(/([ \t\n\r]+|&nbsp;)/g,
                     " ");
@@ -9849,19 +9942,19 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     f = h.getFirst().remove()
                 } else f.setHtml(g);
                 b = f
-            } else g ? b = v(c ? [a.getHtml()] : e(a), b) : a.moveChildren(b);
+            } else g ? b = w(c ? [a.getHtml()] : e(a), b) : a.moveChildren(b);
             b.replace(a);
             if (d) {
                 var c = b,
                     k;
-                (k = c.getPrevious(H)) && k.type == CKEDITOR.NODE_ELEMENT && k.is("pre") && (d = y(k.getHtml(), /\n$/, "") + "\n\n" + y(c.getHtml(), /^\n/, ""), CKEDITOR.env.ie ? c.$.outerHTML = "\x3cpre\x3e" + d + "\x3c/pre\x3e" :
+                (k = c.getPrevious(I)) && k.type == CKEDITOR.NODE_ELEMENT && k.is("pre") && (d = x(k.getHtml(), /\n$/, "") + "\n\n" + x(c.getHtml(), /^\n/, ""), CKEDITOR.env.ie ? c.$.outerHTML = "\x3cpre\x3e" + d + "\x3c/pre\x3e" :
                     c.setHtml(d), k.remove())
             } else c && m(b)
         }
 
         function e(a) {
             var b = [];
-            y(a.getOuterHtml(), /(\S\s*)\n(?:\s|(<span[^>]+data-cke-bookmark.*?\/span>))*\n(?!$)/gi, function(a, b, c) {
+            x(a.getOuterHtml(), /(\S\s*)\n(?:\s|(<span[^>]+data-cke-bookmark.*?\/span>))*\n(?!$)/gi, function(a, b, c) {
                 return b + "\x3c/pre\x3e" + c + "\x3cpre\x3e"
             }).replace(/<pre\b.*?>([\s\S]*?)<\/pre>/gi, function(a, c) {
                 b.push(c)
@@ -9869,7 +9962,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             return b
         }
 
-        function y(a, b, c) {
+        function x(a, b, c) {
             var d = "",
                 e = "";
             a = a.replace(/(^<span[^>]+data-cke-bookmark.*?\/span>)|(<span[^>]+data-cke-bookmark.*?\/span>$)/gi, function(a, b, c) {
@@ -9880,15 +9973,15 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             return d + a.replace(b, c) + e
         }
 
-        function v(a, b) {
+        function w(a, b) {
             var c;
             1 < a.length && (c = new CKEDITOR.dom.documentFragment(b.getDocument()));
             for (var d = 0; d < a.length; d++) {
                 var e = a[d],
                     e = e.replace(/(\r\n|\r)/g, "\n"),
-                    e = y(e, /^[ \t]*\n/, ""),
-                    e = y(e, /\n$/, ""),
-                    e = y(e, /^[ \t]+|[ \t]+$/g, function(a, b) {
+                    e = x(e, /^[ \t]*\n/, ""),
+                    e = x(e, /\n$/, ""),
+                    e = x(e, /^[ \t]+|[ \t]+$/g, function(a, b) {
                         return 1 == a.length ? "\x26nbsp;" : b ? " " + CKEDITOR.tools.repeat("\x26nbsp;", a.length - 1) : CKEDITOR.tools.repeat("\x26nbsp;", a.length - 1) + " "
                     }),
                     e = e.replace(/\n/g, "\x3cbr\x3e"),
@@ -9904,29 +9997,29 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             return c || b
         }
 
-        function A(a, b) {
+        function z(a, b) {
             var c = this._.definition,
                 d = c.attributes,
                 c = c.styles,
-                e = l(this)[a.getName()],
+                e = n(this)[a.getName()],
                 f = CKEDITOR.tools.isEmpty(d) && CKEDITOR.tools.isEmpty(c),
                 g;
             for (g in d)
-                if ("class" != g && !this._.definition.fullMatch || a.getAttribute(g) == t(g, d[g])) b && "data-" == g.slice(0, 5) || (f = a.hasAttribute(g), a.removeAttribute(g));
-            for (var h in c) this._.definition.fullMatch && a.getStyle(h) != t(h, c[h], !0) || (f = f || !!a.getStyle(h), a.removeStyle(h));
-            x(a, e, C[a.getName()]);
+                if ("class" != g && !this._.definition.fullMatch || a.getAttribute(g) == r(g, d[g])) b && "data-" == g.slice(0, 5) || (f = a.hasAttribute(g), a.removeAttribute(g));
+            for (var h in c) this._.definition.fullMatch && a.getStyle(h) != r(h, c[h], !0) || (f = f || !!a.getStyle(h), a.removeStyle(h));
+            v(a, e, D[a.getName()]);
             f && (this._.definition.alwaysRemoveElement ?
                 m(a, 1) : !CKEDITOR.dtd.$block[a.getName()] || this._.enterMode == CKEDITOR.ENTER_BR && !a.hasAttributes() ? m(a) : a.renameNode(this._.enterMode == CKEDITOR.ENTER_P ? "p" : "div"))
         }
 
-        function D(a) {
-            for (var b = l(this), c = a.getElementsByTag(this.element), d, e = c.count(); 0 <= --e;) d = c.getItem(e), d.isReadOnly() || A.call(this, d, !0);
+        function F(a) {
+            for (var b = n(this), c = a.getElementsByTag(this.element), d, e = c.count(); 0 <= --e;) d = c.getItem(e), d.isReadOnly() || z.call(this, d, !0);
             for (var f in b)
                 if (f != this.element)
-                    for (c = a.getElementsByTag(f), e = c.count() - 1; 0 <= e; e--) d = c.getItem(e), d.isReadOnly() || x(d, b[f])
+                    for (c = a.getElementsByTag(f), e = c.count() - 1; 0 <= e; e--) d = c.getItem(e), d.isReadOnly() || v(d, b[f])
         }
 
-        function x(a, b, c) {
+        function v(a, b, c) {
             if (b = b && b.attributes)
                 for (var d = 0; d < b.length; d++) {
                     var e = b[d][0],
@@ -9942,8 +10035,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         function m(a, b) {
             if (!a.hasAttributes() || b)
                 if (CKEDITOR.dtd.$block[a.getName()]) {
-                    var c = a.getPrevious(H),
-                        d = a.getNext(H);
+                    var c = a.getPrevious(I),
+                        d = a.getNext(I);
                     !c || c.type != CKEDITOR.NODE_TEXT && c.isBlockBoundary({
                         br: 1
                     }) || a.append("br", 1);
@@ -9955,7 +10048,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     d && !c.equals(d) && d.type == CKEDITOR.NODE_ELEMENT && d.mergeSiblings())
         }
 
-        function J(a, b, c) {
+        function M(a, b, c) {
             var d;
             d = a.element;
             "*" == d && (d = "span");
@@ -9973,17 +10066,17 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             if (d)
                 for (var e in d) a.setAttribute(e, d[e]);
             c && a.setAttribute("style", c);
+            a.getDocument().removeCustomData("doc_processing_style");
             return a
         }
 
-        function K(a,
-            b) {
+        function H(a, b) {
             for (var c in a) a[c] = a[c].replace(E, function(a, c) {
                 return b[c]
             })
         }
 
-        function l(a) {
+        function n(a) {
             if (a._.overrides) return a._.overrides;
             var b = a._.overrides = {},
                 c = a._.definition.overrides;
@@ -10004,13 +10097,14 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             return b
         }
 
-        function t(a, b, c) {
+        function r(a,
+            b, c) {
             var d = new CKEDITOR.dom.element("span");
             d[c ? "setStyle" : "setAttribute"](a, b);
             return d[c ? "getStyle" : "getAttribute"](a)
         }
 
-        function F(a, b) {
+        function C(a, b) {
             function c(a, b) {
                 return "font-family" == b.toLowerCase() ? a.replace(/["']/g, "") : a
             }
@@ -10022,17 +10116,15 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         }
 
         function L(a, b, c) {
-            var d = a.document,
-                e = a.getRanges();
+            var d = a.getRanges();
             b = b ? this.removeFromRange : this.applyToRange;
-            var f, g;
+            var e, f;
             if (a.isFake && a.isInTable())
-                for (f = [], g = 0; g < e.length; g++) f.push(e[g].clone());
-            for (var h = e.createIterator(); g = h.getNextRange();) b.call(this, g, c);
-            a.selectRanges(f || e);
-            d.removeCustomData("doc_processing_style")
+                for (e = [], f = 0; f < d.length; f++) e.push(d[f].clone());
+            for (var g = d.createIterator(); f = g.getNextRange();) b.call(this, f, c);
+            a.selectRanges(e || d)
         }
-        var C = {
+        var D = {
                 address: 1,
                 div: 1,
                 h1: 1,
@@ -10063,7 +10155,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 datagrid: 1,
                 datalist: 1
             },
-            M = {
+            N = {
                 a: 1,
                 blockquote: 1,
                 embed: 1,
@@ -10084,18 +10176,18 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 audio: 1,
                 video: 1
             },
-            q = /\s*(?:;\s*|$)/,
+            t = /\s*(?:;\s*|$)/,
             E = /#\((.+?)\)/g,
-            z = CKEDITOR.dom.walker.bookmark(0, 1),
-            H = CKEDITOR.dom.walker.whitespaces(1);
+            y = CKEDITOR.dom.walker.bookmark(0, 1),
+            I = CKEDITOR.dom.walker.whitespaces(1);
         CKEDITOR.style = function(a, b) {
             if ("string" == typeof a.type) return new CKEDITOR.style.customHandlers[a.type](a);
             var c = a.attributes;
             c && c.style && (a.styles = CKEDITOR.tools.extend({}, a.styles, CKEDITOR.tools.parseCssText(c.style)), delete c.style);
-            b && (a = CKEDITOR.tools.clone(a), K(a.attributes, b), K(a.styles, b));
+            b && (a = CKEDITOR.tools.clone(a), H(a.attributes, b), H(a.styles, b));
             c = this.element = a.element ? "string" == typeof a.element ? a.element.toLowerCase() :
                 a.element : "*";
-            this.type = a.type || (C[c] ? CKEDITOR.STYLE_BLOCK : M[c] ? CKEDITOR.STYLE_OBJECT : CKEDITOR.STYLE_INLINE);
+            this.type = a.type || (D[c] ? CKEDITOR.STYLE_BLOCK : N[c] ? CKEDITOR.STYLE_OBJECT : CKEDITOR.STYLE_INLINE);
             "object" == typeof this.element && (this.type = CKEDITOR.STYLE_OBJECT);
             this._ = {
                 definition: a
@@ -10121,12 +10213,12 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 }
             },
             applyToRange: function(a) {
-                this.applyToRange = this.type == CKEDITOR.STYLE_INLINE ? b : this.type == CKEDITOR.STYLE_BLOCK ? g : this.type == CKEDITOR.STYLE_OBJECT ? h : null;
+                this.applyToRange = this.type == CKEDITOR.STYLE_INLINE ? b : this.type == CKEDITOR.STYLE_BLOCK ? h : this.type == CKEDITOR.STYLE_OBJECT ? g : null;
                 return this.applyToRange(a)
             },
             removeFromRange: function(a) {
                 this.removeFromRange = this.type == CKEDITOR.STYLE_INLINE ? c : this.type == CKEDITOR.STYLE_BLOCK ?
-                    n : this.type == CKEDITOR.STYLE_OBJECT ? k : null;
+                    p : this.type == CKEDITOR.STYLE_OBJECT ? k : null;
                 return this.removeFromRange(a)
             },
             applyToObject: function(a) {
@@ -10182,7 +10274,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     if (c._length) {
                         for (var h in c)
                             if ("_length" != h)
-                                if (d = a.getAttribute(h) || "", "style" == h ? F(c[h], d) : c[h] == d) {
+                                if (d = a.getAttribute(h) || "", "style" == h ? C(c[h], d) : c[h] == d) {
                                     if (!b) return !0
                                 } else if (b) return !1;
                         if (b) return !0
@@ -10192,7 +10284,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             },
             checkElementRemovable: function(a, b, c) {
                 if (this.checkElementMatch(a, b, c)) return !0;
-                if (b = l(this)[a.getName()]) {
+                if (b = n(this)[a.getName()]) {
                     var d;
                     if (!(b = b.attributes)) return !0;
                     for (c = 0; c < b.length; c++)
@@ -10229,10 +10321,10 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             var b = a.styles,
                 c = a.attributes && a.attributes.style || "",
                 d = "";
-            c.length && (c = c.replace(q, ";"));
+            c.length && (c = c.replace(t, ";"));
             for (var e in b) {
                 var f = b[e],
-                    g = (e + ":" + f).replace(q, ";");
+                    g = (e + ":" + f).replace(t, ";");
                 "inherit" == f ? d += g : c += g
             }
             c.length && (c = CKEDITOR.tools.normalizeCssText(c, !0));
@@ -10273,9 +10365,9 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             var b = this._.styleStateChangeCallbacks;
             b || (b = this._.styleStateChangeCallbacks = [], this.on("selectionChange", function(a) {
                 for (var d = 0; d < b.length; d++) {
-                    var h = b[d],
-                        k = h.style.checkActive(a.data.path, this) ? CKEDITOR.TRISTATE_ON : CKEDITOR.TRISTATE_OFF;
-                    h.fn.call(this, k)
+                    var g = b[d],
+                        k = g.style.checkActive(a.data.path, this) ? CKEDITOR.TRISTATE_ON : CKEDITOR.TRISTATE_OFF;
+                    g.fn.call(this, k)
                 }
             }));
             b.push({
@@ -10328,42 +10420,42 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         for (b in CKEDITOR.dtd.$blockLimit) b in CKEDITOR.dtd.$list || (a[b] = 1);
         for (b in CKEDITOR.dtd.$block) b in CKEDITOR.dtd.$blockLimit || b in CKEDITOR.dtd.$empty || (d[b] = 1);
         CKEDITOR.dom.elementPath = function(b, f) {
-            var h = null,
+            var g = null,
                 k = null,
-                g = [],
-                n = b,
-                r;
+                h = [],
+                p = b,
+                q;
             f = f || b.getDocument().getBody();
-            n || (n = f);
+            p || (p = f);
             do
-                if (n.type == CKEDITOR.NODE_ELEMENT) {
-                    g.push(n);
-                    if (!this.lastElement && (this.lastElement = n, n.is(CKEDITOR.dtd.$object) || "false" == n.getAttribute("contenteditable"))) continue;
-                    if (n.equals(f)) break;
-                    if (!k && (r = n.getName(),
-                            "true" == n.getAttribute("contenteditable") ? k = n : !h && d[r] && (h = n), a[r])) {
-                        if (r = !h && "div" == r) {
+                if (p.type == CKEDITOR.NODE_ELEMENT) {
+                    h.push(p);
+                    if (!this.lastElement && (this.lastElement = p, p.is(CKEDITOR.dtd.$object) || "false" == p.getAttribute("contenteditable"))) continue;
+                    if (p.equals(f)) break;
+                    if (!k && (q = p.getName(),
+                            "true" == p.getAttribute("contenteditable") ? k = p : !g && d[q] && (g = p), a[q])) {
+                        if (q = !g && "div" == q) {
                             a: {
-                                r = n.getChildren();
-                                for (var e = 0, y = r.count(); e < y; e++) {
-                                    var v = r.getItem(e);
-                                    if (v.type == CKEDITOR.NODE_ELEMENT && CKEDITOR.dtd.$block[v.getName()]) {
-                                        r = !0;
+                                q = p.getChildren();
+                                for (var e = 0, x = q.count(); e < x; e++) {
+                                    var w = q.getItem(e);
+                                    if (w.type == CKEDITOR.NODE_ELEMENT && CKEDITOR.dtd.$block[w.getName()]) {
+                                        q = !0;
                                         break a
                                     }
                                 }
-                                r = !1
+                                q = !1
                             }
-                            r = !r
+                            q = !q
                         }
-                        r ? h = n : k = n
+                        q ? g = p : k = p
                     }
-                } while (n = n.getParent());
+                } while (p = p.getParent());
             k || (k = f);
-            this.block = h;
+            this.block = g;
             this.blockLimit = k;
             this.root = f;
-            this.elements = g
+            this.elements = h
         }
     })();
     CKEDITOR.dom.elementPath.prototype = {
@@ -10389,12 +10481,12 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 return b.getName() in
                     a
             });
-            var h = this.elements,
-                k = h.length;
+            var g = this.elements,
+                k = g.length;
             d && (b ? c += 1 : --k);
-            b && (h = Array.prototype.slice.call(h, 0), h.reverse());
+            b && (g = Array.prototype.slice.call(g, 0), g.reverse());
             for (; c < k; c++)
-                if (f(h[c])) return h[c];
+                if (f(g[c])) return g[c];
             return null
         },
         isContextFor: function(a) {
@@ -10426,9 +10518,9 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 b = d.childNodes.length,
                 c = this.getLength(),
                 f = this.getDocument(),
-                h = new CKEDITOR.dom.text(this.$.splitText(a), f);
-            d.childNodes.length == b && (a >= c ? (h = f.createText(""), h.insertAfter(this)) : (a = f.createText(""), a.insertAfter(h), a.remove()));
-            return h
+                g = new CKEDITOR.dom.text(this.$.splitText(a), f);
+            d.childNodes.length == b && (a >= c ? (g = f.createText(""), g.insertAfter(this)) : (a = f.createText(""), a.insertAfter(g), a.remove()));
+            return g
         },
         substring: function(a,
             d) {
@@ -10437,14 +10529,14 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
     });
     (function() {
         function a(a, c, d) {
-            var h = a.serializable,
+            var g = a.serializable,
                 k = c[d ? "endContainer" : "startContainer"],
-                g = d ? "endOffset" : "startOffset",
-                n = h ? c.document.getById(a.startNode) : a.startNode;
-            a = h ? c.document.getById(a.endNode) : a.endNode;
-            k.equals(n.getPrevious()) ? (c.startOffset = c.startOffset - k.getLength() - a.getPrevious().getLength(), k = a.getNext()) : k.equals(a.getPrevious()) && (c.startOffset -= k.getLength(), k = a.getNext());
-            k.equals(n.getParent()) && c[g]++;
-            k.equals(a.getParent()) && c[g]++;
+                h = d ? "endOffset" : "startOffset",
+                p = g ? c.document.getById(a.startNode) : a.startNode;
+            a = g ? c.document.getById(a.endNode) : a.endNode;
+            k.equals(p.getPrevious()) ? (c.startOffset = c.startOffset - k.getLength() - a.getPrevious().getLength(), k = a.getNext()) : k.equals(a.getPrevious()) && (c.startOffset -= k.getLength(), k = a.getNext());
+            k.equals(p.getParent()) && c[h]++;
+            k.equals(a.getParent()) && c[h]++;
             c[d ? "endContainer" : "startContainer"] = k;
             return c
         }
@@ -10458,39 +10550,39 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 var a = this,
                     c = CKEDITOR.dom.walker.bookmark(),
                     d = [],
-                    h;
+                    g;
                 return {
                     getNextRange: function(k) {
-                        h = void 0 === h ? 0 : h + 1;
-                        var g = a[h];
-                        if (g && 1 < a.length) {
-                            if (!h)
-                                for (var n = a.length - 1; 0 <= n; n--) d.unshift(a[n].createBookmark(!0));
+                        g = void 0 === g ? 0 : g + 1;
+                        var h = a[g];
+                        if (h && 1 < a.length) {
+                            if (!g)
+                                for (var p = a.length - 1; 0 <= p; p--) d.unshift(a[p].createBookmark(!0));
                             if (k)
-                                for (var r = 0; a[h + r + 1];) {
-                                    var e = g.document;
+                                for (var q = 0; a[g + q + 1];) {
+                                    var e = h.document;
                                     k = 0;
-                                    n = e.getById(d[r].endNode);
-                                    for (e = e.getById(d[r + 1].startNode);;) {
-                                        n =
-                                            n.getNextSourceNode(!1);
-                                        if (e.equals(n)) k = 1;
-                                        else if (c(n) || n.type == CKEDITOR.NODE_ELEMENT && n.isBlockBoundary()) continue;
+                                    p = e.getById(d[q].endNode);
+                                    for (e = e.getById(d[q + 1].startNode);;) {
+                                        p =
+                                            p.getNextSourceNode(!1);
+                                        if (e.equals(p)) k = 1;
+                                        else if (c(p) || p.type == CKEDITOR.NODE_ELEMENT && p.isBlockBoundary()) continue;
                                         break
                                     }
                                     if (!k) break;
-                                    r++
+                                    q++
                                 }
-                            for (g.moveToBookmark(d.shift()); r--;) n = a[++h], n.moveToBookmark(d.shift()), g.setEnd(n.endContainer, n.endOffset)
+                            for (h.moveToBookmark(d.shift()); q--;) p = a[++g], p.moveToBookmark(d.shift()), h.setEnd(p.endContainer, p.endOffset)
                         }
-                        return g
+                        return h
                     }
                 }
             },
             createBookmarks: function(b) {
-                for (var c = [], d, h = 0; h < this.length; h++) {
-                    c.push(d = this[h].createBookmark(b, !0));
-                    for (var k = h + 1; k < this.length; k++) this[k] = a(d, this[k]), this[k] = a(d, this[k], !0)
+                for (var c = [], d, g = 0; g < this.length; g++) {
+                    c.push(d = this[g].createBookmark(b, !0));
+                    for (var k = g + 1; k < this.length; k++) this[k] = a(d, this[k]), this[k] = a(d, this[k], !0)
                 }
                 return c
             },
@@ -10523,7 +10615,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         }
 
         function b(a, b) {
-            h[a] || (CKEDITOR.document.appendStyleSheet(d(a)), h[a] = 1);
+            g[a] || (CKEDITOR.document.appendStyleSheet(d(a)), g[a] = 1);
             b && b()
         }
 
@@ -10551,7 +10643,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                             a[h].$.styleSheet.cssText += g : a[h].$.innerHTML += g
                     }
         }
-        var h = {};
+        var g = {};
         CKEDITOR.skin = {
             path: a,
             loadPart: function(c, d) {
@@ -10592,20 +10684,20 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     this.uiColor = a;
                     var c = CKEDITOR.skin.chameleon,
                         d = "",
-                        h = "";
-                    "function" == typeof c && (d = c(this, "editor"), h =
+                        g = "";
+                    "function" == typeof c && (d = c(this, "editor"), g =
                         c(this, "panel"));
                     a = [
-                        [n, a]
+                        [p, a]
                     ];
                     f([b], d, a);
-                    f(g, h, a)
+                    f(h, g, a)
                 }).call(this, a)
             }
         });
         var k = "cke_ui_color",
-            g = [],
-            n = /\$color/g;
+            h = [],
+            p = /\$color/g;
         CKEDITOR.on("instanceLoaded", function(a) {
             if (!CKEDITOR.env.ie || !CKEDITOR.env.quirks) {
                 var b = a.editor;
@@ -10613,10 +10705,10 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     a = (a.data[0] || a.data).element.getElementsByTag("iframe").getItem(0).getFrameDocument();
                     if (!a.getById("cke_ui_color")) {
                         a = c(a);
-                        g.push(a);
+                        h.push(a);
                         var d = b.getUiColor();
                         d && f([a], CKEDITOR.skin.chameleon(b, "panel"), [
-                            [n, d]
+                            [p, d]
                         ])
                     }
                 };
@@ -10648,7 +10740,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             for (delete CKEDITOR._.pending, d = 0; d < a.length; d++) CKEDITOR.editor.prototype.constructor.apply(a[d][0], a[d][1]), CKEDITOR.add(a[d][0])
     })();
     /*
-     Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
+     Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
      For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
     */
     CKEDITOR.skin.name = "moono-lisa";
@@ -10706,7 +10798,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     CKEDITOR.tools.extend.apply(CKEDITOR.tools, a);
                     return this._
                 },
-                v = {
+                r = {
                     build: function(b, a, d) {
                         return new CKEDITOR.ui.dialog.textInput(b, a, d)
                     }
@@ -10734,7 +10826,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         return this._.initValue
                     }
                 },
-                r = CKEDITOR.tools.extend({}, CKEDITOR.ui.dialog.uiElement.prototype.eventProcessors, {
+                v = CKEDITOR.tools.extend({}, CKEDITOR.ui.dialog.uiElement.prototype.eventProcessors, {
                     onChange: function(b, a) {
                         this._.domOnChangeRegistered || (b.on("load", function() {
                             this.getInputElement().on("change", function() {
@@ -11100,7 +11192,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     var b = CKEDITOR.document.getById(this._.labelId);
                     return !b || 1 > b.getChildCount() ? "" : b.getChild(0).getText()
                 },
-                eventProcessors: r
+                eventProcessors: v
             }, !0);
             CKEDITOR.ui.dialog.button.prototype = CKEDITOR.tools.extend(new CKEDITOR.ui.dialog.uiElement, {
                 click: function() {
@@ -11231,7 +11323,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 eventProcessors: {
                     onChange: function(b,
                         a) {
-                        if (!CKEDITOR.env.ie || 8 < CKEDITOR.env.version) return r.onChange.apply(this, arguments);
+                        if (!CKEDITOR.env.ie || 8 < CKEDITOR.env.version) return v.onChange.apply(this, arguments);
                         b.on("load", function() {
                             var a = this._.checkbox.getElement();
                             a.on("propertychange", function(b) {
@@ -11271,7 +11363,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 },
                 eventProcessors: {
                     onChange: function(b, a) {
-                        if (!CKEDITOR.env.ie || 8 < CKEDITOR.env.version) return r.onChange.apply(this, arguments);
+                        if (!CKEDITOR.env.ie || 8 < CKEDITOR.env.version) return v.onChange.apply(this, arguments);
                         b.on("load", function() {
                             for (var a =
                                     this._.children, b = this, c = 0; c < a.length; c++) a[c].getElement().on("propertychange", function(a) {
@@ -11364,17 +11456,18 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             CKEDITOR.ui.dialog.fileButton.prototype =
                 new CKEDITOR.ui.dialog.button;
             CKEDITOR.ui.dialog.fieldset.prototype = CKEDITOR.tools.clone(CKEDITOR.ui.dialog.hbox.prototype);
-            CKEDITOR.dialog.addUIElement("text", v);
-            CKEDITOR.dialog.addUIElement("password", v);
+            CKEDITOR.dialog.addUIElement("text", r);
+            CKEDITOR.dialog.addUIElement("password", r);
+            CKEDITOR.dialog.addUIElement("tel", r);
             CKEDITOR.dialog.addUIElement("textarea", n);
             CKEDITOR.dialog.addUIElement("checkbox", n);
             CKEDITOR.dialog.addUIElement("radio", n);
             CKEDITOR.dialog.addUIElement("button", n);
             CKEDITOR.dialog.addUIElement("select", n);
             CKEDITOR.dialog.addUIElement("file", n);
-            CKEDITOR.dialog.addUIElement("fileButton", n);
-            CKEDITOR.dialog.addUIElement("html",
+            CKEDITOR.dialog.addUIElement("fileButton",
                 n);
+            CKEDITOR.dialog.addUIElement("html", n);
             CKEDITOR.dialog.addUIElement("fieldset", {
                 build: function(b, a, d) {
                     for (var f = a.children, c, e = [], h = [], g = 0; g < f.length && (c = f[g]); g++) {
@@ -13673,14 +13766,14 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     name: k,
                     iconName: m,
                     label: this.label,
-                    cls: this.className || "",
+                    cls: (this.hasArrow ? "cke_button_expandable " : "") + (this.className ||
+                        ""),
                     state: g,
-                    ariaDisabled: "disabled" ==
-                        g ? "true" : "false",
+                    ariaDisabled: "disabled" == g ? "true" : "false",
                     title: this.title + (l ? " (" + l.display + ")" : ""),
                     ariaShortcut: l ? a.lang.common.keyboardShortcut + " " + l.aria : "",
                     titleJs: p.gecko && !p.hc ? "" : (this.title || "").replace("'", ""),
-                    hasArrow: this.hasArrow ? "true" : "false",
+                    hasArrow: "string" === typeof this.hasArrow && this.hasArrow || (this.hasArrow ? "true" : "false"),
                     keydownFn: x,
                     focusFn: y,
                     clickFn: t,
@@ -13695,7 +13788,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 if (this._.state == a) return !1;
                 this._.state = a;
                 var b = CKEDITOR.document.getById(this._.id);
-                return b ? (b.setState(a, "cke_button"), a == CKEDITOR.TRISTATE_DISABLED ? b.setAttribute("aria-disabled", !0) : b.removeAttribute("aria-disabled"), this.hasArrow ? (a = a == CKEDITOR.TRISTATE_ON ? this._.editor.lang.button.selectedLabel.replace(/%1/g, this.label) : this.label, CKEDITOR.document.getById(this._.id + "_label").setText(a)) : a == CKEDITOR.TRISTATE_ON ? b.setAttribute("aria-pressed", !0) : b.removeAttribute("aria-pressed"), !0) : !1
+                return b ? (b.setState(a, "cke_button"), b.setAttribute("aria-disabled", a == CKEDITOR.TRISTATE_DISABLED), this.hasArrow ? b.setAttribute("aria-expanded", a == CKEDITOR.TRISTATE_ON) : a === CKEDITOR.TRISTATE_ON ? b.setAttribute("aria-pressed", !0) : b.removeAttribute("aria-pressed"), !0) : !1
             },
             getState: function() {
                 return this._.state
@@ -13703,7 +13796,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             toFeature: function(a) {
                 if (this._.feature) return this._.feature;
                 var b = this;
-                this.allowedContent || this.requiredContent || !this.command || (b = a.getCommand(this.command) || b);
+                this.allowedContent ||
+                    this.requiredContent || !this.command || (b = a.getCommand(this.command) || b);
                 return this._.feature = b
             }
         };
@@ -14322,9 +14416,10 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 if (a.ui.addButton) a.once("instanceReady",
                     function() {
                         a._.pasteButtons && CKEDITOR.tools.array.forEach(a._.pasteButtons, function(b) {
-                            if (b = a.ui.get(b)) CKEDITOR.document.getById(b._.id).on("touchend", function() {
-                                a._.forcePasteDialog = !0
-                            })
+                            if (b = a.ui.get(b))
+                                if (b = CKEDITOR.document.getById(b._.id)) b.on("touchend", function() {
+                                    a._.forcePasteDialog = !0
+                                })
                         })
                     })
             })();
@@ -14416,24 +14511,24 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             return B(a, b)
         }
 
-        function C() {
-            function a() {
+        function C(a) {
+            function b() {
                 var a = {},
                     b;
                 for (b in CKEDITOR.dtd) "$" != b.charAt(0) && "div" != b && "span" != b && (a[b] = 1);
                 return a
             }
-            var b = {};
+            var c = {};
             return {
-                get: function(c) {
-                    return "plain-text" == c ? b.plainText || (b.plainText = new CKEDITOR.filter("br")) : "semantic-content" == c ? ((c = b.semanticContent) || (c = new CKEDITOR.filter, c.allow({
+                get: function(d) {
+                    return "plain-text" == d ? c.plainText || (c.plainText = new CKEDITOR.filter(a, "br")) : "semantic-content" == d ? ((d = c.semanticContent) || (d = new CKEDITOR.filter(a, {}), d.allow({
                         $1: {
-                            elements: a(),
+                            elements: b(),
                             attributes: !0,
                             styles: !1,
                             classes: !1
                         }
-                    }), c = b.semanticContent = c), c) : c ? new CKEDITOR.filter(c) : null
+                    }), d = c.semanticContent = d), d) : d ? new CKEDITOR.filter(a, d) : null
                 }
             }
         }
@@ -14441,8 +14536,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         function w(a, b, c) {
             b = CKEDITOR.htmlParser.fragment.fromHtml(b);
             var d = new CKEDITOR.htmlParser.basicWriter;
-            c.applyTo(b, !0, !1,
-                a.activeEnterMode);
+            c.applyTo(b,
+                !0, !1, a.activeEnterMode);
             b.writeHtml(d);
             return d.getHtml()
         }
@@ -14462,35 +14557,35 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         function E(a) {
             var b = CKEDITOR.plugins.clipboard;
             a.on("contentDom", function() {
-                function c(b, c, e) {
+                function c(b, c, d) {
                     c.select();
                     r(a, {
-                        dataTransfer: e,
+                        dataTransfer: d,
                         method: "drop"
                     }, 1);
-                    e.sourceEditor.fire("saveSnapshot");
-                    e.sourceEditor.editable().extractHtmlFromRange(b);
-                    e.sourceEditor.getSelection().selectRanges([b]);
-                    e.sourceEditor.fire("saveSnapshot")
+                    d.sourceEditor.fire("saveSnapshot");
+                    d.sourceEditor.editable().extractHtmlFromRange(b);
+                    d.sourceEditor.getSelection().selectRanges([b]);
+                    d.sourceEditor.fire("saveSnapshot")
                 }
 
-                function d(c, e) {
+                function d(c, d) {
                     c.select();
                     r(a, {
-                        dataTransfer: e,
+                        dataTransfer: d,
                         method: "drop"
                     }, 1);
                     b.resetDragDataTransfer()
                 }
 
-                function g(b, c, e) {
-                    var d = {
+                function g(b, c, d) {
+                    var e = {
                         $: b.data.$,
                         target: b.data.getTarget()
                     };
-                    c && (d.dragRange = c);
-                    e && (d.dropRange = e);
-                    !1 === a.fire(b.name, d) && b.data.preventDefault()
+                    c && (e.dragRange = c);
+                    d && (e.dropRange = d);
+                    !1 === a.fire(b.name, e) && b.data.preventDefault()
                 }
 
                 function h(a) {
@@ -14527,11 +14622,11 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 e.attachListener(f, "drop", function(c) {
                     if (!c.data.$.defaultPrevented) {
                         c.data.preventDefault();
-                        var e = c.data.getTarget();
-                        if (!e.isReadOnly() || e.type == CKEDITOR.NODE_ELEMENT && e.is("html")) {
-                            var e = b.getRangeAtDropPosition(c, a),
-                                d = b.dragRange;
-                            e && g(c, d, e)
+                        var d = c.data.getTarget();
+                        if (!d.isReadOnly() || d.type == CKEDITOR.NODE_ELEMENT && d.is("html")) {
+                            var d = b.getRangeAtDropPosition(c, a),
+                                e = b.dragRange;
+                            d && g(c, e, d)
                         }
                     }
                 }, null, null, 9999);
@@ -14553,7 +14648,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         CKEDITOR.plugins.add("clipboard", {
             requires: "dialog,notification,toolbar",
             init: function(a) {
-                var b, c = C();
+                var b, c = C(a);
                 a.config.forcePasteAsPlainText ? b = "plain-text" : a.config.pasteFilter ? b = a.config.pasteFilter : !CKEDITOR.env.webkit || "pasteFilter" in a.config || (b = "semantic-content");
                 a.pasteFilter = c.get(b);
                 x(a);
@@ -14920,6 +15015,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 if (null === a._isCustomMimeTypeSupported)
                     if (b) {
                         a._isCustomMimeTypeSupported = !1;
+                        if (CKEDITOR.env.edge && 17 <= CKEDITOR.env.version) return !0;
                         try {
                             b.setData("cke/mimetypetest", "cke test value"), a._isCustomMimeTypeSupported = "cke test value" === b.getData("cke/mimetypetest"), b.clearData("cke/mimetypetest")
                         } catch (c) {}
@@ -14927,7 +15023,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 return !a._isCustomMimeTypeSupported
             },
             getData: function(a, b) {
-                var c = this._getData(this._customDataFallbackType, !0);
+                var c = this._getData(this._customDataFallbackType,
+                    !0);
                 if (b) return c;
                 var c = this._extractDataComment(c),
                     d = null,
@@ -14943,7 +15040,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     g.setData(a, d), c && (this._dataTransfer._.nativeHtmlCache = d)
                 } catch (h) {
                     if (this._isUnsupportedMimeTypeError(h)) {
-                        c = CKEDITOR.plugins.clipboard.fallbackDataTransfer; - 1 === CKEDITOR.tools.indexOf(c._customTypes, a) && c._customTypes.push(a);
+                        c = CKEDITOR.plugins.clipboard.fallbackDataTransfer; - 1 === CKEDITOR.tools.indexOf(c._customTypes,
+                            a) && c._customTypes.push(a);
                         var c = this._getFallbackTypeContent(),
                             e = this._getFallbackTypeData();
                         e[a] = d;
@@ -15020,7 +15118,9 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     a.block = {
                         attributes: a.attributes
                     };
-                    this.hasArrow = a.toolbarRelated = !0;
+                    a.toolbarRelated = !0;
+                    this.hasArrow =
+                        "listbox";
                     this.click = e;
                     this._ = {
                         panelDefinition: a
@@ -15106,6 +15206,16 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             k = CKEDITOR.addTemplate("panel-frame-inner", '\x3c!DOCTYPE html\x3e\x3chtml class\x3d"cke_panel_container {env}" dir\x3d"{dir}" lang\x3d"{langCode}"\x3e\x3chead\x3e{css}\x3c/head\x3e\x3cbody class\x3d"cke_{dir}" style\x3d"margin:0;padding:0" onload\x3d"{onload}"\x3e\x3c/body\x3e\x3c/html\x3e');
         CKEDITOR.ui.panel.prototype = {
             render: function(a, b) {
+                var e = {
+                    editorId: a.id,
+                    id: this.id,
+                    langCode: a.langCode,
+                    dir: a.lang.dir,
+                    cls: this.className,
+                    frame: "",
+                    env: CKEDITOR.env.cssClass,
+                    "z-index": a.config.baseFloatZIndex + 1
+                };
                 this.getHolderElement = function() {
                     var a = this._.holder;
                     if (!a) {
@@ -15123,14 +15233,14 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                             }, this));
                             a.write(k.output(CKEDITOR.tools.extend({
                                 css: CKEDITOR.tools.buildStyleHtml(this.css),
-                                onload: "window.parent.CKEDITOR.tools.callFunction(" +
-                                    b + ");"
+                                onload: "window.parent.CKEDITOR.tools.callFunction(" + b + ");"
                             }, e)));
                             a.getWindow().$.CKEDITOR = CKEDITOR;
                             a.on("keydown", function(a) {
                                 var b = a.data.getKeystroke(),
                                     c = this.document.getById(this.id).getAttribute("dir");
-                                this._.onKeyDown && !1 === this._.onKeyDown(b) ? a.data.preventDefault() : (27 == b || b == ("rtl" == c ? 39 : 37)) && this.onEscape && !1 === this.onEscape(b) && a.data.preventDefault()
+                                if ("input" !== a.data.getTarget().getName() || 37 !== b && 39 !== b) this._.onKeyDown && !1 === this._.onKeyDown(b) ? "input" === a.data.getTarget().getName() && 32 === b || a.data.preventDefault() :
+                                    (27 == b || b == ("rtl" == c ? 39 : 37)) && this.onEscape && !1 === this.onEscape(b) && a.data.preventDefault()
                             }, this);
                             a = a.getBody();
                             a.unselectable();
@@ -15140,18 +15250,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     }
                     return a
                 };
-                var e = {
-                    editorId: a.id,
-                    id: this.id,
-                    langCode: a.langCode,
-                    dir: a.lang.dir,
-                    cls: this.className,
-                    frame: "",
-                    env: CKEDITOR.env.cssClass,
-                    "z-index": a.config.baseFloatZIndex + 1
-                };
                 if (this.isFramed) {
-                    var d = CKEDITOR.env.air ? "javascript:void(0)" : CKEDITOR.env.ie ? "javascript:void(function(){" + encodeURIComponent("document.open();(" + CKEDITOR.tools.fixDomain + ")();document.close();") + "}())" : "";
+                    var d = CKEDITOR.env.air ? "javascript:void(0)" : CKEDITOR.env.ie && !CKEDITOR.env.edge ? "javascript:void(function(){" + encodeURIComponent("document.open();(" + CKEDITOR.tools.fixDomain + ")();document.close();") + "}())" : "";
                     e.frame = h.output({
                         id: this.id + "_frame",
                         src: d
@@ -15162,8 +15262,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 return d
             },
             addBlock: function(a, b) {
-                b = this._.blocks[a] = b instanceof CKEDITOR.ui.panel.block ? b : new CKEDITOR.ui.panel.block(this.getHolderElement(),
-                    b);
+                b = this._.blocks[a] = b instanceof CKEDITOR.ui.panel.block ? b : new CKEDITOR.ui.panel.block(this.getHolderElement(), b);
                 this._.currentBlock || this.showBlock(a);
                 return b
             },
@@ -15186,84 +15285,85 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 this.element && this.element.remove()
             }
         };
-        CKEDITOR.ui.panel.block =
-            CKEDITOR.tools.createClass({
-                $: function(a, b) {
-                    this.element = a.append(a.getDocument().createElement("div", {
-                        attributes: {
-                            tabindex: -1,
-                            "class": "cke_panel_block"
-                        },
-                        styles: {
-                            display: "none"
-                        }
-                    }));
-                    b && CKEDITOR.tools.extend(this, b);
-                    this.element.setAttributes({
-                        role: this.attributes.role || "presentation",
-                        "aria-label": this.attributes["aria-label"],
-                        title: this.attributes.title || this.attributes["aria-label"]
-                    });
-                    this.keys = {};
-                    this._.focusIndex = -1;
-                    this.element.disableContextMenu()
-                },
-                _: {
-                    markItem: function(a) {
-                        -1 != a && (a = this.element.getElementsByTag("a").getItem(this._.focusIndex =
-                            a), CKEDITOR.env.webkit && a.getDocument().getWindow().focus(), a.focus(), this.onMark && this.onMark(a))
+        CKEDITOR.ui.panel.block = CKEDITOR.tools.createClass({
+            $: function(a, b) {
+                this.element = a.append(a.getDocument().createElement("div", {
+                    attributes: {
+                        tabindex: -1,
+                        "class": "cke_panel_block"
                     },
-                    markFirstDisplayed: function(a) {
-                        for (var b = function(a) {
-                                return a.type == CKEDITOR.NODE_ELEMENT && "none" == a.getStyle("display")
-                            }, e = this._.getItems(), d, c, f = e.count() - 1; 0 <= f; f--)
-                            if (d = e.getItem(f), d.getAscendant(b) || (c = d, this._.focusIndex = f), "true" == d.getAttribute("aria-selected")) {
-                                c = d;
-                                this._.focusIndex = f;
-                                break
-                            } c && (a && a(), CKEDITOR.env.webkit && c.getDocument().getWindow().focus(), c.focus(), this.onMark && this.onMark(c))
-                    },
-                    getItems: function() {
-                        return this.element.getElementsByTag("a")
+                    styles: {
+                        display: "none"
                     }
+                }));
+                b && CKEDITOR.tools.extend(this, b);
+                this.element.setAttributes({
+                    role: this.attributes.role || "presentation",
+                    "aria-label": this.attributes["aria-label"],
+                    title: this.attributes.title ||
+                        this.attributes["aria-label"]
+                });
+                this.keys = {};
+                this._.focusIndex = -1;
+                this.element.disableContextMenu()
+            },
+            _: {
+                markItem: function(a) {
+                    -1 != a && (a = this._.getItems().getItem(this._.focusIndex = a), CKEDITOR.env.webkit && a.getDocument().getWindow().focus(), a.focus(), this.onMark && this.onMark(a))
                 },
-                proto: {
-                    show: function() {
-                        this.element.setStyle("display", "")
-                    },
-                    hide: function() {
-                        this.onHide && !0 === this.onHide.call(this) || this.element.setStyle("display", "none")
-                    },
-                    onKeyDown: function(a, b) {
-                        var e = this.keys[a];
-                        switch (e) {
-                            case "next":
-                                for (var d = this._.focusIndex, e = this.element.getElementsByTag("a"), c; c = e.getItem(++d);)
-                                    if (c.getAttribute("_cke_focus") && c.$.offsetWidth) {
-                                        this._.focusIndex = d;
-                                        c.focus();
-                                        break
-                                    } return c || b ? !1 : (this._.focusIndex = -1, this.onKeyDown(a,
-                                    1));
-                            case "prev":
-                                d = this._.focusIndex;
-                                for (e = this.element.getElementsByTag("a"); 0 < d && (c = e.getItem(--d));) {
-                                    if (c.getAttribute("_cke_focus") && c.$.offsetWidth) {
-                                        this._.focusIndex = d;
-                                        c.focus();
-                                        break
-                                    }
-                                    c = null
-                                }
-                                return c || b ? !1 : (this._.focusIndex = e.count(), this.onKeyDown(a, 1));
-                            case "click":
-                            case "mouseup":
-                                return d = this._.focusIndex, (c = 0 <= d && this.element.getElementsByTag("a").getItem(d)) && (c.$[e] ? c.$[e]() : c.$["on" + e]()), !1
-                        }
-                        return !0
-                    }
+                markFirstDisplayed: function(a) {
+                    for (var b = function(a) {
+                            return a.type == CKEDITOR.NODE_ELEMENT && "none" == a.getStyle("display")
+                        }, e = this._.getItems(), d, c, f = e.count() - 1; 0 <= f; f--)
+                        if (d = e.getItem(f), d.getAscendant(b) || (c = d, this._.focusIndex =
+                                f), "true" == d.getAttribute("aria-selected")) {
+                            c = d;
+                            this._.focusIndex = f;
+                            break
+                        } c && (a && a(), CKEDITOR.env.webkit && c.getDocument().getWindow().focus(), c.focus(), this.onMark && this.onMark(c))
+                },
+                getItems: function() {
+                    return this.element.find("a,input")
                 }
-            })
+            },
+            proto: {
+                show: function() {
+                    this.element.setStyle("display", "")
+                },
+                hide: function() {
+                    this.onHide && !0 === this.onHide.call(this) || this.element.setStyle("display", "none")
+                },
+                onKeyDown: function(a, b) {
+                    var e = this.keys[a];
+                    switch (e) {
+                        case "next":
+                            for (var d = this._.focusIndex, e = this._.getItems(),
+                                    c; c = e.getItem(++d);)
+                                if (c.getAttribute("_cke_focus") && c.$.offsetWidth) {
+                                    this._.focusIndex = d;
+                                    c.focus(!0);
+                                    break
+                                } return c || b ? !1 : (this._.focusIndex = -1, this.onKeyDown(a, 1));
+                        case "prev":
+                            d = this._.focusIndex;
+                            for (e = this._.getItems(); 0 < d && (c = e.getItem(--d));) {
+                                if (c.getAttribute("_cke_focus") && c.$.offsetWidth) {
+                                    this._.focusIndex = d;
+                                    c.focus(!0);
+                                    break
+                                }
+                                c = null
+                            }
+                            return c || b ? !1 : (this._.focusIndex = e.count(), this.onKeyDown(a, 1));
+                        case "click":
+                        case "mouseup":
+                            return d = this._.focusIndex, (c = 0 <= d && this._.getItems().getItem(d)) &&
+                                (c.$[e] ? c.$[e]() : c.$["on" + e]()), !1
+                    }
+                    return !0
+                }
+            }
+        })
     })();
     CKEDITOR.plugins.add("floatpanel", {
         requires: "panel"
@@ -15303,7 +15403,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     iframe: k,
                     children: [],
                     dir: a.lang.dir,
-                    showBlockParams: null
+                    showBlockParams: null,
+                    markFirst: void 0 !== c.markFirst ? c.markFirst : !0
                 };
                 a.on("mode", h);
                 a.on("resize", h);
@@ -15315,9 +15416,9 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 addBlock: function(a, b) {
                     return this._.panel.addBlock(a, b)
                 },
-                addListBlock: function(a, b) {
-                    return this._.panel.addListBlock(a,
-                        b)
+                addListBlock: function(a,
+                    b) {
+                    return this._.panel.addListBlock(a, b)
                 },
                 getBlock: function(a) {
                     return this._.panel.getBlock(a)
@@ -15354,23 +15455,24 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     l.setOpacity(0);
                     l.getFirst().removeStyle("width");
                     this._.editor.focusManager.add(e);
-                    this._.blurSet || (CKEDITOR.event.useCapture = !0, e.on("blur", function(a) {
+                    this._.blurSet || (CKEDITOR.event.useCapture = !0, e.on("blur",
+                        function(a) {
                             function u() {
                                 delete this._.returnFocus;
                                 this.hide()
                             }
                             this.allowBlur() && a.data.getPhase() == CKEDITOR.EVENT_PHASE_AT_TARGET && this.visible && !this._.activeChild && (CKEDITOR.env.iOS ? this._.hideTimeout || (this._.hideTimeout = CKEDITOR.tools.setTimeout(u, 0, this)) : u.call(this))
                         }, this), e.on("focus", function() {
-                            this._.focused = !0;
-                            this.hideChild();
-                            this.allowBlur(!0)
-                        }, this), CKEDITOR.env.iOS && (e.on("touchstart", function() {
-                            clearTimeout(this._.hideTimeout)
-                        }, this), e.on("touchend", function() {
-                            this._.hideTimeout = 0;
-                            this.focus()
-                        }, this)), CKEDITOR.event.useCapture = !1,
-                        this._.blurSet = 1);
+                        this._.focused = !0;
+                        this.hideChild();
+                        this.allowBlur(!0)
+                    }, this), CKEDITOR.env.iOS && (e.on("touchstart", function() {
+                        clearTimeout(this._.hideTimeout)
+                    }, this), e.on("touchend", function() {
+                        this._.hideTimeout =
+                            0;
+                        this.focus()
+                    }, this)), CKEDITOR.event.useCapture = !1, this._.blurSet = 1);
                     n.onEscape = CKEDITOR.tools.bind(function(a) {
                         if (this.onEscape && !1 === this.onEscape(a)) return !1
                     }, this);
@@ -15382,10 +15484,10 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                                 var b = k.element.getDocument(),
                                     b = (CKEDITOR.env.webkit || CKEDITOR.env.edge ? k.element : b.getBody()).$.scrollWidth;
                                 CKEDITOR.env.ie && CKEDITOR.env.quirks && 0 < b && (b += (a.$.offsetWidth || 0) - (a.$.clientWidth || 0) + 3);
-                                a.setStyle("width", b + 10 + "px");
+                                a.setStyle("width",
+                                    b + 10 + "px");
                                 b = k.element.$.scrollHeight;
-                                CKEDITOR.env.ie &&
-                                    CKEDITOR.env.quirks && 0 < b && (b += (a.$.offsetHeight || 0) - (a.$.clientHeight || 0) + 3);
+                                CKEDITOR.env.ie && CKEDITOR.env.quirks && 0 < b && (b += (a.$.offsetHeight || 0) - (a.$.clientHeight || 0) + 3);
                                 a.setStyle("height", b + "px");
                                 n._.currentBlock.element.setStyle("display", "none").removeStyle("display")
                             } else a.removeStyle("height");
@@ -15398,16 +15500,14 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                                 e = a.height || a.bottom - a.top,
                                 m = q ? a.right : b.width - a.left,
                                 h = q ? b.width - a.right : a.left;
-                            q ? m < c && (d = h > c ? d + c : b.width > c ? d - a.left : d - a.right + b.width) :
-                                m < c && (d = h > c ? d - c : b.width > c ? d - a.right + b.width : d - a.left);
+                            q ? m < c && (d = h > c ? d + c : b.width > c ? d - a.left : d - a.right + b.width) : m < c && (d = h > c ? d - c : b.width > c ? d - a.right + b.width : d - a.left);
                             c = a.top;
                             b.height - a.top < e && (p = c > e ? p - e : b.height > e ? p - a.bottom + b.height : p - a.top);
-                            CKEDITOR.env.ie && (b = a = new CKEDITOR.dom.element(l.$.offsetParent), "html" == b.getName() && (b = b.getDocument().getBody()), "rtl" == b.getComputedStyle("direction") && (d = CKEDITOR.env.ie8Compat ? d - 2 * l.getDocument().getDocumentElement().$.scrollLeft : d - (a.$.scrollWidth - a.$.clientWidth)));
+                            CKEDITOR.env.ie && !CKEDITOR.env.edge && (b = a = new CKEDITOR.dom.element(l.$.offsetParent), "html" == b.getName() && (b = b.getDocument().getBody()), "rtl" == b.getComputedStyle("direction") && (d = CKEDITOR.env.ie8Compat ? d - 2 * l.getDocument().getDocumentElement().$.scrollLeft : d - (a.$.scrollWidth - a.$.clientWidth)));
                             var a = l.getFirst(),
                                 f;
                             (f = a.getCustomData("activePanel")) && f.onHide && f.onHide.call(this, 1);
-                            a.setCustomData("activePanel",
-                                this);
+                            a.setCustomData("activePanel", this);
                             l.setStyles({
                                 top: p + "px",
                                 left: d + "px"
@@ -15422,10 +15522,10 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                             k.element.focus();
                             CKEDITOR.env.webkit && (CKEDITOR.document.getBody().$.scrollTop = a);
                             this.allowBlur(!0);
-                            CKEDITOR.env.ie ? CKEDITOR.tools.setTimeout(function() {
-                                    k.markFirstDisplayed ? k.markFirstDisplayed() : k._.markFirstDisplayed()
-                                }, 0) : k.markFirstDisplayed ? k.markFirstDisplayed() :
-                                k._.markFirstDisplayed();
+                            this._.markFirst && (CKEDITOR.env.ie ? CKEDITOR.tools.setTimeout(function() {
+                                k.markFirstDisplayed ?
+                                    k.markFirstDisplayed() : k._.markFirstDisplayed()
+                            }, 0) : k.markFirstDisplayed ? k.markFirstDisplayed() : k._.markFirstDisplayed());
                             this._.editor.fire("panelShow", this)
                         }, 0, this)
                     }, CKEDITOR.env.air ? 200 : 0, this);
@@ -15440,11 +15540,11 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     if (CKEDITOR.env.webkit) {
                         var a = CKEDITOR.document.getActive();
                         a && !a.equals(this._.iframe) && a.$.blur()
-                    }(this._.lastFocused || this._.iframe.getFrameDocument().getWindow()).focus()
+                    }(this._.lastFocused ||
+                        this._.iframe.getFrameDocument().getWindow()).focus()
                 },
                 blur: function() {
-                    var a =
-                        this._.iframe.getFrameDocument().getActive();
+                    var a = this._.iframe.getFrameDocument().getActive();
                     a && a.is("a") && (this._.lastFocused = a)
                 },
                 hide: function(a) {
@@ -15454,10 +15554,10 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         this.element.setStyle("display", "none");
                         this.visible = 0;
                         this.element.getFirst().removeCustomData("activePanel");
-                        if (a = a && this._.returnFocus) CKEDITOR.env.webkit && a.type && a.getWindow().$.focus(), a.focus();
+                        if (a = a && this._.returnFocus) CKEDITOR.env.webkit && a.type && a.getWindow().$.focus(),
+                            a.focus();
                         delete this._.lastFocused;
-                        this._.showBlockParams =
-                            null;
+                        this._.showBlockParams = null;
                         this._.editor.fire("panelHide", this)
                     }
                 },
@@ -15468,13 +15568,13 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 },
                 showAsChild: function(a, b, c, f, h, g) {
                     if (this._.activeChild != a || a._.panel._.offsetParentId != c.getId()) this.hideChild(), a.onHide = CKEDITOR.tools.bind(function() {
-                        CKEDITOR.tools.setTimeout(function() {
-                            this._.focused || this.hide()
-                        }, 0, this)
-                    }, this), this._.activeChild = a, this._.focused = !1, a.showBlock(b, c, f, h, g), this.blur(), (CKEDITOR.env.ie7Compat || CKEDITOR.env.ie6Compat) && setTimeout(function() {
-                        a.element.getChild(0).$.style.cssText +=
-                            ""
-                    }, 100)
+                            CKEDITOR.tools.setTimeout(function() {
+                                this._.focused || this.hide()
+                            }, 0, this)
+                        }, this), this._.activeChild = a, this._.focused = !1, a.showBlock(b, c, f, h, g), this.blur(),
+                        (CKEDITOR.env.ie7Compat || CKEDITOR.env.ie6Compat) && setTimeout(function() {
+                            a.element.getChild(0).$.style.cssText += ""
+                        }, 100)
                 },
                 hideChild: function(a) {
                     var b = this._.activeChild;
@@ -15494,13 +15594,13 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
     })();
     CKEDITOR.plugins.add("colorbutton", {
         requires: "panelbutton,floatpanel",
-        init: function(d) {
-            function t(a, e, g, r, l) {
-                var n = new CKEDITOR.style(k["colorButton_" + e + "Style"]),
+        init: function(e) {
+            function t(a, d, g, r, k) {
+                var p = new CKEDITOR.style(l["colorButton_" + d + "Style"]),
                     m = CKEDITOR.tools.getNextId() + "_colorBox",
-                    p;
-                l = l || {};
-                d.ui.add(a, CKEDITOR.UI_PANELBUTTON, {
+                    q;
+                k = k || {};
+                e.ui.add(a, CKEDITOR.UI_PANELBUTTON, {
                     label: g,
                     title: g,
                     modes: {
@@ -15508,9 +15608,9 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     },
                     editorFocus: 0,
                     toolbar: "colors," + r,
-                    allowedContent: n,
-                    requiredContent: n,
-                    contentTransformations: l.contentTransformations,
+                    allowedContent: p,
+                    requiredContent: p,
+                    contentTransformations: k.contentTransformations,
                     panel: {
                         css: CKEDITOR.skin.getPath("editor"),
                         attributes: {
@@ -15520,14 +15620,14 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     },
                     onBlock: function(a,
                         b) {
-                        p = b;
+                        q = b;
                         b.autoSize = !0;
                         b.element.addClass("cke_colorblock");
-                        b.element.setHtml(y(a, e, m));
+                        b.element.setHtml(y(a, d, m));
                         b.element.getDocument().getBody().setStyle("overflow", "hidden");
                         CKEDITOR.ui.fire("ready", this);
                         var c = b.keys,
-                            f = "rtl" == d.lang.dir;
+                            f = "rtl" == e.lang.dir;
                         c[f ? 37 : 39] = "next";
                         c[40] = "next";
                         c[9] = "next";
@@ -15537,21 +15637,21 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         c[32] = "click"
                     },
                     refresh: function() {
-                        d.activeFilter.check(n) || this.setState(CKEDITOR.TRISTATE_DISABLED)
+                        e.activeFilter.check(p) || this.setState(CKEDITOR.TRISTATE_DISABLED)
                     },
                     onOpen: function() {
-                        var a = d.getSelection(),
+                        var a = e.getSelection(),
                             b = a && a.getStartElement(),
-                            c = d.elementPath(b);
+                            c = e.elementPath(b);
                         if (c) {
-                            b = c.block || c.blockLimit || d.document.getBody();
-                            do c = b && b.getComputedStyle("back" == e ? "background-color" : "color") || "transparent"; while ("back" == e && "transparent" == c && b && (b = b.getParent()));
+                            b = c.block || c.blockLimit || e.document.getBody();
+                            do c = b && b.getComputedStyle("back" == d ? "background-color" : "color") || "transparent"; while ("back" == d && "transparent" == c && b && (b = b.getParent()));
                             c && "transparent" != c || (c = "#ffffff");
-                            !1 !== k.colorButton_enableAutomatic && this._.panel._.iframe.getFrameDocument().getById(m).setStyle("background-color", c);
+                            !1 !== l.colorButton_enableAutomatic && this._.panel._.iframe.getFrameDocument().getById(m).setStyle("background-color", c);
                             if (b = a && a.getRanges()[0]) {
                                 for (var a = new CKEDITOR.dom.walker(b), f = b.collapsed ? b.startContainer : a.next(), b = ""; f;) {
-                                    f.type === CKEDITOR.NODE_TEXT && (f = f.getParent());
-                                    f = u(f.getComputedStyle("back" == e ? "background-color" : "color"));
+                                    f.type !== CKEDITOR.NODE_ELEMENT && (f = f.getParent());
+                                    f = u(f.getComputedStyle("back" == d ? "background-color" : "color"));
                                     b = b || f;
                                     if (b !== f) {
                                         b = "";
@@ -15560,7 +15660,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                                     f = a.next()
                                 }
                                 a = b;
-                                b = p._.getItems();
+                                b = q._.getItems();
                                 for (f = 0; f < b.count(); f++) {
                                     var g = b.getItem(f);
                                     g.removeAttribute("aria-selected");
@@ -15573,84 +15673,84 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 })
             }
 
-            function y(a, e, g) {
+            function y(a, d, g) {
                 a = [];
-                var r = k.colorButton_colors.split(","),
-                    l = k.colorButton_colorsPerRow || 6,
-                    n = d.plugins.colordialog && !1 !== k.colorButton_enableMore,
-                    m = r.length + (n ? 2 : 1),
-                    p = CKEDITOR.tools.addFunction(function(a, b) {
+                var r = l.colorButton_colors.split(","),
+                    k = l.colorButton_colorsPerRow || 6,
+                    p = e.plugins.colordialog && !1 !== l.colorButton_enableMore,
+                    m = r.length + (p ? 2 : 1),
+                    q = CKEDITOR.tools.addFunction(function(a, b) {
                         function c(a) {
-                            d.removeStyle(new CKEDITOR.style(k["colorButton_" +
-                                b + "Style"], {
+                            var d =
+                                l["colorButton_" + b + "Style"];
+                            e.removeStyle(new CKEDITOR.style(d, {
                                 color: "inherit"
                             }));
-                            var e = k["colorButton_" + b + "Style"];
-                            e.childRule = "back" == b ? function(a) {
+                            d.childRule = "back" == b ? function(a) {
                                 return v(a)
                             } : function(a) {
                                 return !(a.is("a") || a.getElementsByTag("a").count()) || v(a)
                             };
-                            d.focus();
-                            d.applyStyle(new CKEDITOR.style(e, {
+                            e.focus();
+                            a && e.applyStyle(new CKEDITOR.style(d, {
                                 color: a
                             }));
-                            d.fire("saveSnapshot")
+                            e.fire("saveSnapshot")
                         }
-                        d.focus();
-                        d.fire("saveSnapshot");
-                        if ("?" == a) d.getColorFromDialog(function(a) {
+                        e.focus();
+                        e.fire("saveSnapshot");
+                        if ("?" == a) e.getColorFromDialog(function(a) {
                             if (a) return c(a)
                         });
                         else return c(a)
                     });
-                !1 !== k.colorButton_enableAutomatic && a.push('\x3ca class\x3d"cke_colorauto" _cke_focus\x3d1 hidefocus\x3dtrue title\x3d"', h.auto,
-                    '" onclick\x3d"CKEDITOR.tools.callFunction(', p, ",null,'", e, "');return false;\" href\x3d\"javascript:void('", h.auto, '\')" role\x3d"option" aria-posinset\x3d"1" aria-setsize\x3d"', m, '"\x3e\x3ctable role\x3d"presentation" cellspacing\x3d0 cellpadding\x3d0 width\x3d"100%"\x3e\x3ctr\x3e\x3ctd colspan\x3d"' + l + '" align\x3d"center"\x3e\x3cspan class\x3d"cke_colorbox" id\x3d"', g, '"\x3e\x3c/span\x3e', h.auto, "\x3c/td\x3e\x3c/tr\x3e\x3c/table\x3e\x3c/a\x3e");
+                !1 !== l.colorButton_enableAutomatic && a.push('\x3ca class\x3d"cke_colorauto" _cke_focus\x3d1 hidefocus\x3dtrue title\x3d"',
+                    h.auto, '" draggable\x3d"false" ondragstart\x3d"return false;" onclick\x3d"CKEDITOR.tools.callFunction(', q, ",null,'", d, "');return false;\" href\x3d\"javascript:void('", h.auto, '\')" role\x3d"option" aria-posinset\x3d"1" aria-setsize\x3d"', m, '"\x3e\x3ctable role\x3d"presentation" cellspacing\x3d0 cellpadding\x3d0 width\x3d"100%"\x3e\x3ctr\x3e\x3ctd colspan\x3d"' + k + '" align\x3d"center"\x3e\x3cspan class\x3d"cke_colorbox" id\x3d"', g, '"\x3e\x3c/span\x3e', h.auto, "\x3c/td\x3e\x3c/tr\x3e\x3c/table\x3e\x3c/a\x3e");
                 a.push('\x3ctable role\x3d"presentation" cellspacing\x3d0 cellpadding\x3d0 width\x3d"100%"\x3e');
                 for (g = 0; g < r.length; g++) {
-                    0 === g % l && a.push("\x3c/tr\x3e\x3ctr\x3e");
-                    var q = r[g].split("/"),
-                        b = q[0],
-                        c = q[1] || b;
-                    q[1] || (b = "#" + b.replace(/^(.)(.)(.)$/, "$1$1$2$2$3$3"));
-                    q = d.lang.colorbutton.colors[c] || c;
-                    a.push('\x3ctd\x3e\x3ca class\x3d"cke_colorbox" _cke_focus\x3d1 hidefocus\x3dtrue title\x3d"', q, '" onclick\x3d"CKEDITOR.tools.callFunction(', p, ",'", b, "','", e, "'); return false;\" href\x3d\"javascript:void('", q, '\')" data-value\x3d"' + c + '" role\x3d"option" aria-posinset\x3d"', g + 2, '" aria-setsize\x3d"', m, '"\x3e\x3cspan class\x3d"cke_colorbox" style\x3d"background-color:#',
-                        c, '"\x3e\x3c/span\x3e\x3c/a\x3e\x3c/td\x3e')
+                    0 === g % k && a.push("\x3c/tr\x3e\x3ctr\x3e");
+                    var n = r[g].split("/"),
+                        b = n[0],
+                        c = n[1] || b;
+                    n[1] ? n = b : (b = "#" + b.replace(/^(.)(.)(.)$/, "$1$1$2$2$3$3"), n = e.lang.colorbutton.colors[c] || c);
+                    a.push('\x3ctd\x3e\x3ca class\x3d"cke_colorbox" _cke_focus\x3d1 hidefocus\x3dtrue title\x3d"', n, '" draggable\x3d"false" ondragstart\x3d"return false;" onclick\x3d"CKEDITOR.tools.callFunction(', q, ",'", b, "','", d,
+                        "'); return false;\" href\x3d\"javascript:void('", n, '\')" data-value\x3d"' + c + '" role\x3d"option" aria-posinset\x3d"', g + 2, '" aria-setsize\x3d"', m, '"\x3e\x3cspan class\x3d"cke_colorbox" style\x3d"background-color:#', c, '"\x3e\x3c/span\x3e\x3c/a\x3e\x3c/td\x3e')
                 }
-                n && a.push('\x3c/tr\x3e\x3ctr\x3e\x3ctd colspan\x3d"' + l + '" align\x3d"center"\x3e\x3ca class\x3d"cke_colormore" _cke_focus\x3d1 hidefocus\x3dtrue title\x3d"', h.more, '" onclick\x3d"CKEDITOR.tools.callFunction(', p, ",'?','", e, "');return false;\" href\x3d\"javascript:void('", h.more, "')\"", ' role\x3d"option" aria-posinset\x3d"', m, '" aria-setsize\x3d"', m, '"\x3e', h.more, "\x3c/a\x3e\x3c/td\x3e");
+                p && a.push('\x3c/tr\x3e\x3ctr\x3e\x3ctd colspan\x3d"' + k + '" align\x3d"center"\x3e\x3ca class\x3d"cke_colormore" _cke_focus\x3d1 hidefocus\x3dtrue title\x3d"', h.more, '" draggable\x3d"false" ondragstart\x3d"return false;" onclick\x3d"CKEDITOR.tools.callFunction(',
+                    q, ",'?','", d, "');return false;\" href\x3d\"javascript:void('", h.more, "')\"", ' role\x3d"option" aria-posinset\x3d"', m, '" aria-setsize\x3d"', m, '"\x3e', h.more, "\x3c/a\x3e\x3c/td\x3e");
                 a.push("\x3c/tr\x3e\x3c/table\x3e");
                 return a.join("")
             }
 
             function v(a) {
-                return "false" ==
-                    a.getAttribute("contentEditable") || a.getAttribute("data-nostyle")
+                return "false" == a.getAttribute("contentEditable") || a.getAttribute("data-nostyle")
             }
 
             function u(a) {
                 return CKEDITOR.tools.normalizeHex("#" + CKEDITOR.tools.convertRgbToHex(a || "")).replace(/#/g, "")
             }
-            var k = d.config,
-                h = d.lang.colorbutton;
+            var l = e.config,
+                h = e.lang.colorbutton;
             if (!CKEDITOR.env.hc) {
-                t("TextColor", "fore", h.textColorTitle, 10, {
-                    contentTransformations: [
-                        [{
-                            element: "font",
-                            check: "span{color}",
-                            left: function(a) {
-                                return !!a.attributes.color
-                            },
-                            right: function(a) {
-                                a.name = "span";
-                                a.attributes.color && (a.styles.color = a.attributes.color);
-                                delete a.attributes.color
-                            }
-                        }]
-                    ]
-                });
+                t("TextColor",
+                    "fore", h.textColorTitle, 10, {
+                        contentTransformations: [
+                            [{
+                                element: "font",
+                                check: "span{color}",
+                                left: function(a) {
+                                    return !!a.attributes.color
+                                },
+                                right: function(a) {
+                                    a.name = "span";
+                                    a.attributes.color && (a.styles.color = a.attributes.color);
+                                    delete a.attributes.color
+                                }
+                            }]
+                        ]
+                    });
                 var w = {},
-                    x = d.config.colorButton_normalizeBackground;
+                    x = e.config.colorButton_normalizeBackground;
                 if (void 0 === x || x) w.contentTransformations = [
                     [{
                         element: "span",
@@ -15661,18 +15761,17 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                             return a.color && 1 === d.objectKeys(a).length
                         },
                         right: function(a) {
-                            var e = (new CKEDITOR.style(d.config.colorButton_backStyle, {
+                            var d = (new CKEDITOR.style(e.config.colorButton_backStyle, {
                                 color: a.styles.background
                             })).getDefinition();
-                            a.name = e.element;
-                            a.styles = e.styles;
-                            a.attributes = e.attributes || {};
+                            a.name = d.element;
+                            a.styles = d.styles;
+                            a.attributes = d.attributes || {};
                             return a
                         }
                     }]
                 ];
-                t("BGColor",
-                    "back", h.bgColorTitle, 20, w)
+                t("BGColor", "back", h.bgColorTitle, 20, w)
             }
         }
     });
@@ -16020,6 +16119,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 $: function(a) {
                     this.base.call(this, a, {
                         panel: {
+                            css: a.config.contextmenu_contentsCss,
                             className: "cke_menu_panel",
                             attributes: {
                                 "aria-label": a.lang.contextmenu.options
@@ -16028,57 +16128,70 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     })
                 },
                 proto: {
-                    addTarget: function(a, e) {
+                    addTarget: function(a, f) {
+                        function c() {
+                            e = !1
+                        }
+                        var d, e;
                         a.on("contextmenu", function(a) {
                             a = a.data;
-                            var c = CKEDITOR.env.webkit ? f : CKEDITOR.env.mac ? a.$.metaKey : a.$.ctrlKey;
-                            if (!e || !c) {
-                                a.preventDefault();
-                                if (CKEDITOR.env.mac && CKEDITOR.env.webkit) {
-                                    var c = this.editor,
-                                        b = (new CKEDITOR.dom.elementPath(a.getTarget(), c.editable())).contains(function(a) {
-                                            return a.hasAttribute("contenteditable")
-                                        }, !0);
-                                    b && "false" == b.getAttribute("contenteditable") && c.getSelection().fake(b)
+                            var b = CKEDITOR.env.webkit ? d : CKEDITOR.env.mac ? a.$.metaKey : a.$.ctrlKey;
+                            if (!f || !b)
+                                if (a.preventDefault(),
+                                    !e) {
+                                    if (CKEDITOR.env.mac && CKEDITOR.env.webkit) {
+                                        var b = this.editor,
+                                            c = (new CKEDITOR.dom.elementPath(a.getTarget(), b.editable())).contains(function(a) {
+                                                return a.hasAttribute("contenteditable")
+                                            }, !0);
+                                        c && "false" == c.getAttribute("contenteditable") && b.getSelection().fake(c)
+                                    }
+                                    var c = a.getTarget().getDocument(),
+                                        g = a.getTarget().getDocument().getDocumentElement(),
+                                        b = !c.equals(CKEDITOR.document),
+                                        c = c.getWindow().getScrollPosition(),
+                                        h = b ? a.$.clientX : a.$.pageX || c.x + a.$.clientX,
+                                        k = b ? a.$.clientY : a.$.pageY || c.y + a.$.clientY;
+                                    CKEDITOR.tools.setTimeout(function() {
+                                        this.open(g, null, h, k)
+                                    }, CKEDITOR.env.ie ? 200 : 0, this)
                                 }
-                                var b = a.getTarget().getDocument(),
-                                    d = a.getTarget().getDocument().getDocumentElement(),
-                                    c = !b.equals(CKEDITOR.document),
-                                    b = b.getWindow().getScrollPosition(),
-                                    g = c ? a.$.clientX : a.$.pageX || b.x + a.$.clientX,
-                                    h = c ? a.$.clientY : a.$.pageY || b.y + a.$.clientY;
-                                CKEDITOR.tools.setTimeout(function() {
-                                        this.open(d, null, g, h)
-                                    }, CKEDITOR.env.ie ?
-                                    200 : 0, this)
-                            }
                         }, this);
                         if (CKEDITOR.env.webkit) {
-                            var f, d = function() {
-                                f = 0
+                            var b = function() {
+                                d = 0
                             };
                             a.on("keydown", function(a) {
-                                f = CKEDITOR.env.mac ? a.data.$.metaKey : a.data.$.ctrlKey
+                                d = CKEDITOR.env.mac ? a.data.$.metaKey : a.data.$.ctrlKey
                             });
-                            a.on("keyup", d);
-                            a.on("contextmenu", d)
+                            a.on("keyup", b);
+                            a.on("contextmenu", b)
                         }
+                        CKEDITOR.env.gecko && !CKEDITOR.env.mac && (a.on("keydown", function(a) {
+                            a.data.$.shiftKey && 121 === a.data.$.keyCode && (e = !0)
+                        }, null, null, 0), a.on("keyup", c), a.on("contextmenu", c))
                     },
-                    open: function(a, e, f, d) {
-                        !1 !== this.editor.config.enableContextMenu && (this.editor.focus(), a = a || CKEDITOR.document.getDocumentElement(), this.editor.selectionChange(1), this.show(a, e, f, d))
+                    open: function(a, f, c, d) {
+                        !1 !== this.editor.config.enableContextMenu && this.editor.getSelection().getType() !==
+                            CKEDITOR.SELECTION_NONE && (this.editor.focus(), a = a || CKEDITOR.document.getDocumentElement(), this.editor.selectionChange(1), this.show(a, f, c, d))
                     }
                 }
             })
         },
         beforeInit: function(a) {
-            var e = a.contextMenu = new CKEDITOR.plugins.contextMenu(a);
+            var f = a.contextMenu = new CKEDITOR.plugins.contextMenu(a);
             a.on("contentDom", function() {
-                e.addTarget(a.editable(),
-                    !1 !== a.config.browserContextMenuOnCtrl)
+                f.addTarget(a.editable(), !1 !== a.config.browserContextMenuOnCtrl)
             });
             a.addCommand("contextMenu", {
-                exec: function() {
-                    a.contextMenu.open(a.document.getBody())
+                exec: function(a) {
+                    var d = 0,
+                        e = 0,
+                        b = a.getSelection().getRanges(),
+                        b = b[b.length - 1].getClientRects(a.editable().isInline());
+                    if (b = b[b.length - 1]) d = b["rtl" === a.lang.dir ?
+                        "left" : "right"], e = b.bottom;
+                    a.contextMenu.open(a.document.getBody().getParent(), null, d, e)
                 }
             });
             a.setKeystroke(CKEDITOR.SHIFT + 121, "contextMenu");
@@ -16109,7 +16222,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             this.styles = null;
             this.sticky = !1;
             this.editor = a;
-            this.filter = new CKEDITOR.filter(a.config.copyFormatting_allowRules);
+            this.filter = new CKEDITOR.filter(a, a.config.copyFormatting_allowRules);
             !0 === a.config.copyFormatting_allowRules && (this.filter.disabled = !0);
             a.config.copyFormatting_disallowRules && this.filter.disallow(a.config.copyFormatting_disallowRules)
         }
@@ -16702,167 +16815,187 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         })
     })();
     (function() {
-        function q(b, d, a) {
-            a = b.config.forceEnterMode || a;
-            if ("wysiwyg" == b.mode) {
-                d || (d = b.activeEnterMode);
-                var h = b.elementPath();
-                h && !h.isContextFor("p") && (d = CKEDITOR.ENTER_BR, a = 1);
-                b.fire("saveSnapshot");
-                d == CKEDITOR.ENTER_BR ? t(b, d, null, a) : u(b, d, null, a);
-                b.fire("saveSnapshot")
+        function x(a, e, b) {
+            b = a.config.forceEnterMode || b;
+            if ("wysiwyg" == a.mode) {
+                e || (e = a.activeEnterMode);
+                var l = a.elementPath();
+                l && !l.isContextFor("p") && (e = CKEDITOR.ENTER_BR, b = 1);
+                a.fire("saveSnapshot");
+                e == CKEDITOR.ENTER_BR ? u(a, e, null, b) : r(a, e, null, b);
+                a.fire("saveSnapshot")
             }
         }
 
-        function v(b) {
-            b = b.getSelection().getRanges(!0);
-            for (var d = b.length - 1; 0 < d; d--) b[d].deleteContents();
-            return b[0]
+        function y(a) {
+            a = a.getSelection().getRanges(!0);
+            for (var e = a.length - 1; 0 < e; e--) a[e].deleteContents();
+            return a[0]
         }
 
-        function y(b) {
-            var d = b.startContainer.getAscendant(function(a) {
+        function z(a) {
+            var e = a.startContainer.getAscendant(function(a) {
                     return a.type == CKEDITOR.NODE_ELEMENT && "true" == a.getAttribute("contenteditable")
                 },
                 !0);
-            if (b.root.equals(d)) return b;
-            d = new CKEDITOR.dom.range(d);
-            d.moveToRange(b);
-            return d
+            if (a.root.equals(e)) return a;
+            e = new CKEDITOR.dom.range(e);
+            e.moveToRange(a);
+            return e
         }
         CKEDITOR.plugins.add("enterkey", {
-            init: function(b) {
-                b.addCommand("enter", {
+            init: function(a) {
+                a.addCommand("enter", {
                     modes: {
                         wysiwyg: 1
                     },
                     editorFocus: !1,
-                    exec: function(b) {
-                        q(b)
+                    exec: function(a) {
+                        x(a)
                     }
                 });
-                b.addCommand("shiftEnter", {
+                a.addCommand("shiftEnter", {
                     modes: {
                         wysiwyg: 1
                     },
                     editorFocus: !1,
-                    exec: function(b) {
-                        q(b, b.activeShiftEnterMode, 1)
+                    exec: function(a) {
+                        x(a, a.activeShiftEnterMode, 1)
                     }
                 });
-                b.setKeystroke([
+                a.setKeystroke([
                     [13, "enter"],
                     [CKEDITOR.SHIFT + 13, "shiftEnter"]
                 ])
             }
         });
-        var z = CKEDITOR.dom.walker.whitespaces(),
-            A = CKEDITOR.dom.walker.bookmark();
+        var A = CKEDITOR.dom.walker.whitespaces(),
+            B = CKEDITOR.dom.walker.bookmark(),
+            v, u, r, w;
         CKEDITOR.plugins.enterkey = {
-            enterBlock: function(b,
-                d, a, h) {
-                if (a = a || v(b)) {
-                    a = y(a);
-                    var f = a.document,
-                        k = a.checkStartOfBlock(),
-                        m = a.checkEndOfBlock(),
-                        l = b.elementPath(a.startContainer),
-                        c = l.block,
-                        n = d == CKEDITOR.ENTER_DIV ? "div" : "p",
-                        e;
-                    if (k && m) {
-                        if (c && (c.is("li") || c.getParent().is("li"))) {
-                            c.is("li") || (c = c.getParent());
-                            a = c.getParent();
-                            e = a.getParent();
-                            h = !c.hasPrevious();
-                            var p = !c.hasNext(),
-                                n = b.getSelection(),
-                                g = n.createBookmarks(),
-                                k = c.getDirection(1),
-                                m = c.getAttribute("class"),
-                                r = c.getAttribute("style"),
-                                q = e.getDirection(1) != k;
-                            b = b.enterMode != CKEDITOR.ENTER_BR || q || r || m;
-                            if (e.is("li")) h || p ? (h && p && a.remove(), c[p ? "insertAfter" : "insertBefore"](e)) : c.breakParent(e);
+            enterBlock: function(a, e, b, l) {
+                function n(a) {
+                    var b;
+                    if (a === CKEDITOR.ENTER_BR || -1 === CKEDITOR.tools.indexOf(["td", "th"], p.lastElement.getName()) || 1 !== p.lastElement.getChildCount()) return !1;
+                    a = p.lastElement.getChild(0).clone(!0);
+                    (b = a.getBogus()) && b.remove();
+                    return a.getText().length ? !1 : !0
+                }
+                if (b = b || y(a)) {
+                    b = z(b);
+                    var g = b.document,
+                        f = b.checkStartOfBlock(),
+                        k = b.checkEndOfBlock(),
+                        p = a.elementPath(b.startContainer),
+                        c = p.block,
+                        m = e == CKEDITOR.ENTER_DIV ? "div" : "p",
+                        d;
+                    if (c && f && k) {
+                        f = c.getParent();
+                        if (f.is("li") && 1 < f.getChildCount()) {
+                            g =
+                                new CKEDITOR.dom.element("li");
+                            d = a.createRange();
+                            g.insertAfter(f);
+                            c.remove();
+                            d.setStart(g, 0);
+                            a.getSelection().selectRanges([d]);
+                            return
+                        }
+                        if (c.is("li") || c.getParent().is("li")) {
+                            c.is("li") || (c = c.getParent(), f = c.getParent());
+                            d = f.getParent();
+                            b = !c.hasPrevious();
+                            var h = !c.hasNext();
+                            l = a.getSelection();
+                            var m = l.createBookmarks(),
+                                t = c.getDirection(1),
+                                k = c.getAttribute("class"),
+                                q = c.getAttribute("style"),
+                                r = d.getDirection(1) != t;
+                            a = a.enterMode != CKEDITOR.ENTER_BR || r || q || k;
+                            if (d.is("li")) b || h ? (b && h && f.remove(), c[h ? "insertAfter" :
+                                "insertBefore"](d)) : c.breakParent(d);
                             else {
-                                if (b)
-                                    if (l.block.is("li") ? (e = f.createElement(d == CKEDITOR.ENTER_P ? "p" : "div"), q && e.setAttribute("dir", k), r && e.setAttribute("style", r), m && e.setAttribute("class", m), c.moveChildren(e)) : e = l.block, h || p) e[h ? "insertBefore" : "insertAfter"](a);
-                                    else c.breakParent(a), e.insertAfter(a);
-                                else if (c.appendBogus(!0), h || p)
-                                    for (; f = c[h ? "getFirst" : "getLast"]();) f[h ? "insertBefore" : "insertAfter"](a);
+                                if (a)
+                                    if (p.block.is("li") ? (d = g.createElement(e == CKEDITOR.ENTER_P ? "p" : "div"), r && d.setAttribute("dir", t), q && d.setAttribute("style", q), k && d.setAttribute("class", k), c.moveChildren(d)) : d = p.block, b || h) d[b ? "insertBefore" : "insertAfter"](f);
+                                    else c.breakParent(f), d.insertAfter(f);
+                                else if (c.appendBogus(!0), b || h)
+                                    for (; g = c[b ? "getFirst" : "getLast"]();) g[b ? "insertBefore" : "insertAfter"](f);
                                 else
-                                    for (c.breakParent(a); f = c.getLast();) f.insertAfter(a);
+                                    for (c.breakParent(f); g = c.getLast();) g.insertAfter(f);
                                 c.remove()
                             }
-                            n.selectBookmarks(g);
+                            l.selectBookmarks(m);
                             return
                         }
                         if (c && c.getParent().is("blockquote")) {
                             c.breakParent(c.getParent());
                             c.getPrevious().getFirst(CKEDITOR.dom.walker.invisible(1)) || c.getPrevious().remove();
                             c.getNext().getFirst(CKEDITOR.dom.walker.invisible(1)) || c.getNext().remove();
-                            a.moveToElementEditStart(c);
-                            a.select();
+                            b.moveToElementEditStart(c);
+                            b.select();
                             return
                         }
-                    } else if (c && c.is("pre") && !m) {
-                        t(b, d, a, h);
+                    } else if (c && c.is("pre") && !k) {
+                        u(a, e, b, l);
                         return
                     }
-                    if (k = a.splitBlock(n)) {
-                        d = k.previousBlock;
-                        c = k.nextBlock;
-                        l = k.wasStartOfBlock;
-                        b = k.wasEndOfBlock;
-                        c ? (g = c.getParent(), g.is("li") && (c.breakParent(g),
-                            c.move(c.getNext(), 1))) : d && (g = d.getParent()) && g.is("li") && (d.breakParent(g), g = d.getNext(), a.moveToElementEditStart(g), d.move(d.getPrevious()));
-                        if (l || b) {
-                            if (d) {
-                                if (d.is("li") || !w.test(d.getName()) && !d.is("pre")) e = d.clone()
-                            } else c && (e = c.clone());
-                            e ? h && !e.is("li") && e.renameNode(n) : g && g.is("li") ? e = g : (e = f.createElement(n), d && (p = d.getDirection()) && e.setAttribute("dir", p));
-                            if (f = k.elementPath)
-                                for (h = 0, n = f.elements.length; h < n; h++) {
-                                    g = f.elements[h];
-                                    if (g.equals(f.block) || g.equals(f.blockLimit)) break;
-                                    CKEDITOR.dtd.$removeEmpty[g.getName()] &&
-                                        (g = g.clone(), e.moveChildren(g), e.append(g))
-                                }
-                            e.appendBogus();
-                            e.getParent() || a.insertNode(e);
-                            e.is("li") && e.removeAttribute("value");
-                            !CKEDITOR.env.ie || !l || b && d.getChildCount() || (a.moveToElementEditStart(b ? d : e), a.select());
-                            a.moveToElementEditStart(l && !b ? c : e)
-                        } else c.is("li") && (e = a.clone(), e.selectNodeContents(c), e = new CKEDITOR.dom.walker(e), e.evaluator = function(a) {
-                                return !(A(a) || z(a) || a.type == CKEDITOR.NODE_ELEMENT && a.getName() in CKEDITOR.dtd.$inline && !(a.getName() in CKEDITOR.dtd.$empty))
-                            }, (g = e.next()) &&
-                            g.type == CKEDITOR.NODE_ELEMENT && g.is("ul", "ol") && (CKEDITOR.env.needsBrFiller ? f.createElement("br") : f.createText(" ")).insertBefore(g)), c && a.moveToElementEditStart(c);
-                        a.select();
-                        a.scrollIntoView()
+                    if (q = b.splitBlock(m)) {
+                        a = q.previousBlock;
+                        c = q.nextBlock;
+                        f = q.wasStartOfBlock;
+                        k = q.wasEndOfBlock;
+                        c ? (h = c.getParent(), h.is("li") && (c.breakParent(h), c.move(c.getNext(), 1))) : a && (h = a.getParent()) &&
+                            h.is("li") && (a.breakParent(h), h = a.getNext(), b.moveToElementEditStart(h), a.move(a.getPrevious()));
+                        if (f || k)
+                            if (n(e)) b.moveToElementEditStart(b.getTouchedStartNode());
+                            else {
+                                if (a) {
+                                    if (a.is("li") || !w.test(a.getName()) && !a.is("pre")) d = a.clone()
+                                } else c && (d = c.clone());
+                                d ? l && !d.is("li") && d.renameNode(m) : h && h.is("li") ? d = h : (d = g.createElement(m), a && (t = a.getDirection()) && d.setAttribute("dir", t));
+                                if (g = q.elementPath)
+                                    for (e = 0, l = g.elements.length; e < l; e++) {
+                                        m = g.elements[e];
+                                        if (m.equals(g.block) || m.equals(g.blockLimit)) break;
+                                        CKEDITOR.dtd.$removeEmpty[m.getName()] && (m = m.clone(), d.moveChildren(m), d.append(m))
+                                    }
+                                d.appendBogus();
+                                d.getParent() || b.insertNode(d);
+                                d.is("li") && d.removeAttribute("value");
+                                !CKEDITOR.env.ie || !f || k && a.getChildCount() || (b.moveToElementEditStart(k ? a : d), b.select());
+                                b.moveToElementEditStart(f && !k ? c : d)
+                            }
+                        else c.is("li") && (d = b.clone(), d.selectNodeContents(c), d = new CKEDITOR.dom.walker(d), d.evaluator = function(a) {
+                            return !(B(a) || A(a) || a.type == CKEDITOR.NODE_ELEMENT && a.getName() in CKEDITOR.dtd.$inline && !(a.getName() in
+                                CKEDITOR.dtd.$empty))
+                        }, (h = d.next()) && h.type == CKEDITOR.NODE_ELEMENT && h.is("ul", "ol") && (CKEDITOR.env.needsBrFiller ? g.createElement("br") : g.createText(" ")).insertBefore(h)), c && b.moveToElementEditStart(c);
+                        b.select();
+                        b.scrollIntoView()
                     }
                 }
             },
-            enterBr: function(b, d, a, h) {
-                if (a = a || v(b)) {
-                    var f = a.document,
-                        k = a.checkEndOfBlock(),
-                        m = new CKEDITOR.dom.elementPath(b.getSelection().getStartElement()),
-                        l = m.block,
-                        c = l && m.block.getName();
-                    h || "li" != c ? (!h && k && w.test(c) ? (k = l.getDirection()) ? (f = f.createElement("div"), f.setAttribute("dir", k), f.insertAfter(l), a.setStart(f,
-                        0)) : (f.createElement("br").insertAfter(l), CKEDITOR.env.gecko && f.createText("").insertAfter(l), a.setStartAt(l.getNext(), CKEDITOR.env.ie ? CKEDITOR.POSITION_BEFORE_START : CKEDITOR.POSITION_AFTER_START)) : (b = "pre" == c && CKEDITOR.env.ie && 8 > CKEDITOR.env.version ? f.createText("\r") : f.createElement("br"), a.deleteContents(), a.insertNode(b), CKEDITOR.env.needsBrFiller ? (f.createText("﻿").insertAfter(b), k && (l || m.blockLimit).appendBogus(), b.getNext().$.nodeValue = "", a.setStartAt(b.getNext(), CKEDITOR.POSITION_AFTER_START)) :
-                        a.setStartAt(b, CKEDITOR.POSITION_AFTER_END)), a.collapse(!0), a.select(), a.scrollIntoView()) : u(b, d, a, h)
+            enterBr: function(a, e, b, l) {
+                if (b = b || y(a)) {
+                    var n = b.document,
+                        g = b.checkEndOfBlock(),
+                        f = new CKEDITOR.dom.elementPath(a.getSelection().getStartElement()),
+                        k = f.block,
+                        p = k && f.block.getName();
+                    l || "li" != p ? (!l && g && w.test(p) ? (g = k.getDirection()) ? (n = n.createElement("div"), n.setAttribute("dir",
+                        g), n.insertAfter(k), b.setStart(n, 0)) : (n.createElement("br").insertAfter(k), CKEDITOR.env.gecko && n.createText("").insertAfter(k), b.setStartAt(k.getNext(), CKEDITOR.env.ie ? CKEDITOR.POSITION_BEFORE_START : CKEDITOR.POSITION_AFTER_START)) : (a = "pre" == p && CKEDITOR.env.ie && 8 > CKEDITOR.env.version ? n.createText("\r") : n.createElement("br"), b.deleteContents(), b.insertNode(a), CKEDITOR.env.needsBrFiller ? (n.createText("﻿").insertAfter(a), g && (k || f.blockLimit).appendBogus(), a.getNext().$.nodeValue = "", b.setStartAt(a.getNext(),
+                        CKEDITOR.POSITION_AFTER_START)) : b.setStartAt(a, CKEDITOR.POSITION_AFTER_END)), b.collapse(!0), b.select(), b.scrollIntoView()) : r(a, e, b, l)
                 }
             }
         };
-        var x = CKEDITOR.plugins.enterkey,
-            t = x.enterBr,
-            u = x.enterBlock,
-            w = /^h[1-6]$/
+        v = CKEDITOR.plugins.enterkey;
+        u = v.enterBr;
+        r = v.enterBlock;
+        w = /^h[1-6]$/
     })();
     (function() {
-        function k(b, f) {
+        function k(a, f) {
             var g = {},
                 c = [],
                 e = {
@@ -16874,22 +17007,23 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     apos: "'",
                     quot: '"'
                 };
-            b = b.replace(/\b(nbsp|shy|gt|lt|amp|apos|quot)(?:,|$)/g, function(b, a) {
-                var d = f ? "\x26" + a + ";" : e[a];
-                g[d] = f ? e[a] : "\x26" + a + ";";
+            a = a.replace(/\b(nbsp|shy|gt|lt|amp|apos|quot)(?:,|$)/g, function(a, b) {
+                var d = f ? "\x26" + b + ";" : e[b];
+                g[d] = f ? e[b] : "\x26" + b + ";";
                 c.push(d);
                 return ""
             });
-            if (!f && b) {
-                b = b.split(",");
-                var a = document.createElement("div"),
+            a = a.replace(/,$/, "");
+            if (!f && a) {
+                a = a.split(",");
+                var b = document.createElement("div"),
                     d;
-                a.innerHTML = "\x26" + b.join(";\x26") + ";";
-                d = a.innerHTML;
-                a = null;
-                for (a = 0; a < d.length; a++) {
-                    var h = d.charAt(a);
-                    g[h] = "\x26" + b[a] + ";";
+                b.innerHTML = "\x26" + a.join(";\x26") + ";";
+                d = b.innerHTML;
+                b = null;
+                for (b = 0; b < d.length; b++) {
+                    var h = d.charAt(b);
+                    g[h] = "\x26" + a[b] + ";";
                     c.push(h)
                 }
             }
@@ -16897,29 +17031,29 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             return g
         }
         CKEDITOR.plugins.add("entities", {
-            afterInit: function(b) {
-                function f(a) {
-                    return h[a]
+            afterInit: function(a) {
+                function f(b) {
+                    return h[b]
                 }
 
-                function g(b) {
-                    return "force" != c.entities_processNumerical && a[b] ? a[b] : "\x26#" + b.charCodeAt(0) + ";"
+                function g(a) {
+                    return "force" != c.entities_processNumerical && b[a] ? b[a] : "\x26#" + a.charCodeAt(0) + ";"
                 }
-                var c = b.config;
-                if (b = (b = b.dataProcessor) && b.htmlFilter) {
+                var c = a.config;
+                if (a = (a = a.dataProcessor) && a.htmlFilter) {
                     var e = [];
                     !1 !== c.basicEntities && e.push("nbsp,gt,lt,amp");
                     c.entities && (e.length && e.push("quot,iexcl,cent,pound,curren,yen,brvbar,sect,uml,copy,ordf,laquo,not,shy,reg,macr,deg,plusmn,sup2,sup3,acute,micro,para,middot,cedil,sup1,ordm,raquo,frac14,frac12,frac34,iquest,times,divide,fnof,bull,hellip,prime,Prime,oline,frasl,weierp,image,real,trade,alefsym,larr,uarr,rarr,darr,harr,crarr,lArr,uArr,rArr,dArr,hArr,forall,part,exist,empty,nabla,isin,notin,ni,prod,sum,minus,lowast,radic,prop,infin,ang,and,or,cap,cup,int,there4,sim,cong,asymp,ne,equiv,le,ge,sub,sup,nsub,sube,supe,oplus,otimes,perp,sdot,lceil,rceil,lfloor,rfloor,lang,rang,loz,spades,clubs,hearts,diams,circ,tilde,ensp,emsp,thinsp,zwnj,zwj,lrm,rlm,ndash,mdash,lsquo,rsquo,sbquo,ldquo,rdquo,bdquo,dagger,Dagger,permil,lsaquo,rsaquo,euro"),
                         c.entities_latin && e.push("Agrave,Aacute,Acirc,Atilde,Auml,Aring,AElig,Ccedil,Egrave,Eacute,Ecirc,Euml,Igrave,Iacute,Icirc,Iuml,ETH,Ntilde,Ograve,Oacute,Ocirc,Otilde,Ouml,Oslash,Ugrave,Uacute,Ucirc,Uuml,Yacute,THORN,szlig,agrave,aacute,acirc,atilde,auml,aring,aelig,ccedil,egrave,eacute,ecirc,euml,igrave,iacute,icirc,iuml,eth,ntilde,ograve,oacute,ocirc,otilde,ouml,oslash,ugrave,uacute,ucirc,uuml,yacute,thorn,yuml,OElig,oelig,Scaron,scaron,Yuml"), c.entities_greek && e.push("Alpha,Beta,Gamma,Delta,Epsilon,Zeta,Eta,Theta,Iota,Kappa,Lambda,Mu,Nu,Xi,Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,omicron,pi,rho,sigmaf,sigma,tau,upsilon,phi,chi,psi,omega,thetasym,upsih,piv"),
                         c.entities_additional && e.push(c.entities_additional));
-                    var a = k(e.join(",")),
-                        d = a.regex ? "[" + a.regex + "]" : "a^";
-                    delete a.regex;
+                    var b = k(e.join(",")),
+                        d = b.regex ? "[" + b.regex + "]" : "a^";
+                    delete b.regex;
                     c.entities && c.entities_processNumerical && (d = "[^ -~]|" + d);
                     var d = new RegExp(d, "g"),
                         h = k("nbsp,gt,lt,amp,shy", !0),
                         l = new RegExp(h.regex, "g");
-                    b.addRules({
+                    a.addRules({
                         text: function(a) {
                             return a.replace(l, f).replace(d, g)
                         }
@@ -17611,8 +17745,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         requires: "panel",
         onLoad: function() {
             var f = CKEDITOR.addTemplate("panel-list", '\x3cul role\x3d"presentation" class\x3d"cke_panel_list"\x3e{items}\x3c/ul\x3e'),
-                g = CKEDITOR.addTemplate("panel-list-item", '\x3cli id\x3d"{id}" class\x3d"cke_panel_listItem" role\x3dpresentation\x3e\x3ca id\x3d"{id}_option" _cke_focus\x3d1 hidefocus\x3dtrue title\x3d"{title}" href\x3d"javascript:void(\'{val}\')"  {onclick}\x3d"CKEDITOR.tools.callFunction({clickFn},\'{val}\'); return false;" role\x3d"option"\x3e{text}\x3c/a\x3e\x3c/li\x3e'),
-                h = CKEDITOR.addTemplate("panel-list-group", '\x3ch1 id\x3d"{id}" class\x3d"cke_panel_grouptitle" role\x3d"presentation" \x3e{label}\x3c/h1\x3e'),
+                g = CKEDITOR.addTemplate("panel-list-item", '\x3cli id\x3d"{id}" class\x3d"cke_panel_listItem" role\x3dpresentation\x3e\x3ca id\x3d"{id}_option" _cke_focus\x3d1 hidefocus\x3dtrue title\x3d"{title}" draggable\x3d"false" ondragstart\x3d"return false;" href\x3d"javascript:void(\'{val}\')"  {onclick}\x3d"CKEDITOR.tools.callFunction({clickFn},\'{val}\'); return false;" role\x3d"option"\x3e{text}\x3c/a\x3e\x3c/li\x3e'),
+                h = CKEDITOR.addTemplate("panel-list-group", '\x3ch1 id\x3d"{id}" draggable\x3d"false" ondragstart\x3d"return false;" class\x3d"cke_panel_grouptitle" role\x3d"presentation" \x3e{label}\x3c/h1\x3e'),
                 k = /\'/g;
             CKEDITOR.ui.panel.prototype.addListBlock = function(a, b) {
                 return this.addBlock(a, new CKEDITOR.ui.listBlock(this.getHolderElement(), b))
@@ -17622,9 +17756,9 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 $: function(a, b) {
                     b = b || {};
                     var c = b.attributes || (b.attributes = {});
-                    (this.multiSelect = !!b.multiSelect) && (c["aria-multiselectable"] = !0);
-                    !c.role &&
-                        (c.role = "listbox");
+                    (this.multiSelect = !!b.multiSelect) &&
+                    (c["aria-multiselectable"] = !0);
+                    !c.role && (c.role = "listbox");
                     this.base.apply(this, arguments);
                     this.element.setAttribute("role", c.role);
                     c = this.keys;
@@ -17651,11 +17785,10 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         }
                     },
                     getClick: function() {
-                        this._.click ||
-                            (this._.click = CKEDITOR.tools.addFunction(function(a) {
-                                var b = this.toggle(a);
-                                if (this.onClick) this.onClick(a, b)
-                            }, this));
+                        this._.click || (this._.click = CKEDITOR.tools.addFunction(function(a) {
+                            var b = this.toggle(a);
+                            if (this.onClick) this.onClick(a, b)
+                        }, this));
                         return this._.click
                     }
                 },
@@ -17697,9 +17830,9 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         return !b
                     },
                     hideGroup: function(a) {
-                        var b = (a = this.element.getDocument().getById(this._.groups[a])) && a.getNext();
-                        a && (a.setStyle("display",
-                            "none"), b && "ul" == b.getName() && b.setStyle("display", "none"))
+                        var b = (a = this.element.getDocument().getById(this._.groups[a])) &&
+                            a.getNext();
+                        a && (a.setStyle("display", "none"), b && "ul" == b.getName() && b.setStyle("display", "none"))
                     },
                     hideItem: function(a) {
                         this.element.getDocument().getById(this._.items[a]).setStyle("display", "none")
@@ -17755,7 +17888,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         if (a)
                             for (c = this.element.getDocument().getById(this._.items[a]).getFirst(); a = b.getItem(++d);) {
                                 if (a.equals(c)) {
-                                    this._.focusIndex = d;
+                                    this._.focusIndex =
+                                        d;
                                     break
                                 }
                             } else this.element.focus();
@@ -17774,7 +17908,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         }
     });
     (function() {
-        var c = '\x3cspan id\x3d"{id}" class\x3d"cke_combo cke_combo__{name} {cls}" role\x3d"presentation"\x3e\x3cspan id\x3d"{id}_label" class\x3d"cke_combo_label"\x3e{label}\x3c/span\x3e\x3ca class\x3d"cke_combo_button" title\x3d"{title}" tabindex\x3d"-1"' + (CKEDITOR.env.gecko && !CKEDITOR.env.hc ? "" : " href\x3d\"javascript:void('{titleJs}')\"") + ' hidefocus\x3d"true" role\x3d"button" aria-labelledby\x3d"{id}_label" aria-haspopup\x3d"true"';
+        var c = '\x3cspan id\x3d"{id}" class\x3d"cke_combo cke_combo__{name} {cls}" role\x3d"presentation"\x3e\x3cspan id\x3d"{id}_label" class\x3d"cke_combo_label"\x3e{label}\x3c/span\x3e\x3ca class\x3d"cke_combo_button" title\x3d"{title}" tabindex\x3d"-1"' + (CKEDITOR.env.gecko && !CKEDITOR.env.hc ? "" : " href\x3d\"javascript:void('{titleJs}')\"") + ' hidefocus\x3d"true" role\x3d"button" aria-labelledby\x3d"{id}_label" aria-haspopup\x3d"listbox"';
         CKEDITOR.env.gecko && CKEDITOR.env.mac && (c += ' onkeypress\x3d"return false;"');
         CKEDITOR.env.gecko && (c += ' onblur\x3d"this.style.cssText \x3d this.style.cssText;"');
         var c = c + (' onkeydown\x3d"return CKEDITOR.tools.callFunction({keydownFn},event,this);" onfocus\x3d"return CKEDITOR.tools.callFunction({focusFn},event);" ' + (CKEDITOR.env.ie ? 'onclick\x3d"return false;" onmouseup' : "onclick") + '\x3d"CKEDITOR.tools.callFunction({clickFn},this);return false;"\x3e\x3cspan id\x3d"{id}_text" class\x3d"cke_combo_text cke_combo_inlinelabel"\x3e{label}\x3c/span\x3e\x3cspan class\x3d"cke_combo_open"\x3e\x3cspan class\x3d"cke_combo_arrow"\x3e' +
@@ -17803,7 +17937,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 a.toolbarRelated = !0;
                 this._ = {
                     panelDefinition: a,
-                    items: {}
+                    items: {},
+                    listeners: []
                 }
             },
             proto: {
@@ -17822,8 +17957,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                             b != CKEDITOR.TRISTATE_DISABLED && this.refresh && this.refresh()
                         }
                     }
-                    var c =
-                        CKEDITOR.env,
+                    var c = CKEDITOR.env,
                         h = "cke_" + this.id,
                         e = CKEDITOR.tools.addFunction(function(b) {
                             l && (a.unlockSelection(1), l = 0);
@@ -17849,11 +17983,11 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                             },
                             clickFn: e
                         };
-                    a.on("activeFilterChange", f, this);
-                    a.on("mode",
-                        f, this);
-                    a.on("selectionChange", f, this);
-                    !this.readOnly && a.on("readOnly", f, this);
+                    this._.listeners.push(a.on("activeFilterChange",
+                        f, this));
+                    this._.listeners.push(a.on("mode", f, this));
+                    this._.listeners.push(a.on("selectionChange", f, this));
+                    !this.readOnly && this._.listeners.push(a.on("readOnly", f, this));
                     var m = CKEDITOR.tools.addFunction(function(a, b) {
                             a = new CKEDITOR.dom.event(a);
                             var d = a.getKeystroke();
@@ -17879,8 +18013,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         label: this.label,
                         title: this.title,
                         cls: this.className || "",
-                        titleJs: c.gecko && !c.hc ? "" : (this.title ||
-                            "").replace("'", ""),
+                        titleJs: c.gecko && !c.hc ? "" : (this.title || "").replace("'", ""),
                         keydownFn: m,
                         focusFn: n,
                         clickFn: e
@@ -17927,11 +18060,11 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         this.init && this.init()
                     }
                 },
-                setValue: function(a, b) {
+                setValue: function(a,
+                    b) {
                     this._.value = a;
                     var c = this.document.getById("cke_" + this.id + "_text");
-                    c &&
-                        (a || b ? c.removeClass("cke_combo_inlinelabel") : (b = this.label, c.addClass("cke_combo_inlinelabel")), c.setText("undefined" != typeof b ? b : a))
+                    c && (a || b ? c.removeClass("cke_combo_inlinelabel") : (b = this.label, c.addClass("cke_combo_inlinelabel")), c.setText("undefined" != typeof b ? b : a))
                 },
                 getValue: function() {
                     return this._.value || ""
@@ -17952,7 +18085,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     this._.list.showAll()
                 },
                 add: function(a, b, c) {
-                    this._.items[a] = c || a;
+                    this._.items[a] =
+                        c || a;
                     this._.list.add(a, b, c)
                 },
                 startGroup: function(a) {
@@ -17974,11 +18108,17 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     return this._.state
                 },
                 enable: function() {
-                    this._.state == CKEDITOR.TRISTATE_DISABLED && this.setState(this._.lastState)
+                    this._.state ==
+                        CKEDITOR.TRISTATE_DISABLED && this.setState(this._.lastState)
                 },
                 disable: function() {
-                    this._.state !=
-                        CKEDITOR.TRISTATE_DISABLED && (this._.lastState = this._.state, this.setState(CKEDITOR.TRISTATE_DISABLED))
+                    this._.state != CKEDITOR.TRISTATE_DISABLED && (this._.lastState = this._.state, this.setState(CKEDITOR.TRISTATE_DISABLED))
+                },
+                destroy: function() {
+                    CKEDITOR.tools.array.forEach(this._.listeners, function(a) {
+                        a.removeListener()
+                    });
+                    this._.listeners = []
                 }
             },
             statics: {
@@ -17994,9 +18134,9 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         }
     })();
     (function() {
-        function p(b, f, e, d, r, p, v, x) {
+        function p(b, f, e, d, r, p, t, x) {
             var y = b.config,
-                t = new CKEDITOR.style(v),
+                u = new CKEDITOR.style(t),
                 g = r.split(";");
             r = [];
             for (var k = {}, l = 0; l < g.length; l++) {
@@ -18006,7 +18146,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         w = {},
                         q = g[l] = m[0];
                     w[e] = r[l] = m[1] || q;
-                    k[q] = new CKEDITOR.style(v, w);
+                    k[q] = new CKEDITOR.style(t, w);
                     k[q]._.definition.name = q
                 } else g.splice(l--, 1)
             }
@@ -18015,9 +18155,9 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 title: d.panelTitle,
                 toolbar: "styles," + x,
                 defaultValue: "cke-default",
-                allowedContent: t,
-                requiredContent: t,
-                contentTransformations: [
+                allowedContent: u,
+                requiredContent: u,
+                contentTransformations: "span" === t.element ? [
                     [{
                         element: "font",
                         check: "span",
@@ -18033,7 +18173,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                             a.attributes.face && (a.styles["font-family"] = a.attributes.face, delete a.attributes.face)
                         }
                     }]
-                ],
+                ] : null,
                 panel: {
                     css: [CKEDITOR.skin.getPath("editor")].concat(y.contentsCss),
                     multiSelect: !1,
@@ -18059,14 +18199,14 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                             if (n = b.elementPath(), h = n.contains(function(a) {
                                     return e.checkElementRemovable(a)
                                 })) {
-                                d = c.checkBoundaryOfElement(h, CKEDITOR.START);
-                                g = c.checkBoundaryOfElement(h,
-                                    CKEDITOR.END);
+                                d = c.checkBoundaryOfElement(h,
+                                    CKEDITOR.START);
+                                g = c.checkBoundaryOfElement(h, CKEDITOR.END);
                                 if (d && g) {
                                     for (d = c.createBookmark(); n = h.getFirst();) n.insertBefore(h);
                                     h.remove();
                                     c.moveToBookmark(d)
-                                } else d || g ? c.moveToPosition(h, d ? CKEDITOR.POSITION_BEFORE_START : CKEDITOR.POSITION_AFTER_END) : (c.splitElement(h), c.moveToPosition(h, CKEDITOR.POSITION_AFTER_END)), u(c, n.elements.slice(), h);
+                                } else d || g ? c.moveToPosition(h, d ? CKEDITOR.POSITION_BEFORE_START : CKEDITOR.POSITION_AFTER_END) : (c.splitElement(h), c.moveToPosition(h, CKEDITOR.POSITION_AFTER_END)), v(c, n.elements.slice(), h);
                                 b.getSelection().selectRanges([c])
                             }
                         } else b.removeStyle(e);
@@ -18074,34 +18214,35 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     b.fire("saveSnapshot")
                 },
                 onRender: function() {
-                    b.on("selectionChange", function(a) {
-                        var c = this.getValue();
-                        a = a.data.path.elements;
-                        for (var d = 0, f; d < a.length; d++) {
-                            f = a[d];
-                            for (var e in k)
-                                if (k[e].checkElementMatch(f, !0, b)) {
-                                    e != c && this.setValue(e);
-                                    return
-                                }
-                        }
-                        this.setValue("", p)
-                    }, this)
+                    b.on("selectionChange",
+                        function(a) {
+                            var c = this.getValue();
+                            a = a.data.path.elements;
+                            for (var d = 0, f; d < a.length; d++) {
+                                f = a[d];
+                                for (var e in k)
+                                    if (k[e].checkElementMatch(f, !0, b)) {
+                                        e != c && this.setValue(e);
+                                        return
+                                    }
+                            }
+                            this.setValue("", p)
+                        }, this)
                 },
                 refresh: function() {
-                    b.activeFilter.check(t) || this.setState(CKEDITOR.TRISTATE_DISABLED)
+                    b.activeFilter.check(u) || this.setState(CKEDITOR.TRISTATE_DISABLED)
                 }
             })
         }
 
-        function u(b, f, e) {
+        function v(b, f, e) {
             var d = f.pop();
             if (d) {
-                if (e) return u(b, f, d.equals(e) ? null : e);
+                if (e) return v(b, f, d.equals(e) ? null : e);
                 e = d.clone();
                 b.insertNode(e);
                 b.moveToPosition(e, CKEDITOR.POSITION_AFTER_START);
-                u(b, f)
+                v(b, f)
             }
         }
         CKEDITOR.plugins.add("font", {
@@ -18147,8 +18288,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             CKEDITOR.addCss(".cke_editable form{border: 1px dotted #FF0000;padding: 2px;}\n");
             CKEDITOR.addCss("img.cke_hidden{background-image: url(" + CKEDITOR.getUrl(this.path + "images/hiddenfield.gif") + ");background-position: center center;background-repeat: no-repeat;border: 1px solid #a9a9a9;width: 16px !important;height: 16px !important;}")
         },
-        init: function(a) {
-            var b = a.lang,
+        init: function(b) {
+            var a = b.lang,
                 g = 0,
                 h = {
                     email: 1,
@@ -18180,85 +18321,85 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     hiddenfield: "input",
                     imagebutton: "input"
                 },
-                e = function(d, c, e) {
+                d = function(f, c, d) {
                     var h = {
                         allowedContent: l[c],
                         requiredContent: m[c]
                     };
                     "form" == c && (h.context = "form");
-                    a.addCommand(c, new CKEDITOR.dialogCommand(c, h));
-                    a.ui.addButton && a.ui.addButton(d, {
-                        label: b.common[d.charAt(0).toLowerCase() + d.slice(1)],
+                    b.addCommand(c, new CKEDITOR.dialogCommand(c, h));
+                    b.ui.addButton && b.ui.addButton(f, {
+                        label: a.common[f.charAt(0).toLowerCase() + f.slice(1)],
                         command: c,
                         toolbar: "forms," + (g += 10)
                     });
-                    CKEDITOR.dialog.add(c, e)
+                    CKEDITOR.dialog.add(c, d)
                 },
-                f = this.path + "dialogs/";
-            !a.blockless && e("Form", "form", f + "form.js");
-            e("Checkbox", "checkbox", f + "checkbox.js");
-            e("Radio", "radio",
-                f + "radio.js");
-            e("TextField", "textfield", f + "textfield.js");
-            e("Textarea", "textarea", f + "textarea.js");
-            e("Select", "select", f + "select.js");
-            e("Button", "button", f + "button.js");
-            var k = a.plugins.image;
-            k && !a.plugins.image2 && e("ImageButton", "imagebutton", CKEDITOR.plugins.getPath("image") + "dialogs/image.js");
-            e("HiddenField", "hiddenfield", f + "hiddenfield.js");
-            a.addMenuItems && (e = {
+                e = this.path + "dialogs/";
+            !b.blockless && d("Form", "form", e + "form.js");
+            d("Checkbox", "checkbox", e + "checkbox.js");
+            d("Radio", "radio",
+                e + "radio.js");
+            d("TextField", "textfield", e + "textfield.js");
+            d("Textarea", "textarea", e + "textarea.js");
+            d("Select", "select", e + "select.js");
+            d("Button", "button", e + "button.js");
+            var k = b.plugins.image;
+            k && !b.plugins.image2 && d("ImageButton", "imagebutton", CKEDITOR.plugins.getPath("image") + "dialogs/image.js");
+            d("HiddenField", "hiddenfield", e + "hiddenfield.js");
+            b.addMenuItems && (d = {
                     checkbox: {
-                        label: b.forms.checkboxAndRadio.checkboxTitle,
+                        label: a.forms.checkboxAndRadio.checkboxTitle,
                         command: "checkbox",
                         group: "checkbox"
                     },
                     radio: {
-                        label: b.forms.checkboxAndRadio.radioTitle,
+                        label: a.forms.checkboxAndRadio.radioTitle,
                         command: "radio",
                         group: "radio"
                     },
                     textfield: {
-                        label: b.forms.textfield.title,
+                        label: a.forms.textfield.title,
                         command: "textfield",
                         group: "textfield"
                     },
                     hiddenfield: {
-                        label: b.forms.hidden.title,
+                        label: a.forms.hidden.title,
                         command: "hiddenfield",
                         group: "hiddenfield"
                     },
                     button: {
-                        label: b.forms.button.title,
+                        label: a.forms.button.title,
                         command: "button",
                         group: "button"
                     },
                     select: {
-                        label: b.forms.select.title,
+                        label: a.forms.select.title,
                         command: "select",
                         group: "select"
                     },
                     textarea: {
-                        label: b.forms.textarea.title,
+                        label: a.forms.textarea.title,
                         command: "textarea",
                         group: "textarea"
                     }
-                }, k && (e.imagebutton = {
-                    label: b.image.titleButton,
+                }, k && (d.imagebutton = {
+                    label: a.image.titleButton,
                     command: "imagebutton",
                     group: "imagebutton"
-                }), !a.blockless &&
-                (e.form = {
-                    label: b.forms.form.menu,
+                }), !b.blockless &&
+                (d.form = {
+                    label: a.forms.form.menu,
                     command: "form",
                     group: "form"
-                }), a.addMenuItems(e));
-            a.contextMenu && (!a.blockless && a.contextMenu.addListener(function(d, c, a) {
-                if ((d = a.contains("form", 1)) && !d.isReadOnly()) return {
+                }), b.addMenuItems(d));
+            b.contextMenu && (!b.blockless && b.contextMenu.addListener(function(f, c, b) {
+                if ((f = b.contains("form", 1)) && !f.isReadOnly()) return {
                     form: CKEDITOR.TRISTATE_OFF
                 }
-            }), a.contextMenu.addListener(function(d) {
-                if (d && !d.isReadOnly()) {
-                    var c = d.getName();
+            }), b.contextMenu.addListener(function(b) {
+                if (b && !b.isReadOnly()) {
+                    var c = b.getName();
                     if ("select" == c) return {
                         select: CKEDITOR.TRISTATE_OFF
                     };
@@ -18266,7 +18407,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         textarea: CKEDITOR.TRISTATE_OFF
                     };
                     if ("input" == c) {
-                        var a = d.getAttribute("type") || "text";
+                        var a = b.getAttribute("type") || "text";
                         switch (a) {
                             case "button":
                             case "submit":
@@ -18291,43 +18432,43 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                             textfield: CKEDITOR.TRISTATE_OFF
                         }
                     }
-                    if ("img" == c && "hiddenfield" == d.data("cke-real-element-type")) return {
+                    if ("img" == c && "hiddenfield" == b.data("cke-real-element-type")) return {
                         hiddenfield: CKEDITOR.TRISTATE_OFF
                     }
                 }
             }));
-            a.on("doubleclick", function(d) {
-                var c = d.data.element;
-                if (!a.blockless && c.is("form")) d.data.dialog = "form";
-                else if (c.is("select")) d.data.dialog = "select";
-                else if (c.is("textarea")) d.data.dialog =
+            b.on("doubleclick", function(a) {
+                var c = a.data.element;
+                if (!b.blockless && c.is("form")) a.data.dialog = "form";
+                else if (c.is("select")) a.data.dialog = "select";
+                else if (c.is("textarea")) a.data.dialog =
                     "textarea";
-                else if (c.is("img") && "hiddenfield" == c.data("cke-real-element-type")) d.data.dialog = "hiddenfield";
+                else if (c.is("img") && "hiddenfield" == c.data("cke-real-element-type")) a.data.dialog = "hiddenfield";
                 else if (c.is("input")) {
                     c = c.getAttribute("type") || "text";
                     switch (c) {
                         case "button":
                         case "submit":
                         case "reset":
-                            d.data.dialog = "button";
+                            a.data.dialog = "button";
                             break;
                         case "checkbox":
-                            d.data.dialog = "checkbox";
+                            a.data.dialog = "checkbox";
                             break;
                         case "radio":
-                            d.data.dialog = "radio";
+                            a.data.dialog = "radio";
                             break;
                         case "image":
-                            d.data.dialog = "imagebutton"
+                            a.data.dialog = "imagebutton"
                     }
-                    h[c] && (d.data.dialog = "textfield")
+                    h[c] && (a.data.dialog = "textfield")
                 }
             })
         },
-        afterInit: function(a) {
-            var b = a.dataProcessor,
-                g = b && b.htmlFilter,
-                b = b && b.dataFilter;
+        afterInit: function(b) {
+            var a = b.dataProcessor,
+                g = a && a.htmlFilter,
+                a = a && a.dataFilter;
             CKEDITOR.env.ie &&
                 g && g.addRules({
                     elements: {
@@ -18341,10 +18482,10 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 }, {
                     applyToAll: !0
                 });
-            b && b.addRules({
+            a && a.addRules({
                 elements: {
-                    input: function(b) {
-                        if ("hidden" == b.attributes.type) return a.createFakeParserElement(b, "cke_hidden", "hiddenfield")
+                    input: function(a) {
+                        if ("hidden" == a.attributes.type) return b.createFakeParserElement(a, "cke_hidden", "hiddenfield")
                     }
                 }
             }, {
@@ -18352,6 +18493,11 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             })
         }
     });
+    CKEDITOR.plugins.forms = {
+        _setupRequiredAttribute: function(b) {
+            this.setValue(b.hasAttribute("required"))
+        }
+    };
     CKEDITOR.plugins.add("format", {
         requires: "richcombo",
         init: function(a) {
@@ -18536,7 +18682,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 "pre" == b && (this._.inPre = 1)
             },
             attribute: function(b, a) {
-                "string" == typeof a && (this.forceSimpleAmpersand && (a = a.replace(/&amp;/g, "\x26")), a = CKEDITOR.tools.htmlEncodeAttr(a));
+                "string" == typeof a && (a = CKEDITOR.tools.htmlEncodeAttr(a), this.forceSimpleAmpersand && (a = a.replace(/&amp;/g, "\x26")));
                 this._.output.push(" ", b, '\x3d"', a, '"')
             },
             closeTag: function(b) {
@@ -18906,7 +19052,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         CKEDITOR.plugins.add("image", {
             requires: "dialog",
             init: function(b) {
-                if (!b.plugins.image2) {
+                if (!b.plugins.detectConflict("image", ["easyimage", "image2"])) {
                     CKEDITOR.dialog.add("image", this.path + "dialogs/image.js");
                     var a = "img[alt,!src]{border-style,border-width,float,height,margin,margin-bottom,margin-left,margin-right,margin-top,width}";
                     CKEDITOR.dialog.isTabEnabled(b, "image", "advanced") && (a = "img[alt,dir,id,lang,longdesc,!src,title]{*}(*)");
@@ -19495,7 +19641,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 $: function(c) {
                     delete c.panel;
                     this.base(c);
-                    this.hasArrow = !0;
+                    this.hasArrow = "menu";
                     this.click = d
                 },
                 statics: {
@@ -19653,20 +19799,20 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 c.addCommand("unlink", new CKEDITOR.unlinkCommand);
                 c.addCommand("removeAnchor", new CKEDITOR.removeAnchorCommand);
                 c.setKeystroke(CKEDITOR.CTRL + 76, "link");
+                c.setKeystroke(CKEDITOR.CTRL + 75, "link");
                 c.ui.addButton && (c.ui.addButton("Link", {
-                        label: c.lang.link.toolbar,
-                        command: "link",
-                        toolbar: "links,10"
-                    }),
-                    c.ui.addButton("Unlink", {
-                        label: c.lang.link.unlink,
-                        command: "unlink",
-                        toolbar: "links,20"
-                    }), c.ui.addButton("Anchor", {
-                        label: c.lang.link.anchor.toolbar,
-                        command: "anchor",
-                        toolbar: "links,30"
-                    }));
+                    label: c.lang.link.toolbar,
+                    command: "link",
+                    toolbar: "links,10"
+                }), c.ui.addButton("Unlink", {
+                    label: c.lang.link.unlink,
+                    command: "unlink",
+                    toolbar: "links,20"
+                }), c.ui.addButton("Anchor", {
+                    label: c.lang.link.anchor.toolbar,
+                    command: "anchor",
+                    toolbar: "links,30"
+                }));
                 CKEDITOR.dialog.add("link", this.path + "dialogs/link.js");
                 CKEDITOR.dialog.add("anchor", this.path + "dialogs/anchor.js");
                 c.on("doubleclick", function(a) {
@@ -19674,8 +19820,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         a: 1,
                         img: 1
                     }, !0);
-                    b && !b.isReadOnly() && (b.is("a") ? (a.data.dialog = !b.getAttribute("name") || b.getAttribute("href") && b.getChildCount() ? "link" :
-                        "anchor", a.data.link = b) : CKEDITOR.plugins.link.tryRestoreFakeAnchor(c, b) && (a.data.dialog = "anchor"))
+                    b && !b.isReadOnly() && (b.is("a") ? (a.data.dialog = !b.getAttribute("name") || b.getAttribute("href") &&
+                        b.getChildCount() ? "link" : "anchor", a.data.link = b) : CKEDITOR.plugins.link.tryRestoreFakeAnchor(c, b) && (a.data.dialog = "anchor"))
                 }, null, null, 0);
                 c.on("doubleclick", function(a) {
                     a.data.dialog in {
@@ -19721,8 +19867,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     a && a.hasAttribute("name") && (b.anchor = b.removeAnchor = CKEDITOR.TRISTATE_OFF);
                     return b
                 });
-                this.compiledProtectionFunction =
-                    n(c)
+                this.compiledProtectionFunction = n(c)
             },
             afterInit: function(c) {
                 c.dataProcessor.dataFilter.addRules({
@@ -19749,6 +19894,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             B = /^javascript:([^(]+)\(([^)]+)\)$/,
             C = /\s*window.open\(\s*this\.href\s*,\s*(?:'([^']*)'|null)\s*,\s*'([^']*)'\s*\)\s*;\s*return\s*false;*\s*/,
             D = /(?:^|,)([^=]+)=(\d+|yes|no)/gi,
+            E = /^tel:(.*)$/,
             m = {
                 id: "advId",
                 dir: "advLangDir",
@@ -19776,11 +19922,11 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                             skipBogus: !0
                         }), (g = c.elementPath(g.getCommonAncestor()).contains("a", 1)) && b) e.push(g);
                     else if (g) return g;
-                return b ? e : null
+                return b ?
+                    e : null
             },
             getEditorAnchors: function(c) {
-                for (var b =
-                        c.editable(), a = b.isInline() && !c.plugins.divarea ? c.document : b, b = a.getElementsByTag("a"), a = a.getElementsByTag("img"), d = [], f = 0, e; e = b.getItem(f++);)(e.data("cke-saved-name") || e.hasAttribute("name")) && d.push({
+                for (var b = c.editable(), a = b.isInline() && !c.plugins.divarea ? c.document : b, b = a.getElementsByTag("a"), a = a.getElementsByTag("img"), d = [], f = 0, e; e = b.getItem(f++);)(e.data("cke-saved-name") || e.hasAttribute("name")) && d.push({
                     name: e.data("cke-saved-name") || e.getAttribute("name"),
                     id: e.getAttribute("id")
                 });
@@ -19791,9 +19937,9 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 return d
             },
             fakeAnchor: !0,
-            tryRestoreFakeAnchor: function(c, b) {
-                if (b && b.data("cke-real-element-type") &&
-                    "anchor" == b.data("cke-real-element-type")) {
+            tryRestoreFakeAnchor: function(c,
+                b) {
+                if (b && b.data("cke-real-element-type") && "anchor" == b.data("cke-real-element-type")) {
                     var a = c.restoreRealElement(b);
                     if (a.data("cke-saved-name")) return a
                 }
@@ -19806,7 +19952,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 a.match(t) && ("encode" == f ? a = a.replace(A, function(a, b, c) {
                     c = c || "";
                     return "mailto:" + String.fromCharCode.apply(String, b.split(",")) + c.replace(/\\'/g, "'")
-                }) : f && a.replace(B, function(a, b, c) {
+                }) : f && a.replace(B, function(a,
+                    b, c) {
                     if (b == d.name) {
                         g.type = "email";
                         a = g.email = {};
@@ -19818,16 +19965,17 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 }));
                 if (!g.type)
                     if (f = a.match(x)) g.type = "anchor", g.anchor = {}, g.anchor.name = g.anchor.id = f[1];
-                    else if (f = a.match(u)) {
+                    else if (f = a.match(E)) g.type = "tel", g.tel = f[1];
+                else if (f = a.match(u)) {
                     e = a.match(v);
                     a = a.match(w);
                     g.type = "email";
                     var k = g.email = {};
                     k.address = f[1];
-                    e && (k.subject = decodeURIComponent(e[1]));
+                    e && (k.subject =
+                        decodeURIComponent(e[1]));
                     a && (k.body = decodeURIComponent(a[1]))
-                } else a && (e = a.match(y)) &&
-                    (g.type = "url", g.url = {}, g.url.protocol = e[1], g.url.url = e[2]);
+                } else a && (e = a.match(y)) && (g.type = "url", g.url = {}, g.url.protocol = e[1], g.url.url = e[2]);
                 if (b) {
                     if (a = b.getAttribute("target")) g.target = {
                         type: a.match(z) ? a : "frame",
@@ -19843,12 +19991,12 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                             top: 1,
                             left: 1
                         } ? isFinite(f[2]) && (g.target[f[1]] = f[2]) : g.target[f[1]] = !0;
-                    null !== b.getAttribute("download") && (g.download = !0);
+                    null !== b.getAttribute("download") &&
+                        (g.download = !0);
                     var a = {},
                         h;
                     for (h in m)(f = b.getAttribute(h)) && (a[m[h]] = f);
-                    if (h =
-                        b.data("cke-saved-name") || a.advName) a.advName = h;
+                    if (h = b.data("cke-saved-name") || a.advName) a.advName = h;
                     CKEDITOR.tools.isEmpty(a) || (g.advanced = a)
                 }
                 return g
@@ -19864,7 +20012,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         break;
                     case "anchor":
                         a = b.anchor && b.anchor.id;
-                        d["data-cke-saved-href"] = "#" + (b.anchor && b.anchor.name || a || "");
+                        d["data-cke-saved-href"] =
+                            "#" + (b.anchor && b.anchor.name || a || "");
                         break;
                     case "email":
                         var e = b.email,
@@ -19883,13 +20032,15 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                             default:
                                 a = f.split("@", 2), e.name = a[0], e.domain = a[1], a = ["javascript:", r(c, e)]
                         }
-                        d["data-cke-saved-href"] = a.join("")
+                        d["data-cke-saved-href"] =
+                            a.join("");
+                        break;
+                    case "tel":
+                        d["data-cke-saved-href"] = "tel:" + b.tel
                 }
                 if (b.target)
                     if ("popup" == b.target.type) {
-                        for (var a = ["window.open(this.href, '",
-                                b.target.name || "", "', '"
-                            ], h = "resizable status location toolbar menubar fullscreen scrollbars dependent".split(" "), f = h.length, g = function(a) {
+                        for (var a = ["window.open(this.href, '", b.target.name || "", "', '"], h = "resizable status location toolbar menubar fullscreen scrollbars dependent".split(" "), f = h.length, g = function(a) {
                                 b.target[a] && h.push(a + "\x3d" + b.target[a])
                             }, e = 0; e < f; e++) h[e] += b.target[h[e]] ? "\x3dyes" : "\x3dno";
                         g("width");
@@ -19898,11 +20049,11 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         g("top");
                         a.push(h.join(","), "'); return false;");
                         d["data-cke-pa-onclick"] = a.join("")
-                    } else "notSet" != b.target.type && b.target.name && (d.target = b.target.name);
+                    } else "notSet" !=
+                        b.target.type && b.target.name && (d.target = b.target.name);
                 b.download && (d.download = "");
                 if (b.advanced) {
-                    for (var l in m)(a = b.advanced[m[l]]) &&
-                        (d[l] = a);
+                    for (var l in m)(a = b.advanced[m[l]]) && (d[l] = a);
                     d.name && (d["data-cke-saved-name"] = d.name)
                 }
                 d["data-cke-saved-href"] && (d.href = d["data-cke-saved-href"]);
@@ -19932,8 +20083,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         textarea: 1
                     },
                     d = b.getSelection();
-                return b.widgets && b.widgets.focused || d && 1 < d.getRanges().length ?
-                    !1 : !c || !c.getName || !c.is(a)
+                return b.widgets && b.widgets.focused || d && 1 < d.getRanges().length ? !1 : !c || !c.getName || !c.is(a)
             }
         };
         CKEDITOR.unlinkCommand = function() {};
@@ -19943,7 +20093,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     var b = c.getSelection().getRanges()[0],
                         a = b.getPreviousEditableNode() && b.getPreviousEditableNode().getAscendant("a", !0) || b.getNextEditableNode() && b.getNextEditableNode().getAscendant("a", !0),
                         d;
-                    b.collapsed && a && (d = b.createBookmark(), b.selectNodeContents(a), b.select())
+                    b.collapsed && a && (d = b.createBookmark(),
+                        b.selectNodeContents(a), b.select())
                 }
                 a = new CKEDITOR.style({
                     element: "a",
@@ -19962,14 +20113,14 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             requiredContent: "a[href]",
             editorFocus: 1
         };
-        CKEDITOR.removeAnchorCommand = function() {};
+        CKEDITOR.removeAnchorCommand =
+            function() {};
         CKEDITOR.removeAnchorCommand.prototype = {
             exec: function(c) {
                 var b = c.getSelection(),
                     a = b.createBookmarks(),
                     d;
-                if (b && (d = b.getSelectedElement()) &&
-                    (d.getChildCount() ? d.is("a") : CKEDITOR.plugins.link.tryRestoreFakeAnchor(c, d))) d.remove(1);
+                if (b && (d = b.getSelectedElement()) && (d.getChildCount() ? d.is("a") : CKEDITOR.plugins.link.tryRestoreFakeAnchor(c, d))) d.remove(1);
                 else if (d = CKEDITOR.plugins.link.getSelectedLink(c)) d.hasAttribute("href") ? (d.removeAttributes({
                     name: 1,
                     "data-cke-saved-name": 1
@@ -19984,377 +20135,392 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         })
     })();
     (function() {
-        function I(b, m, e) {
-            function c(c) {
-                if (!(!(a = d[c ? "getFirst" : "getLast"]()) || a.is && a.isBlockBoundary() || !(p = m.root[c ? "getPrevious" : "getNext"](CKEDITOR.dom.walker.invisible(!0))) || p.is && p.isBlockBoundary({
-                        br: 1
-                    }))) b.document.createElement("br")[c ? "insertBefore" : "insertAfter"](a)
+        function K(a, l, d, f) {
+            for (var e = CKEDITOR.plugins.list.listToArray(l.root, d), g = [], b = 0; b < l.contents.length; b++) {
+                var h = l.contents[b];
+                (h = h.getAscendant("li", !0)) && !h.getCustomData("list_item_processed") && (g.push(h), CKEDITOR.dom.element.setMarker(d, h, "list_item_processed", !0))
             }
-            for (var f = CKEDITOR.plugins.list.listToArray(m.root, e), g = [], k = 0; k < m.contents.length; k++) {
-                var h = m.contents[k];
-                (h = h.getAscendant("li", !0)) && !h.getCustomData("list_item_processed") && (g.push(h), CKEDITOR.dom.element.setMarker(e,
-                    h, "list_item_processed", !0))
+            for (var h = l.root.getDocument(), k, c, b = 0; b < g.length; b++) {
+                var p = g[b].getCustomData("listarray_index");
+                k = e[p].parent;
+                k.is(this.type) || (c = h.createElement(this.type), k.copyAttributes(c, {
+                        start: 1,
+                        type: 1
+                    }), c.removeStyle("list-style-type"),
+                    e[p].parent = c)
+            }
+            d = CKEDITOR.plugins.list.arrayToList(e, d, null, a.config.enterMode);
+            for (var m, e = d.listNode.getChildCount(), b = 0; b < e && (m = d.listNode.getChild(b)); b++) m.getName() == this.type && f.push(m);
+            d.listNode.replace(l.root);
+            a.fire("contentDomInvalidated")
+        }
+
+        function L(a, l, d) {
+            var f = l.contents,
+                e = l.root.getDocument(),
+                g = [];
+            if (1 == f.length && f[0].equals(l.root)) {
+                var b = e.createElement("div");
+                f[0].moveChildren && f[0].moveChildren(b);
+                f[0].append(b);
+                f[0] = b
+            }
+            l = l.contents[0].getParent();
+            for (b = 0; b < f.length; b++) l = l.getCommonAncestor(f[b].getParent());
+            a = a.config.useComputedState;
+            var h, k;
+            a = void 0 === a || a;
+            for (b = 0; b < f.length; b++)
+                for (var c = f[b], p; p = c.getParent();) {
+                    if (p.equals(l)) {
+                        g.push(c);
+                        !k && c.getDirection() && (k = 1);
+                        c = c.getDirection(a);
+                        null !== h && (h = h && h != c ? null : c);
+                        break
+                    }
+                    c = p
+                }
+            if (!(1 > g.length)) {
+                f = g[g.length - 1].getNext();
+                b = e.createElement(this.type);
+                for (d.push(b); g.length;) d = g.shift(), a = e.createElement("li"), c = d, c.is("pre") || M.test(c.getName()) || "false" == c.getAttribute("contenteditable") ? d.appendTo(a) : (d.copyAttributes(a), h && d.getDirection() && (a.removeStyle("direction"),
+                    a.removeAttribute("dir")), d.moveChildren(a), d.remove()), a.appendTo(b);
+                h && k && b.setAttribute("dir", h);
+                f ? b.insertBefore(f) : b.appendTo(l)
+            }
+        }
+
+        function N(a, l, d) {
+            function f(b) {
+                if (!(!(c = k[b ? "getFirst" : "getLast"]()) || c.is && c.isBlockBoundary() || !(p = l.root[b ? "getPrevious" : "getNext"](CKEDITOR.dom.walker.invisible(!0))) || p.is && p.isBlockBoundary({
+                        br: 1
+                    }))) a.document.createElement("br")[b ? "insertBefore" : "insertAfter"](c)
+            }
+            for (var e = CKEDITOR.plugins.list.listToArray(l.root, d), g = [], b = 0; b < l.contents.length; b++) {
+                var h =
+                    l.contents[b];
+                (h = h.getAscendant("li", !0)) && !h.getCustomData("list_item_processed") && (g.push(h), CKEDITOR.dom.element.setMarker(d, h, "list_item_processed", !0))
             }
             h = null;
-            for (k = 0; k < g.length; k++) h = g[k].getCustomData("listarray_index"), f[h].indent = -1;
-            for (k = h + 1; k < f.length; k++)
-                if (f[k].indent > f[k - 1].indent + 1) {
-                    g = f[k - 1].indent + 1 - f[k].indent;
-                    for (h = f[k].indent; f[k] && f[k].indent >= h;) f[k].indent += g, k++;
-                    k--
-                } var d = CKEDITOR.plugins.list.arrayToList(f, e, null, b.config.enterMode, m.root.getAttribute("dir")).listNode,
-                a, p;
-            c(!0);
-            c();
-            d.replace(m.root);
-            b.fire("contentDomInvalidated")
+            for (b = 0; b < g.length; b++) h = g[b].getCustomData("listarray_index"), e[h].indent = -1;
+            for (b = h + 1; b < e.length; b++)
+                if (e[b].indent > e[b - 1].indent + 1) {
+                    g = e[b - 1].indent + 1 - e[b].indent;
+                    for (h = e[b].indent; e[b] && e[b].indent >= h;) e[b].indent += g, b++;
+                    b--
+                } var k = CKEDITOR.plugins.list.arrayToList(e, d, null, a.config.enterMode, l.root.getAttribute("dir")).listNode,
+                c, p;
+            f(!0);
+            f();
+            k.replace(l.root);
+            a.fire("contentDomInvalidated")
         }
 
-        function B(b, m) {
-            this.name = b;
-            this.context = this.type = m;
-            this.allowedContent =
-                m + " li";
-            this.requiredContent = m
+        function C(a, l) {
+            this.name = a;
+            this.context = this.type = l;
+            this.allowedContent = l + " li";
+            this.requiredContent = l
         }
 
-        function E(b, m, e, c) {
-            for (var f, g; f = b[c ? "getLast" : "getFirst"](J);)(g = f.getDirection(1)) !== m.getDirection(1) && f.setAttribute("dir", g), f.remove(), e ? f[c ? "insertBefore" : "insertAfter"](e) : m.append(f, c)
+        function F(a, l, d, f) {
+            for (var e, g; e = a[f ? "getLast" : "getFirst"](O);)(g = e.getDirection(1)) !== l.getDirection(1) && e.setAttribute("dir", g), e.remove(), d ? e[f ? "insertBefore" : "insertAfter"](d) : l.append(e, f)
         }
 
-        function F(b) {
-            function m(e) {
-                var c = b[e ? "getPrevious" : "getNext"](u);
-                c && c.type == CKEDITOR.NODE_ELEMENT && c.is(b.getName()) && (E(b, c, null, !e), b.remove(), b = c)
+        function G(a) {
+            function l(d) {
+                var f = a[d ? "getPrevious" : "getNext"](t);
+                f && f.type == CKEDITOR.NODE_ELEMENT && f.is(a.getName()) && (F(a, f, null, !d), a.remove(),
+                    a = f)
             }
-            m();
-            m(1)
+            l();
+            l(1)
         }
 
-        function G(b) {
-            return b.type == CKEDITOR.NODE_ELEMENT && (b.getName() in CKEDITOR.dtd.$block || b.getName() in CKEDITOR.dtd.$listItem) &&
-                CKEDITOR.dtd[b.getName()]["#"]
+        function H(a) {
+            return a.type == CKEDITOR.NODE_ELEMENT && (a.getName() in CKEDITOR.dtd.$block || a.getName() in CKEDITOR.dtd.$listItem) && CKEDITOR.dtd[a.getName()]["#"]
         }
 
-        function C(b, m, e) {
-            b.fire("saveSnapshot");
-            e.enlarge(CKEDITOR.ENLARGE_LIST_ITEM_CONTENTS);
-            var c = e.extractContents();
-            m.trim(!1, !0);
-            var f = m.createBookmark(),
-                g = new CKEDITOR.dom.elementPath(m.startContainer),
-                k = g.block,
-                g = g.lastElement.getAscendant("li", 1) || k,
-                h = new CKEDITOR.dom.elementPath(e.startContainer),
-                d = h.contains(CKEDITOR.dtd.$listItem),
+        function D(a, l, d) {
+            a.fire("saveSnapshot");
+            d.enlarge(CKEDITOR.ENLARGE_LIST_ITEM_CONTENTS);
+            var f = d.extractContents();
+            l.trim(!1, !0);
+            var e = l.createBookmark(),
+                g = new CKEDITOR.dom.elementPath(l.startContainer),
+                b = g.block,
+                g = g.lastElement.getAscendant("li", 1) || b,
+                h = new CKEDITOR.dom.elementPath(d.startContainer),
+                k = h.contains(CKEDITOR.dtd.$listItem),
                 h = h.contains(CKEDITOR.dtd.$list);
-            k ? (k = k.getBogus()) && k.remove() : h && (k = h.getPrevious(u)) && z(k) && k.remove();
-            (k = c.getLast()) && k.type == CKEDITOR.NODE_ELEMENT &&
-                k.is("br") && k.remove();
-            (k = m.startContainer.getChild(m.startOffset)) ? c.insertBefore(k): m.startContainer.append(c);
-            d && (c = A(d)) && (g.contains(d) ? (E(c, d.getParent(), d), c.remove()) : g.append(c));
-            for (; e.checkStartOfBlock() && e.checkEndOfBlock();) {
-                h = e.startPath();
-                c = h.block;
-                if (!c) break;
-                c.is("li") && (g = c.getParent(), c.equals(g.getLast(u)) && c.equals(g.getFirst(u)) && (c = g));
-                e.moveToPosition(c, CKEDITOR.POSITION_BEFORE_START);
-                c.remove()
+            b ? (b = b.getBogus()) && b.remove() : h && (b = h.getPrevious(t)) && z(b) && b.remove();
+            (b = f.getLast()) && b.type == CKEDITOR.NODE_ELEMENT && b.is("br") && b.remove();
+            (b = l.startContainer.getChild(l.startOffset)) ? f.insertBefore(b): l.startContainer.append(f);
+            k && (f = A(k)) && (g.contains(k) ? (F(f, k.getParent(), k), f.remove()) : g.append(f));
+            for (; d.checkStartOfBlock() && d.checkEndOfBlock();) {
+                h = d.startPath();
+                f = h.block;
+                if (!f) break;
+                f.is("li") && (g = f.getParent(), f.equals(g.getLast(t)) && f.equals(g.getFirst(t)) &&
+                    (f = g));
+                d.moveToPosition(f, CKEDITOR.POSITION_BEFORE_START);
+                f.remove()
             }
-            e = e.clone();
-            c = b.editable();
-            e.setEndAt(c, CKEDITOR.POSITION_BEFORE_END);
-            e = new CKEDITOR.dom.walker(e);
-            e.evaluator = function(a) {
-                return u(a) && !z(a)
+            d = d.clone();
+            f = a.editable();
+            d.setEndAt(f, CKEDITOR.POSITION_BEFORE_END);
+            d = new CKEDITOR.dom.walker(d);
+            d.evaluator = function(a) {
+                return t(a) && !z(a)
             };
-            (e = e.next()) && e.type == CKEDITOR.NODE_ELEMENT && e.getName() in CKEDITOR.dtd.$list && F(e);
-            m.moveToBookmark(f);
-            m.select();
-            b.fire("saveSnapshot")
+            (d = d.next()) && d.type == CKEDITOR.NODE_ELEMENT && d.getName() in CKEDITOR.dtd.$list && G(d);
+            l.moveToBookmark(e);
+            l.select();
+            a.fire("saveSnapshot")
         }
 
-        function A(b) {
-            return (b = b.getLast(u)) && b.type == CKEDITOR.NODE_ELEMENT && b.getName() in v ? b : null
+        function A(a) {
+            return (a = a.getLast(t)) && a.type == CKEDITOR.NODE_ELEMENT && a.getName() in u ? a : null
         }
-        var v = {
+        var u = {
                 ol: 1,
                 ul: 1
             },
-            K = CKEDITOR.dom.walker.whitespaces(),
-            H = CKEDITOR.dom.walker.bookmark(),
-            u = function(b) {
-                return !(K(b) || H(b))
+            P = CKEDITOR.dom.walker.whitespaces(),
+            I = CKEDITOR.dom.walker.bookmark(),
+            t = function(a) {
+                return !(P(a) || I(a))
             },
             z = CKEDITOR.dom.walker.bogus();
         CKEDITOR.plugins.list = {
-            listToArray: function(b, m, e, c, f) {
-                if (!v[b.getName()]) return [];
-                c || (c = 0);
-                e || (e = []);
-                for (var g = 0, k = b.getChildCount(); g < k; g++) {
-                    var h = b.getChild(g);
-                    h.type == CKEDITOR.NODE_ELEMENT && h.getName() in CKEDITOR.dtd.$list && CKEDITOR.plugins.list.listToArray(h, m, e, c + 1);
+            listToArray: function(a, l, d, f, e) {
+                if (!u[a.getName()]) return [];
+                f || (f = 0);
+                d || (d = []);
+                for (var g = 0, b = a.getChildCount(); g < b; g++) {
+                    var h = a.getChild(g);
+                    h.type == CKEDITOR.NODE_ELEMENT && h.getName() in CKEDITOR.dtd.$list && CKEDITOR.plugins.list.listToArray(h, l, d, f + 1);
                     if ("li" == h.$.nodeName.toLowerCase()) {
-                        var d = {
-                            parent: b,
-                            indent: c,
+                        var k = {
+                            parent: a,
+                            indent: f,
                             element: h,
                             contents: []
                         };
-                        f ? d.grandparent = f : (d.grandparent = b.getParent(), d.grandparent && "li" == d.grandparent.$.nodeName.toLowerCase() && (d.grandparent = d.grandparent.getParent()));
-                        m && CKEDITOR.dom.element.setMarker(m, h, "listarray_index", e.length);
-                        e.push(d);
-                        for (var a = 0, p = h.getChildCount(), l; a < p; a++) l = h.getChild(a), l.type == CKEDITOR.NODE_ELEMENT && v[l.getName()] ? CKEDITOR.plugins.list.listToArray(l, m, e, c + 1, d.grandparent) : d.contents.push(l)
+                        e ? k.grandparent = e : (k.grandparent = a.getParent(), k.grandparent && "li" == k.grandparent.$.nodeName.toLowerCase() &&
+                            (k.grandparent = k.grandparent.getParent()));
+                        l && CKEDITOR.dom.element.setMarker(l, h, "listarray_index", d.length);
+                        d.push(k);
+                        for (var c = 0, p = h.getChildCount(), m; c < p; c++) m = h.getChild(c), m.type == CKEDITOR.NODE_ELEMENT && u[m.getName()] ? CKEDITOR.plugins.list.listToArray(m, l, d, f + 1, k.grandparent) : k.contents.push(m)
                     }
                 }
-                return e
+                return d
             },
-            arrayToList: function(b, m, e, c, f) {
-                e || (e = 0);
-                if (!b || b.length < e + 1) return null;
-                for (var g, k = b[e].parent.getDocument(), h = new CKEDITOR.dom.documentFragment(k), d = null, a = e, p = Math.max(b[e].indent, 0), l = null, q, n, t = c == CKEDITOR.ENTER_P ? "p" : "div";;) {
-                    var r = b[a];
-                    g = r.grandparent;
-                    q = r.element.getDirection(1);
-                    if (r.indent == p) {
-                        d && b[a].parent.getName() ==
-                            d.getName() || (d = b[a].parent.clone(!1, 1), f && d.setAttribute("dir", f), h.append(d));
-                        l = d.append(r.element.clone(0, 1));
-                        q != d.getDirection(1) && l.setAttribute("dir", q);
-                        for (g = 0; g < r.contents.length; g++) l.append(r.contents[g].clone(1, 1));
-                        a++
-                    } else if (r.indent == Math.max(p, 0) + 1) r = b[a - 1].element.getDirection(1), a = CKEDITOR.plugins.list.arrayToList(b, null, a, c, r != q ? q : null), !l.getChildCount() && CKEDITOR.env.needsNbspFiller && 7 >= k.$.documentMode && l.append(k.createText(" ")), l.append(a.listNode), a = a.nextIndex;
-                    else if (-1 ==
-                        r.indent && !e && g) {
-                        v[g.getName()] ? (l = r.element.clone(!1, !0), q != g.getDirection(1) && l.setAttribute("dir", q)) : l = new CKEDITOR.dom.documentFragment(k);
-                        var d = g.getDirection(1) != q,
-                            y = r.element,
-                            D = y.getAttribute("class"),
-                            z = y.getAttribute("style"),
-                            A = l.type == CKEDITOR.NODE_DOCUMENT_FRAGMENT && (c != CKEDITOR.ENTER_BR || d || z || D),
-                            w, B = r.contents.length,
+            arrayToList: function(a, l, d, f, e) {
+                d || (d = 0);
+                if (!a || a.length < d + 1) return null;
+                for (var g, b = a[d].parent.getDocument(), h = new CKEDITOR.dom.documentFragment(b), k = null, c = d, p = Math.max(a[d].indent, 0), m =
+                        null, n, r, y = f == CKEDITOR.ENTER_P ? "p" : "div";;) {
+                    var q = a[c];
+                    g = q.grandparent;
+                    n = q.element.getDirection(1);
+                    if (q.indent == p) {
+                        k && a[c].parent.getName() == k.getName() || (k = a[c].parent.clone(!1, 1), e && k.setAttribute("dir", e), h.append(k));
+                        m = k.append(q.element.clone(0, 1));
+                        n != k.getDirection(1) && m.setAttribute("dir", n);
+                        for (g = 0; g < q.contents.length; g++) m.append(q.contents[g].clone(1, 1));
+                        c++
+                    } else if (q.indent == Math.max(p, 0) + 1) q = a[c - 1].element.getDirection(1), c = CKEDITOR.plugins.list.arrayToList(a, null, c, f, q != n ? n : null), !m.getChildCount() &&
+                        CKEDITOR.env.needsNbspFiller && 7 >= b.$.documentMode && m.append(b.createText(" ")), m.append(c.listNode), c = c.nextIndex;
+                    else if (-1 == q.indent && !d && g) {
+                        u[g.getName()] ? (m = q.element.clone(!1, !0), n != g.getDirection(1) && m.setAttribute("dir", n)) : m = new CKEDITOR.dom.documentFragment(b);
+                        var k = g.getDirection(1) != n,
+                            w = q.element,
+                            B = w.getAttribute("class"),
+                            E = w.getAttribute("style"),
+                            J = m.type == CKEDITOR.NODE_DOCUMENT_FRAGMENT && (f != CKEDITOR.ENTER_BR || k || E || B),
+                            v, z = q.contents.length,
                             x;
-                        for (g = 0; g < B; g++)
-                            if (w = r.contents[g], H(w) && 1 < B) A ? x = w.clone(1, 1) : l.append(w.clone(1, 1));
-                            else if (w.type == CKEDITOR.NODE_ELEMENT && w.isBlockBoundary()) {
-                            d && !w.getDirection() &&
-                                w.setAttribute("dir", q);
-                            n = w;
-                            var C = y.getAttribute("style");
-                            C && n.setAttribute("style", C.replace(/([^;])$/, "$1;") + (n.getAttribute("style") || ""));
-                            D && w.addClass(D);
-                            n = null;
-                            x && (l.append(x), x = null);
-                            l.append(w.clone(1, 1))
-                        } else A ? (n || (n = k.createElement(t), l.append(n), d && n.setAttribute("dir", q)), z && n.setAttribute("style", z), D && n.setAttribute("class", D), x && (n.append(x), x = null), n.append(w.clone(1, 1))) : l.append(w.clone(1, 1));
-                        x && ((n || l).append(x), x = null);
-                        l.type == CKEDITOR.NODE_DOCUMENT_FRAGMENT && a != b.length - 1 && (CKEDITOR.env.needsBrFiller &&
-                            (q = l.getLast()) && q.type == CKEDITOR.NODE_ELEMENT && q.is("br") && q.remove(), (q = l.getLast(u)) && q.type == CKEDITOR.NODE_ELEMENT && q.is(CKEDITOR.dtd.$block) || l.append(k.createElement("br")));
-                        q = l.$.nodeName.toLowerCase();
-                        "div" != q && "p" != q || l.appendBogus();
-                        h.append(l);
-                        d = null;
-                        a++
+                        for (g = 0; g < z; g++)
+                            if (v = q.contents[g], I(v) &&
+                                1 < z) J ? x = v.clone(1, 1) : m.append(v.clone(1, 1));
+                            else if (v.type == CKEDITOR.NODE_ELEMENT && v.isBlockBoundary()) {
+                            k && !v.getDirection() && v.setAttribute("dir", n);
+                            r = v;
+                            var A = w.getAttribute("style");
+                            A && r.setAttribute("style", A.replace(/([^;])$/, "$1;") + (r.getAttribute("style") || ""));
+                            B && v.addClass(B);
+                            r = null;
+                            x && (m.append(x), x = null);
+                            m.append(v.clone(1, 1))
+                        } else J ? (r || (r = b.createElement(y), m.append(r), k && r.setAttribute("dir", n)), E && r.setAttribute("style", E), B && r.setAttribute("class", B), x && (r.append(x), x = null), r.append(v.clone(1,
+                            1))) : m.append(v.clone(1, 1));
+                        x && ((r || m).append(x), x = null);
+                        m.type == CKEDITOR.NODE_DOCUMENT_FRAGMENT && c != a.length - 1 && (CKEDITOR.env.needsBrFiller && (n = m.getLast()) && n.type == CKEDITOR.NODE_ELEMENT && n.is("br") && n.remove(), (n = m.getLast(t)) && n.type == CKEDITOR.NODE_ELEMENT && n.is(CKEDITOR.dtd.$block) || m.append(b.createElement("br")));
+                        n = m.$.nodeName.toLowerCase();
+                        "div" != n && "p" != n || m.appendBogus();
+                        h.append(m);
+                        k = null;
+                        c++
                     } else return null;
-                    n = null;
-                    if (b.length <= a || Math.max(b[a].indent, 0) < p) break
+                    r = null;
+                    if (a.length <= c || Math.max(a[c].indent, 0) < p) break
                 }
-                if (m)
-                    for (b = h.getFirst(); b;) {
-                        if (b.type == CKEDITOR.NODE_ELEMENT && (CKEDITOR.dom.element.clearMarkers(m, b), b.getName() in CKEDITOR.dtd.$listItem && (e = b, k = f = c = void 0, c = e.getDirection()))) {
-                            for (f =
-                                e.getParent(); f && !(k = f.getDirection());) f = f.getParent();
-                            c == k && e.removeAttribute("dir")
+                if (l)
+                    for (a = h.getFirst(); a;) {
+                        if (a.type ==
+                            CKEDITOR.NODE_ELEMENT && (CKEDITOR.dom.element.clearMarkers(l, a), a.getName() in CKEDITOR.dtd.$listItem && (d = a, b = e = f = void 0, f = d.getDirection()))) {
+                            for (e = d.getParent(); e && !(b = e.getDirection());) e = e.getParent();
+                            f == b && d.removeAttribute("dir")
                         }
-                        b = b.getNextSourceNode()
+                        a = a.getNextSourceNode()
                     }
                 return {
                     listNode: h,
-                    nextIndex: a
+                    nextIndex: c
                 }
             }
         };
-        var L = /^h[1-6]$/,
-            J = CKEDITOR.dom.walker.nodeType(CKEDITOR.NODE_ELEMENT);
-        B.prototype = {
-            exec: function(b) {
-                this.refresh(b, b.elementPath());
-                var m = b.config,
-                    e = b.getSelection(),
-                    c = e && e.getRanges();
+        var M = /^h[1-6]$/,
+            O = CKEDITOR.dom.walker.nodeType(CKEDITOR.NODE_ELEMENT);
+        C.prototype = {
+            exec: function(a) {
+                function l(a) {
+                    return u[a.root.getName()] && !d(a.root, [CKEDITOR.NODE_COMMENT])
+                }
+
+                function d(a, b) {
+                    return CKEDITOR.tools.array.filter(a.getChildren().toArray(),
+                        function(a) {
+                            return -1 === CKEDITOR.tools.array.indexOf(b, a.type)
+                        }).length
+                }
+
+                function f(a) {
+                    var b = !0;
+                    if (0 === a.getChildCount()) return !1;
+                    a.forEach(function(a) {
+                        if (a.type !== CKEDITOR.NODE_COMMENT) return b = !1
+                    }, null, !0);
+                    return b
+                }
+                this.refresh(a, a.elementPath());
+                var e = a.config,
+                    g = a.getSelection(),
+                    b = g && g.getRanges();
                 if (this.state == CKEDITOR.TRISTATE_OFF) {
-                    var f = b.editable();
-                    if (f.getFirst(u)) {
-                        var g = 1 == c.length && c[0];
-                        (m = g && g.getEnclosedNode()) && m.is && this.type == m.getName() && this.setState(CKEDITOR.TRISTATE_ON)
-                    } else m.enterMode ==
-                        CKEDITOR.ENTER_BR ? f.appendBogus() : c[0].fixBlock(1, m.enterMode == CKEDITOR.ENTER_P ? "p" : "div"), e.selectRanges(c)
+                    var h = a.editable();
+                    if (h.getFirst(t)) {
+                        var k = 1 == b.length && b[0];
+                        (e = k && k.getEnclosedNode()) && e.is && this.type == e.getName() && this.setState(CKEDITOR.TRISTATE_ON)
+                    } else e.enterMode ==
+                        CKEDITOR.ENTER_BR ? h.appendBogus() : b[0].fixBlock(1, e.enterMode == CKEDITOR.ENTER_P ? "p" : "div"), g.selectRanges(b)
                 }
-                for (var m = e.createBookmarks(!0), f = [], k = {}, c = c.createIterator(), h = 0;
-                    (g = c.getNextRange()) && ++h;) {
-                    var d = g.getBoundaryNodes(),
-                        a = d.startNode,
-                        p = d.endNode;
-                    a.type == CKEDITOR.NODE_ELEMENT && "td" == a.getName() && g.setStartAt(d.startNode, CKEDITOR.POSITION_AFTER_START);
-                    p.type == CKEDITOR.NODE_ELEMENT && "td" == p.getName() && g.setEndAt(d.endNode, CKEDITOR.POSITION_BEFORE_END);
-                    g = g.createIterator();
-                    for (g.forceBrBreak =
-                        this.state == CKEDITOR.TRISTATE_OFF; d = g.getNextParagraph();)
-                        if (!d.getCustomData("list_block")) {
-                            CKEDITOR.dom.element.setMarker(k, d, "list_block", 1);
-                            for (var l = b.elementPath(d), a = l.elements, p = 0, l = l.blockLimit, q, n = a.length - 1; 0 <= n && (q = a[n]); n--)
-                                if (v[q.getName()] && l.contains(q)) {
-                                    l.removeCustomData("list_group_object_" + h);
-                                    (a = q.getCustomData("list_group_object")) ? a.contents.push(d): (a = {
+                for (var e = g.createBookmarks(!0), h = [], c = {}, b = b.createIterator(), p = 0;
+                    (k = b.getNextRange()) && ++p;) {
+                    var m = k.getBoundaryNodes(),
+                        n = m.startNode,
+                        r = m.endNode;
+                    n.type == CKEDITOR.NODE_ELEMENT && "td" == n.getName() && k.setStartAt(m.startNode, CKEDITOR.POSITION_AFTER_START);
+                    r.type == CKEDITOR.NODE_ELEMENT && "td" == r.getName() && k.setEndAt(m.endNode, CKEDITOR.POSITION_BEFORE_END);
+                    k = k.createIterator();
+                    for (k.forceBrBreak =
+                        this.state == CKEDITOR.TRISTATE_OFF; m = k.getNextParagraph();)
+                        if (!m.getCustomData("list_block") && !f(m)) {
+                            CKEDITOR.dom.element.setMarker(c, m, "list_block", 1);
+                            for (var y = a.elementPath(m), n = y.elements, r = 0, y = y.blockLimit, q, w = n.length - 1; 0 <= w && (q = n[w]); w--)
+                                if (u[q.getName()] && y.contains(q)) {
+                                    y.removeCustomData("list_group_object_" + p);
+                                    (n = q.getCustomData("list_group_object")) ? n.contents.push(m): (n = {
                                         root: q,
-                                        contents: [d]
-                                    }, f.push(a), CKEDITOR.dom.element.setMarker(k, q, "list_group_object", a));
-                                    p = 1;
+                                        contents: [m]
+                                    }, h.push(n), CKEDITOR.dom.element.setMarker(c, q, "list_group_object", n));
+                                    r = 1;
                                     break
-                                } p || (p = l, p.getCustomData("list_group_object_" +
-                                h) ? p.getCustomData("list_group_object_" + h).contents.push(d) : (a = {
-                                root: p,
-                                contents: [d]
-                            }, CKEDITOR.dom.element.setMarker(k, p, "list_group_object_" + h, a), f.push(a)))
+                                } r || (r = y, r.getCustomData("list_group_object_" +
+                                p) ? r.getCustomData("list_group_object_" + p).contents.push(m) : (n = {
+                                root: r,
+                                contents: [m]
+                            }, CKEDITOR.dom.element.setMarker(c, r, "list_group_object_" + p, n), h.push(n)))
                         }
                 }
-                for (q = []; 0 < f.length;)
-                    if (a = f.shift(), this.state == CKEDITOR.TRISTATE_OFF)
-                        if (v[a.root.getName()]) {
-                            c = b;
-                            h = a;
-                            a = k;
-                            g = q;
-                            p = CKEDITOR.plugins.list.listToArray(h.root, a);
-                            l = [];
-                            for (d = 0; d < h.contents.length; d++) n = h.contents[d], (n = n.getAscendant("li", !0)) && !n.getCustomData("list_item_processed") && (l.push(n), CKEDITOR.dom.element.setMarker(a, n, "list_item_processed",
-                                !0));
-                            for (var n = h.root.getDocument(), t = void 0, r = void 0, d = 0; d < l.length; d++) {
-                                var y = l[d].getCustomData("listarray_index"),
-                                    t = p[y].parent;
-                                t.is(this.type) || (r = n.createElement(this.type), t.copyAttributes(r, {
-                                    start: 1,
-                                    type: 1
-                                }), r.removeStyle("list-style-type"), p[y].parent = r)
-                            }
-                            a = CKEDITOR.plugins.list.arrayToList(p, a, null, c.config.enterMode);
-                            p = void 0;
-                            l = a.listNode.getChildCount();
-                            for (d = 0; d < l && (p = a.listNode.getChild(d)); d++) p.getName() == this.type && g.push(p);
-                            a.listNode.replace(h.root);
-                            c.fire("contentDomInvalidated")
-                        } else {
-                            p =
-                                b;
-                            g = a;
-                            d = q;
-                            l = g.contents;
-                            c = g.root.getDocument();
-                            h = [];
-                            1 == l.length && l[0].equals(g.root) && (a = c.createElement("div"), l[0].moveChildren && l[0].moveChildren(a), l[0].append(a), l[0] = a);
-                            g = g.contents[0].getParent();
-                            for (n = 0; n < l.length; n++) g = g.getCommonAncestor(l[n].getParent());
-                            t = p.config.useComputedState;
-                            p = a = void 0;
-                            t = void 0 === t || t;
-                            for (n = 0; n < l.length; n++)
-                                for (r = l[n]; y = r.getParent();) {
-                                    if (y.equals(g)) {
-                                        h.push(r);
-                                        !p && r.getDirection() && (p = 1);
-                                        r = r.getDirection(t);
-                                        null !== a && (a = a && a != r ? null : r);
-                                        break
-                                    }
-                                    r = y
-                                }
-                            if (!(1 > h.length)) {
-                                l =
-                                    h[h.length - 1].getNext();
-                                n = c.createElement(this.type);
-                                d.push(n);
-                                for (t = d = void 0; h.length;) d = h.shift(), t = c.createElement("li"), r = d, r.is("pre") || L.test(r.getName()) || "false" == r.getAttribute("contenteditable") ? d.appendTo(t) : (d.copyAttributes(t), a && d.getDirection() && (t.removeStyle("direction"), t.removeAttribute("dir")), d.moveChildren(t), d.remove()), t.appendTo(n);
-                                a && p && n.setAttribute("dir", a);
-                                l ? n.insertBefore(l) : n.appendTo(g)
-                            }
-                        }
-                else this.state == CKEDITOR.TRISTATE_ON && v[a.root.getName()] && I.call(this, b, a, k);
-                for (n = 0; n < q.length; n++) F(q[n]);
-                CKEDITOR.dom.element.clearAllMarkers(k);
-                e.selectBookmarks(m);
-                b.focus()
+                for (q = []; 0 < h.length;) n = h.shift(), this.state == CKEDITOR.TRISTATE_OFF ? l(n) || (u[n.root.getName()] ? K.call(this, a, n, c, q) : L.call(this, a, n, q)) : this.state == CKEDITOR.TRISTATE_ON && u[n.root.getName()] && !l(n) && N.call(this, a, n, c);
+                for (w = 0; w < q.length; w++) G(q[w]);
+                CKEDITOR.dom.element.clearAllMarkers(c);
+                g.selectBookmarks(e);
+                a.focus()
             },
-            refresh: function(b, m) {
-                var e = m.contains(v, 1),
-                    c = m.blockLimit || m.root;
-                e && c.contains(e) ? this.setState(e.is(this.type) ? CKEDITOR.TRISTATE_ON : CKEDITOR.TRISTATE_OFF) : this.setState(CKEDITOR.TRISTATE_OFF)
+            refresh: function(a, l) {
+                var d =
+                    l.contains(u, 1),
+                    f = l.blockLimit || l.root;
+                d && f.contains(d) ? this.setState(d.is(this.type) ? CKEDITOR.TRISTATE_ON : CKEDITOR.TRISTATE_OFF) : this.setState(CKEDITOR.TRISTATE_OFF)
             }
         };
         CKEDITOR.plugins.add("list", {
             requires: "indentlist",
-            init: function(b) {
-                b.blockless || (b.addCommand("numberedlist", new B("numberedlist", "ol")), b.addCommand("bulletedlist", new B("bulletedlist", "ul")), b.ui.addButton &&
-                    (b.ui.addButton("NumberedList", {
-                        label: b.lang.list.numberedlist,
-                        command: "numberedlist",
-                        directional: !0,
-                        toolbar: "list,10"
-                    }), b.ui.addButton("BulletedList", {
-                        label: b.lang.list.bulletedlist,
-                        command: "bulletedlist",
-                        directional: !0,
-                        toolbar: "list,20"
-                    })), b.on("key", function(m) {
-                        var e = m.data.domEvent.getKey(),
-                            c;
-                        if ("wysiwyg" == b.mode && e in {
-                                8: 1,
-                                46: 1
-                            }) {
-                            var f = b.getSelection().getRanges()[0],
-                                g = f && f.startPath();
-                            if (f && f.collapsed) {
-                                var k = 8 == e,
-                                    h = b.editable(),
-                                    d = new CKEDITOR.dom.walker(f.clone());
-                                d.evaluator = function(a) {
-                                    return u(a) &&
-                                        !z(a)
-                                };
-                                d.guard = function(a, b) {
-                                    return !(b && a.type == CKEDITOR.NODE_ELEMENT && a.is("table"))
-                                };
-                                e = f.clone();
-                                if (k) {
-                                    var a;
-                                    (a = g.contains(v)) && f.checkBoundaryOfElement(a, CKEDITOR.START) && (a = a.getParent()) && a.is("li") && (a = A(a)) ? (c = a, a = a.getPrevious(u), e.moveToPosition(a && z(a) ? a : c, CKEDITOR.POSITION_BEFORE_START)) : (d.range.setStartAt(h, CKEDITOR.POSITION_AFTER_START), d.range.setEnd(f.startContainer, f.startOffset), (a = d.previous()) && a.type == CKEDITOR.NODE_ELEMENT && (a.getName() in v || a.is("li")) && (a.is("li") || (d.range.selectNodeContents(a),
-                                        d.reset(), d.evaluator = G, a = d.previous()), c = a, e.moveToElementEditEnd(c), e.moveToPosition(e.endPath().block, CKEDITOR.POSITION_BEFORE_END)));
-                                    if (c) C(b, e, f), m.cancel();
-                                    else {
-                                        var p = g.contains(v);
-                                        p && f.checkBoundaryOfElement(p, CKEDITOR.START) && (c = p.getFirst(u), f.checkBoundaryOfElement(c, CKEDITOR.START) && (a = p.getPrevious(u), A(c) ? a && (f.moveToElementEditEnd(a), f.select()) : b.execCommand("outdent"), m.cancel()))
+            init: function(a) {
+                a.blockless || (a.addCommand("numberedlist", new C("numberedlist", "ol")), a.addCommand("bulletedlist", new C("bulletedlist", "ul")), a.ui.addButton && (a.ui.addButton("NumberedList", {
+                    label: a.lang.list.numberedlist,
+                    command: "numberedlist",
+                    directional: !0,
+                    toolbar: "list,10"
+                }), a.ui.addButton("BulletedList", {
+                    label: a.lang.list.bulletedlist,
+                    command: "bulletedlist",
+                    directional: !0,
+                    toolbar: "list,20"
+                })), a.on("key", function(l) {
+                    var d = l.data.domEvent.getKey(),
+                        f;
+                    if ("wysiwyg" == a.mode && d in {
+                            8: 1,
+                            46: 1
+                        }) {
+                        var e = a.getSelection().getRanges()[0],
+                            g = e && e.startPath();
+                        if (e && e.collapsed) {
+                            var b = 8 == d,
+                                h = a.editable(),
+                                k = new CKEDITOR.dom.walker(e.clone());
+                            k.evaluator = function(a) {
+                                return t(a) && !z(a)
+                            };
+                            k.guard = function(a, b) {
+                                return !(b && a.type == CKEDITOR.NODE_ELEMENT && a.is("table"))
+                            };
+                            d = e.clone();
+                            if (b) {
+                                var c;
+                                (c = g.contains(u)) && e.checkBoundaryOfElement(c,
+                                    CKEDITOR.START) && (c = c.getParent()) && c.is("li") && (c = A(c)) ? (f = c, c = c.getPrevious(t), d.moveToPosition(c && z(c) ? c : f, CKEDITOR.POSITION_BEFORE_START)) : (k.range.setStartAt(h, CKEDITOR.POSITION_AFTER_START), k.range.setEnd(e.startContainer, e.startOffset), (c = k.previous()) && c.type == CKEDITOR.NODE_ELEMENT && (c.getName() in u || c.is("li")) && (c.is("li") || (k.range.selectNodeContents(c), k.reset(), k.evaluator = H, c = k.previous()), f = c, d.moveToElementEditEnd(f), d.moveToPosition(d.endPath().block, CKEDITOR.POSITION_BEFORE_END)));
+                                if (f) D(a, d, e), l.cancel();
+                                else {
+                                    var p = g.contains(u);
+                                    p && e.checkBoundaryOfElement(p, CKEDITOR.START) && (f = p.getFirst(t), e.checkBoundaryOfElement(f, CKEDITOR.START) && (c = p.getPrevious(t), A(f) ? c && (e.moveToElementEditEnd(c), e.select()) : a.execCommand("outdent"), l.cancel()))
+                                }
+                            } else if (f = g.contains("li")) {
+                                if (k.range.setEndAt(h, CKEDITOR.POSITION_BEFORE_END), b = (h = f.getLast(t)) && H(h) ? h : f, g = 0, (c = k.next()) && c.type == CKEDITOR.NODE_ELEMENT && c.getName() in u && c.equals(h) ? (g = 1, c = k.next()) : e.checkBoundaryOfElement(b, CKEDITOR.END) &&
+                                    (g = 2), g && c) {
+                                    e = e.clone();
+                                    e.moveToElementEditStart(c);
+                                    if (1 == g && (d.optimize(), !d.startContainer.equals(f))) {
+                                        for (f = d.startContainer; f.is(CKEDITOR.dtd.$inline);) p = f, f = f.getParent();
+                                        p && d.moveToPosition(p, CKEDITOR.POSITION_AFTER_END)
                                     }
-                                } else if (c = g.contains("li")) {
-                                    if (d.range.setEndAt(h, CKEDITOR.POSITION_BEFORE_END), k = (h = c.getLast(u)) &&
-                                        G(h) ? h : c, g = 0, (a = d.next()) && a.type == CKEDITOR.NODE_ELEMENT && a.getName() in v && a.equals(h) ? (g = 1, a = d.next()) : f.checkBoundaryOfElement(k, CKEDITOR.END) && (g = 2), g && a) {
-                                        f = f.clone();
-                                        f.moveToElementEditStart(a);
-                                        if (1 == g && (e.optimize(), !e.startContainer.equals(c))) {
-                                            for (c = e.startContainer; c.is(CKEDITOR.dtd.$inline);) p = c, c = c.getParent();
-                                            p && e.moveToPosition(p, CKEDITOR.POSITION_AFTER_END)
-                                        }
-                                        2 == g && (e.moveToPosition(e.endPath().block, CKEDITOR.POSITION_BEFORE_END), f.endPath().block && f.moveToPosition(f.endPath().block, CKEDITOR.POSITION_AFTER_START));
-                                        C(b, e, f);
-                                        m.cancel()
-                                    }
-                                } else d.range.setEndAt(h, CKEDITOR.POSITION_BEFORE_END), (a = d.next()) && a.type == CKEDITOR.NODE_ELEMENT && a.is(v) && (a = a.getFirst(u), g.block && f.checkStartOfBlock() && f.checkEndOfBlock() ? (g.block.remove(), f.moveToElementEditStart(a), f.select()) : A(a) ? (f.moveToElementEditStart(a), f.select()) : (f = f.clone(), f.moveToElementEditStart(a), C(b, e, f)), m.cancel());
-                                setTimeout(function() {
-                                    b.selectionChange(1)
-                                })
-                            }
+                                    2 == g && (d.moveToPosition(d.endPath().block, CKEDITOR.POSITION_BEFORE_END), e.endPath().block && e.moveToPosition(e.endPath().block, CKEDITOR.POSITION_AFTER_START));
+                                    D(a, d, e);
+                                    l.cancel()
+                                }
+                            } else k.range.setEndAt(h, CKEDITOR.POSITION_BEFORE_END), (c = k.next()) && c.type == CKEDITOR.NODE_ELEMENT &&
+                                c.is(u) && (c = c.getFirst(t), g.block && e.checkStartOfBlock() && e.checkEndOfBlock() ? (g.block.remove(), e.moveToElementEditStart(c), e.select()) : A(c) ? (e.moveToElementEditStart(c), e.select()) : (e = e.clone(), e.moveToElementEditStart(c), D(a, d, e)), l.cancel());
+                            setTimeout(function() {
+                                a.selectionChange(1)
+                            })
                         }
-                    }))
+                    }
+                }))
             }
         })
     })();
@@ -21386,7 +21552,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         var k = l(a, h, function() {
                             if (k) a.fire("paste", b);
                             else if (!a.config.pasteFromWordPromptCleanup || e || confirm(a.lang.pastefromword.confirmCleanup)) g.dataValue = CKEDITOR.cleanWord(g.dataValue, a), a.fire("afterPasteFromWord",
-                                g), b.dataValue = g.dataValue, !0 === a.config.forcePasteAsPlainText ? b.type = "text" : CKEDITOR.env.ie && "allow-word" === a.config.forcePasteAsPlainText && (b.type = "html");
+                                g), b.dataValue = g.dataValue, !0 === a.config.forcePasteAsPlainText ? b.type = "text" : CKEDITOR.plugins.clipboard.isCustomCopyCutSupported || "allow-word" !== a.config.forcePasteAsPlainText || (b.type = "html");
                             e = 0
                         });
                         k && f.cancel()
@@ -21483,35 +21649,42 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         commands: {
             removeformat: {
                 exec: function(a) {
-                    for (var h = a._.removeFormatRegex || (a._.removeFormatRegex = new RegExp("^(?:" + a.config.removeFormatTags.replace(/,/g, "|") + ")$", "i")), e = a._.removeAttributes || (a._.removeAttributes = a.config.removeFormatAttributes.split(",")), f = CKEDITOR.plugins.removeformat.filter, m = a.getSelection().getRanges(), n = m.createIterator(), p = function(a) {
+                    for (var h = a._.removeFormatRegex || (a._.removeFormatRegex = new RegExp("^(?:" + a.config.removeFormatTags.replace(/,/g, "|") + ")$", "i")), d = a._.removeAttributes || (a._.removeAttributes = a.config.removeFormatAttributes.split(",")), f = CKEDITOR.plugins.removeformat.filter, p = a.getSelection().getRanges().createIterator(), q = function(a) {
                             return a.type == CKEDITOR.NODE_ELEMENT
-                        }, c; c = n.getNextRange();) {
+                        }, n = [], c; c = p.getNextRange();) {
+                        var k = c.createBookmark();
+                        c = a.createRange();
+                        c.setStartBefore(k.startNode);
+                        k.endNode && c.setEndAfter(k.endNode);
                         c.collapsed || c.enlarge(CKEDITOR.ENLARGE_ELEMENT);
-                        var l = c.createBookmark(),
-                            b = l.startNode,
-                            d = l.endNode,
-                            k = function(b) {
+                        var e = c.createBookmark(),
+                            b = e.startNode,
+                            l = e.endNode,
+                            m = function(b) {
                                 for (var c = a.elementPath(b), e = c.elements, d = 1, g;
                                     (g = e[d]) && !g.equals(c.block) && !g.equals(c.blockLimit); d++) h.test(g.getName()) && f(a, g) && b.breakParent(g)
                             };
-                        k(b);
-                        if (d)
-                            for (k(d), b = b.getNextSourceNode(!0, CKEDITOR.NODE_ELEMENT); b && !b.equals(d);)
+                        m(b);
+                        if (l)
+                            for (m(l), b = b.getNextSourceNode(!0, CKEDITOR.NODE_ELEMENT); b && !b.equals(l);)
                                 if (b.isReadOnly()) {
-                                    if (b.getPosition(d) & CKEDITOR.POSITION_CONTAINS) break;
-                                    b = b.getNext(p)
-                                } else k = b.getNextSourceNode(!1, CKEDITOR.NODE_ELEMENT), "img" == b.getName() && b.data("cke-realelement") || !f(a, b) || (h.test(b.getName()) ?
-                                    b.remove(1) : (b.removeAttributes(e), a.fire("removeFormatCleanup", b))), b = k;
-                        c.moveToBookmark(l)
+                                    if (b.getPosition(l) & CKEDITOR.POSITION_CONTAINS) break;
+                                    b = b.getNext(q)
+                                } else m =
+                                    b.getNextSourceNode(!1, CKEDITOR.NODE_ELEMENT), "img" == b.getName() && b.data("cke-realelement") || b.hasAttribute("data-cke-bookmark") || !f(a, b) || (h.test(b.getName()) ? b.remove(1) : (b.removeAttributes(d), a.fire("removeFormatCleanup", b))), b = m;
+                        e.startNode.remove();
+                        e.endNode && e.endNode.remove();
+                        c.moveToBookmark(k);
+                        n.push(c)
                     }
                     a.forceNextSelectionCheck();
-                    a.getSelection().selectRanges(m)
+                    a.getSelection().selectRanges(n)
                 }
             }
         },
         filter: function(a, h) {
-            for (var e = a._.removeFormatFilters || [], f = 0; f < e.length; f++)
-                if (!1 === e[f](h)) return !1;
+            for (var d = a._.removeFormatFilters || [], f = 0; f < d.length; f++)
+                if (!1 === d[f](h)) return !1;
             return !0
         }
     };
@@ -23679,49 +23852,49 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         return y
     };
     (function() {
-        function B(a) {
+        function D(a) {
             return CKEDITOR.plugins.widget && CKEDITOR.plugins.widget.isDomWidget(a)
         }
 
-        function x(a, b) {
+        function z(a, b) {
             var c = a.getAscendant("table"),
                 d = b.getAscendant("table"),
                 e = CKEDITOR.tools.buildTableMap(c),
-                h = n(a),
-                m = n(b),
-                l = [],
-                k = {},
-                f, p;
+                g = r(a),
+                h = r(b),
+                k = [],
+                f = {},
+                l, p;
             c.contains(d) && (b = b.getAscendant({
                 td: 1,
                 th: 1
-            }), m = n(b));
-            h > m && (c = h, h = m, m = c, c = a, a = b, b = c);
-            for (c = 0; c < e[h].length; c++)
-                if (a.$ === e[h][c]) {
-                    f = c;
+            }), h = r(b));
+            g > h && (c = g, g = h, h = c, c = a, a = b, b = c);
+            for (c = 0; c < e[g].length; c++)
+                if (a.$ === e[g][c]) {
+                    l = c;
                     break
-                } for (c = 0; c < e[m].length; c++)
-                if (b.$ === e[m][c]) {
+                } for (c = 0; c < e[h].length; c++)
+                if (b.$ === e[h][c]) {
                     p = c;
                     break
-                } f > p && (c = f, f = p, p = c);
-            for (c = h; c <= m; c++)
-                for (h = f; h <= p; h++) d = new CKEDITOR.dom.element(e[c][h]),
-                    d.$ && !d.getCustomData("selected_cell") && (l.push(d), CKEDITOR.dom.element.setMarker(k, d, "selected_cell", !0));
-            CKEDITOR.dom.element.clearAllMarkers(k);
-            return l
-        }
-
-        function H(a) {
-            if (a) return a = a.clone(), a.enlarge(CKEDITOR.ENLARGE_ELEMENT), (a = a.getEnclosedNode()) && a.is && a.is(CKEDITOR.dtd.$tableContent)
+                } l > p && (c = l, l = p, p = c);
+            for (c = g; c <= h; c++)
+                for (g = l; g <= p; g++) d = new CKEDITOR.dom.element(e[c][g]),
+                    d.$ && !d.getCustomData("selected_cell") && (k.push(d), CKEDITOR.dom.element.setMarker(f, d, "selected_cell", !0));
+            CKEDITOR.dom.element.clearAllMarkers(f);
+            return k
         }
 
         function I(a) {
+            if (a) return a = a.clone(), a.enlarge(CKEDITOR.ENLARGE_ELEMENT), (a = a.getEnclosedNode()) && a.is && a.is(CKEDITOR.dtd.$tableContent)
+        }
+
+        function J(a) {
             return (a = a.editable().findOne(".cke_table-faked-selection")) && a.getAscendant("table")
         }
 
-        function y(a, b) {
+        function A(a, b) {
             var c = a.editable().find(".cke_table-faked-selection"),
                 d;
             a.fire("lockSnapshot");
@@ -23729,7 +23902,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             for (d = 0; d < c.count(); d++) c.getItem(d).removeClass("cke_table-faked-selection");
             0 < c.count() && c.getItem(0).getAscendant("table").data("cke-table-faked-selection-table", !1);
             a.fire("unlockSnapshot");
-            b && (g = {
+            b && (m = {
                 active: !1
             }, a.getSelection().isInTable() && a.getSelection().reset())
         }
@@ -23741,35 +23914,35 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             a.getSelection().selectRanges(c)
         }
 
-        function J(a) {
+        function K(a) {
             var b = a.editable().find(".cke_table-faked-selection");
             1 > b.count() ||
-                (b = x(b.getItem(0), b.getItem(b.count() - 1)), t(a, b))
+                (b = z(b.getItem(0), b.getItem(b.count() - 1)), t(a, b))
         }
 
-        function K(a, b, c) {
-            var d = u(a.getSelection(!0));
+        function L(a, b, c) {
+            var d = v(a.getSelection(!0));
             b = b.is("table") ? null : b;
             var e;
-            (e = g.active && !g.first) && !(e = b) && (e = a.getSelection().getRanges(), e = 1 < d.length || e[0] && !e[0].collapsed ? !0 : !1);
-            if (e) g.first = b || d[0], g.dirty = b ? !1 : 1 !== d.length;
-            else if (g.active && b && g.first.getAscendant("table").equals(b.getAscendant("table"))) {
-                d = x(g.first, b);
-                if (!g.dirty && 1 === d.length && !B(c.data.getTarget())) return y(a, "mouseup" === c.name);
-                g.dirty = !0;
-                g.last = b;
+            (e = m.active && !m.first) && !(e = b) && (e = a.getSelection().getRanges(), e = 1 < d.length || e[0] && !e[0].collapsed ? !0 : !1);
+            if (e) m.first = b || d[0], m.dirty = b ? !1 : 1 !== d.length;
+            else if (m.active && b && m.first.getAscendant("table").equals(b.getAscendant("table"))) {
+                d = z(m.first, b);
+                if (!m.dirty && 1 === d.length && !D(c.data.getTarget())) return A(a, "mouseup" === c.name);
+                m.dirty = !0;
+                m.last = b;
                 t(a, d)
             }
         }
 
-        function L(a) {
+        function M(a) {
             var b =
                 (a = a.editor || a.sender.editor) && a.getSelection(),
                 c = b && b.getRanges() || [],
                 d;
-            if (b && (y(a), b.isInTable() && b.isFake)) {
+            if (b && (A(a), b.isInTable() && b.isFake)) {
                 1 === c.length && c[0]._getTableElement() && c[0]._getTableElement().is("table") && (d = c[0]._getTableElement());
-                d = u(b, d);
+                d = v(b, d);
                 a.fire("lockSnapshot");
                 for (b = 0; b < d.length; b++) d[b].addClass("cke_table-faked-selection");
                 0 < d.length && (a.editable().addClass("cke_table-faked-selection-editor"), d[0].getAscendant("table").data("cke-table-faked-selection-table", ""));
@@ -23777,34 +23950,39 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             }
         }
 
-        function n(a) {
+        function r(a) {
             return a.getAscendant("tr",
                 !0).$.rowIndex
         }
 
-        function v(a) {
+        function w(a) {
             function b(a, b) {
-                return a && b ? a.equals(b) || a.contains(b) || b.contains(a) || a.getCommonAncestor(b).is(f) : !1
+                return a && b ? a.equals(b) || a.contains(b) || b.contains(a) || a.getCommonAncestor(b).is(l) : !1
             }
 
             function c(a) {
                 return !a.getAscendant("table", !0) && a.getDocument().equals(e.document)
             }
 
-            function d(a, d, e, k) {
-                return ("mousedown" !== a.name || CKEDITOR.tools.getMouseButton(a) !== CKEDITOR.MOUSE_BUTTON_LEFT && k) && ("mouseup" !== a.name || c(a.data.getTarget()) || b(e, k)) ? !1 : !0
+            function d(a, b, d, e) {
+                if ("mousedown" === a.name && (CKEDITOR.tools.getMouseButton(a) === CKEDITOR.MOUSE_BUTTON_LEFT || !e)) return !0;
+                if (b = a.name === (CKEDITOR.env.gecko ? "mousedown" : "mouseup") && !c(a.data.getTarget())) a = a.data.getTarget().getAscendant({
+                    td: 1,
+                    th: 1
+                }, !0), b = !(a && a.hasClass("cke_table-faked-selection"));
+                return b
             }
-            if (a.data.getTarget().getName && ("mouseup" === a.name || !B(a.data.getTarget()))) {
+            if (a.data.getTarget().getName && ("mouseup" === a.name || !D(a.data.getTarget()))) {
                 var e = a.editor || a.listenerData.editor,
-                    h = e.getSelection(1),
-                    m = I(e),
-                    l = a.data.getTarget(),
-                    k = l && l.getAscendant({
+                    g = e.getSelection(1),
+                    h = J(e),
+                    k = a.data.getTarget(),
+                    f = k && k.getAscendant({
                         td: 1,
                         th: 1
                     }, !0),
-                    l = l && l.getAscendant("table", !0),
-                    f = {
+                    k = k && k.getAscendant("table", !0),
+                    l = {
                         table: 1,
                         thead: 1,
                         tbody: 1,
@@ -23813,21 +23991,21 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         td: 1,
                         th: 1
                     };
-                d(a, h, m, l) && y(e, !0);
-                !g.active && "mousedown" === a.name && CKEDITOR.tools.getMouseButton(a) === CKEDITOR.MOUSE_BUTTON_LEFT && l && (g = {
+                d(a, g, h, k) && A(e, !0);
+                !m.active && "mousedown" === a.name && CKEDITOR.tools.getMouseButton(a) === CKEDITOR.MOUSE_BUTTON_LEFT && k && (m = {
                     active: !0
-                }, CKEDITOR.document.on("mouseup", v, null, {
+                }, CKEDITOR.document.on("mouseup", w, null, {
                     editor: e
                 }));
-                (k || l) && K(e, k || l, a);
-                "mouseup" === a.name && (CKEDITOR.tools.getMouseButton(a) === CKEDITOR.MOUSE_BUTTON_LEFT && (c(a.data.getTarget()) || b(m, l)) && J(e), g = {
-                        active: !1
-                    },
-                    CKEDITOR.document.removeListener("mouseup", v))
+                (f || k) && L(e, f || k, a);
+                "mouseup" ===
+                a.name && (CKEDITOR.tools.getMouseButton(a) === CKEDITOR.MOUSE_BUTTON_LEFT && (c(a.data.getTarget()) || b(h, k)) && K(e), m = {
+                    active: !1
+                }, CKEDITOR.document.removeListener("mouseup", w))
             }
         }
 
-        function M(a) {
+        function N(a) {
             var b = a.data.getTarget().getAscendant({
                 td: 1,
                 th: 1
@@ -23835,20 +24013,19 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             b && !b.hasClass("cke_table-faked-selection") && (a.cancel(), a.data.preventDefault())
         }
 
-        function N(a, b) {
+        function O(a, b) {
             function c(a) {
                 a.cancel()
             }
             var d = a.getSelection(),
                 e = d.createBookmarks(),
-                h = a.document,
-                m = a.createRange(),
-                l = h.getDocumentElement().$,
-                k = CKEDITOR.env.ie && 9 > CKEDITOR.env.version,
-                f = a.blockless || CKEDITOR.env.ie ? "span" : "div",
-                p, r, C, g;
-            h.getById("cke_table_copybin") || (p = h.createElement(f), r = h.createElement(f),
-                r.setAttributes({
+                g = a.document,
+                h = a.createRange(),
+                k = g.getDocumentElement().$,
+                f = CKEDITOR.env.ie && 9 > CKEDITOR.env.version,
+                l = a.blockless || CKEDITOR.env.ie ? "span" : "div",
+                p, x, n, m;
+            g.getById("cke_table_copybin") || (p = g.createElement(l), x = g.createElement(l), x.setAttributes({
                     id: "cke_table_copybin",
                     "data-cke-temp": "1"
                 }), p.setStyles({
@@ -23856,18 +24033,19 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     width: "1px",
                     height: "1px",
                     overflow: "hidden"
-                }), p.setStyle("ltr" == a.config.contentsLangDirection ? "left" : "right", "-5000px"), p.setHtml(a.getSelectedHtml(!0)), a.fire("lockSnapshot"), r.append(p), a.editable().append(r), g = a.on("selectionChange", c, null, null, 0), k && (C = l.scrollTop), m.selectNodeContents(p), m.select(), k && (l.scrollTop = C), setTimeout(function() {
-                    r.remove();
+                }), p.setStyle("ltr" == a.config.contentsLangDirection ? "left" : "right", "-5000px"), p.setHtml(a.getSelectedHtml(!0)), a.fire("lockSnapshot"), x.append(p), a.editable().append(x), m = a.on("selectionChange", c, null, null, 0), f && (n = k.scrollTop), h.selectNodeContents(p),
+                h.select(), f && (k.scrollTop = n), setTimeout(function() {
+                    x.remove();
                     d.selectBookmarks(e);
-                    g.removeListener();
+                    m.removeListener();
                     a.fire("unlockSnapshot");
                     b && (a.extractSelectedHtml(), a.fire("saveSnapshot"))
                 }, 100))
         }
 
-        function D(a) {
+        function E(a) {
             var b = a.editor || a.sender.editor;
-            b.getSelection().isInTable() && N(b, "cut" === a.name)
+            b.getSelection().isInTable() && O(b, "cut" === a.name)
         }
 
         function q(a) {
@@ -23875,18 +24053,19 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             a && this.setSelectedCells(a)
         }
 
-        function z(a, b, c) {
+        function B(a, b, c) {
             a.on("beforeCommandExec", function(d) {
-                -1 !== CKEDITOR.tools.array.indexOf(b, d.data.name) && (d.data.selectedCells = u(a.getSelection()))
+                -1 !== CKEDITOR.tools.array.indexOf(b, d.data.name) && (d.data.selectedCells = v(a.getSelection()))
             });
-            a.on("afterCommandExec", function(d) {
-                -1 !== CKEDITOR.tools.array.indexOf(b, d.data.name) && c(a, d.data)
-            })
+            a.on("afterCommandExec",
+                function(d) {
+                    -1 !== CKEDITOR.tools.array.indexOf(b, d.data.name) && c(a, d.data)
+                })
         }
-        var g = {
+        var m = {
                 active: !1
             },
-            w, u, A, E, F;
+            y, v, C, F, G;
         q.prototype = {};
         q.prototype._reset = function() {
             this.cells = {
@@ -23909,56 +24088,57 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             this.rows.first = a[0].getAscendant("tr");
             this.rows.last = this.cells.last.getAscendant("tr")
         };
-        q.prototype.getTableMap = function() {
-            var a = A(this.cells.first),
-                b;
-            a: {
-                b = this.cells.last;
-                var c = b.getAscendant("table"),
-                    d = n(b),
-                    c = CKEDITOR.tools.buildTableMap(c),
-                    e;
-                for (e = 0; e < c[d].length; e++)
-                    if ((new CKEDITOR.dom.element(c[d][e])).equals(b)) {
-                        b = e;
-                        break a
-                    } b = void 0
-            }
-            return CKEDITOR.tools.buildTableMap(this._getTable(), n(this.rows.first), a, n(this.rows.last), b)
-        };
+        q.prototype.getTableMap =
+            function() {
+                var a = C(this.cells.first),
+                    b;
+                a: {
+                    b = this.cells.last;
+                    var c = b.getAscendant("table"),
+                        d = r(b),
+                        c = CKEDITOR.tools.buildTableMap(c),
+                        e;
+                    for (e = 0; e < c[d].length; e++)
+                        if ((new CKEDITOR.dom.element(c[d][e])).equals(b)) {
+                            b = e;
+                            break a
+                        } b = void 0
+                }
+                return CKEDITOR.tools.buildTableMap(this._getTable(), r(this.rows.first), a, r(this.rows.last), b)
+            };
         q.prototype._getTable = function() {
             return this.rows.first.getAscendant("table")
         };
         q.prototype.insertRow = function(a, b, c) {
             if ("undefined" === typeof a) a = 1;
             else if (0 >= a) return;
-            for (var d = this.cells.first.$.cellIndex, e = this.cells.last.$.cellIndex, h = c ? [] : this.cells.all, m, l = 0; l < a; l++) m = E(c ? this.cells.all : h, b), m = CKEDITOR.tools.array.filter(m.find("td, th").toArray(),
-                function(a) {
-                    return c ? !0 : a.$.cellIndex >= d && a.$.cellIndex <= e
-                }), h = b ? m.concat(h) : h.concat(m);
-            this.setSelectedCells(h)
+            for (var d =
+                    this.cells.first.$.cellIndex, e = this.cells.last.$.cellIndex, g = c ? [] : this.cells.all, h, k = 0; k < a; k++) h = F(c ? this.cells.all : g, b), h = CKEDITOR.tools.array.filter(h.find("td, th").toArray(), function(a) {
+                return c ? !0 : a.$.cellIndex >= d && a.$.cellIndex <= e
+            }), g = b ? h.concat(g) : g.concat(h);
+            this.setSelectedCells(g)
         };
         q.prototype.insertColumn = function(a) {
             function b(a) {
-                a = n(a);
-                return a >= e && a <= h
+                a = r(a);
+                return a >= e && a <= g
             }
             if ("undefined" === typeof a) a = 1;
             else if (0 >= a) return;
-            for (var c = this.cells, d = c.all, e = n(c.first), h = n(c.last), c = 0; c < a; c++) d = d.concat(CKEDITOR.tools.array.filter(F(d), b));
+            for (var c = this.cells, d = c.all, e = r(c.first), g = r(c.last), c = 0; c < a; c++) d = d.concat(CKEDITOR.tools.array.filter(G(d),
+                b));
             this.setSelectedCells(d)
         };
         q.prototype.emptyCells = function(a) {
             a = a || this.cells.all;
             for (var b = 0; b < a.length; b++) a[b].setHtml("")
         };
-        q.prototype._arraySortByDOMOrder =
-            function(a) {
-                a.sort(function(a, c) {
-                    return a.getPosition(c) & CKEDITOR.POSITION_PRECEDING ? -1 : 1
-                })
-            };
-        var G = {
+        q.prototype._arraySortByDOMOrder = function(a) {
+            a.sort(function(a, c) {
+                return a.getPosition(c) & CKEDITOR.POSITION_PRECEDING ? -1 : 1
+            })
+        };
+        var H = {
             onPaste: function(a) {
                 function b(a) {
                     return Math.max.apply(null, CKEDITOR.tools.array.map(a, function(a) {
@@ -23973,35 +24153,36 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 }
                 var d = a.editor,
                     e = d.getSelection(),
-                    h = u(e),
-                    m = this.findTableInPastedContent(d, a.data.dataValue),
-                    l = e.isInTable(!0) && this.isBoundarySelection(e),
-                    k, f;
-                !h.length || 1 === h.length && !H(e.getRanges()[0]) && !l || l && !m || (h = h[0].getAscendant("table"),
-                    k = new q(u(e, h)), d.once("afterPaste", function() {
-                        var a;
-                        if (f) {
-                            a = new CKEDITOR.dom.element(f[0][0]);
-                            var b = f[f.length - 1];
-                            a = x(a, new CKEDITOR.dom.element(b[b.length - 1]))
-                        } else a = k.cells.all;
-                        t(d, a)
-                    }), m ? (a.stop(), l ? (k.insertRow(1, 1 === l, !0), e.selectElement(k.rows.first)) : (k.emptyCells(), t(d, k.cells.all)), a = k.getTableMap(), f = CKEDITOR.tools.buildTableMap(m), k.insertRow(f.length - a.length), k.insertColumn(b(f) - b(a)), a = k.getTableMap(), this.pasteTable(k, a, f), d.fire("saveSnapshot"), setTimeout(function() {
-                            d.fire("afterPaste")
-                        },
-                        0)) : (c(k.cells.first), d.once("afterPaste", function() {
-                        d.fire("lockSnapshot");
-                        k.emptyCells(k.cells.all.slice(1));
-                        t(d, k.cells.all);
-                        d.fire("unlockSnapshot")
-                    })))
+                    g = v(e),
+                    h = this.findTableInPastedContent(d,
+                        a.data.dataValue),
+                    k = e.isInTable(!0) && this.isBoundarySelection(e),
+                    f, l;
+                !g.length || 1 === g.length && !I(e.getRanges()[0]) && !k || k && !h || (g = g[0].getAscendant("table"), f = new q(v(e, g)), d.once("afterPaste", function() {
+                    var a;
+                    if (l) {
+                        a = new CKEDITOR.dom.element(l[0][0]);
+                        var b = l[l.length - 1];
+                        a = z(a, new CKEDITOR.dom.element(b[b.length - 1]))
+                    } else a = f.cells.all;
+                    t(d, a)
+                }), h ? (a.stop(), k ? (f.insertRow(1, 1 === k, !0), e.selectElement(f.rows.first)) : (f.emptyCells(), t(d, f.cells.all)), a = f.getTableMap(), l = CKEDITOR.tools.buildTableMap(h),
+                    f.insertRow(l.length - a.length), f.insertColumn(b(l) - b(a)), a = f.getTableMap(), this.pasteTable(f, a, l), d.fire("saveSnapshot"), setTimeout(function() {
+                        d.fire("afterPaste")
+                    }, 0)) : (c(f.cells.first), d.once("afterPaste", function() {
+                    d.fire("lockSnapshot");
+                    f.emptyCells(f.cells.all.slice(1));
+                    t(d, f.cells.all);
+                    d.fire("unlockSnapshot")
+                })))
             },
             isBoundarySelection: function(a) {
                 a = a.getRanges()[0];
                 var b = a.endContainer.getAscendant("tr", !0);
                 if (b && a.collapsed) {
                     if (a.checkBoundaryOfElement(b, CKEDITOR.START)) return 1;
-                    if (a.checkBoundaryOfElement(b, CKEDITOR.END)) return 2
+                    if (a.checkBoundaryOfElement(b,
+                            CKEDITOR.END)) return 2
                 }
                 return 0
             },
@@ -24015,24 +24196,23 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 return 1 < d.getChildCount() ? null : d.findOne("table")
             },
             pasteTable: function(a, b, c) {
-                var d, e = A(a.cells.first),
-                    h = a._getTable(),
-                    m = {},
-                    l, k, f, p;
-                for (f = 0; f < c.length; f++)
-                    for (l = new CKEDITOR.dom.element(h.$.rows[a.rows.first.$.rowIndex + f]), p = 0; p < c[f].length; p++)
-                        if (k = new CKEDITOR.dom.element(c[f][p]), d = b[f] && b[f][p] ? new CKEDITOR.dom.element(b[f][p]) : null, k && !k.getCustomData("processed")) {
-                            if (d && d.getParent()) k.replace(d);
-                            else if (0 === p || c[f][p - 1])(d = 0 !== p ? new CKEDITOR.dom.element(c[f][p -
-                                1
-                            ]) : null) && l.equals(d.getParent()) ? k.insertAfter(d) : 0 < e ? l.$.cells[e] ? k.insertAfter(new CKEDITOR.dom.element(l.$.cells[e])) : l.append(k) : l.append(k, !0);
-                            CKEDITOR.dom.element.setMarker(m, k, "processed", !0)
-                        } else k.getCustomData("processed") && d && d.remove();
-                CKEDITOR.dom.element.clearAllMarkers(m)
+                var d, e = C(a.cells.first),
+                    g = a._getTable(),
+                    h = {},
+                    k, f, l, p;
+                for (l = 0; l < c.length; l++)
+                    for (k = new CKEDITOR.dom.element(g.$.rows[a.rows.first.$.rowIndex + l]), p = 0; p < c[l].length; p++)
+                        if (f = new CKEDITOR.dom.element(c[l][p]), d = b[l] &&
+                            b[l][p] ? new CKEDITOR.dom.element(b[l][p]) : null, f && !f.getCustomData("processed")) {
+                            if (d && d.getParent()) f.replace(d);
+                            else if (0 === p || c[l][p - 1])(d = 0 !== p ? new CKEDITOR.dom.element(c[l][p - 1]) : null) && k.equals(d.getParent()) ? f.insertAfter(d) : 0 < e ? k.$.cells[e] ? f.insertAfter(new CKEDITOR.dom.element(k.$.cells[e])) : k.append(f) : k.append(f, !0);
+                            CKEDITOR.dom.element.setMarker(h, f, "processed", !0)
+                        } else f.getCustomData("processed") && d && d.remove();
+                CKEDITOR.dom.element.clearAllMarkers(h)
             }
         };
         CKEDITOR.plugins.tableselection = {
-            getCellsBetween: x,
+            getCellsBetween: z,
             keyboardIntegration: function(a) {
                 function b(a) {
                     var b = a.getEnclosedNode();
@@ -24040,76 +24220,82 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         td: 1,
                         th: 1
                     }) ? b.setText("") : a.deleteContents();
-                    CKEDITOR.tools.array.forEach(a._find("td"),
-                        function(a) {
-                            a.appendBogus()
-                        })
+                    CKEDITOR.tools.array.forEach(a._find("td"), function(a) {
+                        a.appendBogus()
+                    })
                 }
                 var c = a.editable();
                 c.attachListener(c, "keydown", function(a) {
                     function c(b, e) {
                         if (!e.length) return null;
-                        var f = a.createRange(),
-                            h = CKEDITOR.dom.range.mergeRanges(e);
-                        CKEDITOR.tools.array.forEach(h, function(a) {
+                        var l = a.createRange(),
+                            g = CKEDITOR.dom.range.mergeRanges(e);
+                        CKEDITOR.tools.array.forEach(g, function(a) {
                             a.enlarge(CKEDITOR.ENLARGE_ELEMENT)
                         });
-                        var r = h[0].getBoundaryNodes(),
-                            g = r.startNode,
-                            r = r.endNode;
-                        if (g && g.is && g.is(m)) {
-                            for (var q = g.getAscendant("table", !0), n = g.getPreviousSourceNode(!1, CKEDITOR.NODE_ELEMENT, q), t = !1, u = function(a) {
-                                    return !g.contains(a) && a.is && a.is("td", "th")
-                                }; n &&
-                                !u(n);) n = n.getPreviousSourceNode(!1, CKEDITOR.NODE_ELEMENT, q);
-                            !n && r && r.is && !r.is("table") && r.getNext() && (n = r.getNext().findOne("td, th"), t = !0);
-                            if (n) f["moveToElementEdit" + (t ? "Start" : "End")](n);
-                            else f.setStartBefore(g.getAscendant("table", !0)), f.collapse(!0);
-                            h[0].deleteContents();
-                            return [f]
+                        var m = g[0].getBoundaryNodes(),
+                            n = m.startNode,
+                            m = m.endNode;
+                        if (n && n.is && n.is(h)) {
+                            for (var q = n.getAscendant("table", !0), u = n.getPreviousSourceNode(!1, CKEDITOR.NODE_ELEMENT, q), r = !1, t = function(a) {
+                                    return !n.contains(a) && a.is && a.is("td", "th")
+                                }; u && !t(u);) u = u.getPreviousSourceNode(!1, CKEDITOR.NODE_ELEMENT, q);
+                            !u && m && m.is && !m.is("table") && m.getNext() && (u = m.getNext().findOne("td, th"), r = !0);
+                            if (u) l["moveToElementEdit" + (r ? "Start" : "End")](u);
+                            else l.setStartBefore(n.getAscendant("table", !0)), l.collapse(!0);
+                            g[0].deleteContents();
+                            return [l]
                         }
-                        if (g) return f.moveToElementEditablePosition(g), [f]
+                        if (n) return l.moveToElementEditablePosition(n),
+                            [l]
                     }
-                    var h = {
+                    var g = {
                             37: 1,
                             38: 1,
                             39: 1,
                             40: 1,
                             8: 1,
-                            46: 1
+                            46: 1,
+                            13: 1
                         },
-                        m = CKEDITOR.tools.extend({
+                        h = CKEDITOR.tools.extend({
                             table: 1
                         }, CKEDITOR.dtd.$tableContent);
-                    delete m.td;
-                    delete m.th;
-                    return function(l) {
-                        var k = l.data.getKey(),
-                            f, m = 37 === k || 38 == k,
-                            g, n, q;
-                        if (h[k] && (f = a.getSelection()) && f.isInTable() && f.isFake)
-                            if (g = f.getRanges(), n = g[0]._getTableElement(), q = g[g.length - 1]._getTableElement(), l.data.preventDefault(), l.cancel(), 8 < k && 46 > k) g[0].moveToElementEditablePosition(m ? n : q, !m), f.selectRanges([g[0]]);
-                            else {
-                                for (l = 0; l < g.length; l++) b(g[l]);
-                                (l = c(n, g)) ? g = l: g[0].moveToElementEditablePosition(n);
-                                f.selectRanges(g);
-                                a.fire("saveSnapshot")
+                    delete h.td;
+                    delete h.th;
+                    return function(k) {
+                        var f = k.data.getKey(),
+                            l = k.data.getKeystroke(),
+                            h, m = 37 === f || 38 == f,
+                            n, q, r;
+                        if (g[f] && !a.readOnly && (h = a.getSelection()) && h.isInTable() && h.isFake) {
+                            n = h.getRanges();
+                            q = n[0]._getTableElement();
+                            r = n[n.length - 1]._getTableElement();
+                            if (13 !== f || a.plugins.enterkey) k.data.preventDefault(), k.cancel();
+                            if (36 < f && 41 > f) n[0].moveToElementEditablePosition(m ? q : r, !m), h.selectRanges([n[0]]);
+                            else if (13 !== f || 13 === l || l === CKEDITOR.SHIFT + 13) {
+                                for (k = 0; k < n.length; k++) b(n[k]);
+                                (k = c(q, n)) ? n = k: n[0].moveToElementEditablePosition(q);
+                                h.selectRanges(n);
+                                13 === f && a.plugins.enterkey ? (a.fire("lockSnapshot"), 13 === l ? a.execCommand("enter") : a.execCommand("shiftEnter"), a.fire("unlockSnapshot"), a.fire("saveSnapshot")) : 13 !== f && a.fire("saveSnapshot")
                             }
+                        }
                     }
                 }(a), null, null, -1);
                 c.attachListener(c, "keypress", function(d) {
                     var c = a.getSelection(),
-                        h = d.data.$.charCode ||
-                        13 === d.data.getKey(),
-                        g;
-                    if (c && c.isInTable() && c.isFake && h && !(d.data.getKeystroke() & CKEDITOR.CTRL)) {
+                        g = d.data.$.charCode || 13 === d.data.getKey(),
+                        h;
+                    if (!a.readOnly && c && c.isInTable() &&
+                        c.isFake && g && !(d.data.getKeystroke() & CKEDITOR.CTRL)) {
                         d = c.getRanges();
-                        h = d[0].getEnclosedNode().getAscendant({
+                        g = d[0].getEnclosedNode().getAscendant({
                             td: 1,
                             th: 1
                         }, !0);
-                        for (g = 0; g < d.length; g++) b(d[g]);
-                        h && (d[0].moveToElementEditablePosition(h), c.selectRanges([d[0]]))
+                        for (h = 0; h < d.length; h++) b(d[h]);
+                        g && (d[0].moveToElementEditablePosition(g), c.selectRanges([d[0]]))
                     }
                 }, null, null, -1)
             },
@@ -24118,12 +24304,13 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         CKEDITOR.plugins.add("tableselection", {
             requires: "clipboard,tabletools",
             onLoad: function() {
-                w = CKEDITOR.plugins.tabletools;
-                u = w.getSelectedCells;
-                A = w.getCellColIndex;
-                E = w.insertRow;
-                F = w.insertColumn;
-                CKEDITOR.document.appendStyleSheet(this.path + "styles/tableselection.css")
+                y = CKEDITOR.plugins.tabletools;
+                v = y.getSelectedCells;
+                C = y.getCellColIndex;
+                F = y.insertRow;
+                G = y.insertColumn;
+                CKEDITOR.document.appendStyleSheet(this.path +
+                    "styles/tableselection.css")
             },
             init: function(a) {
                 CKEDITOR.plugins.tableselection.isSupportedEnvironment && (a.addContentsCss && a.addContentsCss(this.path + "styles/tableselection.css"), a.on("contentDom", function() {
@@ -24132,22 +24319,20 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         d = {
                             editor: a
                         };
-                    b.attachListener(c, "mousedown", v, null, d);
-                    b.attachListener(c, "mousemove", v, null, d);
-                    b.attachListener(c, "mouseup", v, null, d);
-                    b.attachListener(b, "dragstart", M);
-                    b.attachListener(a,
-                        "selectionCheck", L);
+                    b.attachListener(c, "mousedown", w, null, d);
+                    b.attachListener(c, "mousemove", w, null, d);
+                    b.attachListener(c, "mouseup", w, null, d);
+                    b.attachListener(b, "dragstart", N);
+                    b.attachListener(a, "selectionCheck", M);
                     CKEDITOR.plugins.tableselection.keyboardIntegration(a);
-                    CKEDITOR.plugins.clipboard && !CKEDITOR.plugins.clipboard.isCustomCopyCutSupported && (b.attachListener(b, "cut", D), b.attachListener(b, "copy", D))
-                }), a.on("paste", G.onPaste, G), z(a, "rowInsertBefore rowInsertAfter columnInsertBefore columnInsertAfter cellInsertBefore cellInsertAfter".split(" "), function(a, c) {
+                    CKEDITOR.plugins.clipboard && !CKEDITOR.plugins.clipboard.isCustomCopyCutSupported && (b.attachListener(b, "cut", E), b.attachListener(b, "copy", E))
+                }), a.on("paste", H.onPaste, H), B(a, "rowInsertBefore rowInsertAfter columnInsertBefore columnInsertAfter cellInsertBefore cellInsertAfter".split(" "), function(a, c) {
                     t(a, c.selectedCells)
-                }), z(a, ["cellMerge", "cellMergeRight", "cellMergeDown"], function(a, c) {
+                }), B(a, ["cellMerge", "cellMergeRight", "cellMergeDown"], function(a, c) {
                     t(a, [c.commandData.cell])
-                }), z(a, ["cellDelete"],
-                    function(a) {
-                        y(a, !0)
-                    }))
+                }), B(a, ["cellDelete"], function(a) {
+                    A(a, !0)
+                }))
             }
         })
     })();
@@ -24909,7 +25094,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         }
     })();
     (function() {
-        function f(a) {
+        function e(a) {
             return a.getName && !a.hasAttribute("data-cke-temp")
         }
         CKEDITOR.plugins.add("widgetselection", {
@@ -24918,11 +25103,10 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     var b = CKEDITOR.plugins.widgetselection;
                     a.on("contentDom", function(a) {
                         a = a.editor;
-                        var d = a.document,
-                            e = a.editable();
-                        e.attachListener(d, "keydown", function(a) {
+                        var c = a.editable();
+                        c.attachListener(c, "keydown", function(a) {
                             a.data.getKeystroke() == CKEDITOR.CTRL + 65 && CKEDITOR.tools.setTimeout(function() {
-                                b.addFillers(e) || b.removeFillers(e)
+                                b.addFillers(c) || b.removeFillers(c)
                             }, 0)
                         }, null, null, -1);
                         a.on("selectionCheck", function(a) {
@@ -24945,11 +25129,11 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             addFillers: function(a) {
                 var b = a.editor;
                 if (!this.isWholeContentSelected(a) && 0 < a.getChildCount()) {
-                    var c = a.getFirst(f),
-                        d = a.getLast(f);
-                    c && c.type == CKEDITOR.NODE_ELEMENT && !c.isEditable() && (this.startFiller = this.createFiller(),
+                    var d = a.getFirst(e),
+                        c = a.getLast(e);
+                    d && d.type == CKEDITOR.NODE_ELEMENT && !d.isEditable() && (this.startFiller = this.createFiller(),
                         a.append(this.startFiller, 1));
-                    d && d.type == CKEDITOR.NODE_ELEMENT && !d.isEditable() && (this.endFiller = this.createFiller(!0), a.append(this.endFiller, 0));
+                    c && c.type == CKEDITOR.NODE_ELEMENT && !c.isEditable() && (this.endFiller = this.createFiller(!0), a.append(this.endFiller, 0));
                     if (this.hasFiller(a)) return b = b.createRange(), b.selectNodeContents(a), b.select(), !0
                 }
                 return !1
@@ -24957,10 +25141,10 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             removeFillers: function(a) {
                 if (this.hasFiller(a) && !this.isWholeContentSelected(a)) {
                     var b = a.findOne(this.fillerTagName + "[" + this.fillerAttribute + "\x3dstart]"),
-                        c = a.findOne(this.fillerTagName + "[" + this.fillerAttribute + "\x3dend]");
+                        d = a.findOne(this.fillerTagName + "[" + this.fillerAttribute + "\x3dend]");
                     this.startFiller && b && this.startFiller.equals(b) ?
                         this.removeFiller(this.startFiller, a) : this.startFiller = b;
-                    this.endFiller && c && this.endFiller.equals(c) ? this.removeFiller(this.endFiller, a) : this.endFiller = c
+                    this.endFiller && d && this.endFiller.equals(d) ? this.removeFiller(this.endFiller, a) : this.endFiller = d
                 }
             },
             cleanPasteData: function(a) {
@@ -24997,15 +25181,15 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             },
             removeFiller: function(a, b) {
                 if (a) {
-                    var c = b.editor,
-                        d = b.editor.getSelection().getRanges()[0].startPath(),
-                        e = c.createRange(),
-                        g, f;
-                    d.contains(a) && (g = a.getHtml(), f = !0);
-                    d = "start" == a.getAttribute(this.fillerAttribute);
+                    var d = b.editor,
+                        c = b.editor.getSelection().getRanges()[0].startPath(),
+                        f = d.createRange(),
+                        g, e;
+                    c.contains(a) && (g = a.getHtml(), e = !0);
+                    c = "start" == a.getAttribute(this.fillerAttribute);
                     a.remove();
-                    g && 0 < g.length && g != this.fillerContent ? (b.insertHtmlIntoRange(g, c.getSelection().getRanges()[0]), e.setStartAt(b.getChild(b.getChildCount() - 1), CKEDITOR.POSITION_BEFORE_END), c.getSelection().selectRanges([e])) : f && (d ? e.setStartAt(b.getFirst().getNext(), CKEDITOR.POSITION_AFTER_START) :
-                        e.setEndAt(b.getLast().getPrevious(), CKEDITOR.POSITION_BEFORE_END), b.editor.getSelection().selectRanges([e]))
+                    g && 0 < g.length && g != this.fillerContent ? (b.insertHtmlIntoRange(g, d.getSelection().getRanges()[0]), f.setStartAt(b.getChild(b.getChildCount() - 1), CKEDITOR.POSITION_BEFORE_END), d.getSelection().selectRanges([f])) : e && (c ? f.setStartAt(b.getFirst().getNext(), CKEDITOR.POSITION_AFTER_START) :
+                        f.setEndAt(b.getLast().getPrevious(), CKEDITOR.POSITION_BEFORE_END), b.editor.getSelection().selectRanges([f]))
                 }
             },
             createFillerRegex: function(a) {
@@ -25014,9 +25198,9 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             },
             addSelectAllIntegration: function(a) {
                 var b = this;
-                a.editable().attachListener(a, "beforeCommandExec", function(c) {
-                    var d = a.editable();
-                    "selectAll" == c.data.name && d && b.addFillers(d)
+                a.editable().attachListener(a, "beforeCommandExec", function(d) {
+                    var c = a.editable();
+                    "selectAll" == d.data.name && c && b.addFillers(c)
                 }, null, null, 9999)
             }
         }
@@ -25097,7 +25281,10 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     }
                     var f = a.widgets.focused;
                     if (f && f.name == b.name) f.edit();
-                    else if (b.insert) b.insert();
+                    else if (b.insert) b.insert({
+                        editor: a,
+                        commandData: d
+                    });
                     else if (b.template) {
                         var f = "function" == typeof b.defaults ? b.defaults() : b.defaults,
                             f = CKEDITOR.dom.element.createFromHtml(b.template.output(f)),
@@ -25139,12 +25326,12 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 return !1
             }
 
-            function d(b, c, d) {
+            function d(b, d, c) {
                 var e = CKEDITOR.tools.getIndex(a._.upcasts, function(a) {
-                    return a[2] > d
+                    return a[2] > c
                 });
                 0 > e && (e = a._.upcasts.length);
-                a._.upcasts.splice(e, 0, [CKEDITOR.tools.bind(b, c), c.name, d])
+                a._.upcasts.splice(e, 0, [CKEDITOR.tools.bind(b, d), d.name, c])
             }
             var e = b.upcast,
                 f = b.upcastPriority || 10;
@@ -25308,9 +25495,9 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         function O(a) {
             var b = a.editor,
                 c = CKEDITOR.plugins.lineutils;
-            b.on("dragstart", function(c) {
-                var e = c.data.target;
-                g.isDomDragHandler(e) && (e = a.getByElement(e), c.data.dataTransfer.setData("cke/widget-id", e.id), b.focus(), e.focus())
+            b.on("dragstart", function(d) {
+                var c = d.data.target;
+                g.isDomDragHandler(c) && (c = a.getByElement(c), d.data.dataTransfer.setData("cke/widget-id", c.id), b.focus(), c.focus())
             });
             b.on("drop", function(c) {
                 var e = c.data.dataTransfer,
@@ -26081,12 +26268,19 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 this.wrapper = null
             },
             destroyEditable: function(a, b) {
-                var c = this.editables[a];
+                var c = this.editables[a],
+                    d = !0;
                 c.removeListener("focus", H);
                 c.removeListener("blur", G);
                 this.editor.focusManager.remove(c);
-                b || (this.repository.destroyAll(!1, c), c.removeClass("cke_widget_editable"),
-                    c.removeClass("cke_widget_editable_focused"), c.removeAttributes(["contenteditable", "data-cke-widget-editable", "data-cke-enter-mode"]));
+                if (c.filter) {
+                    for (var e in this.repository.instances) {
+                        var f = this.repository.instances[e];
+                        f.editables && (f = f.editables[a]) && f !== c && c.filter === f.filter && (d = !1)
+                    }
+                    d && (c.filter.destroy(), (d = this.repository._.filters[this.name]) && delete d[a])
+                }
+                b || (this.repository.destroyAll(!1, c), c.removeClass("cke_widget_editable"), c.removeClass("cke_widget_editable_focused"), c.removeAttributes(["contenteditable", "data-cke-widget-editable", "data-cke-enter-mode"]));
                 delete this.editables[a]
             },
             edit: function() {
@@ -26095,24 +26289,25 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     },
                     b = this;
                 if (!1 === this.fire("edit", a) || !a.dialog) return !1;
-                this.editor.openDialog(a.dialog, function(a) {
-                    var d, e;
-                    !1 !== b.fire("dialog", a) && (d = a.on("show", function() {
-                        a.setupContent(b)
-                    }), e = a.on("ok", function() {
-                        var d, e = b.on("data", function(a) {
-                            d = 1;
-                            a.cancel()
-                        }, null, null, 0);
-                        b.editor.fire("saveSnapshot");
-                        a.commitContent(b);
-                        e.removeListener();
-                        d && (b.fire("data", b.data), b.editor.fire("saveSnapshot"))
-                    }), a.once("hide", function() {
-                        d.removeListener();
-                        e.removeListener()
-                    }))
-                });
+                this.editor.openDialog(a.dialog,
+                    function(a) {
+                        var d, e;
+                        !1 !== b.fire("dialog", a) && (d = a.on("show", function() {
+                            a.setupContent(b)
+                        }), e = a.on("ok", function() {
+                            var d, e = b.on("data", function(a) {
+                                d = 1;
+                                a.cancel()
+                            }, null, null, 0);
+                            b.editor.fire("saveSnapshot");
+                            a.commitContent(b);
+                            e.removeListener();
+                            d && (b.fire("data", b.data), b.editor.fire("saveSnapshot"))
+                        }), a.once("hide", function() {
+                            d.removeListener();
+                            e.removeListener()
+                        }))
+                    });
                 return !0
             },
             getClasses: function() {
@@ -26125,18 +26320,17 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 var c = this._findOneNotNested(b.selector);
                 return c && c.is(CKEDITOR.dtd.$editable) ? (c = new q(this.editor, c, {
                         filter: x.call(this.repository, this.name, a, b)
-                    }), this.editables[a] =
-                    c, c.setAttributes({
+                    }), this.editables[a] = c, c.setAttributes({
                         contenteditable: "true",
                         "data-cke-widget-editable": a,
                         "data-cke-enter-mode": c.enterMode
-                    }), c.filter && c.data("cke-filter", c.filter.id), c.addClass("cke_widget_editable"), c.removeClass("cke_widget_editable_focused"), b.pathName && c.data("cke-display-name", b.pathName), this.editor.focusManager.add(c), c.on("focus", H, this), CKEDITOR.env.ie && c.on("blur", G, this), c._.initialSetData = !0, c.setData(c.getHtml()), !0) : !1
+                    }), c.filter && c.data("cke-filter", c.filter.id), c.addClass("cke_widget_editable"), c.removeClass("cke_widget_editable_focused"), b.pathName && c.data("cke-display-name", b.pathName), this.editor.focusManager.add(c),
+                    c.on("focus", H, this), CKEDITOR.env.ie && c.on("blur", G, this), c._.initialSetData = !0, c.setData(c.getHtml()), !0) : !1
             },
             _findOneNotNested: function(a) {
                 a = this.wrapper.find(a);
                 for (var b, c, d = 0; d < a.count(); d++)
-                    if (b =
-                        a.getItem(d), c = b.getAscendant(g.isDomWidgetWrapper), this.wrapper.equals(c)) return b;
+                    if (b = a.getItem(d), c = b.getAscendant(g.isDomWidgetWrapper), this.wrapper.equals(c)) return b;
                 return null
             },
             isInited: function() {
@@ -26159,8 +26353,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 this.wrapper.removeClass(g.WRAPPER_CLASS_PREFIX + a)
             },
             removeStyle: function(a) {
-                D(this,
-                    a, 0)
+                D(this, a, 0)
             },
             setData: function(a, b) {
                 var c = this.data,
@@ -26184,8 +26377,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 return this
             },
             updateDragHandlerPosition: function() {
-                var a =
-                    this.editor,
+                var a = this.editor,
                     b = this.element.$,
                     c = this._.dragHandlerOffset,
                     b = {
@@ -26204,8 +26396,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             return !b || b.equals(a) ? null : g.isDomNestedEditable(b) ? b : g.getNestedEditable(a, b.getParent())
         };
         g.isDomDragHandler = function(a) {
-            return a.type ==
-                CKEDITOR.NODE_ELEMENT && a.hasAttribute("data-cke-widget-drag-handler")
+            return a.type == CKEDITOR.NODE_ELEMENT && a.hasAttribute("data-cke-widget-drag-handler")
         };
         g.isDomDragHandlerContainer = function(a) {
             return a.type == CKEDITOR.NODE_ELEMENT && a.hasClass("cke_widget_drag_handler_container")
@@ -26231,8 +26422,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         g.WRAPPER_CLASS_PREFIX = "cke_widget_wrapper_";
         q.prototype = CKEDITOR.tools.extend(CKEDITOR.tools.prototypedCopy(CKEDITOR.dom.element.prototype), {
             setData: function(a) {
-                this._.initialSetData ||
-                    this.editor.widgets.destroyAll(!1, this);
+                this._.initialSetData || this.editor.widgets.destroyAll(!1, this);
                 this._.initialSetData = !1;
                 a = this.editor.dataProcessor.toHtml(a, {
                     context: this.getName(),
@@ -26420,13 +26610,14 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                             f = CKEDITOR.tools.capitalize,
                             g, e;
                         k.on("update", function(b) {
+                            if ("abort" === k.status && "function" === typeof d.onAbort) d.onAbort(k);
                             if (d.wrapper && d.wrapper.getParent()) {
                                 a.fire("lockSnapshot");
                                 b = "on" + f(k.status);
-                                if ("function" !== typeof d[b] || !1 !== d[b](k)) e = "cke_upload_" + k.status, d.wrapper && e != g && (g && d.wrapper.removeClass(g), d.wrapper.addClass(e), g = e), "error" != k.status && "abort" != k.status || a.widgets.del(d);
+                                if ("abort" === k.status || "function" !== typeof d[b] || !1 !== d[b](k)) e = "cke_upload_" + k.status, d.wrapper && e != g && (g && d.wrapper.removeClass(g), d.wrapper.addClass(e), g = e), "error" != k.status && "abort" !=
+                                    k.status || a.widgets.del(d);
                                 a.fire("unlockSnapshot")
-                            } else a.editable().find('[data-cke-upload-id\x3d"' +
-                                c + '"]').count() || k.abort(), b.removeListener()
+                            } else CKEDITOR.instances[a.name] && a.editable().find('[data-cke-upload-id\x3d"' + c + '"]').count() || k.abort(), b.removeListener()
                         });
                         k.update()
                     },
@@ -26450,8 +26641,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                         }
                     },
                     _getLoader: function() {
-                        var a =
-                            this.wrapper.findOne("[data-cke-upload-id]");
+                        var a = this.wrapper.findOne("[data-cke-upload-id]");
                         return a ? this.editor.uploadRepository.loaders[a.data("cke-upload-id")] : null
                     }
                 });
@@ -26466,8 +26656,8 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
             bindNotifications: function(a, c) {
                 function f() {
                     h = a._.uploadWidgetNotificaionAggregator;
-                    if (!h || h.isFinished()) h = a._.uploadWidgetNotificaionAggregator = new CKEDITOR.plugins.notificationAggregator(a, a.lang.uploadwidget.uploadMany, a.lang.uploadwidget.uploadOne), h.once("finished",
-                        function() {
+                    if (!h || h.isFinished()) h = a._.uploadWidgetNotificaionAggregator =
+                        new CKEDITOR.plugins.notificationAggregator(a, a.lang.uploadwidget.uploadMany, a.lang.uploadwidget.uploadOne), h.once("finished", function() {
                             var b = h.getTaskCount();
                             0 === b ? h.notification.hide() : h.notification.update({
                                 message: 1 == b ? a.lang.uploadwidget.doneOne : a.lang.uploadwidget.doneMany.replace("%1", b),
@@ -26484,16 +26674,16 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                     b && "uploading" == c.status && b.update(c.uploaded)
                 });
                 c.on("uploaded", function() {
-                    b && b.done()
+                    b &&
+                        b.done()
                 });
                 c.on("error", function() {
                     b && b.cancel();
                     a.showNotification(c.message, "warning")
                 });
                 c.on("abort", function() {
-                    b &&
-                        b.cancel();
-                    a.showNotification(a.lang.uploadwidget.abort, "info")
+                    b && b.cancel();
+                    CKEDITOR.instances[a.name] && a.showNotification(a.lang.uploadwidget.abort, "info")
                 })
             }
         })
