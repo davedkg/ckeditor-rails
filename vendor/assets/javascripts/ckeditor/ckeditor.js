@@ -258,7 +258,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
         b.gecko = "Gecko" == navigator.product && !b.webkit && !b.ie;
         b.webkit && (-1 < a.indexOf("chrome") ? b.chrome = !0 : b.safari = !0);
         var c = 0;
-        b.ie && (c = d ? parseFloat(d[1]) : b.quirks || !document.documentMode ? parseFloat((a.match(/msie (\d+)/) || agent.match(/rv:(\d+)/))[1]) : document.documentMode, b.ie9Compat = 9 == c, b.ie8Compat = 8 == c, b.ie7Compat = 7 == c, b.ie6Compat = 7 > c || b.quirks);
+        b.ie && (c = d ? parseFloat(d[1]) : b.quirks || !document.documentMode ? parseFloat((a.match(/msie (\d+)/) || a.match(/rv:(\d+)/))[1]) : document.documentMode, b.ie9Compat = 9 == c, b.ie8Compat = 8 == c, b.ie7Compat = 7 == c, b.ie6Compat = 7 > c || b.quirks);
         b.gecko && (d = a.match(/rv:([\d\.]+)/)) && (d = d[1].split("."), c = 1E4 * d[0] + 100 * (d[1] || 0) + 1 * (d[2] || 0));
         b.air && (c = parseFloat(a.match(/ adobeair\/(\d+)/)[1]));
         b.webkit && (c = parseFloat(a.match(/ applewebkit\/(\d+)/)[1]));
