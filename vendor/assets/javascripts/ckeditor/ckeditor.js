@@ -244,7 +244,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                 webkit: !b && -1 < a.indexOf(" applewebkit/"),
                 air: -1 < a.indexOf(" adobeair/"),
                 mac: -1 < a.indexOf("macintosh"),
-                quirks: false; //"BackCompat" == document.compatMode && (!document.documentMode || 10 > document.documentMode),
+                quirks: false, //"BackCompat" == document.compatMode && (!document.documentMode || 10 > document.documentMode),
                 mobile: -1 < a.indexOf("mobile"),
                 iOS: /(ipad|iphone|ipod)/.test(a),
                 isCustomDomain: function() {
